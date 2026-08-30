@@ -4,7 +4,7 @@ import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { supabase } from "../../lib/supabase";
 import { getGameScore, recordGameResult } from "../../lib/game-scores";
 
-type Club = { id: number; name: string; badge_url: string | null; is_national_team: boolean; is_active: boolean };
+type Club = { id: number; name: string; badge_url: string | null; is_national_team: boolean; is_active: boolean; is_game_eligible: boolean };
 type Attempt = { id: number; name: string; correct: boolean };
 
 const MAX_ATTEMPTS = 6;
@@ -82,8 +82,9 @@ export default function GuessTheBadgeGame() {
       if (!supabase) { setError("Falta la configuración pública de Supabase."); setLoading(false); return; }
       const { data, error } = await supabase
         .from("clubs")
-        .select("id,name,badge_url,is_national_team,is_active")
+        .select("id,name,badge_url,is_national_team,is_active,is_game_eligible")
         .eq("is_national_team", false)
+        .eq("is_game_eligible", true)
         .eq("is_active", true)
         .not("badge_url", "is", null);
       if (error) { setError(error.message); setLoading(false); return; }

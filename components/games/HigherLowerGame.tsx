@@ -8,6 +8,7 @@ type Player = {
   id: number;
   display_name: string;
   photo_url: string | null;
+  primary_position: string | null;
 };
 
 type Club = {
@@ -57,6 +58,22 @@ function currentSeasonStartYear() {
   return now.getMonth() >= 6 ? now.getFullYear() : now.getFullYear() - 1;
 }
 
+function isGoalkeeper(position: string | null) {
+  const normalized = (position ?? "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+
+  return (
+    normalized === "gk" ||
+    normalized.includes("goalkeeper") ||
+    normalized.includes("keeper") ||
+    normalized.includes("portero") ||
+    normalized.includes("goalie")
+  );
+}
+
 export default function HigherLowerGame() {
   const [cards, setCards] = useState<SeasonCard[]>([]);
   const [left, setLeft] = useState<SeasonCard | null>(null);
@@ -86,7 +103,7 @@ export default function HigherLowerGame() {
       }
 
       const [playersResult, clubsResult, statsResult] = await Promise.all([
-        supabase.from("players").select("id,display_name,photo_url"),
+        supabase.from("players").select("id,display_name,photo_url,primary_position"),
         supabase.from("clubs").select("id,name,badge_url,is_national_team"),
         supabase
           .from("player_season_stats")
@@ -104,7 +121,8 @@ export default function HigherLowerGame() {
       const players = (playersResult.data ?? []) as Player[];
       const clubs = (clubsResult.data ?? []) as Club[];
       const stats = (statsResult.data ?? []) as StatRow[];
-      const playerMap = new Map(players.map((player) => [player.id, player]));
+      const outfieldPlayers = players.filter((player) => !isGoalkeeper(player.primary_position));
+      const playerMap = new Map(outfieldPlayers.map((player) => [player.id, player]));
       const clubMap = new Map(clubs.map((club) => [club.id, club]));
       const activeSeason = currentSeasonStartYear();
 

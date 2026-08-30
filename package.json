@@ -1,6 +1,6 @@
 {
   "name": "10thegoat",
-  "version": "0.11.0-beta.1",
+  "version": "0.11.1-beta.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -24,7 +24,8 @@
     "import:players:batch3": "node --env-file=.env.local scripts/import-player-batch-03.mjs",
     "audit:game-names": "node --env-file=.env.local scripts/audit-game-names.mjs",
     "normalize:game-names": "node --env-file=.env.local scripts/normalize-game-names.mjs",
-    "check:production": "node scripts/check-production.mjs"
+    "check:production": "node scripts/check-production.mjs",
+    "import:game-clubs": "node --env-file=.env.local scripts/import-game-clubs.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
