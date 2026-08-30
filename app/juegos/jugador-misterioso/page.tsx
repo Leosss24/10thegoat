@@ -1,9 +1,2 @@
-export default function Page() {
-  return (
-    <main className="game-shell container">
-      <h1>Jugador Misterioso</h1>
-      <p>La ruta ya está preparada. Este módulo se conectará al núcleo común de datos de 10 The GOAT.</p>
-      <div className="placeholder">⚽ Módulo en construcción</div>
-    </main>
-  );
-}
+import { redirect } from "next/navigation";
+export default function Page() { redirect("/juegos/adivina-jugador"); }

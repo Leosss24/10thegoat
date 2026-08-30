@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+export const metadata: Metadata = { title: "Modo Carrera", robots: { index: false, follow: true } };
 export default function Page() {
   return (
     <main className="game-shell container">

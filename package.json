@@ -1,12 +1,30 @@
 {
   "name": "10thegoat",
-  "version": "0.1.0",
+  "version": "0.11.0-beta.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:football": "node --env-file=.env.local scripts/test-football-data.mjs",
+    "test:stats": "node --env-file=.env.local scripts/test-season-stats.mjs",
+    "test:supabase": "node --env-file=.env.local scripts/test-supabase.mjs",
+    "import:messi": "node --env-file=.env.local scripts/import-messi.mjs",
+    "import:messi-career": "node --env-file=.env.local scripts/import-messi-career.mjs",
+    "import:messi-2018": "node --env-file=.env.local scripts/import-messi-2018.mjs",
+    "inspect:messi-2018": "node --env-file=.env.local scripts/inspect-messi-2018.mjs",
+    "import:core-players": "node --env-file=.env.local scripts/import-core-players.mjs",
+    "import:players:batch1": "node --env-file=.env.local scripts/import-player-batch-01.mjs",
+    "import:players:batch2": "node --env-file=.env.local scripts/import-player-batch-02.mjs",
+    "repair:players:batch1": "node --env-file=.env.local scripts/repair-batch-01.mjs",
+    "repair:historicals": "node --env-file=.env.local scripts/repair-historical-players.mjs",
+    "inspect:player-id": "node --env-file=.env.local scripts/inspect-player-id.mjs",
+    "repair:historicals:auto": "node --env-file=.env.local scripts/repair-historical-auto.mjs",
+    "import:players:batch3": "node --env-file=.env.local scripts/import-player-batch-03.mjs",
+    "audit:game-names": "node --env-file=.env.local scripts/audit-game-names.mjs",
+    "normalize:game-names": "node --env-file=.env.local scripts/normalize-game-names.mjs",
+    "check:production": "node scripts/check-production.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
