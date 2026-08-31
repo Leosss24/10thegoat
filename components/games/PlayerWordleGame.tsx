@@ -120,6 +120,7 @@ export default function PlayerWordleGame() {
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [hintPosition, setHintPosition] = useState<number | null>(null);
+  const [hintRow, setHintRow] = useState<number | null>(null);
   const [usedHint, setUsedHint] = useState(false);
   const [surrendered, setSurrendered] = useState(false);
   const [roundScore, setRoundScore] = useState<number | null>(null);
@@ -239,19 +240,25 @@ export default function PlayerWordleGame() {
     return answer.split("").filter((c) => c !== "-" && c !== " ").length;
   }
 
+  function hintAppliesToCurrentRow() {
+    return hintPosition !== null && hintRow === guesses.length;
+  }
+
   function editableIndexes(answer: string) {
+    const activeHint = hintAppliesToCurrentRow() ? hintPosition : null;
     return answer
       .split("")
       .map((char, index) => ({ char, index }))
-      .filter(({ char, index }) => char !== "-" && char !== " " && index !== hintPosition)
+      .filter(({ char, index }) => char !== "-" && char !== " " && index !== activeHint)
       .map(({ index }) => index);
   }
 
   function currentAsDisplay() {
     if (!target) return "";
+    const activeHint = hintAppliesToCurrentRow() ? hintPosition : null;
     return target.word.split("").map((answerChar, index) => {
       if (answerChar === "-" || answerChar === " ") return answerChar;
-      if (index === hintPosition) return answerChar;
+      if (index === activeHint) return answerChar;
       return current[index] ?? "";
     }).join("");
   }
@@ -336,9 +343,10 @@ export default function PlayerWordleGame() {
 
     const picked = pickRandom(candidates);
     setHintPosition(picked.index);
+    setHintRow(guesses.length);
     setUsedHint(true);
-    // La posición de la pista pasa a ser una casilla fija. Si había una letra
-    // escrita en esa posición, se elimina; el resto del intento se conserva.
+    // La pista solo bloquea la casilla del intento actual. Si había una letra
+    // escrita en esa posición, se elimina; en intentos posteriores vuelve a ser editable.
     setCurrent((value) => {
       const next = { ...value };
       delete next[picked.index];
@@ -389,6 +397,7 @@ export default function PlayerWordleGame() {
     setWon(false);
     setMessage(null);
     setHintPosition(null);
+    setHintRow(null);
     setUsedHint(false);
     setSurrendered(false);
     setRoundScore(null);
@@ -420,10 +429,7 @@ export default function PlayerWordleGame() {
               const submittedChar = row.submitted?.word[columnIndex] ?? "";
               const mark = row.submitted?.marks[columnIndex];
               const fixed = answerChar === "-" || answerChar === " ";
-              // La pista queda BLOQUEADA en la misma posición de todos los intentos
-              // restantes. Las letras del intento actual se guardan por posición
-              // absoluta, evitando que la letra de pista aparezca también al inicio.
-              const hinted = !row.submitted && columnIndex === hintPosition && !fixed;
+              const hinted = row.isCurrent && rowIndex === hintRow && columnIndex === hintPosition && !fixed;
               const char = row.submitted
                 ? submittedChar
                 : hinted
