@@ -284,6 +284,13 @@ export default function PlayerWordleGame() {
     setMessage(null);
   }
 
+  // Cada intento empieza siempre con una fila de entrada limpia.
+  // Esto también protege frente a actualizaciones de estado pendientes del último
+  // carácter del intento anterior (teclado físico o virtual).
+  useEffect(() => {
+    setCurrent({});
+  }, [guesses.length]);
+
   function submit() {
     if (!target || finished) return;
     const missing = editableIndexes(target.word).some((index) => !current[index]);
