@@ -390,3 +390,11 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 .arena-portal--5 .arena-portal-light{clip-path:polygon(0 15.5%,100% 0,100% 100%,0 91.1%)}
 .arena-portal--6{left:82.75%;top:35.5%;width:10.65%;height:49.7%}
 .arena-portal--6 .arena-portal-light{clip-path:polygon(0 11.4%,100% 0,100% 100%,0 92.9%)}
+
+/* v0.13.8 · Exclude the visible side thickness from every front-face mask. */
+.arena-portal--1 .arena-portal-light{clip-path:polygon(12% 0,100% 11.6%,100% 92%,12% 100%)}
+.arena-portal--2 .arena-portal-light{clip-path:polygon(7% 0,100% 10.5%,100% 94%,7% 100%)}
+.arena-portal--3 .arena-portal-light{clip-path:polygon(4% 0,100% 7.4%,100% 100%,4% 100%)}
+.arena-portal--4 .arena-portal-light{clip-path:polygon(0 12.5%,94% 0,94% 100%,0 93.2%)}
+.arena-portal--5 .arena-portal-light{clip-path:polygon(0 15.5%,90% 0,90% 100%,0 91.1%)}
+.arena-portal--6 .arena-portal-light{clip-path:polygon(0 11.4%,86% 0,86% 100%,0 92.9%)}
