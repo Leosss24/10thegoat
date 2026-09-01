@@ -110,6 +110,14 @@ const LEAGUES_BY_COUNTRY = {
 };
 
 const DEFAULT_COUNTRIES = Object.keys(LEAGUES_BY_COUNTRY);
+const HARD_POOL_COUNTRIES = new Set([
+  "Spain",
+  "England",
+  "Germany",
+  "Italy",
+  "France",
+  "Argentina",
+]);
 
 /* =========================================================
    TEMPORADA
@@ -646,6 +654,27 @@ async function main() {
      RESET ELEGIBILIDAD
      ======================================================= */
 
+  if (!options.dryRun) {
+    for (const countryName of options.countries) {
+      if (!HARD_POOL_COUNTRIES.has(countryName)) continue;
+
+      const country = countryByName.get(normalize(countryName));
+      if (!country) continue;
+
+      const { error } = await supabase
+        .from("clubs")
+        .update({ is_hard_player_pool: false })
+        .eq("country_id", country.id)
+        .eq("is_national_team", false);
+
+      if (error) throw error;
+
+      console.log(`♻️  ${countryName}: dificultad Difícil anterior → false`);
+    }
+
+    console.log("");
+  }
+
   if (
     !options.dryRun &&
     !options.preserveEligible
@@ -838,6 +867,9 @@ async function main() {
 
           is_game_eligible:
             true,
+
+          is_hard_player_pool:
+            HARD_POOL_COUNTRIES.has(league.country) && league.tier === 1,
 
           updated_at:
             new Date()

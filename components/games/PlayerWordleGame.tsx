@@ -63,6 +63,7 @@ type PlayerMessage =
 
 const MAX_ATTEMPTS = 6;
 const GAME_KEY = "adivina-jugador";
+const SUPABASE_PAGE_SIZE = 1000;
 const ATTEMPT_SCORES = [100, 80, 60, 40, 30, 20] as const;
 const KEYBOARD = [
   ["Q","W","E","R","T","Y","U","I","O","P"],
@@ -193,38 +194,83 @@ export default function PlayerWordleGame() {
         return;
       }
 
-      const [playersRes, clubsRes, careerRes] = await Promise.all([
-        supabase
-          .from("players")
-          .select("id,display_name,full_name,first_name,last_name,game_name,photo_url,is_active,is_retired,is_legend"),
-        supabase
-          .from("clubs")
-          .select("id,name,badge_url,is_national_team,is_easy_player_pool,is_hard_player_pool"),
-        supabase
-          .from("player_club_seasons")
-          .select("player_id,club_id,season_start_year,is_current")
-          .order("season_start_year", { ascending: false }),
-      ]);
+      const client = supabase;
 
-      const firstError = playersRes.error || clubsRes.error || careerRes.error;
-      if (firstError) {
-        setError(firstError.message);
+      async function fetchAllPlayers(): Promise<PlayerRow[]> {
+        const rows: PlayerRow[] = [];
+        for (let from = 0; ; from += SUPABASE_PAGE_SIZE) {
+          const { data, error } = await client
+            .from("players")
+            .select("id,display_name,full_name,first_name,last_name,game_name,photo_url,is_active,is_retired,is_legend")
+            .order("id", { ascending: true })
+            .range(from, from + SUPABASE_PAGE_SIZE - 1);
+          if (error) throw error;
+          const page = (data ?? []) as PlayerRow[];
+          rows.push(...page);
+          if (page.length < SUPABASE_PAGE_SIZE) break;
+        }
+        return rows;
+      }
+
+      async function fetchAllClubs(): Promise<ClubRow[]> {
+        const rows: ClubRow[] = [];
+        for (let from = 0; ; from += SUPABASE_PAGE_SIZE) {
+          const { data, error } = await client
+            .from("clubs")
+            .select("id,name,badge_url,is_national_team,is_easy_player_pool,is_hard_player_pool")
+            .order("id", { ascending: true })
+            .range(from, from + SUPABASE_PAGE_SIZE - 1);
+          if (error) throw error;
+          const page = (data ?? []) as ClubRow[];
+          rows.push(...page);
+          if (page.length < SUPABASE_PAGE_SIZE) break;
+        }
+        return rows;
+      }
+
+      async function fetchAllCareerRows(): Promise<CareerRow[]> {
+        const rows: CareerRow[] = [];
+        for (let from = 0; ; from += SUPABASE_PAGE_SIZE) {
+          const { data, error } = await client
+            .from("player_club_seasons")
+            .select("player_id,club_id,season_start_year,is_current")
+            .order("season_start_year", { ascending: false })
+            .order("player_id", { ascending: true })
+            .order("club_id", { ascending: true })
+            .range(from, from + SUPABASE_PAGE_SIZE - 1);
+          if (error) throw error;
+          const page = (data ?? []) as CareerRow[];
+          rows.push(...page);
+          if (page.length < SUPABASE_PAGE_SIZE) break;
+        }
+        return rows;
+      }
+
+      let playersRes: PlayerRow[];
+      let clubsRes: ClubRow[];
+      let careerRes: CareerRow[];
+      try {
+        [playersRes, clubsRes, careerRes] = await Promise.all([
+          fetchAllPlayers(),
+          fetchAllClubs(),
+          fetchAllCareerRows(),
+        ]);
+      } catch (loadError) {
+        setError(loadError instanceof Error ? loadError.message : String(loadError));
         setLoading(false);
         return;
       }
 
-      const players = (playersRes.data ?? []) as PlayerRow[];
-      const clubs = (clubsRes.data ?? []) as ClubRow[];
-      const career = (careerRes.data ?? []) as CareerRow[];
+      const players = playersRes;
+      const clubs = clubsRes;
+      const career = careerRes;
 
       const clubMap = new Map(clubs.map((club) => [club.id, club]));
-      const latestClub = new Map<number, ClubRow>();
       const currentClub = new Map<number, ClubRow>();
 
       for (const row of career) {
         const club = clubMap.get(row.club_id);
         if (!club || club.is_national_team) continue;
-        if (!latestClub.has(row.player_id)) latestClub.set(row.player_id, club);
         if (row.is_current === true && !currentClub.has(row.player_id)) currentClub.set(row.player_id, club);
       }
 
@@ -236,11 +282,11 @@ export default function PlayerWordleGame() {
         if (word.length < 4 || word.length > 14) continue;
         if (!/^[A-ZÑÇ -]+$/.test(word)) continue;
 
-        const club = currentClub.get(player.id) ?? latestClub.get(player.id);
+        const club = currentClub.get(player.id);
         const retired = player.is_retired || !player.is_active;
-        const legend = retired && player.is_legend === true;
+        const legend = player.is_legend === true;
         const easyEligible = legend || (!retired && club?.is_easy_player_pool === true);
-        const hardEligible = legend || (!retired && club?.is_hard_player_pool === true);
+        const hardEligible = easyEligible || (!retired && club?.is_hard_player_pool === true);
 
         if (!unique.has(word)) {
           unique.set(word, {
