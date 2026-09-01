@@ -356,3 +356,16 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 .arena-core{left:44.65%;top:50.1%;width:10.9%;height:26.1%;transform:none;overflow:hidden;filter:none;box-shadow:none;transition:backdrop-filter .18s}
 .arena-core:before{display:none}
 .arena-core:hover,.arena-core:focus-visible{transform:none;filter:none;box-shadow:none;backdrop-filter:brightness(1.24) saturate(1.16) contrast(1.03)}
+
+/* v0.13.6 · Front-face-only portal interaction */
+.arena-portal:before{inset:0;background:color-mix(in srgb,var(--portal) 9%,transparent);mix-blend-mode:screen;opacity:0}
+.arena-portal:hover,.arena-portal:focus-visible{backdrop-filter:brightness(1.2) saturate(1.2) contrast(1.025)}
+.arena-portal:hover:before,.arena-portal:focus-visible:before{opacity:.62}
+/* Left wing: both horizontal edges converge towards the arena centre. */
+.arena-portal--1{left:8.05%;top:36.9%;width:9.45%;height:41.2%;clip-path:polygon(0 0,96% 10.5%,96% 92.5%,0 100%)}
+.arena-portal--2{left:21.35%;top:43.3%;width:7.25%;height:33.8%;clip-path:polygon(0 0,97% 6.5%,97% 95%,0 100%)}
+.arena-portal--3{left:31.55%;top:48.5%;width:6.45%;height:28.1%;clip-path:polygon(0 0,98% 4%,98% 97%,0 100%)}
+/* Right wing: mirrored perspective, excluding the illuminated side thickness. */
+.arena-portal--4{left:62.35%;top:48.5%;width:6.45%;height:28.1%;clip-path:polygon(2% 4%,100% 0,100% 100%,2% 97%)}
+.arena-portal--5{left:71.9%;top:43.3%;width:7.25%;height:33.8%;clip-path:polygon(3% 6.5%,100% 0,100% 100%,3% 95%)}
+.arena-portal--6{left:83.35%;top:36.9%;width:9.2%;height:41.2%;clip-path:polygon(4% 10.5%,100% 0,100% 100%,4% 92.5%)}
