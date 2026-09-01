@@ -436,3 +436,7 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 .arena-portal--2 .arena-portal-light{clip-path:polygon(5% 0,100% 10.5%,100% 94.6%,5% 100%)}
 .arena-portal--3 .arena-portal-light{clip-path:polygon(3% 0,100% 8.7%,100% 95.1%,3% 100%)}
 .arena-portal--4 .arena-portal-light{clip-path:polygon(0 8.8%,95% 0,95% 100%,0 95.4%)}
+
+/* v0.13.13 · Avoid rectangular backdrop-filter bleed on the four corrected faces. */
+.arena-portal--1 .arena-portal-light,.arena-portal--2 .arena-portal-light,.arena-portal--3 .arena-portal-light,.arena-portal--4 .arena-portal-light{background:linear-gradient(180deg,color-mix(in srgb,var(--portal) 22%,transparent),color-mix(in srgb,var(--portal) 10%,transparent) 52%,color-mix(in srgb,var(--portal) 18%,transparent));backdrop-filter:none!important;filter:none;box-shadow:inset 0 0 22px color-mix(in srgb,var(--portal) 20%,transparent)}
+.arena-portal--1:hover .arena-portal-light,.arena-portal--1:focus-visible .arena-portal-light,.arena-portal--2:hover .arena-portal-light,.arena-portal--2:focus-visible .arena-portal-light,.arena-portal--3:hover .arena-portal-light,.arena-portal--3:focus-visible .arena-portal-light,.arena-portal--4:hover .arena-portal-light,.arena-portal--4:focus-visible .arena-portal-light{opacity:.72;backdrop-filter:none!important}
