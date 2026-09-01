@@ -6,7 +6,7 @@
 
 ## Logo family
 
-- `10thegoat-shield.svg`: primary/institutional logo. Use at 48 px or larger.
+- `10thegoat-shield-raster.png`: primary/institutional logo. This detailed raster master is the authoritative shield; use it without flattening or vectorising its rendered finish.
 - `10thegoat-wordmark.svg`: secondary horizontal lock-up with “TEST YOUR KNOWLEDGE”. Use on heroes, banners and wide canvases.
 - `10thegoat-mark.svg`: goat symbol. Use for compact navigation, avatars and decorative brand moments.
 - `favicon.svg`: simplified small-size mark. Do not use as a large logo.
