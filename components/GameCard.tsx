@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-export default function GameCard({ game }: { game: { slug: string; title: string; icon: string; description: string; status: string } }) {
+export default function GameCard({ game, locale }: { game: { slug: string; title: string; icon: string; description: string; status: string }; locale: string }) {
   return (
-    <Link href={`/juegos/${game.slug}`} className="card">
+    <Link href={`/${locale}/juegos/${game.slug}`} className="card">
       <div>
         <div className="icon">{game.icon}</div>
         <h3>{game.title}</h3>

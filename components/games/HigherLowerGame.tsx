@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "../../lib/supabase";
 import { addGamePoints, getGameScore, recordGameResult } from "../../lib/game-scores";
+import { useI18n } from "../I18nProvider";
 
 type Player = {
   id: number;
@@ -42,6 +43,14 @@ type Guess = "higher" | "lower";
 
 const BEST_STREAK_KEY = "10tg-higher-lower-best";
 const GAME_KEY = "mayor-o-menor";
+const MIN_STAT_SEASONS = 15;
+const SUPABASE_PAGE_SIZE = 1000;
+const ALWAYS_ELIGIBLE_PLAYER_IDS = new Set([
+  6,   // Kylian Mbappé
+  60,  // Raphinha
+  5,   // Erling Haaland
+  251, // Kai Havertz
+]);
 
 function randomItem<T>(items: T[]): T {
   return items[Math.floor(Math.random() * items.length)];
@@ -58,23 +67,19 @@ function currentSeasonStartYear() {
   return now.getMonth() >= 6 ? now.getFullYear() : now.getFullYear() - 1;
 }
 
-function isGoalkeeper(position: string | null) {
+function isAttacker(position: string | null) {
   const normalized = (position ?? "")
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
     .trim();
 
-  return (
-    normalized === "gk" ||
-    normalized.includes("goalkeeper") ||
-    normalized.includes("keeper") ||
-    normalized.includes("portero") ||
-    normalized.includes("goalie")
-  );
+  return normalized === "attacker";
 }
 
 export default function HigherLowerGame() {
+  const { locale } = useI18n();
+  const c = locale === "en" ? { config: "Public Supabase configuration is missing from .env.local.", few: "There are not enough completed club seasons to play yet.", loadError: "Error loading Supabase data.", loading: "Loading real 10theGOAT data…", cannot: "The game cannot start.", noData: "Not enough data.", label: "Higher or Lower", streak: "Streak", best: "Record", points: "Points", question: <>Did the player on the right score <strong>more</strong> or <strong>fewer</strong> goals that season?</>, higher: "↑ More goals", lower: "↓ Fewer goals", over: "Game over", scored: "scored", goalsIn: "goals in", personal: "Personal record", restart: "Play again ↻", correct: "Correct!", newRecord: "New record", beat: "Beat your record to earn points.", next: "Next →", note: "Goals from all club competitions in completed seasons are added together. National teams do not count in this mode.", season: "Season", goals: "goals", apps: "recorded appearances" } : locale === "fr" ? { config: "La configuration publique de Supabase manque dans .env.local.", few: "Il n'y a pas encore assez de saisons de clubs terminées pour jouer.", loadError: "Erreur lors du chargement des données Supabase.", loading: "Chargement des données réelles de 10theGOAT…", cannot: "Impossible de démarrer la partie.", noData: "Données insuffisantes.", label: "Plus ou Moins", streak: "Série", best: "Record", points: "Points", question: <>Le joueur de droite a-t-il marqué <strong>plus</strong> ou <strong>moins</strong> de buts cette saison-là ?</>, higher: "↑ Plus de buts", lower: "↓ Moins de buts", over: "Fin de la partie", scored: "a marqué", goalsIn: "buts en", personal: "Record personnel", restart: "Rejouer ↻", correct: "Correct !", newRecord: "Nouveau record", beat: "Battez votre record pour gagner des points.", next: "Suivant →", note: "Les buts de toutes les compétitions de clubs des saisons terminées sont additionnés. Les sélections ne comptent pas dans ce mode.", season: "Saison", goals: "buts", apps: "apparitions enregistrées" } : { config: "Falta la configuración pública de Supabase en .env.local.", few: "Todavía no hay suficientes temporadas de clubes finalizadas para jugar.", loadError: "Error cargando los datos de Supabase.", loading: "Cargando datos reales de 10theGOAT…", cannot: "No se puede iniciar la partida.", noData: "No hay suficientes datos.", label: "Mayor o Menor", streak: "Racha", best: "Récord", points: "Puntos", question: <>¿El jugador de la derecha marcó <strong>más</strong> o <strong>menos</strong> goles esa temporada?</>, higher: "↑ Más goles", lower: "↓ Menos goles", over: "Fin de la partida", scored: "marcó", goalsIn: "goles en", personal: "Récord personal", restart: "Jugar de nuevo ↻", correct: "¡Correcto!", newRecord: "Nuevo récord", beat: "Supera tu récord para sumar puntos.", next: "Siguiente →", note: "Se suman los goles de todas las competiciones de club de temporadas ya finalizadas. Las selecciones no cuentan en este modo.", season: "Temporada", goals: "goles", apps: "apariciones registradas" };
   const [cards, setCards] = useState<SeasonCard[]>([]);
   const [left, setLeft] = useState<SeasonCard | null>(null);
   const [right, setRight] = useState<SeasonCard | null>(null);
@@ -97,76 +102,153 @@ export default function HigherLowerGame() {
   useEffect(() => {
     async function load() {
       if (!supabase) {
-        setError("Falta la configuración pública de Supabase en .env.local.");
+        setError(c.config);
         setLoading(false);
         return;
       }
 
-      const [playersResult, clubsResult, statsResult] = await Promise.all([
-        supabase.from("players").select("id,display_name,photo_url,primary_position"),
-        supabase.from("clubs").select("id,name,badge_url,is_national_team"),
-        supabase
-          .from("player_season_stats")
-          .select("player_id,club_id,season_start_year,appearances,goals")
-          .gt("appearances", 0),
-      ]);
+      const client = supabase;
 
-      const firstError = playersResult.error || clubsResult.error || statsResult.error;
-      if (firstError) {
-        setError(firstError.message);
+      async function fetchAllPlayers(): Promise<Player[]> {
+        const rows: Player[] = [];
+
+        for (let from = 0; ; from += SUPABASE_PAGE_SIZE) {
+          const { data, error } = await client
+            .from("players")
+            .select("id,display_name,photo_url,primary_position")
+            .order("id", { ascending: true })
+            .range(from, from + SUPABASE_PAGE_SIZE - 1);
+
+          if (error) throw error;
+          const page = (data ?? []) as Player[];
+          rows.push(...page);
+          if (page.length < SUPABASE_PAGE_SIZE) break;
+        }
+
+        return rows;
+      }
+
+      async function fetchAllClubs(): Promise<Club[]> {
+        const rows: Club[] = [];
+
+        for (let from = 0; ; from += SUPABASE_PAGE_SIZE) {
+          const { data, error } = await client
+            .from("clubs")
+            .select("id,name,badge_url,is_national_team")
+            .order("id", { ascending: true })
+            .range(from, from + SUPABASE_PAGE_SIZE - 1);
+
+          if (error) throw error;
+          const page = (data ?? []) as Club[];
+          rows.push(...page);
+          if (page.length < SUPABASE_PAGE_SIZE) break;
+        }
+
+        return rows;
+      }
+
+      async function fetchAllStats(): Promise<StatRow[]> {
+        const rows: StatRow[] = [];
+
+        for (let from = 0; ; from += SUPABASE_PAGE_SIZE) {
+          const { data, error } = await client
+            .from("player_season_stats")
+            .select("id,player_id,club_id,season_start_year,appearances,goals")
+            .gt("appearances", 0)
+            .order("id", { ascending: true })
+            .range(from, from + SUPABASE_PAGE_SIZE - 1);
+
+          if (error) throw error;
+          const page = (data ?? []) as StatRow[];
+          rows.push(...page);
+          if (page.length < SUPABASE_PAGE_SIZE) break;
+        }
+
+        return rows;
+      }
+
+      try {
+        const [players, clubs, stats] = await Promise.all([
+          fetchAllPlayers(),
+          fetchAllClubs(),
+          fetchAllStats(),
+        ]);
+
+        const clubMap = new Map(clubs.map((club) => [club.id, club]));
+        const activeSeason = currentSeasonStartYear();
+
+        // Contamos temporadas distintas con estadísticas de club utilizables.
+        // Una temporada puede tener varias filas por club/competición, pero cuenta una sola vez.
+        const statSeasonsByPlayer = new Map<number, Set<number>>();
+        for (const stat of stats) {
+          const club = clubMap.get(stat.club_id);
+          if (!club || club.is_national_team || stat.season_start_year >= activeSeason) continue;
+
+          const seasons = statSeasonsByPlayer.get(stat.player_id) ?? new Set<number>();
+          seasons.add(stat.season_start_year);
+          statSeasonsByPlayer.set(stat.player_id, seasons);
+        }
+
+        // Pool de Mayor o Menor:
+        // - solo delanteros (Attacker)
+        // - 15 o más temporadas distintas con estadísticas
+        // - excepciones editoriales: Mbappé, Raphinha, Haaland y Havertz
+        // Las excepciones también necesitan al menos una temporada con estadísticas para generar cartas.
+        const eligiblePlayers = players.filter((player) => {
+          if (!isAttacker(player.primary_position)) return false;
+          const seasonCount = statSeasonsByPlayer.get(player.id)?.size ?? 0;
+          return seasonCount >= MIN_STAT_SEASONS ||
+            (ALWAYS_ELIGIBLE_PLAYER_IDS.has(player.id) && seasonCount > 0);
+        });
+
+        const playerMap = new Map(eligiblePlayers.map((player) => [player.id, player]));
+
+        const grouped = new Map<string, SeasonCard>();
+
+        for (const stat of stats) {
+          const club = clubMap.get(stat.club_id);
+          const player = playerMap.get(stat.player_id);
+          if (!club || !player || club.is_national_team) continue;
+          if (stat.season_start_year >= activeSeason) continue;
+
+          const key = `${stat.player_id}:${stat.season_start_year}`;
+          const current = grouped.get(key) ?? {
+            key,
+            playerId: player.id,
+            playerName: player.display_name,
+            photoUrl: player.photo_url,
+            season: stat.season_start_year,
+            appearances: 0,
+            goals: 0,
+            clubNames: [],
+            clubBadges: [],
+          };
+
+          current.appearances += stat.appearances ?? 0;
+          current.goals += stat.goals ?? 0;
+          if (!current.clubNames.includes(club.name)) current.clubNames.push(club.name);
+          if (club.badge_url && !current.clubBadges.includes(club.badge_url)) current.clubBadges.push(club.badge_url);
+          grouped.set(key, current);
+        }
+
+        const ready = [...grouped.values()]
+          .filter((card) => card.appearances > 0)
+          .sort((a, b) => b.season - a.season || b.goals - a.goals);
+
+        if (ready.length < 2) {
+          setError(c.few);
+          setLoading(false);
+          return;
+        }
+
+        setCards(ready);
+        startWithCards(ready);
         setLoading(false);
-        return;
-      }
-
-      const players = (playersResult.data ?? []) as Player[];
-      const clubs = (clubsResult.data ?? []) as Club[];
-      const stats = (statsResult.data ?? []) as StatRow[];
-      const outfieldPlayers = players.filter((player) => !isGoalkeeper(player.primary_position));
-      const playerMap = new Map(outfieldPlayers.map((player) => [player.id, player]));
-      const clubMap = new Map(clubs.map((club) => [club.id, club]));
-      const activeSeason = currentSeasonStartYear();
-
-      const grouped = new Map<string, SeasonCard>();
-
-      for (const stat of stats) {
-        const club = clubMap.get(stat.club_id);
-        const player = playerMap.get(stat.player_id);
-        if (!club || !player || club.is_national_team) continue;
-        if (stat.season_start_year >= activeSeason) continue;
-
-        const key = `${stat.player_id}:${stat.season_start_year}`;
-        const current = grouped.get(key) ?? {
-          key,
-          playerId: player.id,
-          playerName: player.display_name,
-          photoUrl: player.photo_url,
-          season: stat.season_start_year,
-          appearances: 0,
-          goals: 0,
-          clubNames: [],
-          clubBadges: [],
-        };
-
-        current.appearances += stat.appearances ?? 0;
-        current.goals += stat.goals ?? 0;
-        if (!current.clubNames.includes(club.name)) current.clubNames.push(club.name);
-        if (club.badge_url && !current.clubBadges.includes(club.badge_url)) current.clubBadges.push(club.badge_url);
-        grouped.set(key, current);
-      }
-
-      const ready = [...grouped.values()]
-        .filter((card) => card.appearances > 0)
-        .sort((a, b) => b.season - a.season || b.goals - a.goals);
-
-      if (ready.length < 2) {
-        setError("Todavía no hay suficientes temporadas de clubes finalizadas para jugar.");
+      } catch (loadError) {
+        const message = loadError instanceof Error ? loadError.message : c.loadError;
+        setError(message);
         setLoading(false);
-        return;
       }
-
-      setCards(ready);
-      startWithCards(ready);
-      setLoading(false);
     }
 
     load();
@@ -237,72 +319,63 @@ export default function HigherLowerGame() {
   }
 
   if (loading) {
-    return <div className="hl-status">Cargando datos reales de 10 The GOAT…</div>;
+    return <div className="hl-status">{c.loading}</div>;
   }
 
   if (error || !left || !right) {
     return (
       <div className="hl-status hl-error">
-        <strong>No se puede iniciar la partida.</strong>
-        <span>{error ?? "No hay suficientes datos."}</span>
+        <strong>{c.cannot}</strong><span>{error ?? c.noData}</span>
       </div>
     );
   }
 
   return (
-    <section className="hl-game" aria-label="Mayor o Menor">
+    <section className="hl-game" aria-label={c.label}>
       <div className="hl-topbar">
-        <div><span>Racha</span><strong>{streak}</strong></div>
-        <div><span>Récord</span><strong>{best}</strong></div>
-        <div><span>Puntos</span><strong>{totalPoints}</strong></div>
+        <div><span>{c.streak}</span><strong>{streak}</strong></div><div><span>{c.best}</span><strong>{best}</strong></div><div><span>{c.points}</span><strong>{totalPoints}</strong></div>
       </div>
 
       <div className="hl-question">
-        ¿El jugador de la derecha marcó <strong>más</strong> o <strong>menos</strong> goles esa temporada?
+        {c.question}
       </div>
 
       <div className="hl-board">
-        <PlayerCard card={left} showGoals />
+        <PlayerCard card={left} showGoals copy={c} />
 
         <div className="hl-versus" aria-hidden="true">VS</div>
 
-        <PlayerCard card={right} showGoals={revealed} />
+        <PlayerCard card={right} showGoals={revealed} copy={c} />
       </div>
 
       {!revealed ? (
         <div className="hl-actions">
-          <button className="hl-button hl-higher" onClick={() => guess("higher")}>↑ Más goles</button>
-          <button className="hl-button hl-lower" onClick={() => guess("lower")}>↓ Menos goles</button>
+          <button className="hl-button hl-higher" onClick={() => guess("higher")}>{c.higher}</button><button className="hl-button hl-lower" onClick={() => guess("lower")}>{c.lower}</button>
         </div>
       ) : gameOver ? (
         <div className="hl-game-over" role="status">
           <div className="hl-game-over-copy">
-            <span className="hl-game-over-kicker">Fin de la partida</span>
-            <strong>Racha: {streak}</strong>
-            <span>{right.playerName} marcó {right.goals} goles en {formatSeason(right.season)}.</span>
-            <small>Récord personal: {best}</small>
+            <span className="hl-game-over-kicker">{c.over}</span><strong>{c.streak}: {streak}</strong><span>{right.playerName} {c.scored} {right.goals} {c.goalsIn} {formatSeason(right.season)}.</span><small>{c.personal}: {best}</small>
           </div>
-          <button className="hl-button hl-restart" onClick={restart}>Jugar de nuevo ↻</button>
+          <button className="hl-button hl-restart" onClick={restart}>{c.restart}</button>
         </div>
       ) : (
         <div className="hl-result is-correct">
           <div>
-            <strong>¡Correcto!</strong>
-            <span>{right.playerName} marcó {right.goals} goles en {formatSeason(right.season)}.</span>
-            {lastAward > 0 ? <small>Nuevo récord · +{lastAward} puntos</small> : <small>Supera tu récord para sumar puntos.</small>}
+            <strong>{c.correct}</strong><span>{right.playerName} {c.scored} {right.goals} {c.goalsIn} {formatSeason(right.season)}.</span>{lastAward > 0 ? <small>{c.newRecord} · +{lastAward} {c.points.toLowerCase()}</small> : <small>{c.beat}</small>}
           </div>
-          <button className="hl-button" onClick={nextRound}>Siguiente →</button>
+          <button className="hl-button" onClick={nextRound}>{c.next}</button>
         </div>
       )}
 
       <p className="hl-note">
-        Se suman los goles de todas las competiciones de club de temporadas ya finalizadas. Las selecciones no cuentan en este modo.
+        {c.note}
       </p>
     </section>
   );
 }
 
-function PlayerCard({ card, showGoals }: { card: SeasonCard; showGoals: boolean }) {
+function PlayerCard({ card, showGoals, copy }: { card: SeasonCard; showGoals: boolean; copy: { season: string; goals: string; apps: string } }) {
   return (
     <article className="hl-player-card">
       <div className="hl-photo-wrap">
@@ -314,7 +387,7 @@ function PlayerCard({ card, showGoals }: { card: SeasonCard; showGoals: boolean 
       </div>
 
       <div className="hl-player-content">
-        <div className="hl-season">Temporada {formatSeason(card.season)}</div>
+        <div className="hl-season">{copy.season} {formatSeason(card.season)}</div>
         <h2>{card.playerName}</h2>
         <div className="hl-clubs">
           <div className="hl-badges">
@@ -326,9 +399,9 @@ function PlayerCard({ card, showGoals }: { card: SeasonCard; showGoals: boolean 
         </div>
         <div className={`hl-goals ${showGoals ? "is-visible" : "is-hidden"}`}>
           <strong>{showGoals ? card.goals : "?"}</strong>
-          <span>goles</span>
+          <span>{copy.goals}</span>
         </div>
-        <div className="hl-appearances">{card.appearances} apariciones registradas</div>
+        <div className="hl-appearances">{card.appearances} {copy.apps}</div>
       </div>
     </article>
   );

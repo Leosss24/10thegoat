@@ -3,6 +3,9 @@
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { supabase } from "../../lib/supabase";
 import { getGameScore, recordGameResult, type GameScoreStats } from "../../lib/game-scores";
+import { useI18n } from "../I18nProvider";
+
+type Difficulty = "easy" | "hard" | "impossible";
 
 type PlayerRow = {
   id: number;
@@ -14,6 +17,7 @@ type PlayerRow = {
   photo_url: string | null;
   is_active: boolean;
   is_retired: boolean;
+  is_legend: boolean;
 };
 
 type ClubRow = {
@@ -21,6 +25,8 @@ type ClubRow = {
   name: string;
   badge_url: string | null;
   is_national_team: boolean;
+  is_easy_player_pool: boolean;
+  is_hard_player_pool: boolean;
 };
 
 type CareerRow = {
@@ -38,6 +44,9 @@ type PlayerWord = {
   teamName: string;
   teamBadge: string | null;
   isRetired: boolean;
+  isLegend: boolean;
+  easyEligible: boolean;
+  hardEligible: boolean;
 };
 
 type Mark = "correct" | "present" | "absent" | "fixed";
@@ -70,8 +79,6 @@ function normalizeLetters(value: string) {
 }
 
 function getPlayerWord(player: PlayerRow) {
-  // game_name será la respuesta canónica tras la curación. El fallback mantiene
-  // jugable la versión mientras completamos esa migración.
   const raw = (player.game_name || player.last_name || player.display_name || "").trim();
   return normalizeLetters(raw);
 }
@@ -110,7 +117,11 @@ function pickRandom<T>(items: T[]) {
 }
 
 export default function PlayerWordleGame() {
+  const { locale } = useI18n();
+  const c = locale === "en" ? { difficulty: "DIFFICULTY", easy: ["EASY", "Big clubs + legends"], hard: ["HARD", "Top 5 leagues + Argentina + legends"], impossible: ["IMPOSSIBLE", "Full database"], config: "Public Supabase configuration is missing.", retired: "Retired", unavailable: "Team unavailable", few: "There are not enough valid players to start the game.", missing: "MISSING LETTERS", invalid: "INVALID PLAYER", goal: "GOAL!", allKnown: "YOU HAVE ALREADY REVEALED EVERY POSITION", hintAt: "AT POSITION", noPlayers: "NO PLAYERS ARE AVAILABLE AT THIS DIFFICULTY", loading: "Preparing player…", players: "players", letters: "letters", attempts: "6 attempts", hintUsed: "Hint used (-10)", hint: "Hint (-10)", surrender: "Give up (-20)", keyboard: "Keyboard", correct: "Correct position", present: "In the name, but elsewhere", absent: "Not in the name", guessed: "PLAYER GUESSED", gaveUp: "YOU GAVE UP", over: "GAME OVER", answer: "Answer", points: "points", total: "Total Guess the Player", attempt: "attempt", used: "hint used", again: "Play again", was: "WAS" } : locale === "fr" ? { difficulty: "DIFFICULTÉ", easy: ["FACILE", "Grands clubs + légendes"], hard: ["DIFFICILE", "5 grands championnats + Argentine + légendes"], impossible: ["IMPOSSIBLE", "Toute la base de données"], config: "La configuration publique de Supabase est manquante.", retired: "Retraité", unavailable: "Équipe indisponible", few: "Il n'y a pas assez de joueurs valides pour démarrer la partie.", missing: "IL MANQUE DES LETTRES", invalid: "JOUEUR NON VALIDE", goal: "BUUUT !", allKnown: "VOUS AVEZ DÉJÀ DÉCOUVERT TOUTES LES POSITIONS", hintAt: "EN POSITION", noPlayers: "AUCUN JOUEUR DISPONIBLE À CETTE DIFFICULTÉ", loading: "Préparation du joueur…", players: "joueurs", letters: "lettres", attempts: "6 essais", hintUsed: "Indice utilisé (-10)", hint: "Indice (-10)", surrender: "Abandonner (-20)", keyboard: "Clavier", correct: "Bonne position", present: "Dans le nom, mais ailleurs", absent: "Absent du nom", guessed: "JOUEUR DEVINÉ", gaveUp: "VOUS AVEZ ABANDONNÉ", over: "FIN DE LA PARTIE", answer: "Réponse", points: "points", total: "Total Devinez le joueur", attempt: "essai", used: "indice utilisé", again: "Rejouer", was: "C'ÉTAIT" } : { difficulty: "DIFICULTAD", easy: ["FÁCIL", "Grandes clubes + leyendas"], hard: ["DIFÍCIL", "5 grandes ligas + Argentina + leyendas"], impossible: ["IMPOSIBLE", "Toda la base de datos"], config: "Falta la configuración pública de Supabase.", retired: "Retirado", unavailable: "Equipo no disponible", few: "No hay suficientes jugadores válidos para iniciar el juego.", missing: "FALTAN LETRAS", invalid: "JUGADOR NO VÁLIDO", goal: "¡GOOOL!", allKnown: "YA TIENES TODAS LAS POSICIONES DESCUBIERTAS", hintAt: "EN POSICIÓN", noPlayers: "NO HAY JUGADORES DISPONIBLES EN ESTA DIFICULTAD", loading: "Preparando jugador…", players: "jugadores", letters: "letras", attempts: "6 intentos", hintUsed: "Pista usada (-10)", hint: "Pista (-10)", surrender: "Rendirse (-20)", keyboard: "Teclado", correct: "Posición correcta", present: "Está, pero en otra posición", absent: "No está en el nombre", guessed: "JUGADOR ADIVINADO", gaveUp: "TE HAS RENDIDO", over: "FIN DE LA PARTIDA", answer: "Respuesta", points: "puntos", total: "Total Adivina el jugador", attempt: "intento", used: "pista usada", again: "Jugar otra", was: "ERA" };
+  const difficultyCopy: Record<Difficulty, { label: string; description: string }> = { easy: { label: c.easy[0], description: c.easy[1] }, hard: { label: c.hard[0], description: c.hard[1] }, impossible: { label: c.impossible[0], description: c.impossible[1] } };
   const [pool, setPool] = useState<PlayerWord[]>([]);
+  const [difficulty, setDifficulty] = useState<Difficulty>("easy");
   const [target, setTarget] = useState<PlayerWord | null>(null);
   const [guesses, setGuesses] = useState<SubmittedGuess[]>([]);
   const [current, setCurrent] = useState<Record<number, string>>({});
@@ -133,7 +144,7 @@ export default function PlayerWordleGame() {
   useEffect(() => {
     async function load() {
       if (!supabase) {
-        setError("Falta la configuración pública de Supabase.");
+        setError(c.config);
         setLoading(false);
         return;
       }
@@ -141,10 +152,10 @@ export default function PlayerWordleGame() {
       const [playersRes, clubsRes, careerRes] = await Promise.all([
         supabase
           .from("players")
-          .select("id,display_name,full_name,first_name,last_name,game_name,photo_url,is_active,is_retired"),
+          .select("id,display_name,full_name,first_name,last_name,game_name,photo_url,is_active,is_retired,is_legend"),
         supabase
           .from("clubs")
-          .select("id,name,badge_url,is_national_team"),
+          .select("id,name,badge_url,is_national_team,is_easy_player_pool,is_hard_player_pool"),
         supabase
           .from("player_club_seasons")
           .select("player_id,club_id,season_start_year,is_current")
@@ -161,6 +172,7 @@ export default function PlayerWordleGame() {
       const players = (playersRes.data ?? []) as PlayerRow[];
       const clubs = (clubsRes.data ?? []) as ClubRow[];
       const career = (careerRes.data ?? []) as CareerRow[];
+
       const clubMap = new Map(clubs.map((club) => [club.id, club]));
       const latestClub = new Map<number, ClubRow>();
       const currentClub = new Map<number, ClubRow>();
@@ -174,8 +186,6 @@ export default function PlayerWordleGame() {
 
       const unique = new Map<string, PlayerWord>();
       for (const player of players) {
-        // Hasta que grabemos game_name, mantenemos los activos jugables con fallback.
-        // Los retirados entrarán automáticamente cuando tengan game_name curado.
         if (!player.is_active && !player.game_name) continue;
 
         const word = getPlayerWord(player);
@@ -184,31 +194,49 @@ export default function PlayerWordleGame() {
 
         const club = currentClub.get(player.id) ?? latestClub.get(player.id);
         const retired = player.is_retired || !player.is_active;
+        const legend = retired && player.is_legend === true;
+        const easyEligible = legend || (!retired && club?.is_easy_player_pool === true);
+        const hardEligible = legend || (!retired && club?.is_hard_player_pool === true);
+
         if (!unique.has(word)) {
           unique.set(word, {
             id: player.id,
             fullName: player.full_name?.trim() || player.display_name,
             word,
             photoUrl: player.photo_url,
-            teamName: retired ? "Retirado" : (club?.name ?? "Equipo no disponible"),
+            teamName: retired ? c.retired : (club?.name ?? c.unavailable),
             teamBadge: retired ? null : (club?.badge_url ?? null),
             isRetired: retired,
+            isLegend: legend,
+            easyEligible,
+            hardEligible,
           });
         }
       }
 
       const ready = [...unique.values()];
       if (ready.length < 10) {
-        setError("No hay suficientes jugadores válidos para iniciar el juego.");
+        setError(c.few);
         setLoading(false);
         return;
       }
+
       setPool(ready);
-      setTarget(pickRandom(ready));
+      const easy = ready.filter((player) => player.easyEligible);
+      const initialPool = easy.length >= 10 ? easy : ready;
+      if (easy.length < 10) setDifficulty("impossible");
+      setTarget(pickRandom(initialPool));
       setLoading(false);
     }
+
     load();
   }, []);
+
+  const difficultyPool = useMemo(() => {
+    if (difficulty === "easy") return pool.filter((player) => player.easyEligible);
+    if (difficulty === "hard") return pool.filter((player) => player.hardEligible);
+    return pool;
+  }, [pool, difficulty]);
 
   const validWords = useMemo(() => {
     if (!target) return new Set<string>();
@@ -241,24 +269,24 @@ export default function PlayerWordleGame() {
   }
 
   function hintAppliesToCurrentRow() {
-    return hintPosition !== null && hintRow === guesses.length;
+    return hintRow === guesses.length && hintPosition !== null;
   }
 
   function editableIndexes(answer: string) {
-    const activeHint = hintAppliesToCurrentRow() ? hintPosition : null;
+    const currentHint = hintAppliesToCurrentRow() ? hintPosition : null;
     return answer
       .split("")
       .map((char, index) => ({ char, index }))
-      .filter(({ char, index }) => char !== "-" && char !== " " && index !== activeHint)
+      .filter(({ char, index }) => char !== "-" && char !== " " && index !== currentHint)
       .map(({ index }) => index);
   }
 
   function currentAsDisplay() {
     if (!target) return "";
-    const activeHint = hintAppliesToCurrentRow() ? hintPosition : null;
+    const currentHint = hintAppliesToCurrentRow() ? hintPosition : null;
     return target.word.split("").map((answerChar, index) => {
       if (answerChar === "-" || answerChar === " ") return answerChar;
-      if (index === activeHint) return answerChar;
+      if (index === currentHint) return answerChar;
       return current[index] ?? "";
     }).join("");
   }
@@ -284,31 +312,26 @@ export default function PlayerWordleGame() {
     setMessage(null);
   }
 
-  // Cada intento empieza siempre con una fila de entrada limpia.
-  // Esto también protege frente a actualizaciones de estado pendientes del último
-  // carácter del intento anterior (teclado físico o virtual).
-  useEffect(() => {
-    setCurrent({});
-  }, [guesses.length]);
-
   function submit() {
     if (!target || finished) return;
     const missing = editableIndexes(target.word).some((index) => !current[index]);
     if (missing) {
-      setMessage("FALTAN LETRAS");
+      setMessage(c.missing);
       return;
     }
 
     const displayGuess = currentAsDisplay();
     if (!validWords.has(displayGuess) && displayGuess !== target.word) {
-      setMessage("JUGADOR NO VÁLIDO");
+      setMessage(c.invalid);
       return;
     }
 
     const entry = { word: displayGuess, marks: scoreGuess(displayGuess, target.word) };
     const next = [...guesses, entry];
-    setGuesses(next);
     setCurrent({});
+    setHintPosition(null);
+    setHintRow(null);
+    setGuesses(next);
 
     if (displayGuess === target.word) {
       const baseScore = ATTEMPT_SCORES[next.length - 1] ?? 0;
@@ -318,13 +341,13 @@ export default function PlayerWordleGame() {
       setRoundScore(score);
       setWon(true);
       setFinished(true);
-      setMessage("¡GOOOL!");
+      setMessage(c.goal);
     } else if (next.length >= MAX_ATTEMPTS) {
       const updated = recordGameResult(GAME_KEY, { score: 0, won: false, usedHint });
       setScoreStats(updated);
       setRoundScore(0);
       setFinished(true);
-      setMessage(`ERA ${target.word}`);
+      setMessage(`${c.was} ${target.word}`);
     } else {
       setMessage(null);
     }
@@ -332,19 +355,21 @@ export default function PlayerWordleGame() {
 
   function useHint() {
     if (!target || finished || usedHint) return;
+
     const knownCorrect = new Set<number>();
     for (const guess of guesses) {
       guess.marks.forEach((mark, index) => {
         if (mark === "correct") knownCorrect.add(index);
       });
     }
+
     const candidates = target.word
       .split("")
       .map((char, index) => ({ char, index }))
       .filter(({ char, index }) => char !== "-" && char !== " " && !knownCorrect.has(index));
 
     if (!candidates.length) {
-      setMessage("YA TIENES TODAS LAS POSICIONES DESCUBIERTAS");
+      setMessage(c.allKnown);
       return;
     }
 
@@ -352,14 +377,12 @@ export default function PlayerWordleGame() {
     setHintPosition(picked.index);
     setHintRow(guesses.length);
     setUsedHint(true);
-    // La pista solo bloquea la casilla del intento actual. Si había una letra
-    // escrita en esa posición, se elimina; en intentos posteriores vuelve a ser editable.
     setCurrent((value) => {
       const next = { ...value };
       delete next[picked.index];
       return next;
     });
-    setMessage(`PISTA: ${picked.char} EN POSICIÓN ${picked.index + 1} · -10 PTS`);
+    setMessage(`${c.hint}: ${picked.char} ${c.hintAt} ${picked.index + 1} · -10 PTS`);
   }
 
   function surrender() {
@@ -371,7 +394,7 @@ export default function PlayerWordleGame() {
     setWon(false);
     setFinished(true);
     setCurrent({});
-    setMessage(`ERA ${target.word}`);
+    setMessage(`${c.was} ${target.word}`);
   }
 
   function pressKey(key: string) {
@@ -393,11 +416,8 @@ export default function PlayerWordleGame() {
     return () => window.removeEventListener("keydown", onKeyDown);
   });
 
-  function restart() {
-    if (!pool.length) return;
-    let next = pickRandom(pool);
-    if (target && pool.length > 1) while (next.id === target.id) next = pickRandom(pool);
-    setTarget(next);
+  function resetRound(nextTarget: PlayerWord) {
+    setTarget(nextTarget);
     setGuesses([]);
     setCurrent({});
     setFinished(false);
@@ -410,7 +430,34 @@ export default function PlayerWordleGame() {
     setRoundScore(null);
   }
 
-  if (loading) return <div className="wordle-status">Preparando jugador…</div>;
+  function restart() {
+    if (!difficultyPool.length) return;
+    let next = pickRandom(difficultyPool);
+    if (target && difficultyPool.length > 1) {
+      while (next.id === target.id) next = pickRandom(difficultyPool);
+    }
+    resetRound(next);
+  }
+
+  function changeDifficulty(nextDifficulty: Difficulty) {
+    if (nextDifficulty === difficulty) return;
+    const nextPool =
+      nextDifficulty === "easy"
+        ? pool.filter((player) => player.easyEligible)
+        : nextDifficulty === "hard"
+          ? pool.filter((player) => player.hardEligible)
+          : pool;
+
+    if (!nextPool.length) {
+      setMessage(c.noPlayers);
+      return;
+    }
+
+    setDifficulty(nextDifficulty);
+    resetRound(pickRandom(nextPool));
+  }
+
+  if (loading) return <div className="wordle-status">{c.loading}</div>;
   if (error || !target) return <div className="wordle-status error">{error}</div>;
 
   const rows = Array.from({ length: MAX_ATTEMPTS }, (_, rowIndex) => {
@@ -421,9 +468,25 @@ export default function PlayerWordleGame() {
 
   return (
     <section className="player-wordle">
+      <div className="wordle-difficulty" aria-label={c.difficulty}><strong>{c.difficulty}</strong>
+        <div className="wordle-difficulty-buttons">
+          {(Object.keys(difficultyCopy) as Difficulty[]).map((level) => (
+            <button
+              type="button"
+              key={level}
+              onClick={() => changeDifficulty(level)}
+              className={`wordle-difficulty-button ${difficulty === level ? "is-active" : ""}`}
+              aria-pressed={difficulty === level}
+            >
+              {difficultyCopy[level].label}
+            </button>
+          ))}
+        </div>
+        <small>{difficultyCopy[difficulty].description} · {difficultyPool.length} {c.players}</small>
+      </div>
+
       <div className="wordle-meta">
-        <span>{expectedEditablePositions(target.word)} letras</span>
-        <span>6 intentos</span>
+        <span>{expectedEditablePositions(target.word)} {c.letters}</span><span>{c.attempts}</span>
         <span>{scoreStats.points} pts</span>
       </div>
 
@@ -444,6 +507,7 @@ export default function PlayerWordleGame() {
                   : row.isCurrent
                     ? (current[columnIndex] ?? "")
                     : "";
+
               return (
                 <div
                   key={columnIndex}
@@ -460,13 +524,13 @@ export default function PlayerWordleGame() {
       {!finished && (
         <div className="wordle-actions">
           <button type="button" className="wordle-action hint" onClick={useHint} disabled={usedHint}>
-            {usedHint ? "Pista usada (-10)" : "Pista (-10)"}
+            {usedHint ? c.hintUsed : c.hint}
           </button>
-          <button type="button" className="wordle-action surrender" onClick={surrender}>Rendirse (-20)</button>
+          <button type="button" className="wordle-action surrender" onClick={surrender}>{c.surrender}</button>
         </div>
       )}
 
-      <div className="wordle-keyboard" aria-label="Teclado">
+      <div className="wordle-keyboard" aria-label={c.keyboard}>
         {KEYBOARD.map((row, index) => (
           <div className="wordle-key-row" key={index}>
             {row.map((key) => {
@@ -488,9 +552,7 @@ export default function PlayerWordleGame() {
       </div>
 
       <div className="wordle-legend">
-        <span><i className="correct" /> Posición correcta</span>
-        <span><i className="present" /> Está, pero en otra posición</span>
-        <span><i className="absent" /> No está en el nombre</span>
+        <span><i className="correct" /> {c.correct}</span><span><i className="present" /> {c.present}</span><span><i className="absent" /> {c.absent}</span>
       </div>
 
       {finished && (
@@ -500,23 +562,63 @@ export default function PlayerWordleGame() {
               {target.photoUrl ? <img src={target.photoUrl} alt={target.fullName} /> : <span>⚽</span>}
             </div>
             <div className="wordle-answer-copy">
-              <small>{won ? "JUGADOR ADIVINADO" : surrendered ? "TE HAS RENDIDO" : "FIN DE LA PARTIDA"}</small>
+              <small>{won ? c.guessed : surrendered ? c.gaveUp : c.over}</small>
               <strong>{target.fullName}</strong>
               <div className="wordle-team-line">
                 {target.teamBadge && <img src={target.teamBadge} alt="" />}
                 <span>{target.teamName}</span>
               </div>
-              <em>Respuesta: {target.word}</em>
+              <em>{c.answer}: {target.word}</em>
               <div className={`wordle-score ${roundScore && roundScore > 0 ? "positive" : roundScore && roundScore < 0 ? "negative" : "zero"}`}>
-                <strong>{roundScore !== null && roundScore > 0 ? `+${roundScore}` : (roundScore ?? 0)} puntos</strong>
-                <span>Total Adivina el jugador: {scoreStats.points} pts</span>
-                {won && <small>{guesses.length}.º intento{usedHint ? " · pista usada" : ""}</small>}
+                <strong>{roundScore !== null && roundScore > 0 ? `+${roundScore}` : (roundScore ?? 0)} {c.points}</strong><span>{c.total}: {scoreStats.points} pts</span>{won && <small>{guesses.length}. {c.attempt}{usedHint ? ` · ${c.used}` : ""}</small>}
               </div>
             </div>
           </div>
-          <button type="button" onClick={restart}>Jugar otra</button>
+          <button type="button" onClick={restart}>{c.again}</button>
         </div>
       )}
+
+      <style jsx>{`
+        .wordle-difficulty {
+          display: grid;
+          gap: 8px;
+          margin: 0 auto 14px;
+          text-align: center;
+        }
+        .wordle-difficulty > strong {
+          font-size: 0.72rem;
+          letter-spacing: 0.16em;
+        }
+        .wordle-difficulty-buttons {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+        .wordle-difficulty-button {
+          border: 1px solid rgba(255,255,255,.18);
+          background: #161616;
+          color: #fff;
+          border-radius: 999px;
+          padding: 8px 13px;
+          font: inherit;
+          font-size: 0.78rem;
+          font-weight: 800;
+          cursor: pointer;
+        }
+        .wordle-difficulty-button:hover {
+          border-color: #A8FF00;
+        }
+        .wordle-difficulty-button.is-active {
+          background: #A8FF00;
+          border-color: #A8FF00;
+          color: #0D0D0D;
+        }
+        .wordle-difficulty small {
+          opacity: .7;
+          font-size: .72rem;
+        }
+      `}</style>
     </section>
   );
 }

@@ -1,6 +1,6 @@
 {
   "name": "10thegoat",
-  "version": "0.11.1-beta.1",
+  "version": "0.12.0-beta.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
