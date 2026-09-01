@@ -14,7 +14,7 @@ export const dictionaries = {
   es: {
     languageName: "Español", nav: { home: "Inicio", games: "Juegos", beta: "Beta", main: "Navegación principal", legal: "Información legal", privacy: "Privacidad", cookies: "Cookies", notice: "Aviso legal", feedback: "Feedback", language: "Idioma" },
     meta: { title: "Juegos de fútbol online", description: "Juegos de fútbol online para poner a prueba tus conocimientos: Adivina el jugador, Mayor o Menor, Adivina el Escudo y más.", shortDescription: "Pon a prueba cuánto sabes de fútbol con retos y minijuegos gratuitos." },
-    home: { alt: "10theGOAT · Juegos de fútbol online", eyebrow: "Beta pública", title: "El fútbol también se juega aquí.", intro: "Retos y minijuegos de fútbol para demostrar cuánto sabes. Esta primera Beta ya incluye tres juegos y seguirá creciendo.", play: "Jugar ahora", beta: "Qué incluye la Beta", version: "Beta 0.12", games: "Juegos", all: "Ver todos →" },
+    home: { alt: "10theGOAT · Juegos de fútbol online", eyebrow: "10theGOAT Arena", title: "El fútbol también se juega aquí.", intro: "Elige tu reto, demuestra cuánto sabes de fútbol y supera tu mejor marca.", play: "Empezar a jugar", beta: "Explorar juegos", version: "Arena", games: "Juegos", all: "Ver todos →" },
     catalog: { title: "Todos los juegos" },
     status: { available: "Ya disponible", soon: "Próximamente" },
     games: {
@@ -38,7 +38,7 @@ export const dictionaries = {
   en: {
     languageName: "English", nav: { home: "Home", games: "Games", beta: "Beta", main: "Main navigation", legal: "Legal information", privacy: "Privacy", cookies: "Cookies", notice: "Legal notice", feedback: "Feedback", language: "Language" },
     meta: { title: "Online football games", description: "Online football games that put your knowledge to the test: Guess the Player, Higher or Lower, Guess the Badge and more.", shortDescription: "Put your football knowledge to the test with free challenges and mini-games." },
-    home: { alt: "10theGOAT · Online football games", eyebrow: "Public beta", title: "Football is played here too.", intro: "Football challenges and mini-games that put your knowledge to the test. This first Beta already includes three games, with more to come.", play: "Play now", beta: "What's in the Beta", version: "Beta 0.12", games: "Games", all: "View all →" },
+    home: { alt: "10theGOAT · Online football games", eyebrow: "10theGOAT Arena", title: "Football is played here too.", intro: "Choose your challenge, prove your football knowledge and beat your best score.", play: "Start playing", beta: "Explore games", version: "Arena", games: "Games", all: "View all →" },
     catalog: { title: "All games" }, status: { available: "Available now", soon: "Coming soon" },
     games: {
       higherLower: { title: "Higher or Lower", description: "Compare footballers' stats and build the longest streak you can.", meta: "Compare goals from real seasons and build the longest streak you can.", eyebrow: "Real stats · clubs", intro: "Compare real seasons. Decide whether the player on the right scored more or fewer goals than the player on the left and build your streak." },
@@ -54,7 +54,7 @@ export const dictionaries = {
   fr: {
     languageName: "Français", nav: { home: "Accueil", games: "Jeux", beta: "Bêta", main: "Navigation principale", legal: "Informations légales", privacy: "Confidentialité", cookies: "Cookies", notice: "Mentions légales", feedback: "Avis", language: "Langue" },
     meta: { title: "Jeux de football en ligne", description: "Des jeux de football en ligne pour tester vos connaissances : Devinez le joueur, Plus ou Moins, Devinez l'écusson et plus encore.", shortDescription: "Testez vos connaissances du football avec des défis et mini-jeux gratuits." },
-    home: { alt: "10theGOAT · Jeux de football en ligne", eyebrow: "Bêta publique", title: "Ici aussi, on joue au football.", intro: "Des défis et mini-jeux de football pour tester vos connaissances. Cette première Bêta comprend déjà trois jeux et continuera de s'enrichir.", play: "Jouer maintenant", beta: "Contenu de la Bêta", version: "Bêta 0.12", games: "Jeux", all: "Voir tout →" },
+    home: { alt: "10theGOAT · Jeux de football en ligne", eyebrow: "10theGOAT Arena", title: "Ici aussi, on joue au football.", intro: "Choisissez votre défi, prouvez vos connaissances du football et battez votre meilleur score.", play: "Commencer à jouer", beta: "Explorer les jeux", version: "Arena", games: "Jeux", all: "Voir tout →" },
     catalog: { title: "Tous les jeux" }, status: { available: "Disponible", soon: "Bientôt disponible" },
     games: {
       higherLower: { title: "Plus ou Moins", description: "Comparez les statistiques des footballeurs et réalisez la plus longue série possible.", meta: "Comparez les buts de saisons réelles et réalisez la plus longue série possible.", eyebrow: "Statistiques réelles · clubs", intro: "Comparez des saisons réelles. Indiquez si le joueur de droite a marqué plus ou moins de buts que celui de gauche et construisez votre série." },
