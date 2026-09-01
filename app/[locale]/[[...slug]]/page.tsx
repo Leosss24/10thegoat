@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import GameCard from "@/components/GameCard";
+import ArenaGameMenu from "@/components/ArenaGameMenu";
 import HigherLowerGame from "@/components/games/HigherLowerGame";
 import PlayerWordleGame from "@/components/games/PlayerWordleGame";
 import GuessTheBadgeGame from "@/components/games/GuessTheBadgeGame";
@@ -45,7 +46,7 @@ export default async function LocalizedPage({ params }: Props) {
   const { locale: raw, slug } = await params; if (!isLocale(raw)) notFound();
   const locale = raw as Locale; const d = dictionaries[locale]; const path = pathFor(slug); const games = gameCards(d);
   if (path === "/juegos/jugador-misterioso") redirect(localizedPath(locale, "/juegos/adivina-jugador"));
-  if (path === "") return <main><section className="hero"><div className="hero-arena" aria-hidden="true"/><div className="hero-content container"><div className="hero-brand-lockup"><img className="hero-shield" src="/brand/10thegoat-shield-raster.png" alt=""/><img className="hero-wordmark" src="/brand/10thegoat-wordmark.svg" alt={d.home.alt}/><img className="hero-shield hero-shield--mirror" src="/brand/10thegoat-shield-raster.png" alt=""/></div><img className="hero-key-art" src="/brand/10thegoat-arena-hero.png" alt=""/><p>{d.home.intro}</p><div className="actions"><Link className="btn btn-primary" href={localizedPath(locale, "/juegos")}>{d.home.play}</Link></div></div></section><section className="section arena-section container"><div className="section-heading-row"><div><span className="eyebrow">10theGOAT Arena</span><h2>{d.home.games}</h2></div><Link className="text-link" href={localizedPath(locale, "/juegos")}>{d.home.all}</Link></div><div className="arena-games">{games.map((game) => <GameCard key={game.slug} game={game} locale={locale}/>)}</div></section></main>;
+  if (path === "") return <main><section className="hero hero--interactive"><div className="hero-content"><div className="hero-brand-lockup"><img className="hero-shield" src="/brand/10thegoat-shield-raster.png" alt=""/><img className="hero-wordmark" src="/brand/10thegoat-wordmark.svg" alt={d.home.alt}/><img className="hero-shield hero-shield--mirror" src="/brand/10thegoat-shield-raster.png" alt=""/></div><ArenaGameMenu games={games} locale={locale} label={d.home.intro}/></div></section></main>;
   if (path === "/juegos") return <main className="section container"><h1>{d.catalog.title}</h1><div className="game-catalog-grid">{games.map((game) => <GameCard key={game.slug} game={game} locale={locale}/>)}</div></main>;
   if (path === "/juegos/mayor-o-menor") return <main className="game-shell container hl-page"><div className="hl-heading"><span className="eyebrow">{d.games.higherLower.eyebrow}</span><h1>{d.games.higherLower.title}</h1><p>{d.games.higherLower.intro}</p></div><HigherLowerGame /></main>;
   if (path === "/juegos/adivina-jugador") return <main className="game-shell container wordle-page"><div className="wordle-heading"><span className="eyebrow">{d.games.wordle.eyebrow}</span><h1>{d.games.wordle.title}</h1><p>{d.games.wordle.intro}</p></div><PlayerWordleGame /></main>;
