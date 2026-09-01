@@ -398,3 +398,14 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 .arena-portal--4 .arena-portal-light{clip-path:polygon(0 12.5%,94% 0,94% 100%,0 93.2%)}
 .arena-portal--5 .arena-portal-light{clip-path:polygon(0 15.5%,90% 0,90% 100%,0 91.1%)}
 .arena-portal--6 .arena-portal-light{clip-path:polygon(0 11.4%,86% 0,86% 100%,0 92.9%)}
+
+/* v0.13.9 · Reference-traced masks; blue remains the approved baseline. */
+.arena-portal--1 .arena-portal-light{clip-path:polygon(6% 0,100% 11.6%,100% 92.5%,6% 100%)}
+.arena-portal--2 .arena-portal-light{clip-path:polygon(5% 0,100% 10.7%,100% 94.5%,5% 100%)}
+.arena-portal--3{--portal:#8dff57}
+.arena-portal--3 .arena-portal-light{clip-path:polygon(3% 0,100% 8.1%,100% 100%,3% 100%)}
+.arena-portal--3 .arena-portal-copy small{color:#8dff57}
+.arena-portal--4 .arena-portal-light{clip-path:polygon(0 8.7%,95% 0,95% 100%,0 96.5%)}
+.arena-portal--5{--portal:#f5f8fc}
+.arena-portal--5 .arena-portal-light{clip-path:polygon(0 10.5%,90% 0,90% 100%,0 94.3%)}
+.arena-portal--5 .arena-portal-copy small{color:#f5f8fc}
