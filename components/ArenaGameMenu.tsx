@@ -22,10 +22,10 @@ export default function ArenaGameMenu({ games, locale, label }: { games: ArenaGa
               aria-label={`${game.title}. ${game.status}`}
             >
               <span className="arena-portal-light" aria-hidden="true" />
-              <span className="arena-portal-copy"><strong>{game.title}</strong><small>{game.status}</small></span>
+              <span className="arena-portal-copy"><strong>{game.title}</strong><small>{game.description}</small></span>
             </Link>
           ))}
-          {career && <Link href={`/${locale}/juegos/carrera`} className="arena-core" aria-label={`${career.title}. ${career.status}`}><span><strong>{career.title}</strong><small>{career.status}</small></span></Link>}
+          {career && <Link href={`/${locale}/juegos/carrera`} className="arena-core" aria-label={`${career.title}. ${career.status}`}><span><strong>{career.title}</strong><small>{career.description}</small></span></Link>}
         </div>
       </div>
       <p className="arena-menu-hint">{label}</p>

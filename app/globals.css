@@ -409,3 +409,15 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 .arena-portal--5{--portal:#f5f8fc}
 .arena-portal--5 .arena-portal-light{clip-path:polygon(0 10.5%,90% 0,90% 100%,0 94.3%)}
 .arena-portal--5 .arena-portal-copy small{color:#f5f8fc}
+
+/* v0.13.10 · Persistent neon game labels, without tooltip cards */
+.arena-portal-copy{left:50%;top:17%;bottom:auto;width:clamp(150px,11vw,220px);max-width:none;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;text-align:center;text-transform:uppercase;transform:translateX(-50%);opacity:1;transition:filter .18s,transform .18s;pointer-events:none}
+.arena-portal-copy strong{display:block;color:var(--portal);font-family:"Cascadia Mono","SFMono-Regular",Consolas,"Liberation Mono",monospace;font-size:clamp(.76rem,1vw,1.08rem);font-style:normal;font-weight:900;line-height:1.08;letter-spacing:.035em;text-wrap:balance;text-shadow:0 0 5px color-mix(in srgb,var(--portal) 78%,transparent),0 0 14px color-mix(in srgb,var(--portal) 48%,transparent)}
+.arena-portal-copy small{display:block;margin-top:9px;color:#f5f8fc!important;font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:clamp(.52rem,.56vw,.68rem);font-weight:650;line-height:1.35;letter-spacing:.015em;text-transform:none;text-wrap:balance;opacity:.82;text-shadow:0 1px 5px rgba(0,0,0,.9)}
+.arena-portal:hover .arena-portal-copy,.arena-portal:focus-visible .arena-portal-copy{opacity:1;transform:translateX(-50%);filter:brightness(1.22)}
+.arena-portal--2 .arena-portal-copy,.arena-portal--3 .arena-portal-copy,.arena-portal--4 .arena-portal-copy,.arena-portal--5 .arena-portal-copy{top:15%;width:clamp(145px,10vw,195px)}
+.arena-core{overflow:visible}
+.arena-core span{left:50%;top:-20%;bottom:auto;width:clamp(190px,15vw,270px);padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;text-align:center;text-transform:uppercase;transform:translateX(-50%);opacity:1;transition:filter .18s;pointer-events:none}
+.arena-core:hover span,.arena-core:focus-visible span{bottom:auto;opacity:1;filter:brightness(1.22)}
+.arena-core strong{display:block;color:#32a7ff;font-family:"Cascadia Mono","SFMono-Regular",Consolas,"Liberation Mono",monospace;font-size:clamp(.9rem,1.15vw,1.25rem);font-style:normal;font-weight:900;line-height:1.05;letter-spacing:.04em;text-shadow:0 0 6px rgba(50,167,255,.9),0 0 16px rgba(50,167,255,.55)}
+.arena-core small{display:block;margin-top:8px;color:#f5f8fc;font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:clamp(.55rem,.62vw,.72rem);font-weight:650;line-height:1.35;letter-spacing:.01em;text-transform:none;opacity:.84;text-shadow:0 1px 5px rgba(0,0,0,.9)}
