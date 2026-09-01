@@ -496,3 +496,20 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 
 @media(max-width:900px){.game-room-heading{grid-template-columns:1fr}.game-room-heading>div{grid-column:1}.game-room-back{grid-column:1;grid-row:auto;margin-bottom:12px}.hl-topbar,.badge-progress{position:static;margin:0 0 12px}.hl-board{gap:22px}.badge-layout{grid-template-columns:1fr}.badge-scanner{min-height:420px}.wordle-difficulty{position:static;max-width:none;text-align:center!important}.wordle-difficulty-buttons{justify-content:center!important}.wordle-meta{margin:0 auto}}
 @media(max-width:640px){.game-room{width:min(100% - 16px,1380px);padding-top:16px}.game-room-heading p{display:none}.hl-game,.player-wordle,.badge-game{padding:10px}.hl-board{grid-template-columns:1fr;gap:12px}.hl-versus{position:relative;left:auto;top:auto;margin:-4px auto;transform:none;width:48px;height:48px}.hl-player-card{min-height:390px}.hl-photo-wrap{height:190px}.hl-actions{display:grid;grid-template-columns:1fr 1fr}.hl-button{min-width:0}.badge-layout{display:block}.badge-scanner{min-height:350px}.badge-console{padding:18px 4px}.badge-attempts{grid-template-columns:1fr}.badge-search{grid-template-columns:1fr 100px}}
+
+/* v0.14.1 · Real-asset scale and game-palette refinements */
+.hl-topbar{position:static;order:0;margin:0 0 -2px;justify-content:flex-end}
+.hl-board{order:1}
+.hl-player-card{min-height:410px}
+.hl-photo-wrap{height:210px}
+.hl-photo{width:60%;height:60%;padding:0}
+.badge-layout{grid-template-columns:minmax(280px,.68fr) minmax(480px,1.32fr)}
+.badge-scanner{min-height:430px}
+.pixel-frame{width:min(240px,60%)}
+.pixel-canvas{width:70%;height:70%}
+.badge-attempt.correct{border-color:#b76cff;background:rgba(183,108,255,.15)}
+.badge-attempt.correct b{color:#d5a8ff;text-shadow:0 0 10px rgba(183,108,255,.65)}
+.badge-result.win{border-color:#b76cff;background:linear-gradient(90deg,rgba(183,108,255,.12),rgba(11,9,17,.96))}
+.badge-result.win small,.badge-result.win strong{color:#dcbcff}
+.badge-result button,.badge-result.win button{border:1px solid #c58aff;background:linear-gradient(180deg,#b76cff,#7939bd);color:#fff;box-shadow:0 0 18px rgba(183,108,255,.3)}
+@media(max-width:900px){.badge-layout{grid-template-columns:1fr}.pixel-frame{width:min(240px,58vw)}}
