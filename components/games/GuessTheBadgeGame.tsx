@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { supabase } from "../../lib/supabase";
 import { getGameScore, recordGameResult } from "../../lib/game-scores";
+import { useI18n } from "../I18nProvider";
 
 type Club = { id: number; name: string; badge_url: string | null; is_national_team: boolean; is_active: boolean; is_game_eligible: boolean };
 type Attempt = { id: number; name: string; correct: boolean };
@@ -60,6 +61,8 @@ function isReserveOrYouthClub(name: string) {
 }
 
 export default function GuessTheBadgeGame() {
+  const { locale } = useI18n();
+  const c = locale === "en" ? { config: "Public Supabase configuration is missing.", few: "There are not enough clubs with badges.", loading: "Finding a badge…", attempt: "Attempt", of: "of", revealed: "Badge revealed", question: "Which club is it?", badgeOf: "Badge of", pixelated: "Pixelated club badge", resolution: "Visible resolution", complete: "full", placeholder: "Type a club…", try: "Try", won: "BADGE GUESSED!", was: "THE CLUB WAS", points: "points", total: "Total", again: "Play again" } : locale === "fr" ? { config: "La configuration publique de Supabase est manquante.", few: "Il n'y a pas assez de clubs avec un écusson.", loading: "Recherche d'un écusson…", attempt: "Essai", of: "sur", revealed: "Écusson dévoilé", question: "Quel est ce club ?", badgeOf: "Écusson de", pixelated: "Écusson de club pixelisé", resolution: "Résolution visible", complete: "complète", placeholder: "Saisissez un club…", try: "Essayer", won: "ÉCUSSON DEVINÉ !", was: "LE CLUB ÉTAIT", points: "points", total: "Total", again: "Rejouer" } : { config: "Falta la configuración pública de Supabase.", few: "No hay suficientes clubes con escudo.", loading: "Buscando un escudo…", attempt: "Intento", of: "de", revealed: "Escudo revelado", question: "¿Qué club es?", badgeOf: "Escudo de", pixelated: "Escudo de club pixelado", resolution: "Resolución visible", complete: "completa", placeholder: "Escribe un club…", try: "Probar", won: "¡ESCUDO ADIVINADO!", was: "EL CLUB ERA", points: "puntos", total: "Total", again: "Jugar otra" };
   const [clubs, setClubs] = useState<Club[]>([]);
   const [target, setTarget] = useState<Club | null>(null);
   const [attempts, setAttempts] = useState<Attempt[]>([]);
@@ -79,7 +82,7 @@ export default function GuessTheBadgeGame() {
 
   useEffect(() => {
     async function load() {
-      if (!supabase) { setError("Falta la configuración pública de Supabase."); setLoading(false); return; }
+      if (!supabase) { setError(c.config); setLoading(false); return; }
       const { data, error } = await supabase
         .from("clubs")
         .select("id,name,badge_url,is_national_team,is_active,is_game_eligible")
@@ -93,7 +96,7 @@ export default function GuessTheBadgeGame() {
         club.name.length > 1 &&
         !isReserveOrYouthClub(club.name)
       );
-      if (ready.length < 10) { setError("No hay suficientes clubes con escudo."); setLoading(false); return; }
+      if (ready.length < 10) { setError(c.few); setLoading(false); return; }
       setClubs(ready);
       setTarget(pickRandom(ready));
       setLoading(false);
@@ -173,12 +176,12 @@ export default function GuessTheBadgeGame() {
     image.src = target.badge_url;
   }, [target, pixelResolution]);
 
-  if (loading) return <div className="badge-status">Buscando un escudo…</div>;
+  if (loading) return <div className="badge-status">{c.loading}</div>;
   if (error || !target) return <div className="badge-status error">{error}</div>;
 
   return (
     <section className="badge-game">
-      <div className="badge-progress"><span>Intento {Math.min(attempts.length + 1, MAX_ATTEMPTS)} de {MAX_ATTEMPTS} · {totalPoints} pts</span><strong>{finished ? "Escudo revelado" : "¿Qué club es?"}</strong></div>
+      <div className="badge-progress"><span>{c.attempt} {Math.min(attempts.length + 1, MAX_ATTEMPTS)} {c.of} {MAX_ATTEMPTS} · {totalPoints} pts</span><strong>{finished ? c.revealed : c.question}</strong></div>
 
       <div className="pixel-frame">
         <canvas
@@ -186,21 +189,21 @@ export default function GuessTheBadgeGame() {
           width={260}
           height={260}
           className="pixel-canvas"
-          aria-label={finished ? `Escudo de ${target.name}` : "Escudo de club pixelado"}
+          aria-label={finished ? `${c.badgeOf} ${target.name}` : c.pixelated}
         />
       </div>
-      <div className="pixel-caption">Resolución visible: <b>{finished ? "completa" : `${pixelResolution}×${pixelResolution}`}</b></div>
+      <div className="pixel-caption">{c.resolution}: <b>{finished ? c.complete : `${pixelResolution}×${pixelResolution}`}</b></div>
 
       <form className="badge-search" onSubmit={submit}>
         <div className="badge-searchbox">
-          <input value={query} onChange={(e) => { setQuery(e.target.value); setSelectedId(null); }} disabled={finished} placeholder="Escribe un club…" autoComplete="off" />
+          <input value={query} onChange={(e) => { setQuery(e.target.value); setSelectedId(null); }} disabled={finished} placeholder={c.placeholder} autoComplete="off" />
           {suggestions.length > 0 && (
             <div className="badge-suggestions">
               {suggestions.map((club) => <button type="button" key={club.id} onClick={() => { setQuery(club.name); setSelectedId(club.id); }}><img src={club.badge_url!} alt="" /><span>{club.name}</span></button>)}
             </div>
           )}
         </div>
-        <button type="submit" disabled={finished || query.trim().length < 2}>Probar</button>
+        <button type="submit" disabled={finished || query.trim().length < 2}>{c.try}</button>
       </form>
 
       <div className="badge-attempts">
@@ -213,11 +216,11 @@ export default function GuessTheBadgeGame() {
       {finished && (
         <div className={`badge-result ${won ? "win" : "loss"}`}>
           <div>
-            <small>{won ? "¡ESCUDO ADIVINADO!" : "EL CLUB ERA"}</small>
+            <small>{won ? c.won : c.was}</small>
             <strong>{target.name}</strong>
-            <span>{won ? `+${roundScore} puntos` : "0 puntos"} · Total: {totalPoints} pts</span>
+            <span>{won ? `+${roundScore} ${c.points}` : `0 ${c.points}`} · {c.total}: {totalPoints} pts</span>
           </div>
-          <button type="button" onClick={restart}>Jugar otra</button>
+          <button type="button" onClick={restart}>{c.again}</button>
         </div>
       )}
     </section>

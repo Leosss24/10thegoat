@@ -24,7 +24,8 @@ button, input { font: inherit; }
 .nav { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .brand { font-weight: 900; letter-spacing: -.04em; font-size: 1.25rem; }
 .brand strong { color: var(--accent); }
-.nav-links { display: flex; gap: 18px; color: var(--muted); font-weight: 700; }
+.nav-links { display: flex; gap: 18px; align-items:center; color: var(--muted); font-weight: 700; }
+.language-switcher{display:flex;align-items:center;gap:4px}.language-switcher button{display:grid;place-items:center;width:36px;height:32px;padding:0;border:1px solid transparent;border-radius:9px;background:transparent;cursor:pointer;filter:saturate(.75);opacity:.68;transition:border-color .15s,background .15s,opacity .15s,transform .15s}.language-switcher button img{display:block;width:24px;height:16px;border-radius:2px;object-fit:cover;box-shadow:0 0 0 1px rgba(255,255,255,.14)}.language-switcher button:hover{opacity:1;transform:translateY(-1px)}.language-switcher button.is-active{border-color:var(--accent);background:rgba(168,255,0,.1);filter:none;opacity:1}.language-switcher button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .hero { padding: 86px 0 54px; text-align: center; }
 .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .14em; font-size: .78rem; font-weight: 900; }
 .hero h1 { font-size: clamp(3rem, 8vw, 6.6rem); line-height: .9; margin: 14px auto 20px; letter-spacing: -.06em; max-width: 900px; }
@@ -46,8 +47,9 @@ button, input { font: inherit; }
 .game-shell p { color: var(--muted); max-width: 720px; line-height: 1.6; }
 .placeholder { margin-top: 28px; padding: 30px; border: 1px dashed #44444c; border-radius: 18px; background: rgba(255,255,255,.02); }
 .footer { border-top: 1px solid var(--border); padding: 28px 0; color: var(--muted); text-align: center; }
-@media (max-width: 850px) { .grid { grid-template-columns: repeat(2, 1fr); } .nav-links { display:none; } }
+@media (max-width: 850px) { .grid { grid-template-columns: repeat(2, 1fr); } .nav-links { gap:10px; font-size:.82rem; } }
 @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } .hero { padding-top: 60px; } }
+@media (max-width:560px){.nav-links>a{display:none}.nav{gap:8px}.language-switcher{gap:2px}.language-switcher button{width:32px;height:30px}.language-switcher button img{width:22px;height:15px}.beta-pill{display:none}}
 
 /* Mayor o Menor */
 .hl-page { max-width: 1180px; }
