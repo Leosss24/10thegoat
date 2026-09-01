@@ -319,12 +319,12 @@ export default function HigherLowerGame() {
   }
 
   if (loading) {
-    return <div className="hl-status">{c.loading}</div>;
+    return <div className="hl-status" role="status" aria-live="polite">{c.loading}</div>;
   }
 
   if (error || !left || !right) {
     return (
-      <div className="hl-status hl-error">
+      <div className="hl-status hl-error" role="alert">
         <strong>{c.cannot}</strong><span>{error ?? c.noData}</span>
       </div>
     );

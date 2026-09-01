@@ -176,8 +176,8 @@ export default function GuessTheBadgeGame() {
     image.src = target.badge_url;
   }, [target, pixelResolution]);
 
-  if (loading) return <div className="badge-status">{c.loading}</div>;
-  if (error || !target) return <div className="badge-status error">{error}</div>;
+  if (loading) return <div className="badge-status" role="status" aria-live="polite">{c.loading}</div>;
+  if (error || !target) return <div className="badge-status error" role="alert">{error}</div>;
 
   return (
     <section className="badge-game">
@@ -202,10 +202,10 @@ export default function GuessTheBadgeGame() {
           <div className="badge-attempt-lights" aria-hidden="true">{Array.from({ length: MAX_ATTEMPTS }, (_, i) => <i className={i < attempts.length ? "is-active" : ""} key={i} />)}</div>
           <form className="badge-search" onSubmit={submit}>
             <div className="badge-searchbox">
-              <input value={query} onChange={(e) => { setQuery(e.target.value); setSelectedId(null); }} disabled={finished} placeholder={c.placeholder} autoComplete="off" />
+              <input value={query} onChange={(e) => { setQuery(e.target.value); setSelectedId(null); }} disabled={finished} placeholder={c.placeholder} autoComplete="off" aria-label={c.placeholder} aria-autocomplete="list" aria-expanded={suggestions.length > 0} aria-controls="badge-suggestions" />
               {suggestions.length > 0 && (
-                <div className="badge-suggestions">
-                  {suggestions.map((club) => <button type="button" key={club.id} onClick={() => { setQuery(club.name); setSelectedId(club.id); }}><img src={club.badge_url!} alt="" /><span>{club.name}</span></button>)}
+                <div className="badge-suggestions" id="badge-suggestions" role="listbox">
+                  {suggestions.map((club) => <button type="button" role="option" aria-selected={selectedId === club.id} key={club.id} onClick={() => { setQuery(club.name); setSelectedId(club.id); }}><img src={club.badge_url!} alt="" /><span>{club.name}</span></button>)}
                 </div>
               )}
             </div>

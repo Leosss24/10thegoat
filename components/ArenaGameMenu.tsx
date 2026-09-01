@@ -38,6 +38,15 @@ export default function ArenaGameMenu({ games, locale, label }: { games: ArenaGa
           {career && <Link href={`/${locale}/juegos/carrera`} className="arena-core" aria-label={`${career.title}. ${career.status}`} onMouseEnter={() => setActiveGame({ game: career, color: 7 })} onMouseLeave={() => setActiveGame(null)} onFocus={() => setActiveGame({ game: career, color: 7 })} onBlur={() => setActiveGame(null)} />}
         </div>
       </div>
+      <nav className="arena-mobile-menu" aria-label={label}>
+        {games.map((game) => (
+          <Link key={game.slug} href={`/${locale}/juegos/${game.slug}`} data-game={game.slug}>
+            <span>{game.title}</span>
+            <small>{game.status}</small>
+            <b aria-hidden="true">→</b>
+          </Link>
+        ))}
+      </nav>
       <p className="arena-menu-hint">{label}</p>
     </section>
   );

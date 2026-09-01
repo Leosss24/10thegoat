@@ -457,8 +457,8 @@ export default function PlayerWordleGame() {
     resetRound(pickRandom(nextPool));
   }
 
-  if (loading) return <div className="wordle-status">{c.loading}</div>;
-  if (error || !target) return <div className="wordle-status error">{error}</div>;
+  if (loading) return <div className="wordle-status" role="status" aria-live="polite">{c.loading}</div>;
+  if (error || !target) return <div className="wordle-status error" role="alert">{error}</div>;
 
   const rows = Array.from({ length: MAX_ATTEMPTS }, (_, rowIndex) => {
     const submitted = guesses[rowIndex];
@@ -490,7 +490,7 @@ export default function PlayerWordleGame() {
         <span>{scoreStats.points} pts</span>
       </div>
 
-      {message && <div className="wordle-toast">{message}</div>}
+      {message && <div className="wordle-toast" role="status" aria-live="polite">{message}</div>}
 
       <div className="wordle-board" style={{ "--word-length": target.word.length } as CSSProperties}>
         {rows.map((row, rowIndex) => (
