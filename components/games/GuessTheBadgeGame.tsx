@@ -181,36 +181,44 @@ export default function GuessTheBadgeGame() {
 
   return (
     <section className="badge-game">
-      <div className="badge-progress"><span>{c.attempt} {Math.min(attempts.length + 1, MAX_ATTEMPTS)} {c.of} {MAX_ATTEMPTS} · {totalPoints} pts</span><strong>{finished ? c.revealed : c.question}</strong></div>
+      <div className="badge-progress"><span>{c.attempt} {Math.min(attempts.length + 1, MAX_ATTEMPTS)} {c.of} {MAX_ATTEMPTS}</span><strong>{totalPoints} pts</strong></div>
 
-      <div className="pixel-frame">
-        <canvas
-          ref={canvasRef}
-          width={260}
-          height={260}
-          className="pixel-canvas"
-          aria-label={finished ? `${c.badgeOf} ${target.name}` : c.pixelated}
-        />
-      </div>
-      <div className="pixel-caption">{c.resolution}: <b>{finished ? c.complete : `${pixelResolution}×${pixelResolution}`}</b></div>
-
-      <form className="badge-search" onSubmit={submit}>
-        <div className="badge-searchbox">
-          <input value={query} onChange={(e) => { setQuery(e.target.value); setSelectedId(null); }} disabled={finished} placeholder={c.placeholder} autoComplete="off" />
-          {suggestions.length > 0 && (
-            <div className="badge-suggestions">
-              {suggestions.map((club) => <button type="button" key={club.id} onClick={() => { setQuery(club.name); setSelectedId(club.id); }}><img src={club.badge_url!} alt="" /><span>{club.name}</span></button>)}
-            </div>
-          )}
+      <div className="badge-layout">
+        <div className="badge-scanner">
+          <div className="pixel-frame">
+            <canvas
+              ref={canvasRef}
+              width={260}
+              height={260}
+              className="pixel-canvas"
+              aria-label={finished ? `${c.badgeOf} ${target.name}` : c.pixelated}
+            />
+          </div>
+          <div className="pixel-caption">{c.resolution}: <b>{finished ? c.complete : `${pixelResolution}×${pixelResolution}`}</b></div>
         </div>
-        <button type="submit" disabled={finished || query.trim().length < 2}>{c.try}</button>
-      </form>
 
-      <div className="badge-attempts">
-        {Array.from({ length: MAX_ATTEMPTS }, (_, i) => {
-          const attempt = attempts[i];
-          return <div className={`badge-attempt ${attempt ? (attempt.correct ? "correct" : "wrong") : "empty"}`} key={i}><span>{i + 1}</span><strong>{attempt?.name ?? "—"}</strong><b>{attempt ? (attempt.correct ? "✓" : "×") : ""}</b></div>;
-        })}
+        <div className="badge-console">
+          <strong className="badge-question">{finished ? c.revealed : c.question}</strong>
+          <div className="badge-attempt-lights" aria-hidden="true">{Array.from({ length: MAX_ATTEMPTS }, (_, i) => <i className={i < attempts.length ? "is-active" : ""} key={i} />)}</div>
+          <form className="badge-search" onSubmit={submit}>
+            <div className="badge-searchbox">
+              <input value={query} onChange={(e) => { setQuery(e.target.value); setSelectedId(null); }} disabled={finished} placeholder={c.placeholder} autoComplete="off" />
+              {suggestions.length > 0 && (
+                <div className="badge-suggestions">
+                  {suggestions.map((club) => <button type="button" key={club.id} onClick={() => { setQuery(club.name); setSelectedId(club.id); }}><img src={club.badge_url!} alt="" /><span>{club.name}</span></button>)}
+                </div>
+              )}
+            </div>
+            <button type="submit" disabled={finished || query.trim().length < 2}>{c.try}</button>
+          </form>
+
+          <div className="badge-attempts">
+            {Array.from({ length: MAX_ATTEMPTS }, (_, i) => {
+              const attempt = attempts[i];
+              return <div className={`badge-attempt ${attempt ? (attempt.correct ? "correct" : "wrong") : "empty"}`} key={i}><span>{i + 1}</span><strong>{attempt?.name ?? "—"}</strong><b>{attempt ? (attempt.correct ? "✓" : "×") : ""}</b></div>;
+            })}
+          </div>
+        </div>
       </div>
 
       {finished && (
