@@ -341,3 +341,18 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 .arena-menu-hint{text-transform:uppercase;letter-spacing:.16em;font-family:Bahnschrift,Inter,ui-sans-serif,sans-serif;font-weight:700}
 @keyframes brand-breathe{0%,100%{filter:brightness(1.05) drop-shadow(0 0 6px rgba(50,167,255,.16))}50%{filter:brightness(1.13) drop-shadow(0 0 13px rgba(50,167,255,.34))}}
 @media(prefers-reduced-motion:reduce){.hero--interactive .hero-wordmark{animation:none}}
+
+/* v0.13.5 · Exact inner portal masks */
+.arena-portal{transform:none;filter:none;box-shadow:none;overflow:hidden;transition:backdrop-filter .18s}
+.arena-portal:before{inset:0;background:linear-gradient(180deg,color-mix(in srgb,var(--portal) 12%,transparent),color-mix(in srgb,var(--portal) 5%,transparent) 55%,color-mix(in srgb,var(--portal) 11%,transparent));mix-blend-mode:screen;opacity:0;box-shadow:none}
+.arena-portal:hover,.arena-portal:focus-visible{transform:none;filter:none;box-shadow:none;backdrop-filter:brightness(1.27) saturate(1.28) contrast(1.035)}
+.arena-portal:hover:before,.arena-portal:focus-visible:before{opacity:.58;box-shadow:none}
+.arena-portal--1{left:7.6%;top:36.6%;width:10.2%;height:41.7%;clip-path:polygon(4% 0,96% 11%,96% 99%,7% 99%)}
+.arena-portal--2{left:21.2%;top:43.2%;width:7.7%;height:34.2%;clip-path:polygon(4% 0,96% 7%,96% 99%,5% 99%)}
+.arena-portal--3{left:31.4%;top:48.4%;width:6.8%;height:28.5%;clip-path:polygon(3% 0,97% 5%,97% 99%,4% 99%)}
+.arena-portal--4{left:62.2%;top:48.4%;width:6.8%;height:28.5%;clip-path:polygon(3% 5%,97% 0,96% 99%,3% 99%)}
+.arena-portal--5{left:71.7%;top:43.2%;width:7.7%;height:34.2%;clip-path:polygon(4% 7%,96% 0,95% 99%,4% 99%)}
+.arena-portal--6{left:83.1%;top:36.6%;width:9.8%;height:41.7%;clip-path:polygon(4% 11%,96% 0,93% 99%,4% 99%)}
+.arena-core{left:44.65%;top:50.1%;width:10.9%;height:26.1%;transform:none;overflow:hidden;filter:none;box-shadow:none;transition:backdrop-filter .18s}
+.arena-core:before{display:none}
+.arena-core:hover,.arena-core:focus-visible{transform:none;filter:none;box-shadow:none;backdrop-filter:brightness(1.24) saturate(1.16) contrast(1.03)}
