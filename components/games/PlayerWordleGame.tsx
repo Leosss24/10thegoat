@@ -57,6 +57,10 @@ type SubmittedGuess = {
   marks: Mark[];
 };
 
+type PlayerMessage =
+  | { kind: "missing" | "invalid" | "goal" | "answer" | "allKnown" | "noPlayers" }
+  | { kind: "hint"; char: string; position: number };
+
 const MAX_ATTEMPTS = 6;
 const GAME_KEY = "adivina-jugador";
 const ATTEMPT_SCORES = [100, 80, 60, 40, 30, 20] as const;
@@ -72,7 +76,7 @@ type PlayerRoundSession = {
   current: Record<number, string>;
   finished: boolean;
   won: boolean;
-  message: string | null;
+  message: PlayerMessage | null;
   hintPosition: number | null;
   hintRow: number | null;
   usedHint: boolean;
@@ -95,7 +99,9 @@ function isPlayerGameSession(value: unknown): value is PlayerGameSession {
       guess.marks.every((mark) => ["correct", "present", "absent", "fixed"].includes(mark))) &&
     round.current && typeof round.current === "object" && Object.values(round.current).every((letter) => typeof letter === "string") &&
     typeof round.finished === "boolean" && typeof round.won === "boolean" && typeof round.usedHint === "boolean" &&
-    typeof round.surrendered === "boolean" && (round.message === null || typeof round.message === "string") &&
+    typeof round.surrendered === "boolean" && (round.message === null || (typeof round.message === "object" &&
+      ["missing", "invalid", "goal", "answer", "allKnown", "noPlayers", "hint"].includes(round.message.kind) &&
+      (round.message.kind !== "hint" || (typeof round.message.char === "string" && Number.isInteger(round.message.position))))) &&
     (round.hintPosition === null || Number.isInteger(round.hintPosition)) && (round.hintRow === null || Number.isInteger(round.hintRow)) &&
     (round.roundScore === null || Number.isFinite(round.roundScore))
   ));
@@ -164,7 +170,7 @@ export default function PlayerWordleGame() {
   const [finished, setFinished] = useState(false);
   const [won, setWon] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [message, setMessage] = useState<string | null>(null);
+  const [message, setMessage] = useState<PlayerMessage | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [hintPosition, setHintPosition] = useState<number | null>(null);
   const [hintRow, setHintRow] = useState<number | null>(null);
@@ -262,7 +268,8 @@ export default function PlayerWordleGame() {
       setPool(ready);
       const easy = ready.filter((player) => player.easyEligible);
       const saved = readGameSession(GAME_KEY, isPlayerGameSession);
-      const requestedDifficulty: Difficulty = easy.length >= 10 ? (saved?.difficulty ?? "easy") : "impossible";
+      const defaultDifficulty: Difficulty = easy.length >= 10 ? "easy" : "impossible";
+      const requestedDifficulty: Difficulty = saved?.difficulty ?? defaultDifficulty;
       const requestedPool = requestedDifficulty === "easy" ? easy : requestedDifficulty === "hard" ? ready.filter((player) => player.hardEligible) : ready;
       const initialDifficulty: Difficulty = requestedPool.length ? requestedDifficulty : "impossible";
       const initialPool = requestedPool.length ? requestedPool : ready;
@@ -331,6 +338,15 @@ export default function PlayerWordleGame() {
     return result;
   }, [guesses]);
 
+  const messageText = message?.kind === "missing" ? c.missing
+    : message?.kind === "invalid" ? c.invalid
+      : message?.kind === "goal" ? c.goal
+        : message?.kind === "answer" ? `${c.was} ${target?.word ?? ""}`
+          : message?.kind === "allKnown" ? c.allKnown
+            : message?.kind === "noPlayers" ? c.noPlayers
+              : message?.kind === "hint" ? `${c.hint}: ${message.char} ${c.hintAt} ${message.position + 1} · -10 PTS`
+                : null;
+
   function expectedEditablePositions(answer: string) {
     return answer.split("").filter((c) => c !== "-" && c !== " ").length;
   }
@@ -384,14 +400,14 @@ export default function PlayerWordleGame() {
     actionLockRef.current = true;
     const missing = editableIndexes(target.word).some((index) => !current[index]);
     if (missing) {
-      setMessage(c.missing);
+      setMessage({ kind: "missing" });
       actionLockRef.current = false;
       return;
     }
 
     const displayGuess = currentAsDisplay();
     if (!validWords.has(displayGuess) && displayGuess !== target.word) {
-      setMessage(c.invalid);
+      setMessage({ kind: "invalid" });
       actionLockRef.current = false;
       return;
     }
@@ -411,13 +427,13 @@ export default function PlayerWordleGame() {
       setRoundScore(score);
       setWon(true);
       setFinished(true);
-      setMessage(c.goal);
+      setMessage({ kind: "goal" });
     } else if (next.length >= MAX_ATTEMPTS) {
       const updated = recordGameResult(GAME_KEY, { score: 0, won: false, usedHint });
       setScoreStats(updated);
       setRoundScore(0);
       setFinished(true);
-      setMessage(`${c.was} ${target.word}`);
+      setMessage({ kind: "answer" });
     } else {
       setMessage(null);
       window.setTimeout(() => { actionLockRef.current = false; }, 0);
@@ -441,7 +457,7 @@ export default function PlayerWordleGame() {
       .filter(({ char, index }) => char !== "-" && char !== " " && !knownCorrect.has(index));
 
     if (!candidates.length) {
-      setMessage(c.allKnown);
+      setMessage({ kind: "allKnown" });
       actionLockRef.current = false;
       return;
     }
@@ -455,7 +471,7 @@ export default function PlayerWordleGame() {
       delete next[picked.index];
       return next;
     });
-    setMessage(`${c.hint}: ${picked.char} ${c.hintAt} ${picked.index + 1} · -10 PTS`);
+    setMessage({ kind: "hint", char: picked.char, position: picked.index });
     window.setTimeout(() => { actionLockRef.current = false; }, 0);
   }
 
@@ -469,7 +485,7 @@ export default function PlayerWordleGame() {
     setWon(false);
     setFinished(true);
     setCurrent({});
-    setMessage(`${c.was} ${target.word}`);
+    setMessage({ kind: "answer" });
   }
 
   function pressKey(key: string) {
@@ -525,7 +541,7 @@ export default function PlayerWordleGame() {
           : pool;
 
     if (!nextPool.length) {
-      setMessage(c.noPlayers);
+      setMessage({ kind: "noPlayers" });
       return;
     }
 
@@ -586,7 +602,7 @@ export default function PlayerWordleGame() {
         <span>{scoreStats.points} pts</span>
       </div>
 
-      {message && <div className="wordle-toast" role="status" aria-live="polite">{message}</div>}
+      {messageText && <div className="wordle-toast" role="status" aria-live="polite">{messageText}</div>}
 
       <div className="wordle-board" style={{ "--word-length": target.word.length } as CSSProperties}>
         {rows.map((row, rowIndex) => (

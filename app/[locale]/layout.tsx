@@ -28,7 +28,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   if (!isLocale(value)) notFound();
   const locale = value as Locale;
   const d = dictionaries[locale];
-  return <html lang={locale}><body><I18nProvider locale={locale} dictionary={d}>
+  return <html lang={locale} data-scroll-behavior="smooth"><body><I18nProvider locale={locale} dictionary={d}>
     <header className="site-header"><div className="container nav">
       <Link className="brand" href={localizedPath(locale)} aria-label={`10theGOAT · ${d.nav.home}`}><img className="brand-logo" src="/brand/10thegoat-shield-raster.png" alt=""/><span><strong>10</strong>the<strong>GOAT</strong></span></Link>
       <nav className="nav-links" aria-label={d.nav.main}><Link href={localizedPath(locale, "/juegos")}>{d.nav.games}</Link><LanguageSwitcher /></nav>
