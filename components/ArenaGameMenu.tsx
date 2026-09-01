@@ -21,6 +21,7 @@ export default function ArenaGameMenu({ games, locale, label }: { games: ArenaGa
               className={`arena-portal arena-portal--${index + 1} arena-portal--${game.slug}`}
               aria-label={`${game.title}. ${game.status}`}
             >
+              <span className="arena-portal-light" aria-hidden="true" />
               <span className="arena-portal-copy"><strong>{game.title}</strong><small>{game.status}</small></span>
             </Link>
           ))}

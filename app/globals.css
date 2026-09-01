@@ -369,3 +369,24 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 .arena-portal--4{left:62.35%;top:48.5%;width:6.45%;height:28.1%;clip-path:polygon(2% 4%,100% 0,100% 100%,2% 97%)}
 .arena-portal--5{left:71.9%;top:43.3%;width:7.25%;height:33.8%;clip-path:polygon(3% 6.5%,100% 0,100% 100%,3% 95%)}
 .arena-portal--6{left:83.35%;top:36.9%;width:9.2%;height:41.2%;clip-path:polygon(4% 10.5%,100% 0,100% 100%,4% 92.5%)}
+
+/* v0.13.7 · Separate labels from exact front-face masks */
+.arena-portal{clip-path:none;overflow:visible;background:none;backdrop-filter:none;transform:none;filter:none;box-shadow:none}
+.arena-portal:before{display:none}
+.arena-portal:hover,.arena-portal:focus-visible{background:none;backdrop-filter:none;transform:none;filter:none;box-shadow:none}
+.arena-portal-light{position:absolute;z-index:0;inset:0;background:color-mix(in srgb,var(--portal) 10%,transparent);mix-blend-mode:screen;opacity:0;backdrop-filter:brightness(1) saturate(1);transition:opacity .18s,backdrop-filter .18s;pointer-events:none}
+.arena-portal:hover .arena-portal-light,.arena-portal:focus-visible .arena-portal-light{opacity:.64;backdrop-filter:brightness(1.23) saturate(1.22) contrast(1.025)}
+.arena-portal-copy{z-index:2;bottom:16%;max-width:190px;clip-path:none}
+/* Measurements follow the four bright front-face edges in the supplied crops. */
+.arena-portal--1{left:7.45%;top:35.5%;width:11.25%;height:49.7%}
+.arena-portal--1 .arena-portal-light{clip-path:polygon(0 0,100% 11.6%,100% 92%,0 100%)}
+.arena-portal--2{left:20.85%;top:42.2%;width:8.35%;height:40.2%}
+.arena-portal--2 .arena-portal-light{clip-path:polygon(0 0,100% 10.5%,100% 94%,0 100%)}
+.arena-portal--3{left:31.25%;top:46.8%;width:7.15%;height:32.2%}
+.arena-portal--3 .arena-portal-light{clip-path:polygon(0 0,100% 7.4%,100% 100%,0 100%)}
+.arena-portal--4{left:61.95%;top:46.8%;width:7.15%;height:32.2%}
+.arena-portal--4 .arena-portal-light{clip-path:polygon(0 12.5%,100% 0,100% 100%,0 93.2%)}
+.arena-portal--5{left:71.4%;top:42.2%;width:8.35%;height:40.2%}
+.arena-portal--5 .arena-portal-light{clip-path:polygon(0 15.5%,100% 0,100% 100%,0 91.1%)}
+.arena-portal--6{left:82.75%;top:35.5%;width:10.65%;height:49.7%}
+.arena-portal--6 .arena-portal-light{clip-path:polygon(0 11.4%,100% 0,100% 100%,0 92.9%)}
