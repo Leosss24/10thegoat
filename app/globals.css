@@ -440,3 +440,9 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 /* v0.13.13 · Avoid rectangular backdrop-filter bleed on the four corrected faces. */
 .arena-portal--1 .arena-portal-light,.arena-portal--2 .arena-portal-light,.arena-portal--3 .arena-portal-light,.arena-portal--4 .arena-portal-light{background:linear-gradient(180deg,color-mix(in srgb,var(--portal) 22%,transparent),color-mix(in srgb,var(--portal) 10%,transparent) 52%,color-mix(in srgb,var(--portal) 18%,transparent));backdrop-filter:none!important;filter:none;box-shadow:inset 0 0 22px color-mix(in srgb,var(--portal) 20%,transparent)}
 .arena-portal--1:hover .arena-portal-light,.arena-portal--1:focus-visible .arena-portal-light,.arena-portal--2:hover .arena-portal-light,.arena-portal--2:focus-visible .arena-portal-light,.arena-portal--3:hover .arena-portal-light,.arena-portal--3:focus-visible .arena-portal-light,.arena-portal--4:hover .arena-portal-light,.arena-portal--4:focus-visible .arena-portal-light{opacity:.72;backdrop-filter:none!important}
+
+/* v0.13.14 · Retract the depth faces identified in the illuminated captures. */
+.arena-portal--1 .arena-portal-light{clip-path:polygon(6% 1.5%,88% 11.4%,88% 91.8%,6% 98.7%)}
+.arena-portal--2 .arena-portal-light{clip-path:polygon(6% 1.5%,90% 10.8%,90% 91.8%,6% 97.8%)}
+.arena-portal--3 .arena-portal-light{clip-path:polygon(4% 4.2%,94% 12.2%,94% 94.7%,4% 98.8%)}
+.arena-portal--4 .arena-portal-light{clip-path:polygon(4% 14.2%,92% 5.2%,92% 98.7%,4% 94.8%)}
