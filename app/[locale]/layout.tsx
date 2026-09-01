@@ -30,9 +30,9 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   const d = dictionaries[locale];
   return <html lang={locale}><body><I18nProvider locale={locale} dictionary={d}>
     <header className="site-header"><div className="container nav">
-      <Link className="brand" href={localizedPath(locale)} aria-label={`10theGOAT · ${d.nav.home}`}><img className="brand-logo" src="/brand/10thegoat-shield-raster.png" alt=""/><span><strong>10</strong>the<strong>GOAT</strong></span><em className="beta-pill">BETA</em></Link>
-      <nav className="nav-links" aria-label={d.nav.main}><Link href={localizedPath(locale, "/juegos")}>{d.nav.games}</Link><Link href={localizedPath(locale, "/beta")}>{d.nav.beta}</Link><LanguageSwitcher /></nav>
+      <Link className="brand" href={localizedPath(locale)} aria-label={`10theGOAT · ${d.nav.home}`}><img className="brand-logo" src="/brand/10thegoat-shield-raster.png" alt=""/><span><strong>10</strong>the<strong>GOAT</strong></span></Link>
+      <nav className="nav-links" aria-label={d.nav.main}><Link href={localizedPath(locale, "/juegos")}>{d.nav.games}</Link><LanguageSwitcher /></nav>
     </div></header>{children}
-    <footer className="footer"><div className="container footer-layout"><div className="footer-brand"><img src="/brand/10thegoat-shield-raster.png" alt=""/><span><strong>10</strong>the<strong>GOAT</strong> · Beta</span></div><nav className="footer-links" aria-label={d.nav.legal}><Link href={localizedPath(locale, "/privacidad")}>{d.nav.privacy}</Link><Link href={localizedPath(locale, "/cookies")}>{d.nav.cookies}</Link><Link href={localizedPath(locale, "/aviso-legal")}>{d.nav.notice}</Link><Link href={localizedPath(locale, "/beta")}>{d.nav.feedback}</Link></nav></div></footer>
+    <footer className="footer"><div className="container footer-layout"><div className="footer-brand"><img src="/brand/10thegoat-shield-raster.png" alt=""/><span><strong>10</strong>the<strong>GOAT</strong></span></div><nav className="footer-links" aria-label={d.nav.legal}><Link href={localizedPath(locale, "/privacidad")}>{d.nav.privacy}</Link><Link href={localizedPath(locale, "/cookies")}>{d.nav.cookies}</Link><Link href={localizedPath(locale, "/aviso-legal")}>{d.nav.notice}</Link><Link href={localizedPath(locale, "/beta")}>{d.nav.feedback}</Link></nav></div></footer>
   </I18nProvider></body></html>;
 }
