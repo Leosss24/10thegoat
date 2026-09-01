@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { supabase } from "../../lib/supabase";
 import { getGameScore, recordGameResult } from "../../lib/game-scores";
+import { readGameSession, writeGameSession } from "../../lib/game-session";
 import { useI18n } from "../I18nProvider";
 
 type Club = { id: number; name: string; badge_url: string | null; is_national_team: boolean; is_active: boolean; is_game_eligible: boolean };
@@ -12,6 +13,26 @@ const MAX_ATTEMPTS = 6;
 const GAME_KEY = "adivina-escudo";
 const SCORE_BY_ATTEMPT = [100, 80, 60, 40, 30, 20];
 const PIXEL_RESOLUTIONS = [8, 12, 18, 28, 44, 72, 260];
+
+type BadgeSession = {
+  targetId: number;
+  attempts: Attempt[];
+  query: string;
+  selectedId: number | null;
+  finished: boolean;
+  won: boolean;
+  roundScore: number;
+};
+
+function isBadgeSession(value: unknown): value is BadgeSession {
+  if (!value || typeof value !== "object") return false;
+  const session = value as BadgeSession;
+  return Number.isInteger(session.targetId) && Array.isArray(session.attempts) && session.attempts.length <= MAX_ATTEMPTS &&
+    session.attempts.every((attempt) => attempt && Number.isInteger(attempt.id) && typeof attempt.name === "string" && typeof attempt.correct === "boolean") &&
+    typeof session.query === "string" && (session.selectedId === null || Number.isInteger(session.selectedId)) &&
+    typeof session.finished === "boolean" && typeof session.won === "boolean" &&
+    Number.isFinite(session.roundScore) && session.roundScore >= 0;
+}
 
 function pickRandom<T>(items: T[]) { return items[Math.floor(Math.random() * items.length)]; }
 function normalize(value: string) {
@@ -75,6 +96,7 @@ export default function GuessTheBadgeGame() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const actionLockRef = useRef(false);
 
   useEffect(() => {
     setTotalPoints(getGameScore(GAME_KEY).points);
@@ -98,11 +120,29 @@ export default function GuessTheBadgeGame() {
       );
       if (ready.length < 10) { setError(c.few); setLoading(false); return; }
       setClubs(ready);
-      setTarget(pickRandom(ready));
+      const saved = readGameSession(GAME_KEY, isBadgeSession);
+      const savedTarget = saved && ready.find((club) => club.id === saved.targetId);
+      setTarget(savedTarget ?? pickRandom(ready));
+      if (saved && savedTarget) {
+        const validIds = new Set(ready.map((club) => club.id));
+        const restoredAttempts = saved.attempts.filter((attempt) => validIds.has(attempt.id));
+        setAttempts(restoredAttempts);
+        setQuery(saved.query);
+        setSelectedId(saved.selectedId && validIds.has(saved.selectedId) ? saved.selectedId : null);
+        setFinished(saved.finished);
+        setWon(saved.won);
+        setRoundScore(saved.roundScore);
+        actionLockRef.current = saved.finished;
+      }
       setLoading(false);
     }
     load();
   }, []);
+
+  useEffect(() => {
+    if (loading || !target) return;
+    writeGameSession(GAME_KEY, { targetId: target.id, attempts, query, selectedId, finished, won, roundScore } satisfies BadgeSession);
+  }, [loading, target, attempts, query, selectedId, finished, won, roundScore]);
 
   const suggestions = useMemo(() => {
     const term = normalize(query);
@@ -116,9 +156,10 @@ export default function GuessTheBadgeGame() {
 
   function submit(event: FormEvent) {
     event.preventDefault();
-    if (!target || finished) return;
+    if (!target || finished || actionLockRef.current) return;
     const club = clubs.find((c) => c.id === selectedId) ?? clubs.find((c) => normalize(c.name) === normalize(query));
     if (!club || attempts.some((a) => a.id === club.id)) return;
+    actionLockRef.current = true;
     const correct = club.id === target.id;
     const next = [...attempts, { id: club.id, name: club.name, correct }];
     setAttempts(next);
@@ -136,6 +177,8 @@ export default function GuessTheBadgeGame() {
       setRoundScore(0);
       setTotalPoints(score.points);
       setFinished(true);
+    } else {
+      window.setTimeout(() => { actionLockRef.current = false; }, 0);
     }
   }
 
@@ -143,6 +186,7 @@ export default function GuessTheBadgeGame() {
     if (!clubs.length) return;
     let next = pickRandom(clubs);
     if (target && clubs.length > 1) while (next.id === target.id) next = pickRandom(clubs);
+    actionLockRef.current = false;
     setTarget(next); setAttempts([]); setQuery(""); setSelectedId(null); setFinished(false); setWon(false); setRoundScore(0);
   }
 

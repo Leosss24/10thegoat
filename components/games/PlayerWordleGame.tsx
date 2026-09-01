@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useMemo, useState, type CSSProperties } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { supabase } from "../../lib/supabase";
 import { getGameScore, recordGameResult, type GameScoreStats } from "../../lib/game-scores";
+import { readGameSession, writeGameSession } from "../../lib/game-session";
 import { useI18n } from "../I18nProvider";
 
 type Difficulty = "easy" | "hard" | "impossible";
@@ -64,6 +65,41 @@ const KEYBOARD = [
   ["A","S","D","F","G","H","J","K","L","Ñ","Ç"],
   ["ENTER","Z","X","C","V","B","N","M","BACKSPACE"],
 ];
+
+type PlayerRoundSession = {
+  targetId: number;
+  guesses: SubmittedGuess[];
+  current: Record<number, string>;
+  finished: boolean;
+  won: boolean;
+  message: string | null;
+  hintPosition: number | null;
+  hintRow: number | null;
+  usedHint: boolean;
+  surrendered: boolean;
+  roundScore: number | null;
+};
+
+type PlayerGameSession = {
+  difficulty: Difficulty;
+  rounds: Partial<Record<Difficulty, PlayerRoundSession>>;
+};
+
+function isPlayerGameSession(value: unknown): value is PlayerGameSession {
+  if (!value || typeof value !== "object") return false;
+  const session = value as PlayerGameSession;
+  if (!["easy", "hard", "impossible"].includes(session.difficulty) || !session.rounds || typeof session.rounds !== "object") return false;
+  return Object.values(session.rounds).every((round) => !round || (
+    Number.isInteger(round.targetId) && Array.isArray(round.guesses) && round.guesses.length <= MAX_ATTEMPTS &&
+    round.guesses.every((guess) => guess && typeof guess.word === "string" && Array.isArray(guess.marks) &&
+      guess.marks.every((mark) => ["correct", "present", "absent", "fixed"].includes(mark))) &&
+    round.current && typeof round.current === "object" && Object.values(round.current).every((letter) => typeof letter === "string") &&
+    typeof round.finished === "boolean" && typeof round.won === "boolean" && typeof round.usedHint === "boolean" &&
+    typeof round.surrendered === "boolean" && (round.message === null || typeof round.message === "string") &&
+    (round.hintPosition === null || Number.isInteger(round.hintPosition)) && (round.hintRow === null || Number.isInteger(round.hintRow)) &&
+    (round.roundScore === null || Number.isFinite(round.roundScore))
+  ));
+}
 
 function normalizeLetters(value: string) {
   return value
@@ -136,6 +172,8 @@ export default function PlayerWordleGame() {
   const [surrendered, setSurrendered] = useState(false);
   const [roundScore, setRoundScore] = useState<number | null>(null);
   const [scoreStats, setScoreStats] = useState<GameScoreStats>(() => ({ points: 0, played: 0, wins: 0, bestScore: 0, hintsUsed: 0, surrenders: 0 }));
+  const roundsRef = useRef<PlayerGameSession["rounds"]>({});
+  const actionLockRef = useRef(false);
 
   useEffect(() => {
     setScoreStats(getGameScore(GAME_KEY));
@@ -223,14 +261,43 @@ export default function PlayerWordleGame() {
 
       setPool(ready);
       const easy = ready.filter((player) => player.easyEligible);
-      const initialPool = easy.length >= 10 ? easy : ready;
-      if (easy.length < 10) setDifficulty("impossible");
-      setTarget(pickRandom(initialPool));
+      const saved = readGameSession(GAME_KEY, isPlayerGameSession);
+      const requestedDifficulty: Difficulty = easy.length >= 10 ? (saved?.difficulty ?? "easy") : "impossible";
+      const requestedPool = requestedDifficulty === "easy" ? easy : requestedDifficulty === "hard" ? ready.filter((player) => player.hardEligible) : ready;
+      const initialDifficulty: Difficulty = requestedPool.length ? requestedDifficulty : "impossible";
+      const initialPool = requestedPool.length ? requestedPool : ready;
+      const savedRound = saved?.rounds[initialDifficulty];
+      const savedTarget = savedRound && initialPool.find((player) => player.id === savedRound.targetId);
+      roundsRef.current = saved?.rounds ?? {};
+      setDifficulty(initialDifficulty);
+      setTarget(savedTarget ?? pickRandom(initialPool));
+      if (savedRound && savedTarget) {
+        setGuesses(savedRound.guesses);
+        setCurrent(savedRound.current);
+        setFinished(savedRound.finished);
+        setWon(savedRound.won);
+        setMessage(savedRound.message);
+        setHintPosition(savedRound.hintPosition);
+        setHintRow(savedRound.hintRow);
+        setUsedHint(savedRound.usedHint);
+        setSurrendered(savedRound.surrendered);
+        setRoundScore(savedRound.roundScore);
+        actionLockRef.current = savedRound.finished;
+      }
       setLoading(false);
     }
 
     load();
   }, []);
+
+  useEffect(() => {
+    if (loading || !target) return;
+    roundsRef.current = {
+      ...roundsRef.current,
+      [difficulty]: { targetId: target.id, guesses, current, finished, won, message, hintPosition, hintRow, usedHint, surrendered, roundScore },
+    };
+    writeGameSession(GAME_KEY, { difficulty, rounds: roundsRef.current } satisfies PlayerGameSession);
+  }, [loading, difficulty, target, guesses, current, finished, won, message, hintPosition, hintRow, usedHint, surrendered, roundScore]);
 
   const difficultyPool = useMemo(() => {
     if (difficulty === "easy") return pool.filter((player) => player.easyEligible);
@@ -313,16 +380,19 @@ export default function PlayerWordleGame() {
   }
 
   function submit() {
-    if (!target || finished) return;
+    if (!target || finished || actionLockRef.current) return;
+    actionLockRef.current = true;
     const missing = editableIndexes(target.word).some((index) => !current[index]);
     if (missing) {
       setMessage(c.missing);
+      actionLockRef.current = false;
       return;
     }
 
     const displayGuess = currentAsDisplay();
     if (!validWords.has(displayGuess) && displayGuess !== target.word) {
       setMessage(c.invalid);
+      actionLockRef.current = false;
       return;
     }
 
@@ -350,11 +420,13 @@ export default function PlayerWordleGame() {
       setMessage(`${c.was} ${target.word}`);
     } else {
       setMessage(null);
+      window.setTimeout(() => { actionLockRef.current = false; }, 0);
     }
   }
 
   function useHint() {
-    if (!target || finished || usedHint) return;
+    if (!target || finished || usedHint || actionLockRef.current) return;
+    actionLockRef.current = true;
 
     const knownCorrect = new Set<number>();
     for (const guess of guesses) {
@@ -370,6 +442,7 @@ export default function PlayerWordleGame() {
 
     if (!candidates.length) {
       setMessage(c.allKnown);
+      actionLockRef.current = false;
       return;
     }
 
@@ -383,10 +456,12 @@ export default function PlayerWordleGame() {
       return next;
     });
     setMessage(`${c.hint}: ${picked.char} ${c.hintAt} ${picked.index + 1} · -10 PTS`);
+    window.setTimeout(() => { actionLockRef.current = false; }, 0);
   }
 
   function surrender() {
-    if (!target || finished) return;
+    if (!target || finished || actionLockRef.current) return;
+    actionLockRef.current = true;
     const updated = recordGameResult(GAME_KEY, { score: -20, won: false, usedHint, surrendered: true });
     setScoreStats(updated);
     setRoundScore(-20);
@@ -417,6 +492,7 @@ export default function PlayerWordleGame() {
   });
 
   function resetRound(nextTarget: PlayerWord) {
+    actionLockRef.current = false;
     setTarget(nextTarget);
     setGuesses([]);
     setCurrent({});
@@ -453,8 +529,28 @@ export default function PlayerWordleGame() {
       return;
     }
 
+    if (target) {
+      roundsRef.current[difficulty] = { targetId: target.id, guesses, current, finished, won, message, hintPosition, hintRow, usedHint, surrendered, roundScore };
+    }
+    const savedRound = roundsRef.current[nextDifficulty];
+    const savedTarget = savedRound && nextPool.find((player) => player.id === savedRound.targetId);
     setDifficulty(nextDifficulty);
-    resetRound(pickRandom(nextPool));
+    if (savedRound && savedTarget) {
+      setTarget(savedTarget);
+      setGuesses(savedRound.guesses);
+      setCurrent(savedRound.current);
+      setFinished(savedRound.finished);
+      setWon(savedRound.won);
+      setMessage(savedRound.message);
+      setHintPosition(savedRound.hintPosition);
+      setHintRow(savedRound.hintRow);
+      setUsedHint(savedRound.usedHint);
+      setSurrendered(savedRound.surrendered);
+      setRoundScore(savedRound.roundScore);
+      actionLockRef.current = savedRound.finished;
+    } else {
+      resetRound(pickRandom(nextPool));
+    }
   }
 
   if (loading) return <div className="wordle-status" role="status" aria-live="polite">{c.loading}</div>;

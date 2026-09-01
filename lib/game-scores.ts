@@ -44,13 +44,17 @@ function readStore(): ScoreStore {
 }
 
 function normalizeStats(value?: Partial<GameScoreStats>): GameScoreStats {
+  const nonNegative = (candidate: unknown) => {
+    const number = Number(candidate);
+    return Number.isFinite(number) ? Math.max(0, number) : 0;
+  };
   return {
-    points: Number(value?.points) || 0,
-    played: Number(value?.played) || 0,
-    wins: Number(value?.wins) || 0,
-    bestScore: Number(value?.bestScore) || 0,
-    hintsUsed: Number(value?.hintsUsed) || 0,
-    surrenders: Number(value?.surrenders) || 0,
+    points: nonNegative(value?.points),
+    played: nonNegative(value?.played),
+    wins: nonNegative(value?.wins),
+    bestScore: nonNegative(value?.bestScore),
+    hintsUsed: nonNegative(value?.hintsUsed),
+    surrenders: nonNegative(value?.surrenders),
   };
 }
 
@@ -63,10 +67,10 @@ export function recordGameResult(gameKey: string, result: GameResultInput): Game
   const store = readStore();
   const current = normalizeStats(store[gameKey]);
   const next: GameScoreStats = {
-    points: current.points + result.score,
+    points: Math.max(0, current.points + result.score),
     played: current.played + 1,
     wins: current.wins + (result.won ? 1 : 0),
-    bestScore: Math.max(current.bestScore, result.score),
+    bestScore: Math.max(0, current.bestScore, result.score),
     hintsUsed: current.hintsUsed + (result.usedHint ? 1 : 0),
     surrenders: current.surrenders + (result.surrendered ? 1 : 0),
   };
@@ -84,8 +88,8 @@ export function addGamePoints(gameKey: string, points: number): GameScoreStats {
   const current = normalizeStats(store[gameKey]);
   const next: GameScoreStats = {
     ...current,
-    points: current.points + points,
-    bestScore: Math.max(current.bestScore, points),
+    points: Math.max(0, current.points + points),
+    bestScore: Math.max(0, current.bestScore, points),
   };
 
   store[gameKey] = next;
@@ -97,5 +101,5 @@ export function addGamePoints(gameKey: string, points: number): GameScoreStats {
 
 export function getGlobalScore(): number {
   const store = readStore();
-  return Object.values(store).reduce((total, stats) => total + normalizeStats(stats).points, 0);
+  return Math.max(0, Object.values(store).reduce((total, stats) => total + normalizeStats(stats).points, 0));
 }

@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { supabase } from "../../lib/supabase";
 import { addGamePoints, getGameScore, recordGameResult } from "../../lib/game-scores";
+import { readGameSession, writeGameSession } from "../../lib/game-session";
 import { useI18n } from "../I18nProvider";
 
 type Player = {
@@ -52,6 +53,25 @@ const ALWAYS_ELIGIBLE_PLAYER_IDS = new Set([
   251, // Kai Havertz
 ]);
 
+type HigherLowerSession = {
+  leftKey: string;
+  rightKey: string;
+  revealed: boolean;
+  lastCorrect: boolean | null;
+  gameOver: boolean;
+  streak: number;
+  lastAward: number;
+};
+
+function isHigherLowerSession(value: unknown): value is HigherLowerSession {
+  if (!value || typeof value !== "object") return false;
+  const session = value as HigherLowerSession;
+  return typeof session.leftKey === "string" && typeof session.rightKey === "string" &&
+    typeof session.revealed === "boolean" && (session.lastCorrect === null || typeof session.lastCorrect === "boolean") &&
+    typeof session.gameOver === "boolean" && Number.isFinite(session.streak) && session.streak >= 0 &&
+    Number.isFinite(session.lastAward) && session.lastAward >= 0;
+}
+
 function randomItem<T>(items: T[]): T {
   return items[Math.floor(Math.random() * items.length)];
 }
@@ -92,10 +112,11 @@ export default function HigherLowerGame() {
   const [lastAward, setLastAward] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const actionLockRef = useRef(false);
 
   useEffect(() => {
     const saved = Number(window.localStorage.getItem(BEST_STREAK_KEY) ?? 0);
-    if (Number.isFinite(saved)) setBest(saved);
+    if (Number.isFinite(saved)) setBest(Math.max(0, saved));
     setTotalPoints(getGameScore(GAME_KEY).points);
   }, []);
 
@@ -242,7 +263,21 @@ export default function HigherLowerGame() {
         }
 
         setCards(ready);
-        startWithCards(ready);
+        const saved = readGameSession(GAME_KEY, isHigherLowerSession);
+        const savedLeft = saved && ready.find((card) => card.key === saved.leftKey);
+        const savedRight = saved && ready.find((card) => card.key === saved.rightKey);
+        if (saved && savedLeft && savedRight && savedLeft.playerId !== savedRight.playerId) {
+          setLeft(savedLeft);
+          setRight(savedRight);
+          setRevealed(saved.revealed);
+          setLastCorrect(saved.lastCorrect);
+          setGameOver(saved.gameOver);
+          setStreak(saved.streak);
+          setLastAward(saved.lastAward);
+          actionLockRef.current = saved.revealed;
+        } else {
+          startWithCards(ready);
+        }
         setLoading(false);
       } catch (loadError) {
         const message = loadError instanceof Error ? loadError.message : c.loadError;
@@ -253,6 +288,13 @@ export default function HigherLowerGame() {
 
     load();
   }, []);
+
+  useEffect(() => {
+    if (loading || !left || !right) return;
+    writeGameSession(GAME_KEY, {
+      leftKey: left.key, rightKey: right.key, revealed, lastCorrect, gameOver, streak, lastAward,
+    } satisfies HigherLowerSession);
+  }, [loading, left, right, revealed, lastCorrect, gameOver, streak, lastAward]);
 
   const availableOpponents = useMemo(() => {
     if (!left) return [];
@@ -268,10 +310,12 @@ export default function HigherLowerGame() {
     setRevealed(false);
     setLastCorrect(null);
     setGameOver(false);
+    actionLockRef.current = false;
   }
 
   function guess(choice: Guess) {
-    if (!left || !right || revealed || gameOver) return;
+    if (!left || !right || revealed || gameOver || actionLockRef.current) return;
+    actionLockRef.current = true;
     const correct = choice === "higher" ? right.goals > left.goals : right.goals < left.goals;
     setRevealed(true);
     setLastCorrect(correct);
@@ -309,6 +353,7 @@ export default function HigherLowerGame() {
     setRight(randomItem(candidates));
     setRevealed(false);
     setLastCorrect(null);
+    actionLockRef.current = false;
   }
 
   function restart() {
