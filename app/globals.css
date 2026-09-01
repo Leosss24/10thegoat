@@ -451,3 +451,8 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;ba
 .arena-portal--1 .arena-portal-light{clip-path:polygon(6% 1.5%,88% 11.4%,88% 91.8%,6% 100%)}
 .arena-portal--2 .arena-portal-light{clip-path:polygon(0 0,90% 10.8%,90% 91.8%,0 96.2%)}
 .arena-portal--5 .arena-portal-light{clip-path:polygon(0 10.5%,90% 0,90% 94%,0 88.8%)}
+
+/* v0.13.16 · Final lower-edge and left-edge vertex alignment. */
+.arena-portal--1 .arena-portal-light{clip-path:polygon(6% 1.5%,88% 11.4%,88% 98.5%,6% 100%)}
+.arena-portal--2 .arena-portal-light{clip-path:polygon(4% 0,90% 10.8%,90% 91.8%,4% 96.2%)}
+.arena-portal--5 .arena-portal-light{clip-path:polygon(0 10.5%,90% 0,90% 98%,0 93.5%)}
