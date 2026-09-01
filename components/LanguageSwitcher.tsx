@@ -32,8 +32,10 @@ export default function LanguageSwitcher() {
         aria-label={dictionaries[option.locale].languageName}
         aria-pressed={option.locale === locale}
         title={dictionaries[option.locale].languageName}
+        lang={option.locale}
       >
         <img src={option.flag} alt="" width={24} height={16} />
+        <span>{option.locale.toUpperCase()}</span>
       </button>
     ))}
   </div>;
