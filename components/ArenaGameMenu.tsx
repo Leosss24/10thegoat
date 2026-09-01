@@ -16,7 +16,7 @@ export default function ArenaGameMenu({ games, locale, label }: { games: ArenaGa
     <section className="arena-menu" aria-label={label}>
       <div className="arena-menu-scroll">
         <div className="arena-stage">
-          <img className="arena-stage-image" src="/brand/10thegoat-arena-hero.png" alt="" />
+          <img className="arena-stage-image" src="/brand/10thegoat-arena-hero-v2.png" alt="" />
           <div className="arena-stage-shade" aria-hidden="true" />
           <div className={`arena-game-display${activeGame ? ` arena-game-display--${activeGame.color} is-visible` : ""}`} aria-live="polite">
             {activeGame && <><strong>{activeGame.game.title}</strong><small>{activeGame.game.description}</small></>}
