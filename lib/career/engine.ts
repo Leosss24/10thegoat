@@ -107,19 +107,35 @@ export function calculateBlocks(
     form: clamp(fitness * .34 + morale * .31 + familyBond * .14 + Math.min(100, reputation + 25) * .08 + rating * 2.1, 1, 99),
   };
 }
+export function calculateOverall(blocks: PlayerBlocks, position: CareerPosition) {
+  const weights: Record<CareerPosition, [number, number, number]> = {
+    centre_back: [.25, .32, .43], right_back: [.32, .36, .32], left_back: [.32, .36, .32],
+    holding_midfielder: [.3, .25, .45], central_midfielder: [.4, .18, .42], attacking_midfielder: [.44, .16, .4],
+    right_winger: [.48, .3, .22], left_winger: [.48, .3, .22], second_striker: [.5, .22, .28], striker: [.45, .32, .23],
+  };
+  const [technical, physical, mentality] = weights[position];
+  return clamp(blocks.technical * technical + blocks.physical * physical + blocks.mentality * mentality, 35, 99);
+}
 export function hydrateCareer(state: CareerState): CareerState {
   const legacyPlayer = state.player as CareerState["player"] & { attributes?: PlayerAttributes; blocks?: PlayerBlocks };
   const looksLikeCappedLegacyMigration = legacyPlayer.attributes && legacyPlayer.blocks && state.seasons.length > 0 && legacyPlayer.overall > 70 && Math.max(legacyPlayer.blocks.technical, legacyPlayer.blocks.physical, legacyPlayer.blocks.mentality) <= 65;
-  if (legacyPlayer.attributes && legacyPlayer.blocks && !looksLikeCappedLegacyMigration) return state;
+  if (legacyPlayer.attributes && legacyPlayer.blocks && !looksLikeCappedLegacyMigration) {
+    const overall = calculateOverall(legacyPlayer.blocks, legacyPlayer.position);
+    return { ...state, player: { ...legacyPlayer, overall, potential: Math.max(legacyPlayer.potential, overall) } };
+  }
   const attributes = looksLikeCappedLegacyMigration
     ? Object.fromEntries(Object.entries(legacyPlayer.attributes!).map(([key, value]) => [key, clamp(value + legacyPlayer.overall - 64, 25, 99)])) as PlayerAttributes
     : legacyPlayer.attributes ?? initialAttributes(legacyPlayer.overall, state.seed);
+  const blocks = calculateBlocks(attributes, legacyPlayer.fitness, legacyPlayer.morale, legacyPlayer.familyBond, legacyPlayer.reputation);
+  const overall = calculateOverall(blocks, legacyPlayer.position);
   return {
     ...state,
     player: {
       ...legacyPlayer,
       attributes,
-      blocks: calculateBlocks(attributes, legacyPlayer.fitness, legacyPlayer.morale, legacyPlayer.familyBond, legacyPlayer.reputation),
+      blocks,
+      overall,
+      potential: Math.max(legacyPlayer.potential, overall),
     },
   };
 }
@@ -160,9 +176,10 @@ const roleMinutes: Record<CareerRole, number> = {
 };
 export function createCareer(input: CreateCareerInput): CareerState {
   const talentBand = drawTalent(input.seed);
-  const overall = clamp(46 + talentBoost[talentBand] / 3, 44, 51);
-  const attributes = initialAttributes(overall, input.seed);
+  const initialOverall = clamp(46 + talentBoost[talentBand] / 3, 44, 51);
+  const attributes = initialAttributes(initialOverall, input.seed);
   const blocks = calculateBlocks(attributes, 92, 75, 80, 3);
+  const overall = calculateOverall(blocks, input.position);
   return {
     schemaVersion: 2,
     id: `${input.seed}-${Date.now()}`,
@@ -395,7 +412,7 @@ export function simulateSeason(
       state.totals[k as keyof CareerTotals] + season[k as keyof CareerTotals],
     ]),
   ) as unknown as CareerTotals;
-  const overall = clamp(p.overall + growth, 35, p.age >= 38 ? 92 : 99),
+  const overall = clamp(calculateOverall(nextBlocks, p.position), 35, p.age >= 38 ? 92 : 99),
     reputation = clamp(
       p.reputation +
         (minutes / 500 + goals * 1.2 + assists + trophies.length * 9) *

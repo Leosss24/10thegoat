@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { evaluateCareerAchievements } from "../lib/achievements.ts";
-import { createCareer, resolveOffer, simulateSeason } from "../lib/career/engine.ts";
+import { calculateOverall, createCareer, resolveOffer, simulateSeason } from "../lib/career/engine.ts";
 import { parseCareer } from "../lib/career/storage.ts";
 
 const club = (id:string, country:string, level:number, academyQuality=80, youthOpportunity=80) => ({ id, name:id, country, level, academyQuality, youthOpportunity, squadCompetition:70, sellingProfile:80, prestige:"standard" as const, leagueBand:"europe_2" as const });
@@ -19,6 +19,7 @@ test("a season is deterministic and stays inside domain bounds", () => {
   assert.ok(first.player.blocks.technical >= 1 && first.player.blocks.technical <= 99);
   assert.ok(first.player.blocks.form >= 1 && first.player.blocks.form <= 99);
   assert.ok(first.seasons[0].blockChanges);
+  assert.equal(first.player.overall, calculateOverall(first.player.blocks, first.player.position));
 });
 
 test("training changes hidden attributes without exposing potential as a block", () => {

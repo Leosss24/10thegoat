@@ -45,6 +45,8 @@ const copy = {
     nationality: "Nacionalidad",
     position: "Posición",
     academy: "Club formador",
+    currentClub: "CLUB ACTUAL",
+    nationalClub: "Club nacional",
     start: "Comenzar formación",
     loading: "Preparando academias…",
     season: "TEMPORADA",
@@ -131,6 +133,8 @@ const copy = {
     nationality: "Nationality",
     position: "Position",
     academy: "Training club",
+    currentClub: "CURRENT CLUB",
+    nationalClub: "National club",
     start: "Start development",
     loading: "Preparing academies…",
     season: "SEASON",
@@ -217,6 +221,8 @@ const copy = {
     nationality: "Nationalité",
     position: "Poste",
     academy: "Club formateur",
+    currentClub: "CLUB ACTUEL",
+    nationalClub: "Club national",
     start: "Commencer la formation",
     loading: "Préparation des académies…",
     season: "SAISON",
@@ -498,21 +504,24 @@ export default function CareerModeGame() {
         </div>
         <div className="career-club">
           <ClubCrest club={career.club} />
-          <strong>{career.club.name}</strong>
-          <span>
-            {c[career.club.prestige]} · {career.club.country}
-          </span>
+          <div>
+            <small>{c.currentClub}</small>
+            <strong>{career.club.name}</strong>
+            <span>{career.club.country} · {career.club.prestige === "standard" ? c.nationalClub : c[career.club.prestige]}</span>
+          </div>
         </div>
       </div>
-      <div className="career-metrics">
-        <Metric label={c.overall} value={p.overall} />
-        <Metric label={c.technical} value={p.blocks.technical} trend={last?.blockChanges?.technical} />
-        <Metric label={c.physical} value={p.blocks.physical} trend={last?.blockChanges?.physical} />
-        <Metric label={c.mentality} value={p.blocks.mentality} trend={last?.blockChanges?.mentality} />
-        <Metric label={c.formState} value={p.blocks.form} trend={last?.blockChanges?.form} />
-        <Metric label={c.reputation} value={p.reputation} />
-        <Metric label={c.family} value={p.familyBond} />
-        <Metric label={c.legacy} value={career.legacyScore} />
+      <div className="career-rating-stack">
+        <div className="career-rating-hero"><span>{c.overall}</span><strong>{p.overall}</strong></div>
+        <div className="career-rating-bars">
+          <BarMetric label={c.technical} value={p.blocks.technical} trend={last?.blockChanges?.technical} />
+          <BarMetric label={c.physical} value={p.blocks.physical} trend={last?.blockChanges?.physical} />
+          <BarMetric label={c.mentality} value={p.blocks.mentality} trend={last?.blockChanges?.mentality} />
+          <BarMetric label={c.formState} value={p.blocks.form} trend={last?.blockChanges?.form} />
+          <BarMetric label={c.reputation} value={p.reputation} />
+          <BarMetric label={c.family} value={p.familyBond} />
+        </div>
+        <div className="career-legacy-strip"><span>{c.legacy}</span><strong>{career.legacyScore}</strong></div>
       </div>
       {career.phase === "season" && (
         <div className="career-action">
@@ -685,11 +694,12 @@ export default function CareerModeGame() {
     </section>
   );
 }
-function Metric({ label, value, trend }: { label: string; value: number; trend?: number }) {
+function BarMetric({ label, value, trend }: { label: string; value: number; trend?: number }) {
   return (
-    <div>
-      <span>{label}</span>
-      <strong>{value} {trend !== undefined && <small className={trend > 0 ? "is-up" : trend < 0 ? "is-down" : ""}>{trend > 0 ? "↑" : trend < 0 ? "↓" : "→"}</small>}</strong>
+    <div className="career-rating-bar">
+      <span>{label}</span><strong>{value}</strong>
+      <i aria-hidden="true"><b style={{ width: `${value}%` }} /></i>
+      {trend !== undefined && <small className={trend > 0 ? "is-up" : trend < 0 ? "is-down" : ""}>{trend > 0 ? "↑" : trend < 0 ? "↓" : "→"}</small>}
     </div>
   );
 }
