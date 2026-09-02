@@ -1,16 +1,412 @@
-import type { CareerClub,CareerPosition,CareerRole,CareerSeason,CareerState,CareerTotals,CreateCareerInput,SeasonFocus,TalentBand,TransferOffer } from "./types.ts";
-const EMPTY:CareerTotals={appearances:0,goals:0,assists:0,cleanSheets:0,titles:0,internationalCaps:0,internationalGoals:0};
-const clamp=(v:number,min:number,max:number)=>Math.min(max,Math.max(min,Math.round(v)));
-function random(seed:number){let v=seed|0;return()=>{v=Math.imul(v^(v>>>15),1|v);v^=v+Math.imul(v^(v>>>7),61|v);return((v^(v>>>14))>>>0)/4294967296}}
-const attack:Record<CareerPosition,number>={centre_back:.07,right_back:.1,left_back:.1,holding_midfielder:.12,central_midfielder:.25,attacking_midfielder:.5,right_winger:.62,left_winger:.62,second_striker:.78,striker:1};
-const creative:Record<CareerPosition,number>={centre_back:.04,right_back:.18,left_back:.18,holding_midfielder:.18,central_midfielder:.38,attacking_midfielder:.52,right_winger:.4,left_winger:.4,second_striker:.27,striker:.13};
-const leagueWeight={europe_1:1.3,europe_2:1.18,europe_3:1.05,europe_4:.88,south_america_a:1,south_america_b:.82};
-const talentBoost:Record<TalentBand,number>={generational:9,crack:6,high:3,normal:0};
-function drawTalent(seed:number):TalentBand{const roll=random(seed)();return roll<.025?"generational":roll<.12?"crack":roll<.36?"high":"normal"}
-function roleFor(overall:number,club:CareerClub,talent:TalentBand,age:number):CareerRole{const exceptional=age<=19?talentBoost[talent]:0;const gap=overall+exceptional-club.level-(club.squadCompetition-70)/12;if(age<=16&&gap<0)return"academy";if(gap<-8)return"prospect";if(gap<-2)return"rotation";if(gap<7)return"starter";return"star"}
-const roleMinutes:Record<CareerRole,number>={academy:0,prospect:430,rotation:1200,starter:2450,star:3050};
-export function createCareer(input:CreateCareerInput):CareerState{const talentBand=drawTalent(input.seed);const overall=clamp(46+talentBoost[talentBand]/3,44,51);return{schemaVersion:2,id:`${input.seed}-${Date.now()}`,seed:input.seed,revision:0,status:"active",phase:"season",player:{name:input.name.trim().slice(0,40),shirtNumber:clamp(input.shirtNumber,1,99),nationality:input.nationality,position:input.position,age:15,overall,potential:clamp(72+talentBoost[talentBand]*2+random(input.seed+5)()*8,70,97),talentBand,fitness:92,morale:75,reputation:3,familyBond:80},year:input.year??new Date().getFullYear(),club:input.club,seasons:[],offers:[],totals:{...EMPTY},legacyScore:0,unlockedAchievementIds:[]}}
-function makeOffers(state:CareerState,clubs:CareerClub[],rand:()=>number):TransferOffer[]{const p=state.player;const wantsHome=p.familyBond<42;return clubs.filter(c=>c.id!==state.club.id).filter(c=>wantsHome?c.country===p.nationality:c.level<=p.overall+16&&c.level>=p.overall-12).filter(c=>rand()<(c.sellingProfile/150+.2)).sort((a,b)=>{const homeA=a.country===p.nationality?10:0,homeB=b.country===p.nationality?10:0;return(b.youthOpportunity+homeB)-(a.youthOpportunity+homeA)}).slice(0,3).map((club,i)=>({id:`${state.year}-${club.id}-${i}`,club,role:roleFor(p.overall,club,p.talentBand,p.age),kind:p.age<=21&&club.level>p.overall+9?"loan":"transfer",familyReturn:club.country===p.nationality&&state.club.country!==p.nationality}))}
-export function simulateSeason(state:CareerState,focus:SeasonFocus,clubs:CareerClub[]):CareerState{if(state.status!=="active"||state.phase!=="season")return state;const rand=random(state.seed+state.year*97+state.revision*7919),p=state.player,club=state.club;const role=roleFor(p.overall,club,p.talentBand,p.age);const injuryRisk=Math.max(.025,.13-p.fitness/1200-(focus==="recovery"?.045:0));const injuredGames=rand()<injuryRisk?clamp(2+rand()*(p.age>33?13:8),2,16):0;const familyRisk=club.country!==p.nationality&&p.familyBond<58&&rand()<.2;const event:CareerSeason["event"]=familyRisk?"family":injuredGames?"injury":rand()<.1?"breakthrough":rand()<.17?"mentor":rand()<.24?"competition":"none";const opportunity=(club.youthOpportunity-50)*7+(focus==="team"?240:0)+(p.talentBand==="generational"?400:p.talentBand==="crack"?250:0);const minutes=clamp(roleMinutes[role]+opportunity-injuredGames*75+(rand()-.5)*350,0,3420);const appearances=clamp(minutes/82,0,38);const performanceBase=.72+rand()*.42+(p.overall-club.level)/100;const goals=clamp(appearances*attack[p.position]*performanceBase,0,50);const assists=clamp(appearances*creative[p.position]*performanceBase,0,30);const cleanSheets=attack[p.position]<=.12?clamp(appearances*(.18+club.level/300)*(.7+rand()*.3),0,24):0;const rating=Math.round((5.7+(p.overall-48)/35+rand()*.6)*10)/10;const titleChance=Math.max(.02,(club.level-60)/130+(focus==="team"?.05:0));const trophies=rand()<titleChance?[rand()<.32?"continental":rand()<.62?"cup":"league"]:[];const selected=p.reputation>34&&p.overall>69&&rand()<Math.min(.88,.2+p.reputation/130);const internationalCaps=selected?clamp(2+rand()*9,1,12):0,internationalGoals=selected?clamp(internationalCaps*attack[p.position]*rand(),0,10):0;const minutesFactor=Math.min(1.25,minutes/1800);const ageCurve=p.age<=18?3.5:p.age<=22?2.4:p.age<=27?1:p.age<=31?.3:p.age<=35?-.7:-1.7;const formation=(club.academyQuality-60)/22;const focusGrowth=focus==="development"?1.2:focus==="recovery"&&p.age>30?.7:0;const stalled=minutes<500&&p.age>=17?-2.2:minutes<1000&&p.age>=18?-1:0;const rawGrowth=ageCurve+formation*minutesFactor+focusGrowth+talentBoost[p.talentBand]/4+stalled+(event==="breakthrough"?1.5:0)-(injuredGames>9?1:0);const growth=clamp(p.overall>=p.potential?Math.min(0,rawGrowth):rawGrowth,-3,8);const season:CareerSeason={year:state.year,age:p.age,club,overall:p.overall,role,minutes,appearances,goals,assists,cleanSheets,titles:trophies.length,internationalCaps,internationalGoals,rating,injuredGames,trophies,selected,event,growth};const totals=Object.fromEntries(Object.keys(EMPTY).map(k=>[k,state.totals[k as keyof CareerTotals]+season[k as keyof CareerTotals]])) as unknown as CareerTotals;const overall=clamp(p.overall+growth,35,p.age>=38?92:99),reputation=clamp(p.reputation+(minutes/500+goals*1.2+assists+trophies.length*9)*leagueWeight[club.leagueBand]+(focus==="visibility"?6:0),0,100);const legacyScore=Math.max(0,Math.round((totals.appearances+totals.goals*3+totals.assists*2+totals.cleanSheets*2+totals.titles*120+totals.internationalCaps*4+totals.internationalGoals*5+Math.max(0,overall-50)*10)*leagueWeight[club.leagueBand]));const age=p.age+1,familyBond=clamp(p.familyBond+(club.country===p.nationality?8:focus==="family"?10:-4)-(event==="family"?10:0),0,100);const base:CareerState={...state,revision:state.revision+1,year:state.year+1,seasons:[...state.seasons,season],totals,legacyScore,player:{...p,age,overall,reputation,familyBond,fitness:clamp(84-injuredGames+(focus==="recovery"?12:0),35,100),morale:clamp(65+trophies.length*12+rating*2+(focus==="family"?8:0)-(event==="family"?10:0),30,100)}};if(age>=40)return retireCareer(base);const offers=makeOffers(base,clubs,rand);return{...base,offers,phase:offers.length?"offers":"season"}}
-export function resolveOffer(state:CareerState,offerId:string|null):CareerState{if(state.phase!=="offers")return state;const offer=state.offers.find(x=>x.id===offerId);return{...state,revision:state.revision+1,club:offer?.club??state.club,offers:[],phase:"season",player:{...state.player,morale:clamp(state.player.morale+(offer?5:1),0,100),familyBond:clamp(state.player.familyBond+(offer?.familyReturn?25:0),0,100)}}}
-export function retireCareer(state:CareerState):CareerState{return state.status==="retired"?state:{...state,revision:state.revision+1,status:"retired",phase:"retired",offers:[]}}
+import type {
+  CareerClub,
+  CareerPosition,
+  CareerRole,
+  CareerSeason,
+  CareerState,
+  CareerTotals,
+  CreateCareerInput,
+  SeasonFocus,
+  TalentBand,
+  TransferOffer,
+} from "./types.ts";
+const EMPTY: CareerTotals = {
+  appearances: 0,
+  goals: 0,
+  assists: 0,
+  cleanSheets: 0,
+  titles: 0,
+  internationalCaps: 0,
+  internationalGoals: 0,
+};
+const clamp = (v: number, min: number, max: number) =>
+  Math.min(max, Math.max(min, Math.round(v)));
+function random(seed: number) {
+  let v = seed | 0;
+  return () => {
+    v = Math.imul(v ^ (v >>> 15), 1 | v);
+    v ^= v + Math.imul(v ^ (v >>> 7), 61 | v);
+    return ((v ^ (v >>> 14)) >>> 0) / 4294967296;
+  };
+}
+const attack: Record<CareerPosition, number> = {
+  centre_back: 0.07,
+  right_back: 0.1,
+  left_back: 0.1,
+  holding_midfielder: 0.12,
+  central_midfielder: 0.25,
+  attacking_midfielder: 0.5,
+  right_winger: 0.62,
+  left_winger: 0.62,
+  second_striker: 0.78,
+  striker: 1,
+};
+const creative: Record<CareerPosition, number> = {
+  centre_back: 0.04,
+  right_back: 0.18,
+  left_back: 0.18,
+  holding_midfielder: 0.18,
+  central_midfielder: 0.38,
+  attacking_midfielder: 0.52,
+  right_winger: 0.4,
+  left_winger: 0.4,
+  second_striker: 0.27,
+  striker: 0.13,
+};
+const leagueWeight = {
+  europe_1: 1.3,
+  europe_2: 1.18,
+  europe_3: 1.05,
+  europe_4: 0.88,
+  south_america_a: 1,
+  south_america_b: 0.82,
+};
+const talentBoost: Record<TalentBand, number> = {
+  generational: 9,
+  crack: 6,
+  high: 3,
+  normal: 0,
+};
+function drawTalent(seed: number): TalentBand {
+  const roll = random(seed)();
+  return roll < 0.025
+    ? "generational"
+    : roll < 0.12
+      ? "crack"
+      : roll < 0.36
+        ? "high"
+        : "normal";
+}
+function roleFor(
+  overall: number,
+  club: CareerClub,
+  talent: TalentBand,
+  age: number,
+): CareerRole {
+  const exceptional = age <= 19 ? talentBoost[talent] : 0;
+  const gap =
+    overall + exceptional - club.level - (club.squadCompetition - 70) / 12;
+  if (age <= 16 && gap < 0) return "academy";
+  if (gap < -8) return "prospect";
+  if (gap < -2) return "rotation";
+  if (gap < 7) return "starter";
+  return "star";
+}
+const roleMinutes: Record<CareerRole, number> = {
+  academy: 0,
+  prospect: 430,
+  rotation: 1200,
+  starter: 2450,
+  star: 3050,
+};
+export function createCareer(input: CreateCareerInput): CareerState {
+  const talentBand = drawTalent(input.seed);
+  const overall = clamp(46 + talentBoost[talentBand] / 3, 44, 51);
+  return {
+    schemaVersion: 2,
+    id: `${input.seed}-${Date.now()}`,
+    seed: input.seed,
+    revision: 0,
+    status: "active",
+    phase: "season",
+    player: {
+      name: input.name.trim().slice(0, 40),
+      shirtNumber: clamp(input.shirtNumber, 1, 99),
+      nationality: input.nationality,
+      position: input.position,
+      age: 15,
+      overall,
+      potential: clamp(
+        72 + talentBoost[talentBand] * 2 + random(input.seed + 5)() * 8,
+        70,
+        97,
+      ),
+      talentBand,
+      fitness: 92,
+      morale: 75,
+      reputation: 3,
+      familyBond: 80,
+    },
+    year: input.year ?? new Date().getFullYear(),
+    club: input.club,
+    seasons: [],
+    offers: [],
+    totals: { ...EMPTY },
+    legacyScore: 0,
+    unlockedAchievementIds: [],
+  };
+}
+function makeOffers(
+  state: CareerState,
+  clubs: CareerClub[],
+  rand: () => number,
+): TransferOffer[] {
+  const p = state.player;
+  const wantsHome = p.familyBond < 42;
+  return clubs
+    .filter((c) => c.id !== state.club.id)
+    .filter((c) =>
+      wantsHome
+        ? c.country === p.nationality
+        : c.level <= p.overall + 16 && c.level >= p.overall - 12,
+    )
+    .filter((c) => rand() < c.sellingProfile / 150 + 0.2)
+    .sort((a, b) => {
+      const homeA = a.country === p.nationality ? 10 : 0,
+        homeB = b.country === p.nationality ? 10 : 0;
+      return b.youthOpportunity + homeB - (a.youthOpportunity + homeA);
+    })
+    .slice(0, 3)
+    .map((club, i) => ({
+      id: `${state.year}-${club.id}-${i}`,
+      club,
+      role: roleFor(p.overall, club, p.talentBand, p.age),
+      kind: p.age <= 21 && club.level > p.overall + 9 ? "loan" : "transfer",
+      familyReturn:
+        club.country === p.nationality && state.club.country !== p.nationality,
+    }));
+}
+export function simulateSeason(
+  state: CareerState,
+  focus: SeasonFocus,
+  clubs: CareerClub[],
+): CareerState {
+  if (state.status !== "active" || state.phase !== "season") return state;
+  const rand = random(state.seed + state.year * 97 + state.revision * 7919),
+    p = state.player,
+    club = state.club;
+  const role = roleFor(p.overall, club, p.talentBand, p.age);
+  const injuryRisk = Math.max(
+    0.025,
+    0.13 - p.fitness / 1200 - (focus === "recovery" ? 0.045 : 0),
+  );
+  const injuredGames =
+    rand() < injuryRisk ? clamp(2 + rand() * (p.age > 33 ? 13 : 8), 2, 16) : 0;
+  const familyRisk =
+    club.country !== p.nationality && p.familyBond < 58 && rand() < 0.2;
+  const event: CareerSeason["event"] = familyRisk
+    ? "family"
+    : injuredGames
+      ? "injury"
+      : rand() < 0.1
+        ? "breakthrough"
+        : rand() < 0.17
+          ? "mentor"
+          : rand() < 0.24
+            ? "competition"
+            : "none";
+  const opportunity =
+    (club.youthOpportunity - 50) * 7 +
+    (focus === "team" ? 240 : 0) +
+    (p.talentBand === "generational"
+      ? 400
+      : p.talentBand === "crack"
+        ? 250
+        : 0);
+  const minutes = clamp(
+    roleMinutes[role] + opportunity - injuredGames * 75 + (rand() - 0.5) * 350,
+    0,
+    3420,
+  );
+  const appearances = clamp(minutes / 82, 0, 38);
+  const performanceBase = 0.72 + rand() * 0.42 + (p.overall - club.level) / 100;
+  const goals = clamp(
+    appearances * attack[p.position] * performanceBase,
+    0,
+    50,
+  );
+  const assists = clamp(
+    appearances * creative[p.position] * performanceBase,
+    0,
+    30,
+  );
+  const cleanSheets =
+    attack[p.position] <= 0.12
+      ? clamp(
+          appearances * (0.18 + club.level / 300) * (0.7 + rand() * 0.3),
+          0,
+          24,
+        )
+      : 0;
+  const rating =
+    Math.round((5.7 + (p.overall - 48) / 35 + rand() * 0.6) * 10) / 10;
+  const titleChance = Math.max(
+    0.02,
+    (club.level - 60) / 130 + (focus === "team" ? 0.05 : 0),
+  );
+  const trophies =
+    rand() < titleChance
+      ? [rand() < 0.32 ? "continental" : rand() < 0.62 ? "cup" : "league"]
+      : [];
+  const selected =
+    p.reputation > 34 &&
+    p.overall > 69 &&
+    rand() < Math.min(0.88, 0.2 + p.reputation / 130);
+  const internationalCaps = selected ? clamp(2 + rand() * 9, 1, 12) : 0,
+    internationalGoals = selected
+      ? clamp(internationalCaps * attack[p.position] * rand(), 0, 10)
+      : 0;
+  const minutesFactor = Math.min(1.25, minutes / 1800);
+  const ageCurve =
+    p.age <= 18
+      ? 3.5
+      : p.age <= 22
+        ? 2.4
+        : p.age <= 27
+          ? 1
+          : p.age <= 31
+            ? 0.3
+            : p.age <= 35
+              ? -0.7
+              : -1.7;
+  const formation = (club.academyQuality - 60) / 22;
+  const focusGrowth =
+    focus === "development"
+      ? 1.2
+      : focus === "recovery" && p.age > 30
+        ? 0.7
+        : 0;
+  const stalled =
+    minutes < 500 && p.age >= 17
+      ? -2.2
+      : minutes < 1000 && p.age >= 18
+        ? -1
+        : 0;
+  const rawGrowth =
+    ageCurve +
+    formation * minutesFactor +
+    focusGrowth +
+    talentBoost[p.talentBand] / 4 +
+    stalled +
+    (event === "breakthrough" ? 1.5 : 0) -
+    (injuredGames > 9 ? 1 : 0);
+  const growth = clamp(
+    p.overall >= p.potential ? Math.min(0, rawGrowth) : rawGrowth,
+    -3,
+    8,
+  );
+  const season: CareerSeason = {
+    year: state.year,
+    age: p.age,
+    club,
+    overall: p.overall,
+    role,
+    minutes,
+    appearances,
+    goals,
+    assists,
+    cleanSheets,
+    titles: trophies.length,
+    internationalCaps,
+    internationalGoals,
+    rating,
+    injuredGames,
+    trophies,
+    selected,
+    event,
+    growth,
+  };
+  const totals = Object.fromEntries(
+    Object.keys(EMPTY).map((k) => [
+      k,
+      state.totals[k as keyof CareerTotals] + season[k as keyof CareerTotals],
+    ]),
+  ) as unknown as CareerTotals;
+  const overall = clamp(p.overall + growth, 35, p.age >= 38 ? 92 : 99),
+    reputation = clamp(
+      p.reputation +
+        (minutes / 500 + goals * 1.2 + assists + trophies.length * 9) *
+          leagueWeight[club.leagueBand] +
+        (focus === "visibility" ? 6 : 0),
+      0,
+      100,
+    );
+  const legacyScore = Math.max(
+    0,
+    Math.round(
+      (totals.appearances +
+        totals.goals * 3 +
+        totals.assists * 2 +
+        totals.cleanSheets * 2 +
+        totals.titles * 120 +
+        totals.internationalCaps * 4 +
+        totals.internationalGoals * 5 +
+        Math.max(0, overall - 50) * 10) *
+        leagueWeight[club.leagueBand],
+    ),
+  );
+  const age = p.age + 1,
+    familyBond = clamp(
+      p.familyBond +
+        (club.country === p.nationality ? 8 : focus === "family" ? 10 : -4) -
+        (event === "family" ? 10 : 0),
+      0,
+      100,
+    );
+  const base: CareerState = {
+    ...state,
+    revision: state.revision + 1,
+    year: state.year + 1,
+    seasons: [...state.seasons, season],
+    totals,
+    legacyScore,
+    player: {
+      ...p,
+      age,
+      overall,
+      reputation,
+      familyBond,
+      fitness: clamp(
+        84 - injuredGames + (focus === "recovery" ? 12 : 0),
+        35,
+        100,
+      ),
+      morale: clamp(
+        65 +
+          trophies.length * 12 +
+          rating * 2 +
+          (focus === "family" ? 8 : 0) -
+          (event === "family" ? 10 : 0),
+        30,
+        100,
+      ),
+    },
+  };
+  if (age >= 40) return retireCareer(base);
+  const offers = makeOffers(base, clubs, rand);
+  return { ...base, offers, phase: offers.length ? "offers" : "season" };
+}
+export function resolveOffer(
+  state: CareerState,
+  offerId: string | null,
+): CareerState {
+  if (state.phase !== "offers") return state;
+  const offer = state.offers.find((x) => x.id === offerId);
+  return {
+    ...state,
+    revision: state.revision + 1,
+    club: offer?.club ?? state.club,
+    offers: [],
+    phase: "season",
+    player: {
+      ...state.player,
+      morale: clamp(state.player.morale + (offer ? 5 : 1), 0, 100),
+      familyBond: clamp(
+        state.player.familyBond + (offer?.familyReturn ? 25 : 0),
+        0,
+        100,
+      ),
+    },
+  };
+}
+export function retireCareer(state: CareerState): CareerState {
+  return state.status === "retired"
+    ? state
+    : {
+        ...state,
+        revision: state.revision + 1,
+        status: "retired",
+        phase: "retired",
+        offers: [],
+      };
+}
