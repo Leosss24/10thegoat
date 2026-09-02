@@ -17,6 +17,7 @@ import {
   retireCareer,
   simulateSeason,
 } from "../../lib/career/engine";
+import { decisionFor } from "../../lib/career/decisions";
 import { clearCareer, loadCareer, saveCareer } from "../../lib/career/storage";
 import type {
   CareerClub,
@@ -73,6 +74,8 @@ const copy = {
     balancedPlan: "Entrenamiento equilibrado",
     recoveryPlan: "Cuidar el cuerpo",
     coachReport: "INFORME DEL ENTRENADOR",
+    decision: "DECISIÓN DE TEMPORADA",
+    competitions: "COMPETICIONES",
     offers: "OFERTAS Y CESIONES",
     stay: "Quedarme",
     sign: "Aceptar",
@@ -161,6 +164,8 @@ const copy = {
     balancedPlan: "Balanced training",
     recoveryPlan: "Protect the body",
     coachReport: "COACH REPORT",
+    decision: "SEASON DECISION",
+    competitions: "COMPETITIONS",
     offers: "OFFERS AND LOANS",
     stay: "Stay",
     sign: "Accept",
@@ -249,6 +254,8 @@ const copy = {
     balancedPlan: "Entraînement équilibré",
     recoveryPlan: "Préserver le corps",
     coachReport: "RAPPORT DE L’ENTRAÎNEUR",
+    decision: "DÉCISION DE SAISON",
+    competitions: "COMPÉTITIONS",
     offers: "OFFRES ET PRÊTS",
     stay: "Rester",
     sign: "Accepter",
@@ -337,6 +344,7 @@ export default function CareerModeGame() {
     [ready, setReady] = useState(false),
     [focus, setFocus] = useState<SeasonFocus>("development"),
     [training, setTraining] = useState<TrainingFocus>("balanced"),
+    [decisionChoice,setDecisionChoice]=useState("no"),
     [notice, setNotice] = useState("");
   const [form, setForm] = useState({
     name: "",
@@ -359,6 +367,7 @@ export default function CareerModeGame() {
     if (starters.length && !starters.some((x) => x.id === form.clubId))
       setForm((x) => ({ ...x, clubId: starters[0].id }));
   }, [starters, form.clubId]);
+  useEffect(()=>setDecisionChoice("no"),[career?.year]);
   function commit(next: CareerState) {
     const final = {
       ...next,
@@ -484,7 +493,7 @@ export default function CareerModeGame() {
       </section>
     );
   const p = career.player,
-    last = career.seasons.at(-1);
+    last = career.seasons.at(-1),dilemma=decisionFor(career);
   return (
     <section className="career-panel career-panel--dashboard" aria-label={c.season}>
       <div className="career-scoreboard">
@@ -524,7 +533,7 @@ export default function CareerModeGame() {
         <div className="career-legacy-strip"><span>{c.legacy}</span><strong>{career.legacyScore}</strong></div>
       </div>
       {career.phase === "season" && (
-        <div className="career-action">
+        <><div className="career-decision"><small>{c.decision}</small><h3>{dilemma.title}</h3><div>{dilemma.choices.map(choice=><button key={choice.id} className={decisionChoice===choice.id?"is-selected":""} onClick={()=>setDecisionChoice(choice.id)}>{choice.label}{choice.riskText&&<span>{choice.riskText}{choice.chance!==undefined?` · ${choice.chance}% favorable`:""}</span>}</button>)}</div></div><div className="career-action">
           <label>
             {c.training}
             <select value={training} onChange={(e) => setTraining(e.target.value as TrainingFocus)}>
@@ -550,7 +559,7 @@ export default function CareerModeGame() {
           </label>
           <button
             className="career-primary"
-            onClick={() => commit(simulateSeason(career, focus, clubs, training))}
+            onClick={() => commit(simulateSeason(career, focus, clubs, training,decisionChoice))}
           >
             {c.simulate}
           </button>
@@ -562,7 +571,7 @@ export default function CareerModeGame() {
               {c.retire}
             </button>
           )}
-        </div>
+        </div></>
       )}
       {career.phase === "offers" && (
         <div className="career-offers">
@@ -636,6 +645,8 @@ export default function CareerModeGame() {
             <strong>{c.coachReport}</strong>
             <p>{seasonReport(locale, last)}</p>
           </div>
+          {last.decision&&<div className={`career-season-result ${last.decision.success?"is-success":"is-risk"}`}><strong>{last.decision.title}</strong><p>{last.decision.choice} · {last.decision.outcome}{last.decision.chance!==undefined?` (${last.decision.chance}% favorable)`:""}</p></div>}
+          {!!last.competitions?.length&&<div className="career-competitions"><strong>{c.competitions}</strong>{last.competitions.map(x=><span key={x.name}>{x.name}<b>{x.stage}</b></span>)}</div>}
         </div>
       )}
       <div className="career-columns">

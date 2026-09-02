@@ -3,6 +3,8 @@ import test from "node:test";
 import { evaluateCareerAchievements } from "../lib/achievements.ts";
 import { calculateOverall, createCareer, resolveOffer, simulateSeason } from "../lib/career/engine.ts";
 import { parseCareer } from "../lib/career/storage.ts";
+import { CAREER_DECISIONS } from "../lib/career/decisions.ts";
+import type { PlayerAttributes } from "../lib/career/types.ts";
 
 const club = (id:string, country:string, level:number, academyQuality=80, youthOpportunity=80) => ({ id, name:id, country, level, academyQuality, youthOpportunity, squadCompetition:70, sellingProfile:80, prestige:"standard" as const, leagueBand:"europe_2" as const });
 const FALLBACK_CLUBS = [club("academy","España",52,92,92),club("blue","Inglaterra",61),club("elite","Francia",73)];
@@ -59,4 +61,15 @@ test("every player starts at 15 and low minutes can stall progression", () => {
   assert.equal(state.player.age,15);
   assert.ok(next.seasons[0].minutes<1000);
   assert.equal(next.seasons[0].role,"academy");
+});
+
+test("career world includes 50 decisions, competitions and veteran decline",()=>{
+  assert.equal(CAREER_DECISIONS.length,50);
+  const young=simulateSeason(createCareer(input),"team",FALLBACK_CLUBS,"balanced","yes");
+  assert.ok(young.seasons[0].competitions?.some(x=>x.kind==="domestic"));
+  assert.ok(young.seasons[0].decision);
+  const base=createCareer(input);
+  const veteran={...base,player:{...base.player,age:34,overall:93,potential:97,blocks:{technical:99,physical:99,mentality:99,form:90},attributes:Object.fromEntries(Object.keys(base.player.attributes).map(k=>[k,99])) as PlayerAttributes}};
+  const next=simulateSeason(veteran,"recovery",FALLBACK_CLUBS,"recovery","no");
+  assert.ok(next.player.overall<=93);
 });

@@ -1,5 +1,6 @@
 import type {
   CareerClub,
+  CompetitionResult,
   CareerPosition,
   CareerRole,
   CareerSeason,
@@ -13,6 +14,7 @@ import type {
   TrainingFocus,
   TransferOffer,
 } from "./types.ts";
+import { decisionFor } from "./decisions.ts";
 const EMPTY: CareerTotals = {
   appearances: 0,
   goals: 0,
@@ -146,7 +148,7 @@ function evolveAttributes(attributes: PlayerAttributes, growth: number, training
   return Object.fromEntries(Object.entries(attributes).map(([key, value]) => {
     const groupBoost = training === "balanced" ? .35 : training === "technical" && technical.has(key) ? 1.25 : training === "physical" && physical.has(key) ? 1.25 : training === "mental" && mental.has(key) ? 1.25 : training === "recovery" && mental.has(key) ? .25 : .08;
     const experience = mental.has(key) ? minutes / 2600 + (selected ? .45 : 0) + club.level / 240 : technical.has(key) ? club.academyQuality / 115 : .35;
-    const ageEffect = physical.has(key) && age > 30 ? -(age - 30) * .16 : mental.has(key) && age >= 24 ? .45 : 0;
+    const ageEffect = physical.has(key) && age > 29 ? -(age - 29) * .62 : mental.has(key) && age >= 24 ? .35 : 0;
     const stability = mental.has(key) ? (familyBond - 50) / 180 : 0;
     const delta = growth * .28 + groupBoost + experience + ageEffect + stability + (rand() - .5) * .8;
     return [key, clamp(value + delta, 25, 99)];
@@ -223,18 +225,15 @@ function makeOffers(
 ): TransferOffer[] {
   const p = state.player;
   const wantsHome = p.familyBond < 42;
+  const last=state.seasons.at(-1);
+  const prestigeBonus=(c:CareerClub)=>c.prestige.includes("premium")?16:c.prestige.includes("elite")?9:0;
   return clubs
     .filter((c) => c.id !== state.club.id)
-    .filter((c) =>
-      wantsHome
-        ? c.country === p.nationality
-        : c.level <= p.overall + 16 && c.level >= p.overall - 12,
-    )
-    .filter((c) => rand() < c.sellingProfile / 150 + 0.2)
+    .filter((c) => wantsHome ? c.country === p.nationality : c.level >= p.overall-(p.age>=33?10:15) && c.level <= p.overall+8)
+    .filter((c) => p.overall>=90&&c.prestige.includes("premium") ? true : rand() < Math.min(.94,.28+p.reputation/180+(last?.rating??6)/20-(p.age>=36?.14:0)))
     .sort((a, b) => {
-      const homeA = a.country === p.nationality ? 10 : 0,
-        homeB = b.country === p.nationality ? 10 : 0;
-      return b.youthOpportunity + homeB - (a.youthOpportunity + homeA);
+      const score=(c:CareerClub)=>prestigeBonus(c)+c.level*1.4+Math.max(0,8-Math.abs(c.level-p.overall))*2+(c.country===p.nationality?5:0)+(last?.trophies.includes("continental")?8:0)+rand()*8;
+      return score(b)-score(a);
     })
     .slice(0, 3)
     .map((club, i) => ({
@@ -246,11 +245,21 @@ function makeOffers(
         club.country === p.nationality && state.club.country !== p.nationality,
     }));
 }
+function competitionResults(club:CareerClub,selected:boolean,year:number,overall:number,rand:()=>number){
+  const strength=club.level+Math.max(-4,Math.min(6,(overall-club.level)/2));
+  const champion=(difficulty:number)=>rand()<Math.max(.015,(strength-difficulty)/85+.08);
+  const leagueChampion=champion(76),cupChampion=champion(73);
+  const results:CompetitionResult[]=[{name:"Liga nacional",stage:leagueChampion?"Campeón":`Posición ${Math.max(1,Math.round(13-(strength-65)/3+rand()*6))}`,champion:leagueChampion,kind:"domestic"},{name:"Copa nacional",stage:cupChampion?"Campeón":rand()<.5?"Semifinales":"Cuartos de final",champion:cupChampion,kind:"cup"}];
+  if(club.level>=80||club.prestige!=="standard"){const won=champion(88);const european=club.leagueBand.startsWith("europe");const name=european?(club.level>=88||club.prestige==="premium_europe"?"Champions League":club.level>=83?"Europa League":"Conference League"):"Copa Libertadores";results.push({name,stage:won?"Campeón":rand()<.42?"Semifinales":"Octavos de final",champion:won,kind:"continental" as const})}
+  if(selected&&year%4===2){const won=rand()<.13;results.push({name:"Torneo internacional de selecciones",stage:won?"Campeón":rand()<.5?"Semifinales":"Cuartos de final",champion:won,kind:"international" as const})}
+  return results;
+}
 export function simulateSeason(
   state: CareerState,
   focus: SeasonFocus,
   clubs: CareerClub[],
   training: TrainingFocus = "balanced",
+  decisionChoiceId = "no",
 ): CareerState {
   if (state.status !== "active" || state.phase !== "season") return state;
   const rand = random(state.seed + state.year * 97 + state.revision * 7919),
@@ -311,14 +320,6 @@ export function simulateSeason(
       : 0;
   const rating =
     Math.round((5.7 + (p.overall - 48) / 35 + rand() * 0.6) * 10) / 10;
-  const titleChance = Math.max(
-    0.02,
-    (club.level - 60) / 130 + (focus === "team" ? 0.05 : 0),
-  );
-  const trophies =
-    rand() < titleChance
-      ? [rand() < 0.32 ? "continental" : rand() < 0.62 ? "cup" : "league"]
-      : [];
   const selected =
     p.reputation > 34 &&
     p.overall > 69 &&
@@ -327,6 +328,8 @@ export function simulateSeason(
     internationalGoals = selected
       ? clamp(internationalCaps * attack[p.position] * rand(), 0, 10)
       : 0;
+  const competitions=competitionResults(club,selected,state.year,p.overall,rand);
+  const trophies=competitions.filter(x=>x.champion).map(x=>x.kind==="domestic"?"league":x.kind);
   const minutesFactor = Math.min(1.25, minutes / 1800);
   const ageCurve =
     p.age <= 18
@@ -376,10 +379,14 @@ export function simulateSeason(
   );
   const previousBlocks = p.blocks;
   const attributes = evolveAttributes(p.attributes, growth, training, p.age, minutes, selected, p.familyBond, club, rand);
-  const nextFitness = clamp(84 - injuredGames + (focus === "recovery" || training === "recovery" ? 12 : 0), 35, 100);
-  const nextMorale = clamp(65 + trophies.length * 12 + rating * 2 + (focus === "family" ? 8 : 0) - (event === "family" ? 10 : 0), 30, 100);
-  const nextFamilyBond = clamp(p.familyBond + (club.country === p.nationality ? 8 : focus === "family" ? 10 : -4) - (event === "family" ? 10 : 0), 0, 100);
-  const nextBlocks = calculateBlocks(attributes, nextFitness, nextMorale, nextFamilyBond, p.reputation, rating);
+  const dilemma=decisionFor(state),choice=dilemma.choices.find(x=>x.id===decisionChoiceId)??dilemma.choices[1];
+  const decisionSuccess=choice.chance===undefined||rand()<choice.chance/100,factor=decisionSuccess?1:-.75;
+  const effects=dilemma.id==="doping"&&choice.id==="yes"?(decisionSuccess?{physical:4}:{physical:2,form:-12,reputation:-35}):choice.effects;
+  const nextFitness = clamp(84 - injuredGames + (focus === "recovery" || training === "recovery" ? 12 : 0)+(effects.form??0)*factor, 35, 100);
+  const nextMorale = clamp(65 + trophies.length * 12 + rating * 2 + (focus === "family" ? 8 : 0) - (event === "family" ? 10 : 0)+(effects.form??0)*factor, 30, 100);
+  const nextFamilyBond = clamp(p.familyBond + (club.country === p.nationality ? 8 : focus === "family" ? 10 : -4) - (event === "family" ? 10 : 0)+(effects.family??0)*factor, 0, 100);
+  const calculatedBlocks=calculateBlocks(attributes,nextFitness,nextMorale,nextFamilyBond,p.reputation,rating);
+  const nextBlocks=Object.fromEntries(Object.entries(calculatedBlocks).map(([key,value])=>[key,clamp(value+((effects as Partial<PlayerBlocks>)[key as keyof PlayerBlocks]??0)*factor,1,99)])) as PlayerBlocks;
   const blockChanges = Object.fromEntries(Object.keys(nextBlocks).map(key => [key, nextBlocks[key as keyof PlayerBlocks] - previousBlocks[key as keyof PlayerBlocks]])) as PlayerBlocks;
   const season: CareerSeason = {
     year: state.year,
@@ -405,6 +412,8 @@ export function simulateSeason(
     blockChanges,
     training,
     focus,
+    competitions,
+    decision:{title:dilemma.title,choice:choice.label,outcome:choice.chance===undefined?"Decisión aplicada":decisionSuccess?"El riesgo salió a tu favor":"Las consecuencias negativas se hicieron realidad",success:decisionSuccess,chance:choice.chance},
   };
   const totals = Object.fromEntries(
     Object.keys(EMPTY).map((k) => [
@@ -412,12 +421,13 @@ export function simulateSeason(
       state.totals[k as keyof CareerTotals] + season[k as keyof CareerTotals],
     ]),
   ) as unknown as CareerTotals;
-  const overall = clamp(calculateOverall(nextBlocks, p.position), 35, p.age >= 38 ? 92 : 99),
+  const ageCap=p.age<33?99:Math.max(82,91-(p.age-34)*2+(p.talentBand==="generational"?2:p.talentBand==="crack"?1:0));
+  const overall = clamp(calculateOverall(nextBlocks, p.position), 35, ageCap),
     reputation = clamp(
       p.reputation +
         (minutes / 500 + goals * 1.2 + assists + trophies.length * 9) *
           leagueWeight[club.leagueBand] +
-        (focus === "visibility" ? 6 : 0),
+        (focus === "visibility" ? 6 : 0)+(effects.reputation??0)*factor,
       0,
       100,
     );
