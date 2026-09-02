@@ -23,6 +23,7 @@ import type {
   CareerPosition,
   CareerState,
   SeasonFocus,
+  TrainingFocus,
 } from "../../lib/career/types";
 const positions: CareerPosition[] = [
   "centre_back",
@@ -49,17 +50,27 @@ const copy = {
     season: "TEMPORADA",
     years: "años",
     overall: "MEDIA",
-    potential: "POTENCIAL",
+    technical: "TÉCNICA",
+    physical: "FÍSICO",
+    mentality: "MENTALIDAD",
+    formState: "ESTADO",
     reputation: "REPUTACIÓN",
     family: "FAMILIA",
     legacy: "LEGADO",
-    focus: "Plan de temporada",
+    training: "Plan de entrenamiento",
+    objective: "Objetivo de temporada",
     simulate: "Simular temporada",
     development: "Desarrollo",
     team: "Ganar minutos",
     visibility: "Visibilidad",
     recovery: "Recuperación",
     familyFocus: "Familia",
+    technicalPlan: "Pulir la técnica",
+    physicalPlan: "Mejorar físicamente",
+    mentalPlan: "Trabajar la mentalidad",
+    balancedPlan: "Entrenamiento equilibrado",
+    recoveryPlan: "Cuidar el cuerpo",
+    coachReport: "INFORME DEL ENTRENADOR",
     offers: "OFERTAS Y CESIONES",
     stay: "Quedarme",
     sign: "Aceptar",
@@ -125,17 +136,27 @@ const copy = {
     season: "SEASON",
     years: "years old",
     overall: "OVERALL",
-    potential: "POTENTIAL",
+    technical: "TECHNIQUE",
+    physical: "PHYSICAL",
+    mentality: "MENTALITY",
+    formState: "FORM",
     reputation: "REPUTATION",
     family: "FAMILY",
     legacy: "LEGACY",
-    focus: "Season plan",
+    training: "Training plan",
+    objective: "Season objective",
     simulate: "Simulate season",
     development: "Development",
     team: "Earn minutes",
     visibility: "Visibility",
     recovery: "Recovery",
     familyFocus: "Family",
+    technicalPlan: "Polish technique",
+    physicalPlan: "Improve physically",
+    mentalPlan: "Build mentality",
+    balancedPlan: "Balanced training",
+    recoveryPlan: "Protect the body",
+    coachReport: "COACH REPORT",
     offers: "OFFERS AND LOANS",
     stay: "Stay",
     sign: "Accept",
@@ -201,17 +222,27 @@ const copy = {
     season: "SAISON",
     years: "ans",
     overall: "NOTE",
-    potential: "POTENTIEL",
+    technical: "TECHNIQUE",
+    physical: "PHYSIQUE",
+    mentality: "MENTAL",
+    formState: "ÉTAT",
     reputation: "RÉPUTATION",
     family: "FAMILLE",
     legacy: "HÉRITAGE",
-    focus: "Plan de saison",
+    training: "Plan d’entraînement",
+    objective: "Objectif de saison",
     simulate: "Simuler la saison",
     development: "Progression",
     team: "Gagner du temps de jeu",
     visibility: "Visibilité",
     recovery: "Récupération",
     familyFocus: "Famille",
+    technicalPlan: "Affiner la technique",
+    physicalPlan: "Progresser physiquement",
+    mentalPlan: "Travailler le mental",
+    balancedPlan: "Entraînement équilibré",
+    recoveryPlan: "Préserver le corps",
+    coachReport: "RAPPORT DE L’ENTRAÎNEUR",
     offers: "OFFRES ET PRÊTS",
     stay: "Rester",
     sign: "Accepter",
@@ -299,6 +330,7 @@ export default function CareerModeGame() {
     [clubs, setClubs] = useState<CareerClub[]>(CAREER_CLUBS),
     [ready, setReady] = useState(false),
     [focus, setFocus] = useState<SeasonFocus>("development"),
+    [training, setTraining] = useState<TrainingFocus>("balanced"),
     [notice, setNotice] = useState("");
   const [form, setForm] = useState({
     name: "",
@@ -474,7 +506,10 @@ export default function CareerModeGame() {
       </div>
       <div className="career-metrics">
         <Metric label={c.overall} value={p.overall} />
-        <Metric label={c.potential} value={p.potential} />
+        <Metric label={c.technical} value={p.blocks.technical} trend={last?.blockChanges?.technical} />
+        <Metric label={c.physical} value={p.blocks.physical} trend={last?.blockChanges?.physical} />
+        <Metric label={c.mentality} value={p.blocks.mentality} trend={last?.blockChanges?.mentality} />
+        <Metric label={c.formState} value={p.blocks.form} trend={last?.blockChanges?.form} />
         <Metric label={c.reputation} value={p.reputation} />
         <Metric label={c.family} value={p.familyBond} />
         <Metric label={c.legacy} value={career.legacyScore} />
@@ -482,7 +517,17 @@ export default function CareerModeGame() {
       {career.phase === "season" && (
         <div className="career-action">
           <label>
-            {c.focus}
+            {c.training}
+            <select value={training} onChange={(e) => setTraining(e.target.value as TrainingFocus)}>
+              <option value="technical">{c.technicalPlan}</option>
+              <option value="physical">{c.physicalPlan}</option>
+              <option value="mental">{c.mentalPlan}</option>
+              <option value="balanced">{c.balancedPlan}</option>
+              <option value="recovery">{c.recoveryPlan}</option>
+            </select>
+          </label>
+          <label>
+            {c.objective}
             <select
               value={focus}
               onChange={(e) => setFocus(e.target.value as SeasonFocus)}
@@ -496,7 +541,7 @@ export default function CareerModeGame() {
           </label>
           <button
             className="career-primary"
-            onClick={() => commit(simulateSeason(career, focus, clubs))}
+            onClick={() => commit(simulateSeason(career, focus, clubs, training))}
           >
             {c.simulate}
           </button>
@@ -578,6 +623,10 @@ export default function CareerModeGame() {
             {c.event}: {c[last.event === "family" ? "familyEvent" : last.event]}{" "}
             · ⭐ {last.rating}
           </p>
+          <div className="career-coach-report">
+            <strong>{c.coachReport}</strong>
+            <p>{seasonReport(locale, last)}</p>
+          </div>
         </div>
       )}
       <div className="career-columns">
@@ -636,13 +685,33 @@ export default function CareerModeGame() {
     </section>
   );
 }
-function Metric({ label, value }: { label: string; value: number }) {
+function Metric({ label, value, trend }: { label: string; value: number; trend?: number }) {
   return (
     <div>
       <span>{label}</span>
-      <strong>{value}</strong>
+      <strong>{value} {trend !== undefined && <small className={trend > 0 ? "is-up" : trend < 0 ? "is-down" : ""}>{trend > 0 ? "↑" : trend < 0 ? "↓" : "→"}</small>}</strong>
     </div>
   );
+}
+function seasonReport(locale: "es" | "en" | "fr", season: NonNullable<CareerState["seasons"]>[number]) {
+  const changes = season.blockChanges;
+  const strongest = changes ? (Object.entries(changes).sort((a, b) => b[1] - a[1])[0]?.[0] ?? "technical") : "technical";
+  const blocks = {
+    es: { technical: "Ha dado pasos adelante con balón.", physical: "Su evolución física ha sido lo más destacado.", mentality: "Está interpretando mejor el juego.", form: "Su estado competitivo ha mejorado." },
+    en: { technical: "He has taken steps forward on the ball.", physical: "His physical development stood out most.", mentality: "He is reading the game better.", form: "His competitive form has improved." },
+    fr: { technical: "Il a progressé avec le ballon.", physical: "Son évolution physique a été remarquable.", mentality: "Il lit mieux le jeu.", form: "Son état compétitif s’est amélioré." },
+  } as const;
+  const legacy = { es: "El cuerpo técnico ha incorporado esta temporada al nuevo modelo de evaluación.", en: "The coaching staff has incorporated this season into the new evaluation model.", fr: "Le staff a intégré cette saison au nouveau modèle d’évaluation." } as const;
+  const context = season.injuredGames > 8
+    ? { es: "Las lesiones limitaron su continuidad.", en: "Injuries limited his continuity.", fr: "Les blessures ont limité sa continuité." }[locale]
+    : season.minutes < 700
+      ? { es: "La falta de minutos frenó su progresión.", en: "Limited minutes slowed his progress.", fr: "Le manque de minutes a freiné sa progression." }[locale]
+      : season.selected
+        ? { es: "La selección aceleró su madurez y exposición.", en: "International football accelerated his maturity and exposure.", fr: "La sélection a accéléré sa maturité et son exposition." }[locale]
+        : season.titles > 0
+          ? { es: "El éxito colectivo reforzó su confianza.", en: "Team success strengthened his confidence.", fr: "Le succès collectif a renforcé sa confiance." }[locale]
+          : { es: "Los minutos disputados consolidaron su desarrollo.", en: "Playing time consolidated his development.", fr: "Le temps de jeu a consolidé son développement." }[locale];
+  return `${changes ? blocks[locale][strongest as keyof typeof blocks.es] : legacy[locale]} ${context}`;
 }
 function Stat({ label, value }: { label: string; value: number }) {
   return (

@@ -16,6 +16,17 @@ test("a season is deterministic and stays inside domain bounds", () => {
   assert.equal(first.player.age, 16);
   assert.ok(first.player.overall >= 35 && first.player.overall <= 99);
   assert.ok(first.legacyScore >= 0);
+  assert.ok(first.player.blocks.technical >= 1 && first.player.blocks.technical <= 99);
+  assert.ok(first.player.blocks.form >= 1 && first.player.blocks.form <= 99);
+  assert.ok(first.seasons[0].blockChanges);
+});
+
+test("training changes hidden attributes without exposing potential as a block", () => {
+  const state = createCareer(input);
+  const next = simulateSeason(state, "development", FALLBACK_CLUBS, "technical");
+  assert.notDeepEqual(next.player.attributes, state.player.attributes);
+  assert.deepEqual(Object.keys(next.player.blocks).sort(), ["form", "mentality", "physical", "technical"]);
+  assert.equal("potential" in next.player.blocks, false);
 });
 
 test("career cannot continue beyond 40", () => {

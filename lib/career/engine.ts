@@ -6,8 +6,11 @@ import type {
   CareerState,
   CareerTotals,
   CreateCareerInput,
+  PlayerAttributes,
+  PlayerBlocks,
   SeasonFocus,
   TalentBand,
+  TrainingFocus,
   TransferOffer,
 } from "./types.ts";
 const EMPTY: CareerTotals = {
@@ -21,6 +24,8 @@ const EMPTY: CareerTotals = {
 };
 const clamp = (v: number, min: number, max: number) =>
   Math.min(max, Math.max(min, Math.round(v)));
+const mean = (...values: number[]) =>
+  values.reduce((sum, value) => sum + value, 0) / values.length;
 function random(seed: number) {
   let v = seed | 0;
   return () => {
@@ -77,6 +82,60 @@ function drawTalent(seed: number): TalentBand {
         ? "high"
         : "normal";
 }
+function initialAttributes(overall: number, seed: number): PlayerAttributes {
+  const rand = random(seed + 41);
+  const value = (bias = 0) => clamp(overall + bias + (rand() - 0.5) * 10, 35, 99);
+  return {
+    finishing: value(), passing: value(1), dribbling: value(), control: value(1),
+    tackling: value(), marking: value(), pace: value(2), strength: value(-2),
+    stamina: value(), agility: value(2), vision: value(1), concentration: value(-1),
+    determination: value(), tactics: value(-2), professionalism: value(),
+  };
+}
+export function calculateBlocks(
+  attributes: PlayerAttributes,
+  fitness: number,
+  morale: number,
+  familyBond: number,
+  reputation: number,
+  rating = 6.2,
+): PlayerBlocks {
+  return {
+    technical: clamp(mean(attributes.finishing, attributes.passing, attributes.dribbling, attributes.control, attributes.tackling, attributes.marking), 1, 99),
+    physical: clamp(mean(attributes.pace, attributes.strength, attributes.stamina, attributes.agility), 1, 99),
+    mentality: clamp(mean(attributes.vision, attributes.concentration, attributes.determination, attributes.tactics, attributes.professionalism), 1, 99),
+    form: clamp(fitness * .34 + morale * .31 + familyBond * .14 + Math.min(100, reputation + 25) * .08 + rating * 2.1, 1, 99),
+  };
+}
+export function hydrateCareer(state: CareerState): CareerState {
+  const legacyPlayer = state.player as CareerState["player"] & { attributes?: PlayerAttributes; blocks?: PlayerBlocks };
+  const looksLikeCappedLegacyMigration = legacyPlayer.attributes && legacyPlayer.blocks && state.seasons.length > 0 && legacyPlayer.overall > 70 && Math.max(legacyPlayer.blocks.technical, legacyPlayer.blocks.physical, legacyPlayer.blocks.mentality) <= 65;
+  if (legacyPlayer.attributes && legacyPlayer.blocks && !looksLikeCappedLegacyMigration) return state;
+  const attributes = looksLikeCappedLegacyMigration
+    ? Object.fromEntries(Object.entries(legacyPlayer.attributes!).map(([key, value]) => [key, clamp(value + legacyPlayer.overall - 64, 25, 99)])) as PlayerAttributes
+    : legacyPlayer.attributes ?? initialAttributes(legacyPlayer.overall, state.seed);
+  return {
+    ...state,
+    player: {
+      ...legacyPlayer,
+      attributes,
+      blocks: calculateBlocks(attributes, legacyPlayer.fitness, legacyPlayer.morale, legacyPlayer.familyBond, legacyPlayer.reputation),
+    },
+  };
+}
+function evolveAttributes(attributes: PlayerAttributes, growth: number, training: TrainingFocus, age: number, minutes: number, selected: boolean, familyBond: number, club: CareerClub, rand: () => number): PlayerAttributes {
+  const technical = new Set(["finishing", "passing", "dribbling", "control", "tackling", "marking"]);
+  const physical = new Set(["pace", "strength", "stamina", "agility"]);
+  const mental = new Set(["vision", "concentration", "determination", "tactics", "professionalism"]);
+  return Object.fromEntries(Object.entries(attributes).map(([key, value]) => {
+    const groupBoost = training === "balanced" ? .35 : training === "technical" && technical.has(key) ? 1.25 : training === "physical" && physical.has(key) ? 1.25 : training === "mental" && mental.has(key) ? 1.25 : training === "recovery" && mental.has(key) ? .25 : .08;
+    const experience = mental.has(key) ? minutes / 2600 + (selected ? .45 : 0) + club.level / 240 : technical.has(key) ? club.academyQuality / 115 : .35;
+    const ageEffect = physical.has(key) && age > 30 ? -(age - 30) * .16 : mental.has(key) && age >= 24 ? .45 : 0;
+    const stability = mental.has(key) ? (familyBond - 50) / 180 : 0;
+    const delta = growth * .28 + groupBoost + experience + ageEffect + stability + (rand() - .5) * .8;
+    return [key, clamp(value + delta, 25, 99)];
+  })) as PlayerAttributes;
+}
 function roleFor(
   overall: number,
   club: CareerClub,
@@ -102,6 +161,8 @@ const roleMinutes: Record<CareerRole, number> = {
 export function createCareer(input: CreateCareerInput): CareerState {
   const talentBand = drawTalent(input.seed);
   const overall = clamp(46 + talentBoost[talentBand] / 3, 44, 51);
+  const attributes = initialAttributes(overall, input.seed);
+  const blocks = calculateBlocks(attributes, 92, 75, 80, 3);
   return {
     schemaVersion: 2,
     id: `${input.seed}-${Date.now()}`,
@@ -126,6 +187,8 @@ export function createCareer(input: CreateCareerInput): CareerState {
       morale: 75,
       reputation: 3,
       familyBond: 80,
+      attributes,
+      blocks,
     },
     year: input.year ?? new Date().getFullYear(),
     club: input.club,
@@ -170,6 +233,7 @@ export function simulateSeason(
   state: CareerState,
   focus: SeasonFocus,
   clubs: CareerClub[],
+  training: TrainingFocus = "balanced",
 ): CareerState {
   if (state.status !== "active" || state.phase !== "season") return state;
   const rand = random(state.seed + state.year * 97 + state.revision * 7919),
@@ -266,6 +330,12 @@ export function simulateSeason(
       : focus === "recovery" && p.age > 30
         ? 0.7
         : 0;
+  const trainingGrowth = training === "balanced" ? .4 : training === "recovery" ? .15 : .75;
+  const contextGrowth =
+    (p.morale - 65) / 120 +
+    (p.familyBond - 50) / 220 +
+    Math.min(80, p.reputation) / 320 +
+    (selected ? .35 : 0);
   const stalled =
     minutes < 500 && p.age >= 17
       ? -2.2
@@ -276,6 +346,8 @@ export function simulateSeason(
     ageCurve +
     formation * minutesFactor +
     focusGrowth +
+    trainingGrowth +
+    contextGrowth +
     talentBoost[p.talentBand] / 4 +
     stalled +
     (event === "breakthrough" ? 1.5 : 0) -
@@ -285,6 +357,13 @@ export function simulateSeason(
     -3,
     8,
   );
+  const previousBlocks = p.blocks;
+  const attributes = evolveAttributes(p.attributes, growth, training, p.age, minutes, selected, p.familyBond, club, rand);
+  const nextFitness = clamp(84 - injuredGames + (focus === "recovery" || training === "recovery" ? 12 : 0), 35, 100);
+  const nextMorale = clamp(65 + trophies.length * 12 + rating * 2 + (focus === "family" ? 8 : 0) - (event === "family" ? 10 : 0), 30, 100);
+  const nextFamilyBond = clamp(p.familyBond + (club.country === p.nationality ? 8 : focus === "family" ? 10 : -4) - (event === "family" ? 10 : 0), 0, 100);
+  const nextBlocks = calculateBlocks(attributes, nextFitness, nextMorale, nextFamilyBond, p.reputation, rating);
+  const blockChanges = Object.fromEntries(Object.keys(nextBlocks).map(key => [key, nextBlocks[key as keyof PlayerBlocks] - previousBlocks[key as keyof PlayerBlocks]])) as PlayerBlocks;
   const season: CareerSeason = {
     year: state.year,
     age: p.age,
@@ -305,6 +384,10 @@ export function simulateSeason(
     selected,
     event,
     growth,
+    blocks: nextBlocks,
+    blockChanges,
+    training,
+    focus,
   };
   const totals = Object.fromEntries(
     Object.keys(EMPTY).map((k) => [
@@ -335,14 +418,7 @@ export function simulateSeason(
         leagueWeight[club.leagueBand],
     ),
   );
-  const age = p.age + 1,
-    familyBond = clamp(
-      p.familyBond +
-        (club.country === p.nationality ? 8 : focus === "family" ? 10 : -4) -
-        (event === "family" ? 10 : 0),
-      0,
-      100,
-    );
+  const age = p.age + 1, familyBond = nextFamilyBond;
   const base: CareerState = {
     ...state,
     revision: state.revision + 1,
@@ -356,20 +432,10 @@ export function simulateSeason(
       overall,
       reputation,
       familyBond,
-      fitness: clamp(
-        84 - injuredGames + (focus === "recovery" ? 12 : 0),
-        35,
-        100,
-      ),
-      morale: clamp(
-        65 +
-          trophies.length * 12 +
-          rating * 2 +
-          (focus === "family" ? 8 : 0) -
-          (event === "family" ? 10 : 0),
-        30,
-        100,
-      ),
+      fitness: nextFitness,
+      morale: nextMorale,
+      attributes,
+      blocks: nextBlocks,
     },
   };
   if (age >= 40) return retireCareer(base);
