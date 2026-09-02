@@ -226,13 +226,13 @@ function makeOffers(
   const p = state.player;
   const wantsHome = p.familyBond < 42;
   const last=state.seasons.at(-1);
-  const prestigeBonus=(c:CareerClub)=>c.prestige.includes("premium")?16:c.prestige.includes("elite")?9:0;
+  const prestigeBonus=(c:CareerClub)=>c.careerCategory==="premium_international"?30:c.careerCategory==="elite_international"?22:c.careerCategory==="elite_national"?14:c.careerCategory==="national_b"?-6:c.prestige.includes("premium")?30:c.prestige.includes("elite")?22:4;
   return clubs
     .filter((c) => c.id !== state.club.id)
     .filter((c) => wantsHome ? c.country === p.nationality : c.level >= p.overall-(p.age>=33?10:15) && c.level <= p.overall+8)
     .filter((c) => p.overall>=90&&c.prestige.includes("premium") ? true : rand() < Math.min(.94,.28+p.reputation/180+(last?.rating??6)/20-(p.age>=36?.14:0)))
     .sort((a, b) => {
-      const score=(c:CareerClub)=>prestigeBonus(c)+c.level*1.4+Math.max(0,8-Math.abs(c.level-p.overall))*2+(c.country===p.nationality?5:0)+(last?.trophies.includes("continental")?8:0)+rand()*8;
+      const score=(c:CareerClub)=>prestigeBonus(c)+leagueWeight[c.leagueBand]*8+c.level*1.4+Math.max(0,8-Math.abs(c.level-p.overall))*2+(c.country===p.nationality?5:0)+(last?.trophies.includes("continental")?8:0)+rand()*8;
       return score(b)-score(a);
     })
     .slice(0, 3)

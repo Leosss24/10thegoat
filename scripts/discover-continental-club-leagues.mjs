@@ -7,13 +7,15 @@ const SOUTH_AMERICA=new Set(["Argentina","Bolivia","Brazil","Chile","Colombia","
 const excluded=/women|frauen|femeni|femin|u-?\d+|youth|junior|reserve|amateur|regional|cup|copa|play.?off|non league|intermediate|rfe[f]?|summer series|championship round|\bgroup\b/i;
 const second=/segunda|second|2\.?\s*(bundes|liga|division)|serie b|ligue 2|championship|challenger|eerste divisie|primera nacional|b nacional|division profesional.*b/i;
 const first=/premier|primera divis|first division|serie a|bundesliga$|ligue 1|la liga$|eredivisie|super lig|superliga|primeira liga|pro league|division profesional$|categoria primera a/i;
+const VERIFIED={Ireland:[357,358],Russia:[235,236],Chile:[265,266],Denmark:[119,120],Croatia:[210,211],Argentina:[128,129],Ecuador:[242,243],Bulgaria:[172,173],Cyprus:[318,319],Montenegro:[355,356]};
 const response=await fetch(`${API_BASE}/leagues?current=true`,{headers:{"x-apisports-key":apiKey}});
 if(!response.ok)throw new Error(`API-Football HTTP ${response.status}`);
 const payload=await response.json();if(Object.keys(payload.errors??{}).length)throw new Error(JSON.stringify(payload.errors));
 const leagues=(payload.response??[]).filter(x=>x.league?.type==="League"&&(EUROPE.has(x.country?.name)||SOUTH_AMERICA.has(x.country?.name))&&!excluded.test(x.league.name)).map(x=>{
   const tier=second.test(x.league.name)?2:first.test(x.league.name)?1:null;
+  const verified=VERIFIED[x.country.name];
   const current=x.seasons?.find(s=>s.current)??x.seasons?.at(-1);
-  return {country:x.country.name,continent:EUROPE.has(x.country.name)?"Europe":"South America",id:x.league.id,name:x.league.name,season:current?.year??null,tier,selected:false};
+  return {country:x.country.name,continent:EUROPE.has(x.country.name)?"Europe":"South America",id:x.league.id,name:x.league.name,season:current?.year??null,tier:verified?.includes(x.league.id)?verified.indexOf(x.league.id)+1:tier,selected:false};
 });
 for(const country of new Set(leagues.map(x=>x.country)))for(const tier of [1,2]){
   const candidates=leagues.filter(x=>x.country===country&&x.tier===tier).sort((a,b)=>(b.season??0)-(a.season??0)||a.name.length-b.name.length);

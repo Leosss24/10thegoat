@@ -119,6 +119,10 @@ const HARD_POOL_COUNTRIES = new Set([
   "France",
   "Argentina",
 ]);
+const PREMIUM_CLUBS=new Set(["real madrid","barcelona","manchester city","manchester united","liverpool","arsenal","chelsea","bayern munchen","borussia dortmund","juventus","inter","ac milan","paris saint germain","river plate","boca juniors","flamengo","palmeiras","corinthians","sao paulo","santos","gremio","penarol","nacional"]);
+const ELITE_INTERNATIONAL_CLUBS=new Set(["atletico de madrid","tottenham","napoli","roma","marseille","lyon","benfica","sporting cp","porto","ajax","psv","psv eindhoven","feyenoord","independiente","racing club","san lorenzo"]);
+const ELITE_NATIONAL_CLUBS=new Set(["athletic club","real sociedad","valencia","west ham","rennes","freiburg","az alkmaar","genk","argentinos juniors","velez sarsfield","newells old boys","rosario central"]);
+function careerCategory(name,tier){const key=normalize(name);return PREMIUM_CLUBS.has(key)?"premium_international":ELITE_INTERNATIONAL_CLUBS.has(key)?"elite_international":ELITE_NATIONAL_CLUBS.has(key)?"elite_national":tier===2?"national_b":"national"}
 
 /* =========================================================
    TEMPORADA
@@ -875,6 +879,12 @@ async function main() {
 
           is_hard_player_pool:
             HARD_POOL_COUNTRIES.has(league.country) && league.tier === 1,
+
+          career_category:careerCategory(team.name,league.tier),
+          domestic_division:league.tier,
+          domestic_league_name:league.name,
+          domestic_league_external_id:String(league.id),
+          domestic_season_start_year:league.season??options.season,
 
           updated_at:
             new Date()

@@ -48,6 +48,11 @@ const copy = {
     academy: "Club formador",
     currentClub: "CLUB ACTUAL",
     nationalClub: "Club nacional",
+    premium_international: "Premium internacional",
+    elite_international: "Élite internacional",
+    elite_national: "Élite nacional",
+    national: "Nacional",
+    national_b: "Nacional B",
     start: "Comenzar formación",
     loading: "Preparando academias…",
     season: "TEMPORADA",
@@ -138,6 +143,11 @@ const copy = {
     academy: "Training club",
     currentClub: "CURRENT CLUB",
     nationalClub: "National club",
+    premium_international: "International Premium",
+    elite_international: "International Elite",
+    elite_national: "National Elite",
+    national: "National",
+    national_b: "National B",
     start: "Start development",
     loading: "Preparing academies…",
     season: "SEASON",
@@ -228,6 +238,11 @@ const copy = {
     academy: "Club formateur",
     currentClub: "CLUB ACTUEL",
     nationalClub: "Club national",
+    premium_international: "Premium international",
+    elite_international: "Élite internationale",
+    elite_national: "Élite nationale",
+    national: "National",
+    national_b: "National B",
     start: "Commencer la formation",
     loading: "Préparation des académies…",
     season: "SAISON",
@@ -516,7 +531,7 @@ export default function CareerModeGame() {
           <div>
             <small>{c.currentClub}</small>
             <strong>{career.club.name}</strong>
-            <span>{career.club.country} · {career.club.prestige === "standard" ? c.nationalClub : c[career.club.prestige]}</span>
+            <span>{career.club.country} · {career.club.careerCategory ? c[career.club.careerCategory] : career.club.prestige === "standard" ? c.nationalClub : c[career.club.prestige]}{career.club.leagueName?` · ${career.club.leagueName}`:""}</span>
           </div>
         </div>
       </div>

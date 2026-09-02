@@ -1,5 +1,5 @@
 import { supabase } from "../supabase.ts";
-import type { CareerClub, LeagueBand, Prestige } from "./types.ts";
+import type { CareerCategory, CareerClub, LeagueBand, Prestige } from "./types.ts";
 type Profile = Omit<CareerClub, "id" | "badgeUrl">;
 const p = (
   name: string,
@@ -400,13 +400,13 @@ export async function loadCareerClubs(): Promise<CareerClub[]> {
   if (!supabase) return CAREER_CLUBS;
   const { data, error } = await supabase
     .from("clubs")
-    .select("id,name,badge_url")
+    .select("id,name,badge_url,career_category,domestic_division,domestic_league_name,countries(name)")
     .eq("is_active", true)
     .eq("is_national_team", false)
     .limit(1000);
   if (error || !data) return CAREER_CLUBS;
   const rows = new Map(data.map((x) => [normalize(x.name), x]));
-  return CAREER_CLUBS.map((profile) => {
+  const curated=CAREER_CLUBS.map((profile) => {
     const key = normalize(profile.name);
     const row = [key, ...(CLUB_ALIASES[key] ?? [])]
       .map((alias) => rows.get(alias))
@@ -417,9 +417,23 @@ export async function loadCareerClubs(): Promise<CareerClub[]> {
           id: String(row.id),
           name: row.name,
           badgeUrl: row.badge_url,
+          careerCategory:row.career_category as CareerCategory,
+          domesticDivision:row.domestic_division,
+          leagueName:row.domestic_league_name,
         }
       : profile;
   });
+  const used=new Set(curated.map(x=>String(x.id)));
+  const countryNames:Record<string,string>={Spain:"España",England:"Inglaterra",Germany:"Alemania",Italy:"Italia",France:"Francia",Netherlands:"Países Bajos",Brazil:"Brasil"};
+  const categoryLevel:Record<CareerCategory,number>={premium_international:92,elite_international:86,elite_national:80,national:71,national_b:63};
+  const extras=data.filter(x=>!used.has(String(x.id))&&x.career_category).map((x):CareerClub=>{
+    const relation=x.countries as unknown as {name:string}|{name:string}[]|null;
+    const category=x.career_category as CareerCategory,rawCountry=Array.isArray(relation)?relation[0]?.name:relation?.name,country=rawCountry?(countryNames[rawCountry]??rawCountry):"";
+    const europe1=["España","Inglaterra"].includes(country),europe2=["Italia","Francia","Alemania"].includes(country),europe3=["Portugal","Países Bajos","Bélgica"].includes(country);
+    const leagueBand:LeagueBand=["Argentina","Brasil"].includes(country)?"south_america_a":["Uruguay","Chile","Colombia","Ecuador","Paraguay","Perú","Bolivia","Venezuela"].includes(country)?"south_america_b":europe1?"europe_1":europe2?"europe_2":europe3?"europe_3":"europe_4";
+    const level=categoryLevel[category];return{id:String(x.id),name:x.name,country,badgeUrl:x.badge_url,level,prestige:"standard",leagueBand,academyQuality:category==="national_b"?66:72,youthOpportunity:category==="national_b"?78:65,squadCompetition:level,sellingProfile:65,careerCategory:category,domesticDivision:x.domestic_division,leagueName:x.domestic_league_name};
+  });
+  return [...curated,...extras];
 }
 export const NATIONALITIES = [
   "Alemania",
