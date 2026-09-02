@@ -5,6 +5,7 @@ import { calculateOverall, createCareer, resolveOffer, simulateSeason } from "..
 import { parseCareer } from "../lib/career/storage.ts";
 import { CAREER_DECISIONS } from "../lib/career/decisions.ts";
 import type { PlayerAttributes } from "../lib/career/types.ts";
+import { starterClubsFor } from "../lib/career/clubs.ts";
 
 const club = (id:string, country:string, level:number, academyQuality=80, youthOpportunity=80) => ({ id, name:id, country, level, academyQuality, youthOpportunity, squadCompetition:70, sellingProfile:80, prestige:"standard" as const, leagueBand:"europe_2" as const });
 const FALLBACK_CLUBS = [club("academy","España",52,92,92),club("blue","Inglaterra",61),club("elite","Francia",73)];
@@ -72,4 +73,10 @@ test("career world includes 50 decisions, competitions and veteran decline",()=>
   const veteran={...base,player:{...base.player,age:34,overall:93,potential:97,blocks:{technical:99,physical:99,mentality:99,form:90},attributes:Object.fromEntries(Object.keys(base.player.attributes).map(k=>[k,99])) as PlayerAttributes}};
   const next=simulateSeason(veteran,"recovery",FALLBACK_CLUBS,"recovery","no");
   assert.ok(next.player.overall<=93);
+});
+
+test("a new career offers at most three home-country academies",()=>{
+  const options=starterClubsFor("España",[...FALLBACK_CLUBS,club("third","España",60),club("fourth","España",63)]);
+  assert.equal(options.length,3);
+  assert.ok(options.every(x=>x.country==="España"));
 });

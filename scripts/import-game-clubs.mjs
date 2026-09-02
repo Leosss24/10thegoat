@@ -1,4 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
+import { readFileSync } from "node:fs";
 
 const API_BASE = "https://v3.football.api-sports.io";
 const PROVIDER = "api_football";
@@ -161,6 +162,7 @@ function parseArgs() {
   };
 
   const countryValue = getValue("countries");
+  const planPath = getValue("plan");
 
   const countries = countryValue
     ? countryValue
@@ -185,7 +187,7 @@ function parseArgs() {
     );
   }
 
-  for (const country of countries) {
+  for (const country of planPath ? [] : countries) {
     if (!LEAGUES_BY_COUNTRY[country]) {
       throw new Error(
         `País no configurado: ${country}`
@@ -199,6 +201,7 @@ function parseArgs() {
     dryRun: args.includes("--dry-run"),
     preserveEligible:
       args.includes("--preserve-eligible"),
+    planPath,
   };
 }
 
@@ -444,8 +447,9 @@ async function main() {
   const options =
     parseArgs();
 
-  const selectedLeagues =
-    options.countries.flatMap(
+  const selectedLeagues = options.planPath
+    ? JSON.parse(readFileSync(options.planPath,"utf8")).leagues.filter((league)=>league.selected&&(league.tier===1||league.tier===2))
+    : options.countries.flatMap(
       (country) =>
         LEAGUES_BY_COUNTRY[
           country
@@ -454,6 +458,7 @@ async function main() {
           country,
         }))
     );
+  const selectedCountries=[...new Set(selectedLeagues.map((league)=>league.country))];
 
   console.log(
     "============================================================"
@@ -468,7 +473,7 @@ async function main() {
   );
 
   console.log(
-    `Países: ${options.countries.join(
+    `Países: ${selectedCountries.join(
       ", "
     )}`
   );
@@ -612,7 +617,7 @@ async function main() {
 
     const data =
       await apiGet(
-        `/teams?league=${league.id}&season=${options.season}`
+        `/teams?league=${league.id}&season=${league.season??options.season}`
       );
 
     const teams =
@@ -655,7 +660,7 @@ async function main() {
      ======================================================= */
 
   if (!options.dryRun) {
-    for (const countryName of options.countries) {
+    for (const countryName of selectedCountries) {
       if (!HARD_POOL_COUNTRIES.has(countryName)) continue;
 
       const country = countryByName.get(normalize(countryName));
@@ -681,7 +686,7 @@ async function main() {
   ) {
     for (
       const countryName
-      of options.countries
+      of selectedCountries
     ) {
       const country =
         countryByName.get(

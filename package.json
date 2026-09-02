@@ -26,7 +26,9 @@
     "audit:game-names": "node --env-file=.env.local scripts/audit-game-names.mjs",
     "normalize:game-names": "node --env-file=.env.local scripts/normalize-game-names.mjs",
     "check:production": "node scripts/check-production.mjs",
-    "import:game-clubs": "node --env-file=.env.local scripts/import-game-clubs.mjs"
+    "import:game-clubs": "node --env-file=.env.local scripts/import-game-clubs.mjs",
+    "discover:continental-clubs": "node --env-file=.env.local scripts/discover-continental-club-leagues.mjs",
+    "import:continental-clubs": "node --env-file=.env.local scripts/import-game-clubs.mjs --plan=tmp/api-football-club-import-plan.json"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",

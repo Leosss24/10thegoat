@@ -1,4 +1,4 @@
-import { supabase } from "../supabase";
+import { supabase } from "../supabase.ts";
 import type { CareerClub, LeagueBand, Prestige } from "./types.ts";
 type Profile = Omit<CareerClub, "id" | "badgeUrl">;
 const p = (
@@ -441,10 +441,10 @@ export const NATIONALITIES = [
 ] as const;
 export function starterClubsFor(nationality: string, clubs: CareerClub[]) {
   const home = clubs.filter((c) => c.country === nationality);
-  return (home.length ? home : clubs).sort(
+  return [...(home.length ? home : clubs)].sort(
     (a, b) =>
       b.youthOpportunity +
       b.academyQuality -
       (a.youthOpportunity + a.academyQuality),
-  );
+  ).slice(0,3);
 }
