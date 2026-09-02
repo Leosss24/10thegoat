@@ -1,10 +1,18 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
+import { Barlow_Semi_Condensed } from "next/font/google";
 import { notFound } from "next/navigation";
 import { dictionaries, isLocale, localizedPath, type Locale } from "@/lib/i18n";
 import { I18nProvider } from "@/components/I18nProvider";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import "../globals.css";
+
+const careerFont = Barlow_Semi_Condensed({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-career",
+  display: "swap",
+});
 
 export const viewport: Viewport = { themeColor: "#080B10", colorScheme: "dark" };
 export function generateStaticParams() { return [{ locale: "es" }, { locale: "en" }, { locale: "fr" }]; }
@@ -28,7 +36,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   if (!isLocale(value)) notFound();
   const locale = value as Locale;
   const d = dictionaries[locale];
-  return <html lang={locale} data-scroll-behavior="smooth"><body><I18nProvider locale={locale} dictionary={d}>
+  return <html lang={locale} data-scroll-behavior="smooth" className={careerFont.variable}><body><I18nProvider locale={locale} dictionary={d}>
     <header className="site-header"><div className="container nav">
       <Link className="brand" href={localizedPath(locale)} aria-label={`10theGOAT · ${d.nav.home}`}><img className="brand-logo" src="/brand/10thegoat-shield-raster.png" alt=""/><span><strong>10</strong>the<strong>GOAT</strong></span></Link>
       <nav className="nav-links" aria-label={d.nav.main}><Link href={localizedPath(locale, "/juegos")}>{d.nav.games}</Link><LanguageSwitcher /></nav>
