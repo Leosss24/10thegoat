@@ -130,7 +130,8 @@ export function calculateOverall(blocks: PlayerBlocks, position: CareerPosition)
     right_winger: [.48, .3, .22], left_winger: [.48, .3, .22], second_striker: [.5, .22, .28], striker: [.45, .32, .23],
   };
   const [technical, physical, mentality] = weights[position];
-  return clamp(blocks.technical * technical + blocks.physical * physical + blocks.mentality * mentality, 35, 99);
+  const positional=blocks.technical * technical + blocks.physical * physical + blocks.mentality * mentality;
+  return clamp(positional*.88+blocks.form*.12, 35, 99);
 }
 export function hydrateCareer(state: CareerState): CareerState {
   const legacyPlayer = state.player as CareerState["player"] & { attributes?: PlayerAttributes; blocks?: PlayerBlocks };
@@ -363,7 +364,7 @@ export function simulateSeason(
     3420,
   );
   const appearances = clamp(minutes / 82, 0, 38);
-  const performanceBase = 0.72 + rand() * 0.42 + (p.overall - club.level) / 100;
+  const performanceBase = Math.max(.16,.32+rand()*.3+Math.max(0,p.overall-60)/100+(p.overall-club.level)/100);
   const goals = clamp(
     appearances * attack[p.position] * performanceBase,
     0,
@@ -396,7 +397,7 @@ export function simulateSeason(
   const trophies=competitions.filter(x=>x.champion).map(x=>x.kind==="domestic"?"league":x.kind);
   const individualAwards:string[]=[];
   if(p.age<=21&&minutes>=1500&&rating>=7.25)individualAwards.push("Mejor jugador joven");
-  if(goals>=({striker:24,second_striker:21,right_winger:18,left_winger:18} as Partial<Record<CareerPosition,number>>)[p.position]!)individualAwards.push("Bota de Oro");
+  if(goals>=28)individualAwards.push("Bota de Oro");
   if(attack[p.position]<=.12&&cleanSheets>=11&&rating>=7.25)individualAwards.push("Mejor defensor");
   if(["holding_midfielder","central_midfielder","attacking_midfielder"].includes(p.position)&&assists>=11&&rating>=7.25)individualAwards.push("Mejor centrocampista");
   if(minutes>=2000&&rating>=7.45&&rand()<Math.min(.68,.12+(rating-7.2)*.65+Math.max(0,p.overall-80)*.022))individualAwards.push("Jugador del Año");

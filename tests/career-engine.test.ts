@@ -34,6 +34,29 @@ test("training changes hidden attributes without exposing potential as a block",
   assert.equal("potential" in next.player.blocks, false);
 });
 
+test("overall includes form without letting reputation or family dominate it",()=>{
+  const base={technical:69,physical:59,mentality:64,form:50};
+  const inForm=calculateOverall({...base,form:89},"attacking_midfielder");
+  const outOfForm=calculateOverall(base,"attacking_midfielder");
+  assert.ok(inForm>outOfForm);
+  assert.ok(inForm-outOfForm<=6);
+  assert.equal(inForm,68);
+});
+
+test("a 65-rated first-division striker does not score or win the golden boot unrealistically",()=>{
+  let maxGoals=0,goldenBoots=0;
+  const firstDivision={...club("mallorca","España",75),domesticDivision:1 as const,leagueBand:"europe_1" as const};
+  for(let seed=1;seed<=250;seed++){
+    const created=createCareer({...input,seed,club:firstDivision,position:"striker"});
+    const state={...created,player:{...created.player,age:24,overall:65,potential:78,reputation:55},year:2035};
+    const season=simulateSeason(state,"team",[firstDivision]).seasons[0];
+    maxGoals=Math.max(maxGoals,season.goals);
+    if(season.individualAwards?.includes("Bota de Oro"))goldenBoots++;
+  }
+  assert.ok(maxGoals<=25,`máximo: ${maxGoals}`);
+  assert.equal(goldenBoots,0);
+});
+
 test("career cannot continue beyond 40", () => {
   let state = createCareer(input);
   while (state.status === "active") {
