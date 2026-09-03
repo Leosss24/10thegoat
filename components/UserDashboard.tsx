@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import type { User } from "@supabase/supabase-js";
 import { supabase } from "../lib/supabase";
 import { deleteCareerSnapshot, listCareerSnapshots, type CareerSnapshot } from "../lib/career/cloud-storage";
-import { saveCareer } from "../lib/career/storage";
+import { loadCareer, saveCareer } from "../lib/career/storage";
+import type { CareerState } from "../lib/career/types";
 import { getAllGameScores, type GameScoreStats } from "../lib/game-scores";
 import { uniqueSeniorBadges } from "../lib/football/club-filter";
 import { translatedCountry } from "../lib/football/country-i18n";
@@ -25,6 +26,7 @@ export default function UserDashboard({locale}:{locale:"es"|"en"|"fr"}) {
   const [profile,setProfile]=useState<Profile|null>(null);
   const [saves,setSaves]=useState<CareerSnapshot[]>([]);
   const [stats,setStats]=useState<RemoteStats[]>([]);
+  const [localCareer,setLocalCareer]=useState<CareerState|null>(null);
   const [badges,setBadges]=useState<BadgeOption[]>([]);
   const [username,setUsername]=useState("");
   const [message,setMessage]=useState("");
@@ -51,7 +53,7 @@ export default function UserDashboard({locale}:{locale:"es"|"en"|"fr"}) {
       supabase.from("profiles").select("username,display_name,avatar_url,avatar_club_id,username_changed_at,created_at,last_seen_at").eq("id",u.id).maybeSingle(),
       listCareerSnapshots(),
     ]);
-    setProfile(p as Profile|null); setUsername(p?.username??""); setSaves(s);
+    setProfile(p as Profile|null); setUsername(p?.username??""); setSaves(s); setLocalCareer(loadCareer());
     void syncStats(u);
     void supabase.from("profiles").update({last_seen_at:new Date().toISOString()}).eq("id",u.id);
   };
@@ -101,12 +103,26 @@ export default function UserDashboard({locale}:{locale:"es"|"en"|"fr"}) {
     return rightKind&&rightDivision&&`${b.name} ${country}`.toLocaleLowerCase().includes(badgeQuery.toLocaleLowerCase());
   }).slice(0,120),[badges,badgeTab,badgeQuery,locale]);
   const totals=stats.reduce((a,s)=>({played:a.played+s.played,wins:a.wins+s.wins,points:a.points+s.points}),{played:0,wins:0,points:0});
+  const careerProgress=useMemo(()=>{
+    const careers=new Map<string,CareerState>();
+    for(const state of [...saves.map(x=>x.game_state),...(localCareer?[localCareer]:[])])careers.set(state.id,state);
+    const states=[...careers.values()],seasons=states.flatMap(x=>x.seasons);
+    const competitions=seasons.flatMap(x=>x.competitions??[]).filter(x=>x.champion),awards=seasons.flatMap(x=>x.individualAwards??[]);
+    return {count:states.length,legacy:Math.max(0,...states.map(x=>x.legacyScore)),continental:competitions.filter(x=>x.kind==="continental").length,international:competitions.filter(x=>x.kind==="international").length,awards:awards.length,ballonDor:awards.filter(x=>x==="Balón de Oro").length};
+  },[saves,localCareer]);
   const achievements:[boolean,string,string][]=[
     [totals.played>0,t("PRIMER PARTIDO","FIRST GAME","PREMIER MATCH"),`${Math.min(totals.played,1)}/1`],
     [totals.wins>0,t("PRIMER ACIERTO","FIRST SUCCESS","PREMIER SUCCÈS"),`${Math.min(totals.wins,1)}/1`],
     [totals.played>=10,t("DIEZ PARTIDAS","TEN GAMES","DIX PARTIES"),`${Math.min(totals.played,10)}/10`],
     [totals.points>=100,t("100 PUNTOS","100 POINTS","100 POINTS"),`${Math.min(totals.points,100)}/100`],
-    [saves.length>0,t("UNA CARRERA EN JUEGO","A CAREER IN PLAY","UNE CARRIÈRE EN COURS"),`${Math.min(saves.length,1)}/1`],
+    [careerProgress.count>0,t("UNA CARRERA EN JUEGO","A CAREER IN PLAY","UNE CARRIÈRE EN COURS"),`${Math.min(careerProgress.count,1)}/1`],
+    [careerProgress.continental>0,t("CAMPEÓN CONTINENTAL","CONTINENTAL CHAMPION","CHAMPION CONTINENTAL"),`${Math.min(careerProgress.continental,1)}/1`],
+    [careerProgress.international>0,t("CAMPEÓN CON TU SELECCIÓN","INTERNATIONAL CHAMPION","CHAMPION EN SÉLECTION"),`${Math.min(careerProgress.international,1)}/1`],
+    [careerProgress.awards>0,t("PREMIO INDIVIDUAL","INDIVIDUAL HONOUR","TROPHÉE INDIVIDUEL"),`${Math.min(careerProgress.awards,1)}/1`],
+    [careerProgress.ballonDor>0,t("BALÓN DE ORO","BALLON D'OR","BALLON D'OR"),`${Math.min(careerProgress.ballonDor,1)}/1`],
+    [careerProgress.legacy>=1000,t("LEGADO 1.000","1,000 LEGACY","HÉRITAGE 1 000"),`${Math.min(careerProgress.legacy,1000)}/1000`],
+    [careerProgress.legacy>=3000,t("LEGADO 3.000","3,000 LEGACY","HÉRITAGE 3 000"),`${Math.min(careerProgress.legacy,3000)}/3000`],
+    [careerProgress.legacy>=5000,t("LEYENDA · LEGADO 5.000","LEGEND · 5,000 LEGACY","LÉGENDE · HÉRITAGE 5 000"),`${Math.min(careerProgress.legacy,5000)}/5000`],
   ];
   const date=(value?:string|null)=>value?new Intl.DateTimeFormat(locale,{dateStyle:"long",timeStyle:"short"}).format(new Date(value)):"—";
 
