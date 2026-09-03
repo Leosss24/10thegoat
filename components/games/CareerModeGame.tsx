@@ -140,6 +140,8 @@ const copy = {
     starter: "Titular",
     star: "Estrella",
     restart: "¿Borrar esta carrera?",
+    abandon: "ABANDONAR CARRERA",
+    abandonConfirm: "¿Abandonar esta carrera y volver a los juegos? La carrera activa se eliminará, pero tus puntos guardados permanecerán disponibles.",
     centre_back: "Defensa central",
     right_back: "Lateral derecho",
     left_back: "Lateral izquierdo",
@@ -243,6 +245,8 @@ const copy = {
     starter: "Starter",
     star: "Star",
     restart: "Delete this career?",
+    abandon: "ABANDON CAREER",
+    abandonConfirm: "Abandon this career and return to the games? The active career will be deleted, but your saved checkpoints will remain available.",
     centre_back: "Centre-back",
     right_back: "Right-back",
     left_back: "Left-back",
@@ -346,6 +350,8 @@ const copy = {
     starter: "Titulaire",
     star: "Star",
     restart: "Supprimer cette carrière ?",
+    abandon: "ABANDONNER LA CARRIÈRE",
+    abandonConfirm: "Abandonner cette carrière et revenir aux jeux ? La carrière active sera supprimée, mais vos sauvegardes resteront disponibles.",
     centre_back: "Défenseur central",
     right_back: "Latéral droit",
     left_back: "Latéral gauche",
@@ -738,19 +744,10 @@ export default function CareerModeGame() {
           </ul>
         </div>
       </div>
-      {career.status === "active" && (
-        <button
-          className="career-reset"
-          onClick={() => {
-            if (confirm(c.restart)) {
-              clearCareer();
-              setCareer(null);
-            }
-          }}
-        >
-          {c.newGame}
-        </button>
-      )}
+      {career.status === "active" && <div className="career-exit-actions">
+        <button className="career-reset" onClick={()=>{if(confirm(c.restart)){clearCareer();setCareer(null)}}}>{c.newGame}</button>
+        <button className="career-abandon" onClick={()=>{if(confirm(c.abandonConfirm)){clearCareer();window.location.assign(`/${locale}/juegos`)}}}>{c.abandon}</button>
+      </div>}
       {celebrations[0]&&<CelebrationModal item={celebrations[0]} seed={career.seed} onDone={()=>setCelebrations(x=>x.slice(1))}/>}
     </section>
   );
