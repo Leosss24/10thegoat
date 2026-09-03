@@ -1,5 +1,5 @@
 import { supabase } from "../supabase.ts";
-import type { CareerCategory, CareerClub, LeagueBand, Prestige } from "./types.ts";
+import type { CareerCategory, CareerClub, LeagueBand, Prestige, TalentBand } from "./types.ts";
 type Profile = Omit<CareerClub, "id" | "badgeUrl">;
 const p = (
   name: string,
@@ -467,12 +467,15 @@ export const NATIONALITIES = [
   "Uruguay",
 ] as const;
 export const NATIONALITY_FLAG_PATHS:Record<(typeof NATIONALITIES)[number],string>={Alemania:"/flags/de.svg",Argentina:"/flags/ar.svg",Bélgica:"/flags/be.svg",Brasil:"/flags/br.svg",Chile:"/flags/cl.svg",Colombia:"/flags/co.svg",Dinamarca:"/flags/dk.svg",Ecuador:"/flags/ec.svg",España:"/flags/es.svg",Francia:"/flags/fr.svg",Inglaterra:"/flags/gb.svg",Italia:"/flags/it.svg","Países Bajos":"/flags/nl.svg",Paraguay:"/flags/py.svg",Portugal:"/flags/pt.svg",Uruguay:"/flags/uy.svg"};
-export function starterClubsFor(nationality: string, clubs: CareerClub[]) {
+export function starterClubsFor(nationality: string, clubs: CareerClub[], seed=1, talent:TalentBand="normal") {
   const home = clubs.filter((c) => c.country === nationality);
-  return [...(home.length ? home : clubs)].sort(
-    (a, b) =>
-      b.youthOpportunity +
-      b.academyQuality -
-      (a.youthOpportunity + a.academyQuality),
-  ).slice(0,3);
+  const fallbackCountries=["Inglaterra","España","Italia"],fallback=fallbackCountries[Math.abs(seed)%fallbackCountries.length];
+  const pool=home.length?home:clubs.filter(c=>c.country===fallback);
+  const category={premium_international:4,elite_international:3,elite_national:2,national:1,national_b:0};
+  const talentWeight={normal:4,high:10,crack:18,generational:25}[talent];
+  const noise=(id:string)=>{let n=seed;for(const char of id)n=Math.imul(n^char.charCodeAt(0),16777619);return ((n>>>0)%1000)/10};
+  return [...pool].sort((a,b)=>{
+    const score=(c:CareerClub)=>c.academyQuality*.32+c.youthOpportunity*.3+(category[c.careerCategory??"national"]??1)*talentWeight+noise(c.id);
+    return score(b)-score(a);
+  }).slice(0,3);
 }

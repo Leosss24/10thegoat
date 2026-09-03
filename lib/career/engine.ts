@@ -76,7 +76,7 @@ const talentBoost: Record<TalentBand, number> = {
   high: 3,
   normal: 0,
 };
-function drawTalent(seed: number): TalentBand {
+export function talentBandForSeed(seed: number): TalentBand {
   const roll = random(seed)();
   return roll < 0.025
     ? "generational"
@@ -85,6 +85,18 @@ function drawTalent(seed: number): TalentBand {
       : roll < 0.36
         ? "high"
         : "normal";
+}
+const moneyRound=(value:number)=>Math.max(12000,Math.round(value/1000)*1000);
+export function academySalary(club:CareerClub,talent:TalentBand,seed:number){
+  const multiplier={normal:1,high:1.45,crack:2.4,generational:3.8}[talent];
+  const prestige=club.careerCategory==="premium_international"?2:club.careerCategory==="elite_international"?1.55:club.careerCategory==="elite_national"?1.25:1;
+  return moneyRound((15000+Math.max(0,club.level-55)*1800)*multiplier*prestige*(.88+random(seed+83)()*.28));
+}
+function marketSalary(state:CareerState,club:CareerClub,rand:()=>number){
+  const p=state.player,prestige=club.careerCategory==="premium_international"?1.65:club.careerCategory==="elite_international"?1.35:club.careerCategory==="elite_national"?1.15:club.careerCategory==="national_b"?.72:1;
+  const development=Math.max(0,p.overall-55)**2*4800+Math.max(0,p.reputation-20)**1.45*1500;
+  const ageFactor=p.age<=21?.72:p.age>=35?.78:1;
+  return moneyRound((45000+development)*prestige*ageFactor*(.82+rand()*.38));
 }
 function initialAttributes(overall: number, seed: number): PlayerAttributes {
   const rand = random(seed + 41);
@@ -122,10 +134,13 @@ export function calculateOverall(blocks: PlayerBlocks, position: CareerPosition)
 }
 export function hydrateCareer(state: CareerState): CareerState {
   const legacyPlayer = state.player as CareerState["player"] & { attributes?: PlayerAttributes; blocks?: PlayerBlocks };
+  const currentAnnualSalary=state.currentAnnualSalary??academySalary(state.club,legacyPlayer.talentBand,state.seed);
+  const careerEarnings=state.careerEarnings??state.seasons.reduce((sum,season)=>sum+(season.annualSalary??currentAnnualSalary),0);
+  const offers=state.offers.map(o=>({...o,annualSalary:o.annualSalary??marketSalary(state,o.club,random((state.seed+Number(o.club.id))||1)),signingBonus:o.signingBonus??0,contractYears:o.contractYears??3}));
   const looksLikeCappedLegacyMigration = legacyPlayer.attributes && legacyPlayer.blocks && state.seasons.length > 0 && legacyPlayer.overall > 70 && Math.max(legacyPlayer.blocks.technical, legacyPlayer.blocks.physical, legacyPlayer.blocks.mentality) <= 65;
   if (legacyPlayer.attributes && legacyPlayer.blocks && !looksLikeCappedLegacyMigration) {
     const overall = calculateOverall(legacyPlayer.blocks, legacyPlayer.position);
-    return { ...state, contractUntil:state.contractUntil??state.year+2,seasonsAtClub:state.seasonsAtClub??0, player: { ...legacyPlayer, overall, potential: Math.max(legacyPlayer.potential, overall) } };
+    return { ...state, contractUntil:state.contractUntil??state.year+2,seasonsAtClub:state.seasonsAtClub??0,currentAnnualSalary,careerEarnings,offers, player: { ...legacyPlayer, overall, potential: Math.max(legacyPlayer.potential, overall) } };
   }
   const attributes = looksLikeCappedLegacyMigration
     ? Object.fromEntries(Object.entries(legacyPlayer.attributes!).map(([key, value]) => [key, clamp(value + legacyPlayer.overall - 64, 25, 99)])) as PlayerAttributes
@@ -136,6 +151,9 @@ export function hydrateCareer(state: CareerState): CareerState {
     ...state,
     contractUntil:state.contractUntil??state.year+2,
     seasonsAtClub:state.seasonsAtClub??0,
+    currentAnnualSalary,
+    careerEarnings,
+    offers,
     player: {
       ...legacyPlayer,
       attributes,
@@ -181,7 +199,7 @@ const roleMinutes: Record<CareerRole, number> = {
   star: 3050,
 };
 export function createCareer(input: CreateCareerInput): CareerState {
-  const talentBand = drawTalent(input.seed);
+  const talentBand = talentBandForSeed(input.seed);
   const initialOverall = clamp(46 + talentBoost[talentBand] / 3, 44, 51);
   const attributes = initialAttributes(initialOverall, input.seed);
   const blocks = calculateBlocks(attributes, 92, 75, 80, 3);
@@ -217,6 +235,8 @@ export function createCareer(input: CreateCareerInput): CareerState {
     club: input.club,
     contractUntil:(input.year??new Date().getFullYear())+3,
     seasonsAtClub:0,
+    currentAnnualSalary:academySalary(input.club,talentBand,input.seed),
+    careerEarnings:0,
     seasons: [],
     offers: [],
     totals: { ...EMPTY },
@@ -246,14 +266,17 @@ function makeOffers(
       return score(b)-score(a);
     })
     .slice(0, 3)
-    .map((club, i) => ({
+    .map((club, i) => {
+      const annualSalary=marketSalary(state,club,rand),contractYears=p.age<=21?4:p.age>=33?2:3+Math.floor(rand()*2);
+      return {
       id: `${state.year}-${club.id}-${i}`,
       club,
       role: roleFor(p.overall, club, p.talentBand, p.age),
       kind: p.age <= 21 && club.level > p.overall + 9 ? "loan" : "transfer",
       familyReturn:
         club.country === p.nationality && state.club.country !== p.nationality,
-    }));
+      annualSalary,signingBonus:moneyRound(annualSalary*(.08+rand()*.16)),contractYears,
+    }});
 }
 const focusValue=(focus:SeasonFocus|undefined)=>focus??"team";
 export function domesticLeagueName(club:CareerClub){
@@ -467,6 +490,8 @@ export function simulateSeason(
     injuredGames,
     trophies,
     individualAwards,
+    annualSalary:state.currentAnnualSalary,
+    careerEarnings:state.careerEarnings+state.currentAnnualSalary,
     selected,
     event,
     growth,
@@ -516,6 +541,7 @@ export function simulateSeason(
     seasons: [...state.seasons, season],
     totals,
     legacyScore,
+    careerEarnings:state.careerEarnings+state.currentAnnualSalary,
     player: {
       ...p,
       nationality:nationalityTarget??p.nationality,
@@ -531,6 +557,9 @@ export function simulateSeason(
   };
   if (age >= 40) return retireCareer(base);
   const offers = makeOffers(base, clubs, rand);
+  if(!offers.length&&base.contractUntil<=base.year){
+    return {...base,contractUntil:base.year+2,currentAnnualSalary:Math.max(base.currentAnnualSalary,moneyRound(marketSalary(base,base.club,rand)*.9)),phase:"season"};
+  }
   return { ...base, offers, phase: offers.length ? "offers" : "season" };
 }
 export function resolveOffer(
@@ -539,12 +568,15 @@ export function resolveOffer(
 ): CareerState {
   if (state.phase !== "offers") return state;
   const offer = state.offers.find((x) => x.id === offerId);
+  const renewal=!offer&&state.contractUntil<=state.year;
   return {
     ...state,
     revision: state.revision + 1,
     club: offer?.club ?? state.club,
-    contractUntil:offer?state.year+(offer.kind==="loan"?1:3+((state.seed+state.year)%2)):state.contractUntil<=state.year?state.year+2:state.contractUntil,
+    contractUntil:offer?state.year+(offer.kind==="loan"?1:offer.contractYears):renewal?state.year+2:state.contractUntil,
     seasonsAtClub:offer?0:state.seasonsAtClub,
+    currentAnnualSalary:offer?.annualSalary??(renewal?Math.max(state.currentAnnualSalary,moneyRound(marketSalary(state,state.club,random(state.seed+state.year+state.revision))* .9)):state.currentAnnualSalary),
+    careerEarnings:state.careerEarnings+(offer?.signingBonus??0),
     offers: [],
     phase: "season",
     player: {

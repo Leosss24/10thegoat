@@ -14,10 +14,12 @@ import {
 } from "../../lib/career/clubs";
 import {
   createCareer,
+  academySalary,
   domesticLeagueName,
   resolveOffer,
   retireCareer,
   simulateSeason,
+  talentBandForSeed,
 } from "../../lib/career/engine";
 import { CAREER_DECISIONS, decisionFor, targetNationalityFor } from "../../lib/career/decisions";
 import type { DecisionEffects } from "../../lib/career/decisions";
@@ -53,6 +55,7 @@ const copy = {
     nationality: "Nacionalidad",
     position: "Posición",
     academy: "Club formador",
+    academyOffers: "OFERTAS DE FORMACIÓN",
     currentClub: "CLUB ACTUAL",
     nationalClub: "Club nacional",
     premium_international: "Premium internacional",
@@ -122,6 +125,10 @@ const copy = {
     academyQ: "Formación",
     opportunity: "Oportunidad",
     demand: "Exigencia",
+    salary: "SALARIO ANUAL",
+    signingBonus: "PRIMA DE FICHAJE",
+    earnings: "INGRESOS ACUMULADOS",
+    contract: "CONTRATO HASTA",
     premium_europe: "Premium Europa",
     elite_europe: "Élite Europa",
     premium_south_america: "Premium Sudamérica",
@@ -151,6 +158,7 @@ const copy = {
     nationality: "Nationality",
     position: "Position",
     academy: "Training club",
+    academyOffers: "DEVELOPMENT OFFERS",
     currentClub: "CURRENT CLUB",
     nationalClub: "National club",
     premium_international: "International Premium",
@@ -220,6 +228,10 @@ const copy = {
     academyQ: "Training",
     opportunity: "Opportunity",
     demand: "Demand",
+    salary: "ANNUAL SALARY",
+    signingBonus: "SIGNING BONUS",
+    earnings: "CAREER EARNINGS",
+    contract: "CONTRACT UNTIL",
     premium_europe: "Europe Premium",
     elite_europe: "Europe Elite",
     premium_south_america: "South America Premium",
@@ -249,6 +261,7 @@ const copy = {
     nationality: "Nationalité",
     position: "Poste",
     academy: "Club formateur",
+    academyOffers: "OFFRES DE FORMATION",
     currentClub: "CLUB ACTUEL",
     nationalClub: "Club national",
     premium_international: "Premium international",
@@ -318,6 +331,10 @@ const copy = {
     academyQ: "Formation",
     opportunity: "Opportunité",
     demand: "Exigence",
+    salary: "SALAIRE ANNUEL",
+    signingBonus: "PRIME À LA SIGNATURE",
+    earnings: "REVENUS CUMULÉS",
+    contract: "CONTRAT JUSQU’EN",
     premium_europe: "Premium Europe",
     elite_europe: "Élite Europe",
     premium_south_america: "Premium Amérique du Sud",
@@ -377,7 +394,8 @@ export default function CareerModeGame() {
     [training, setTraining] = useState<TrainingFocus>("balanced"),
     [decisionChoice,setDecisionChoice]=useState("no"),
     [celebrations,setCelebrations]=useState<Celebration[]>([]),
-    [notice, setNotice] = useState("");
+    [notice, setNotice] = useState(""),
+    [careerSeed] = useState(()=>Date.now()&0x7fffffff);
   const [form, setForm] = useState({
     name: "",
     shirtNumber: 10,
@@ -392,8 +410,8 @@ export default function CareerModeGame() {
       .finally(() => setReady(true));
   }, []);
   const starters = useMemo(
-    () => starterClubsFor(form.nationality, clubs),
-    [form.nationality, clubs],
+    () => starterClubsFor(form.nationality, clubs, careerSeed, talentBandForSeed(careerSeed)),
+    [form.nationality, clubs, careerSeed],
   );
   useEffect(() => {
     if (starters.length && !starters.some((x) => x.id === form.clubId))
@@ -441,7 +459,7 @@ export default function CareerModeGame() {
               starters.find((x) => x.id === form.clubId) ?? starters[0];
             if (club)
               commit(
-                createCareer({ ...form, club, seed: Date.now() & 0x7fffffff }),
+                createCareer({ ...form, club, seed: careerSeed }),
               );
           }}
         >
@@ -497,17 +515,8 @@ export default function CareerModeGame() {
             </select>
           </label>
           <label className="career-club-choice">
-            {c.academy}
-            <select
-              value={form.clubId}
-              onChange={(e) => setForm({ ...form, clubId: e.target.value })}
-            >
-              {starters.map((x) => (
-                <option key={x.id} value={x.id}>
-                  {x.name}
-                </option>
-              ))}
-            </select>
+            {c.academyOffers}
+            <span className="career-starter-offers">{starters.map(x=><button type="button" key={x.id} className={form.clubId===x.id?"is-selected":""} onClick={()=>setForm({...form,clubId:x.id})}><ClubCrest club={x}/><b>{x.name}</b><small>{formatMoney(academySalary(x,talentBandForSeed(careerSeed),careerSeed),locale)} / {locale==="es"?"AÑO":locale==="fr"?"AN":"YEAR"}</small></button>)}</span>
           </label>
           {(() => {
             const x = starters.find((x) => x.id === form.clubId);
@@ -562,10 +571,11 @@ export default function CareerModeGame() {
           <div>
             <small>{c.currentClub}</small>
             <strong>{career.club.name}</strong>
-            <span>{career.club.country} · {career.club.careerCategory ? c[career.club.careerCategory] : career.club.prestige === "standard" ? c.nationalClub : c[career.club.prestige]}{career.club.leagueName?` · ${career.club.leagueName}`:""} · CONTRATO {career.contractUntil}</span>
+            <span>{career.club.country} · {career.club.careerCategory ? c[career.club.careerCategory] : career.club.prestige === "standard" ? c.nationalClub : c[career.club.prestige]}{career.club.leagueName?` · ${career.club.leagueName}`:""}</span>
           </div>
         </div>
       </div>
+      <div className="career-finances"><div><span>{c.salary}</span><strong>{formatMoney(career.currentAnnualSalary,locale)}</strong></div><div><span>{c.contract}</span><strong>{career.contractUntil}</strong></div><div><span>{c.earnings}</span><strong>{formatMoney(career.careerEarnings,locale)}</strong></div></div>
       <TrophyCabinet career={career} title={c.cabinet}/>
       <div className="career-rating-stack">
         <div className="career-rating-hero"><span>{c.overall}</span><strong>{p.overall}</strong></div>
@@ -586,7 +596,7 @@ export default function CareerModeGame() {
             <div className="career-offer-list">{career.offers.map((o) => (
               <article key={o.id}>
                 <ClubCrest club={o.club} />
-                <div><strong>{o.club.name}</strong><span>{o.familyReturn ? c.returnHome : o.kind === "loan" ? c.loan : c.transfer} · {c[o.role === "academy" ? "academyRole" : o.role]}</span></div>
+                <div><strong>{o.club.name}</strong><span>{o.familyReturn ? c.returnHome : o.kind === "loan" ? c.loan : c.transfer} · {c[o.role === "academy" ? "academyRole" : o.role]}</span><small>{c.salary}: {formatMoney(o.annualSalary,locale)} · {c.signingBonus}: {formatMoney(o.signingBonus,locale)} · {o.contractYears} {c.years}</small></div>
                 <button onClick={() => commit(resolveOffer(career, o.id))}>{c.sign}</button>
               </article>
             ))}</div>
@@ -780,6 +790,9 @@ function TournamentPredictor({item,seed,onDone}:{item:Extract<Celebration,{kind:
   return <div className="career-modal-backdrop"><div className="career-tournament-modal" role="dialog" aria-modal="true"><header><img src={trophyImage(item.name)} alt=""/><div><small>{item.year} · {rounds[round]}</small><h2>{item.name}</h2><p>{item.nation} <b>VS</b> {rival}</p></div></header><p className="career-predict-help">ELIGE EL MARCADOR: TU SELECCIÓN A LA IZQUIERDA, EL RIVAL ARRIBA.</p><div className="career-score-grid"><i></i>{[0,1,2,3,4,5,6].map(x=><b key={`h${x}`}>{x}</b>)}{[0,1,2,3,4,5,6].flatMap(a=>[<b key={`v${a}`}>{a}</b>,...[0,1,2,3,4,5,6].map(b=><button key={`${a}-${b}`} disabled={!!guess} className={guess?.[0]===a&&guess?.[1]===b?"is-picked":""} onClick={()=>setGuess([a,b])}>{a}-{b}</button>)])}</div>{guess&&<div className={`career-match-result ${loses?"is-out":"is-through"}`}><span>TU PRONÓSTICO: {guess[0]}–{guess[1]} · {hit?"¡MARCADOR ACERTADO!":"NO ACERTASTE EL MARCADOR"}</span><strong>RESULTADO: {home}–{away}</strong><p>{loses?`${item.nation} QUEDA ELIMINADA`:round===rounds.length-1?`${item.nation} ES CAMPEONA`:"¡AVANZAMOS DE RONDA!"}</p><button className="career-primary" onClick={advance}>{finished?"CERRAR":"SIGUIENTE PARTIDO"}</button></div>}</div></div>
 }
 const effectKeys=["technical","physical","mentality","form","reputation","family"] as const;
+function formatMoney(value:number,locale:"es"|"en"|"fr"){
+  return new Intl.NumberFormat(locale,{style:"currency",currency:"EUR",maximumFractionDigits:0,notation:value>=1_000_000?"compact":"standard"}).format(value);
+}
 function choiceTone(effects:DecisionEffects){const values=Object.values(effects);return values.some(x=>x<0)?values.some(x=>x>0)?"is-mixed":"is-negative":values.some(x=>x>0)?"is-positive":"is-neutral"}
 function ChoiceEffects({effects,labels}:{effects:DecisionEffects;labels:{technical:string;physical:string;mentality:string;formState:string;reputation:string;family:string}}){
   const names={technical:labels.technical,physical:labels.physical,mentality:labels.mentality,form:labels.formState,reputation:labels.reputation,family:labels.family};

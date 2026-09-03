@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { evaluateCareerAchievements } from "../lib/achievements.ts";
-import { calculateOverall, createCareer, domesticLeagueName, resolveOffer, simulateSeason } from "../lib/career/engine.ts";
+import { calculateOverall, createCareer, domesticLeagueName, resolveOffer, simulateSeason, talentBandForSeed } from "../lib/career/engine.ts";
 import { parseCareer } from "../lib/career/storage.ts";
 import { CAREER_DECISIONS, decisionFor, targetNationalityFor } from "../lib/career/decisions.ts";
 import { localizeDecision } from "../lib/career/decision-i18n.ts";
@@ -105,9 +105,34 @@ test("sporting nationality changes only before an international debut",()=>{
 });
 
 test("a new career offers at most three home-country academies",()=>{
-  const options=starterClubsFor("España",[...FALLBACK_CLUBS,club("third","España",60),club("fourth","España",63)]);
+  const options=starterClubsFor("España",[...FALLBACK_CLUBS,club("third","España",60),club("fourth","España",63)],42,talentBandForSeed(42));
   assert.equal(options.length,3);
   assert.ok(options.every(x=>x.country==="España"));
+});
+
+test("starter offers are deterministic and fall back to one major league",()=>{
+  const pool=[club("england-a","Inglaterra",70),club("england-b","Inglaterra",71),club("england-c","Inglaterra",72),club("spain-a","España",70),club("spain-b","España",71),club("spain-c","España",72),club("italy-a","Italia",70),club("italy-b","Italia",71),club("italy-c","Italia",72)];
+  const first=starterClubsFor("Canadá",pool,77,"crack"),second=starterClubsFor("Canadá",pool,77,"crack");
+  assert.deepEqual(first,second);
+  assert.equal(first.length,3);
+  assert.equal(new Set(first.map(x=>x.country)).size,1);
+  assert.ok(["Inglaterra","España","Italia"].includes(first[0].country));
+});
+
+test("career contracts accrue salary and transfer offers contain financial terms",()=>{
+  let state=createCareer(input);
+  assert.ok(state.currentAnnualSalary>=12000);
+  const salary=state.currentAnnualSalary;
+  state=simulateSeason(state,"development",FALLBACK_CLUBS);
+  assert.equal(state.careerEarnings,salary);
+  for(const offer of state.offers){assert.ok(offer.annualSalary>=12000);assert.ok(offer.signingBonus>=12000);assert.ok(offer.contractYears>=2);}
+});
+
+test("an expired contract is renewed with a salary review",()=>{
+  const created=createCareer(input),expired={...created,year:2030,contractUntil:2030,phase:"offers" as const,offers:[]};
+  const renewed=resolveOffer(expired,null);
+  assert.equal(renewed.contractUntil,2032);
+  assert.ok(renewed.currentAnnualSalary>=created.currentAnnualSalary);
 });
 
 test("the trophy cabinet can distinguish domestic championships",()=>{
