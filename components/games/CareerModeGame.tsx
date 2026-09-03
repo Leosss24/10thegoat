@@ -35,6 +35,7 @@ import type {
   TrainingFocus,
 } from "../../lib/career/types";
 type Celebration={kind:"title";name:string;scope:"collective"|"individual"}|{kind:"tournament";name:string;stage:string;year:number;nation:string};
+type TournamentOutcome={stage:string;champion:boolean};
 const positions: CareerPosition[] = [
   "centre_back",
   "right_back",
@@ -435,12 +436,31 @@ export default function CareerModeGame() {
       const international=newSeason.competitions?.find(x=>x.kind==="international");
       const earned:Celebration[]=[
         ...(international?[{kind:"tournament" as const,name:international.name,stage:international.stage,year:newSeason.year,nation:final.player.nationality}]:[]),
-        ...(newSeason.competitions?.filter(x=>x.champion).map(x=>({kind:"title" as const,name:x.name,scope:"collective" as const}))??[]),
+        ...(newSeason.competitions?.filter(x=>x.champion&&x.kind!=="international").map(x=>({kind:"title" as const,name:x.name,scope:"collective" as const}))??[]),
         ...(newSeason.individualAwards?.map(name=>({kind:"title" as const,name,scope:"individual" as const}))??[]),
       ];
       if(earned.length)setCelebrations(x=>[...x,...earned]);
     }
     setNotice(saveCareer(final) ? c.saved : c.saveError);
+  }
+  function finishTournament(item:Extract<Celebration,{kind:"tournament"}>,outcome:TournamentOutcome){
+    setCareer(current=>{
+      if(!current)return current;
+      let titleDelta=0;
+      const seasons=current.seasons.map(season=>{
+        if(season.year!==item.year)return season;
+        const previous=season.competitions?.find(x=>x.kind==="international"&&x.name===item.name);
+        if(!previous)return season;
+        titleDelta=Number(outcome.champion)-Number(previous.champion);
+        const competitions=season.competitions?.map(x=>x===previous?{...x,stage:outcome.stage,champion:outcome.champion}:x);
+        return {...season,competitions,trophies:competitions?.filter(x=>x.champion).map(x=>x.name)??[],titles:competitions?.filter(x=>x.champion).length??0};
+      });
+      const updated={...current,seasons,totals:{...current.totals,titles:Math.max(0,current.totals.titles+titleDelta)}};
+      const final={...updated,unlockedAchievementIds:evaluateCareerAchievements(updated)};
+      saveCareer(final);
+      return final;
+    });
+    setCelebrations(queue=>outcome.champion?[{kind:"title",name:item.name,scope:"collective"},...queue.slice(1)]:queue.slice(1));
   }
   if (!ready)
     return (
@@ -748,7 +768,7 @@ export default function CareerModeGame() {
         <button className="career-reset" onClick={()=>{if(confirm(c.restart)){clearCareer();setCareer(null)}}}>{c.newGame}</button>
         <button className="career-abandon" onClick={()=>{if(confirm(c.abandonConfirm)){clearCareer();window.location.assign(`/${locale}/juegos`)}}}>{c.abandon}</button>
       </div>}
-      {celebrations[0]&&<CelebrationModal item={celebrations[0]} seed={career.seed} onDone={()=>setCelebrations(x=>x.slice(1))}/>}
+      {celebrations[0]&&<CelebrationModal item={celebrations[0]} seed={career.seed} onDone={outcome=>{const item=celebrations[0];if(item.kind==="tournament"&&outcome)finishTournament(item,outcome);else setCelebrations(x=>x.slice(1))}}/>}
     </section>
   );
 }
@@ -772,19 +792,42 @@ function TrophyCabinet({career,title}:{career:CareerState;title:string}){
   for(const season of career.seasons){for(const competition of season.competitions?.filter(x=>x.champion)??[]){const name=competition.kind==="domestic"?domesticLeagueName(season.club):competition.name;const old=items.get(name);items.set(name,{count:(old?.count??0)+1,individual:false})}for(const award of season.individualAwards??[]){const old=items.get(award);items.set(award,{count:(old?.count??0)+1,individual:true})}}
   return <section className="career-cabinet"><h3>{title}</h3>{items.size?<div>{[...items].map(([name,item])=><article key={name}><img src={trophyImage(name,item.individual)} alt=""/><span>{name}</span><strong>×{item.count}</strong></article>)}</div>:<p>TODAVÍA NO HAY TROFEOS. LA VITRINA TE ESTÁ ESPERANDO.</p>}</section>
 }
-function CelebrationModal({item,seed,onDone}:{item:Celebration;seed:number;onDone:()=>void}){
-  if(item.kind==="title")return <div className="career-modal-backdrop" role="presentation"><div className="career-title-modal" role="dialog" aria-modal="true"><small>{item.scope==="individual"?"PREMIO INDIVIDUAL":"TÍTULO CONSEGUIDO"}</small><img src={trophyImage(item.name,item.scope==="individual")} alt=""/><h2>{item.name}</h2><p>{item.scope==="individual"?"TU TEMPORADA HA SIDO RECONOCIDA. ESTE TROFEO YA ESTÁ EN TU VITRINA.":"CAMPEONES. EL TROFEO YA FORMA PARTE DE TU HISTORIA."}</p><button className="career-primary" onClick={onDone}>CONTINUAR</button></div></div>;
+function CelebrationModal({item,seed,onDone}:{item:Celebration;seed:number;onDone:(outcome?:TournamentOutcome)=>void}){
+  if(item.kind==="title")return <div className="career-modal-backdrop" role="presentation"><div className="career-title-modal" role="dialog" aria-modal="true"><small>{item.scope==="individual"?"PREMIO INDIVIDUAL":"TÍTULO CONSEGUIDO"}</small><img src={trophyImage(item.name,item.scope==="individual")} alt=""/><h2>{item.name}</h2><p>{item.scope==="individual"?"TU TEMPORADA HA SIDO RECONOCIDA. ESTE TROFEO YA ESTÁ EN TU VITRINA.":"CAMPEONES. EL TROFEO YA FORMA PARTE DE TU HISTORIA."}</p><button className="career-primary" onClick={()=>onDone()}>CONTINUAR</button></div></div>;
   return <TournamentPredictor item={item} seed={seed} onDone={onDone}/>;
 }
-function TournamentPredictor({item,seed,onDone}:{item:Extract<Celebration,{kind:"tournament"}>;seed:number;onDone:()=>void}){
-  const rounds=item.name==="Copa América"?["CUARTOS DE FINAL","SEMIFINALES","FINAL"]:["OCTAVOS DE FINAL","CUARTOS DE FINAL","SEMIFINALES","FINAL"];
-  const exitIndex=item.stage.includes("Cuartos")?rounds.indexOf("CUARTOS DE FINAL"):item.stage.includes("Semifinales")?rounds.indexOf("SEMIFINALES"):rounds.length-1;
-  const [round,setRound]=useState(0),[guess,setGuess]=useState<[number,number]|null>(null);
-  const teams=tournamentTeams[item.name]??tournamentTeams["Copa Mundial"],rival=teams.filter(x=>x!==item.nation)[Math.abs(seed+item.year*13+round*7)%Math.max(1,teams.length-1)]??"Rival";
-  const loses=item.stage!=="Campeón"&&round===exitIndex,home=loses?Math.abs(seed+round)%2:1+Math.abs(seed+round)%3,away=loses?home+1:Math.abs(seed+round*3)%Math.max(1,home);
-  const finished=loses||round===rounds.length-1,hit=guess?.[0]===home&&guess?.[1]===away;
-  const advance=()=>{if(finished)onDone();else{setRound(x=>x+1);setGuess(null)}};
-  return <div className="career-modal-backdrop"><div className="career-tournament-modal" role="dialog" aria-modal="true"><header><img src={trophyImage(item.name)} alt=""/><div><small>{item.year} · {rounds[round]}</small><h2>{item.name}</h2><p>{item.nation} <b>VS</b> {rival}</p></div></header><p className="career-predict-help">ELIGE EL MARCADOR: TU SELECCIÓN A LA IZQUIERDA, EL RIVAL ARRIBA.</p><div className="career-score-grid"><i></i>{[0,1,2,3,4,5,6].map(x=><b key={`h${x}`}>{x}</b>)}{[0,1,2,3,4,5,6].flatMap(a=>[<b key={`v${a}`}>{a}</b>,...[0,1,2,3,4,5,6].map(b=><button key={`${a}-${b}`} disabled={!!guess} className={guess?.[0]===a&&guess?.[1]===b?"is-picked":""} onClick={()=>setGuess([a,b])}>{a}-{b}</button>)])}</div>{guess&&<div className={`career-match-result ${loses?"is-out":"is-through"}`}><span>TU PRONÓSTICO: {guess[0]}–{guess[1]} · {hit?"¡MARCADOR ACERTADO!":"NO ACERTASTE EL MARCADOR"}</span><strong>RESULTADO: {home}–{away}</strong><p>{loses?`${item.nation} QUEDA ELIMINADA`:round===rounds.length-1?`${item.nation} ES CAMPEONA`:"¡AVANZAMOS DE RONDA!"}</p><button className="career-primary" onClick={advance}>{finished?"CERRAR":"SIGUIENTE PARTIDO"}</button></div>}</div></div>
+type RevealedMatch={score:string;positive:boolean;note?:string};
+function positiveTournamentCells(seed:number,year:number,name:string){
+  let value=(seed^year^Array.from(name).reduce((sum,char)=>sum+char.charCodeAt(0),0))>>>0;
+  const cells=Array.from({length:49},(_,index)=>index);
+  for(let index=cells.length-1;index>0;index--){value=(Math.imul(value,1664525)+1013904223)>>>0;const swap=value%(index+1);[cells[index],cells[swap]]=[cells[swap],cells[index]]}
+  return new Set(cells.slice(0,16));
+}
+function TournamentPredictor({item,seed,onDone}:{item:Extract<Celebration,{kind:"tournament"}>;seed:number;onDone:(outcome:TournamentOutcome)=>void}){
+  const rounds=item.name==="Copa América"?[{label:"CUARTOS DE FINAL",stage:"Cuartos de final"},{label:"SEMIFINALES",stage:"Semifinales"},{label:"FINAL",stage:"Final"}]:[{label:"OCTAVOS DE FINAL",stage:"Octavos de final"},{label:"CUARTOS DE FINAL",stage:"Cuartos de final"},{label:"SEMIFINALES",stage:"Semifinales"},{label:"FINAL",stage:"Final"}];
+  const favorable=useMemo(()=>positiveTournamentCells(seed,item.year,item.name),[seed,item.year,item.name]);
+  const [phase,setPhase]=useState<"group"|"knockout">("group"),[groupMatch,setGroupMatch]=useState(0),[points,setPoints]=useState(0),[round,setRound]=useState(0),[revealed,setRevealed]=useState<Record<number,RevealedMatch>>({}),[pending,setPending]=useState<{message:string;outcome?:TournamentOutcome;next:"group"|"knockout"|"round"}|null>(null);
+  const teams=tournamentTeams[item.name]??tournamentTeams["Copa Mundial"],matchNumber=phase==="group"?groupMatch:round+3;
+  const rivals=teams.filter(x=>x!==item.nation),rival=rivals[Math.abs(seed+item.year*13+matchNumber*7)%Math.max(1,rivals.length)]??"Rival";
+  const reveal=(cell:number)=>{
+    if(pending||revealed[cell])return;
+    const positive=favorable.has(cell),variant=Math.abs(seed+item.year+cell+matchNumber)%3;
+    if(phase==="group"){
+      const draw=!positive&&variant===0,earned=positive?3:draw?1:0;
+      const score=positive?["1–0","2–0","2–1"][variant]:draw?["0–0","1–1","2–2"][variant]:["0–1","0–2","1–2"][variant];
+      const total=points+earned,last=groupMatch===2;
+      setRevealed(old=>({...old,[cell]:{score,positive}}));setPoints(total);
+      setPending({message:last?(total>=4?`CLASIFICADOS CON ${total} PUNTOS`:`ELIMINADOS CON ${total} PUNTOS`):(positive?"VICTORIA · +3 PUNTOS":draw?"EMPATE · +1 PUNTO":"DERROTA · 0 PUNTOS"),outcome:last&&total<4?{stage:"Fase de grupos",champion:false}:undefined,next:last?"knockout":"group"});
+      return;
+    }
+    const penalties=variant===0,score=penalties?(variant%2?"0–0":"1–1"):positive?["2–1","1–0","3–1"][variant]:["1–2","0–1","1–3"][variant],note=penalties?(positive?"VICTORIA EN PENALTIS":"DERROTA EN PENALTIS"):undefined;
+    const isFinal=round===rounds.length-1,outcome=!positive?{stage:rounds[round].stage,champion:false}:isFinal?{stage:"Campeón",champion:true}:undefined;
+    setRevealed(old=>({...old,[cell]:{score,positive,note}}));
+    setPending({message:!positive?`${item.nation} QUEDA ELIMINADA`:isFinal?`${item.nation} ES CAMPEONA`:"¡AVANZAMOS DE RONDA!",outcome,next:"round"});
+  };
+  const advance=()=>{if(!pending)return;if(pending.outcome){onDone(pending.outcome);return}if(pending.next==="group")setGroupMatch(x=>x+1);else if(pending.next==="knockout"){setPhase("knockout");setRound(0)}else setRound(x=>x+1);setPending(null)};
+  const phaseLabel=phase==="group"?`FASE DE GRUPOS · PARTIDO ${groupMatch+1}/3 · ${points} PUNTOS`:rounds[round].label;
+  return <div className="career-modal-backdrop"><div className="career-tournament-modal" role="dialog" aria-modal="true"><header><img src={trophyImage(item.name)} alt=""/><div><small>{item.year} · {phaseLabel}</small><h2>{item.name}</h2><p>{item.nation} <b>VS</b> {rival}</p></div></header><p className="career-predict-help">DESTAPA UNA CASILLA PARA CONOCER EL RESULTADO. 16 DE LAS 49 SON FAVORABLES.</p><div className="career-score-grid">{Array.from({length:49},(_,cell)=>{const result=revealed[cell];return <button key={cell} disabled={!!pending||!!result} className={result?`is-revealed ${result.positive?"is-positive":"is-negative"}`:""} onClick={()=>reveal(cell)} aria-label={result?`Resultado ${result.score}`:`Destapar casilla ${cell+1}`}>{result?.score??"?"}{result?.note&&<small>{result.note}</small>}</button>})}</div>{pending&&<div className={`career-match-result ${pending.outcome&&!pending.outcome.champion?"is-out":"is-through"}`}><strong>{revealed[Number(Object.keys(revealed).at(-1))]?.score}</strong>{revealed[Number(Object.keys(revealed).at(-1))]?.note&&<span>{revealed[Number(Object.keys(revealed).at(-1))]?.note}</span>}<p>{pending.message}</p><button className="career-primary" onClick={advance}>{pending.outcome?"CERRAR":"SIGUIENTE PARTIDO"}</button></div>}</div></div>
 }
 const effectKeys=["technical","physical","mentality","form","reputation","family"] as const;
 function formatMoney(value:number,locale:"es"|"en"|"fr"){
