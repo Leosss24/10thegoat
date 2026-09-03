@@ -1,11 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { evaluateCareerAchievements } from "../lib/achievements.ts";
-import { calculateOverall, createCareer, domesticLeagueName, resolveOffer, simulateSeason, talentBandForSeed } from "../lib/career/engine.ts";
+import { calculateOverall, continentalCompetitionFor, createCareer, domesticLeagueName, resolveOffer, simulateSeason, talentBandForSeed } from "../lib/career/engine.ts";
 import { parseCareer } from "../lib/career/storage.ts";
 import { CAREER_DECISIONS, decisionFor, targetNationalityFor } from "../lib/career/decisions.ts";
 import { localizeDecision } from "../lib/career/decision-i18n.ts";
-import type { PlayerAttributes } from "../lib/career/types.ts";
+import type { CareerClub, PlayerAttributes } from "../lib/career/types.ts";
 import { starterClubsFor } from "../lib/career/clubs.ts";
 
 const club = (id:string, country:string, level:number, academyQuality=80, youthOpportunity=80) => ({ id, name:id, country, level, academyQuality, youthOpportunity, squadCompetition:70, sellingProfile:80, prestige:"standard" as const, leagueBand:"europe_2" as const });
@@ -180,6 +180,23 @@ test("contracts prevent an offer carousel and second division blocks continental
   assert.equal(state.offers.length,0);
   assert.equal(state.seasons[0].competitions?.some(x=>x.kind==="continental"),false);
   assert.equal(state.contractUntil,2029);
+});
+
+test("continental competitions follow the previous domestic qualification",()=>{
+  const european={...club("european","España",82),careerCategory:"elite_national" as const,domesticDivision:1 as const,leagueBand:"europe_1" as const};
+  const southAmerican={...club("south-american","Brasil",82),careerCategory:"elite_national" as const,domesticDivision:1 as const,leagueBand:"south_america_a" as const};
+  const qualified=(target:CareerClub,position:number,cupWinner=false)=>{
+    const state=createCareer({...input,club:target});
+    const season={...simulateSeason(state,"team",[target]).seasons[0],club:target,competitions:[
+      {name:domesticLeagueName(target),stage:`Posición ${position}`,champion:position===1,kind:"domestic" as const},
+      {name:"Copa nacional",stage:cupWinner?"Campeón":"Cuartos de final",champion:cupWinner,kind:"cup" as const},
+    ]};
+    return {...state,seasons:[season]};
+  };
+  assert.equal(continentalCompetitionFor(qualified(european,4),european),"Champions League");
+  assert.equal(continentalCompetitionFor(qualified(european,5),european),"Europa League");
+  assert.equal(continentalCompetitionFor(qualified(southAmerican,5),southAmerican),"Copa Sudamericana");
+  assert.equal(continentalCompetitionFor(qualified(european,10,true),european),"Europa League");
 });
 
 test("prohibited supplements preserve the declared 25 percent favorable outcome",()=>{

@@ -288,21 +288,47 @@ const nationalTeamStrength:Record<string,number>={
   Argentina:94,Brasil:94,Francia:93,España:92,Inglaterra:91,Alemania:91,Italia:89,Portugal:88,
   "Países Bajos":88,Uruguay:87,Bélgica:84,Colombia:83,Chile:79,Ecuador:78,Paraguay:77,Dinamarca:82,
 };
+function domesticFinish(season:CareerSeason|undefined){
+  const domestic=season?.competitions?.find(x=>x.kind==="domestic");
+  if(!domestic)return 99;
+  if(domestic.champion||domestic.stage==="Campeón")return 1;
+  return Number(domestic.stage.match(/\d+/)?.[0]??99);
+}
+export function continentalCompetitionFor(state:CareerState,club:CareerClub){
+  if(club.domesticDivision===2)return null;
+  const european=club.leagueBand.startsWith("europe"),previous=state.seasons.at(-1),sameClub=previous?.club.id===club.id;
+  if(!sameClub){
+    if(["premium_international","elite_international"].includes(club.careerCategory??""))return european?"Champions League":"Copa Libertadores";
+    if(club.careerCategory==="elite_national")return european?"Europa League":"Copa Sudamericana";
+    if(club.careerCategory==="national"&&club.level>=80)return european?"Conference League":"Copa Sudamericana";
+    return null;
+  }
+  const position=domesticFinish(previous),cupWinner=previous.competitions?.some(x=>x.kind==="cup"&&x.champion)??false;
+  if(european){
+    const slots:Record<string,[number,number,number]>={europe_1:[4,5,6],europe_2:[4,5,6],europe_3:[2,3,4],europe_4:[1,2,3]};
+    const [championsPlace,europaPlace,conferencePlace]=slots[club.leagueBand]??[1,2,3];
+    if(position<=championsPlace)return "Champions League";
+    if(cupWinner||position<=europaPlace)return "Europa League";
+    if(position<=conferencePlace)return "Conference League";
+    return null;
+  }
+  const libertadoresPlaces=club.leagueBand==="south_america_a"?4:2,sudamericanaPlaces=club.leagueBand==="south_america_a"?6:4;
+  if(cupWinner||position<=libertadoresPlaces)return "Copa Libertadores";
+  if(position<=sudamericanaPlaces)return "Copa Sudamericana";
+  return null;
+}
 function competitionResults(state:CareerState,club:CareerClub,selected:boolean,year:number,overall:number,rating:number,minutes:number,rand:()=>number){
   const strength=club.level+Math.max(-4,Math.min(6,(overall-club.level)/2));
   const champion=(difficulty:number)=>rand()<Math.max(.015,(strength-difficulty)/85+.08);
   const leagueChampion=champion(76),cupChampion=champion(73);
   const results:CompetitionResult[]=[{name:domesticLeagueName(club),stage:leagueChampion?"Campeón":`Posición ${Math.max(1,Math.round(13-(strength-65)/3+rand()*6))}`,champion:leagueChampion,kind:"domestic"},{name:"Copa nacional",stage:cupChampion?"Campeón":rand()<.5?"Semifinales":"Cuartos de final",champion:cupChampion,kind:"cup"}];
-  const previous=state.seasons.at(-1),position=Number(previous?.competitions?.find(x=>x.kind==="domestic")?.stage.match(/\d+/)?.[0]??99);
-  const established=["premium_international","elite_international"].includes(club.careerCategory??"");
-  const qualified=club.domesticDivision!==2&&(previous?.club.id===club.id?previous.trophies.includes("league")||position<=({europe_1:6,europe_2:5,europe_3:4,europe_4:3,south_america_a:6,south_america_b:4}[club.leagueBand]):established||club.level>=84);
-  if(qualified){
+  const continentalName=continentalCompetitionFor(state,club);
+  if(continentalName){
     const categoryBonus=club.careerCategory==="premium_international"?.12:club.careerCategory==="elite_international"?.08:club.careerCategory==="elite_national"?.04:0;
     const playerBonus=Math.max(0,overall-76)*.005+Math.max(0,rating-7)*.045+Math.min(.03,minutes/85000);
     const recentMisses=state.seasons.slice(-3).filter(s=>s.competitions?.some(c=>c.kind==="continental"&&!c.champion)).length;
     const winChance=Math.min(.46,Math.max(.035,.05+(strength-72)*.007+categoryBonus+playerBonus+recentMisses*.016));
-    const won=rand()<winChance,european=club.leagueBand.startsWith("europe");
-    const name=european?(club.level>=88||club.careerCategory==="premium_international"?"Champions League":club.level>=82?"Europa League":"Conference League"):"Copa Libertadores";
+    const won=rand()<winChance,name=continentalName;
     const stageRoll=rand();
     results.push({name,stage:won?"Campeón":stageRoll<.2?"Final":stageRoll<.48?"Semifinales":stageRoll<.75?"Cuartos de final":"Octavos de final",champion:won,kind:"continental" as const});
   }
