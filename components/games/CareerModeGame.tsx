@@ -8,6 +8,7 @@ import {
 import {
   CAREER_CLUBS,
   NATIONALITIES,
+  NATIONALITY_FLAG_PATHS,
   loadCareerClubs,
   starterClubsFor,
 } from "../../lib/career/clubs";
@@ -442,16 +443,16 @@ export default function CareerModeGame() {
           </label>
           <label>
             {c.nationality}
-            <select
+            <span className="career-nationality-select"><img src={NATIONALITY_FLAG_PATHS[form.nationality as keyof typeof NATIONALITY_FLAG_PATHS]} alt=""/><select
               value={form.nationality}
               onChange={(e) =>
                 setForm({ ...form, nationality: e.target.value, clubId: "" })
               }
             >
               {NATIONALITIES.map((x) => (
-                <option key={x}>{x}</option>
+                <option key={x} value={x}>{x}</option>
               ))}
-            </select>
+            </select></span>
           </label>
           <label>
             {c.position}
@@ -522,7 +523,7 @@ export default function CareerModeGame() {
             {p.name} <b>#{p.shirtNumber}</b>
           </h2>
           <span>
-            {p.age} {c.years} · {c[p.position]} · {p.nationality}
+            {p.age} {c.years} · {c[p.position]} · <img className="career-inline-flag" src={NATIONALITY_FLAG_PATHS[p.nationality as keyof typeof NATIONALITY_FLAG_PATHS]} alt=""/> {p.nationality}
           </span>
           </div>
         </div>
@@ -531,7 +532,7 @@ export default function CareerModeGame() {
           <div>
             <small>{c.currentClub}</small>
             <strong>{career.club.name}</strong>
-            <span>{career.club.country} · {career.club.careerCategory ? c[career.club.careerCategory] : career.club.prestige === "standard" ? c.nationalClub : c[career.club.prestige]}{career.club.leagueName?` · ${career.club.leagueName}`:""}</span>
+            <span>{career.club.country} · {career.club.careerCategory ? c[career.club.careerCategory] : career.club.prestige === "standard" ? c.nationalClub : c[career.club.prestige]}{career.club.leagueName?` · ${career.club.leagueName}`:""} · CONTRATO {career.contractUntil}</span>
           </div>
         </div>
       </div>

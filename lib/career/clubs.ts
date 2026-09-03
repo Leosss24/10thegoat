@@ -369,6 +369,7 @@ const PROFILES: Profile[] = [
 export const CAREER_CLUBS: CareerClub[] = PROFILES.map((x, i) => ({
   ...x,
   id: `career-${i + 1}`,
+  badgeUrl:x.name==="Envigado"?"https://media.api-sports.io/football/teams/1129.png":null,
 }));
 const normalize = (v: string) =>
   v
@@ -377,6 +378,7 @@ const normalize = (v: string) =>
     .toLowerCase()
     .replace(/[^a-z0-9]/g, "");
 const CLUB_ALIASES: Record<string, string[]> = {
+  atleticodemadrid:["atleticomadrid"],
   bayernmunchen: ["bayernmunich", "fcbayernmunchen"],
   borussiadortmund: ["dortmund", "bvbdortmund"],
   parissaintgermain: ["psg", "parissg"],
@@ -386,6 +388,7 @@ const CLUB_ALIASES: Record<string, string[]> = {
   marseille: ["olympiquedemarseille"],
   lyon: ["olympiquelyonnais"],
   sportingcp: ["sportinglisbon", "sportingclubedeportugal"],
+  porto:["fcporto"],
   psv: ["psveindhoven"],
   ajax: ["ajaxamsterdam"],
   riverplate: ["riverplatebuenosaires"],
@@ -393,23 +396,33 @@ const CLUB_ALIASES: Record<string, string[]> = {
   athleticclub: ["athleticbilbao"],
   westham: ["westhamunited"],
   vitoriaguimaraes: ["vitoriasc", "vitoriaguimaraessc"],
-  nacional: ["clubnacionaldefootball", "nacionalmontevideo"],
+  nacional: ["clubnacional", "clubnacionaldefootball", "nacionalmontevideo"],
   penarol: ["capenarol", "clubatleticopenarol"],
+  argentinosjuniors:["argentinosjrs"],
+  envigado:["envigadofc"],
+  celtadevigo:["celtavigo"],
+  freiburg:["scfreiburg"],
+  nordsjlland:["fcnordsjaelland"],
 };
 export async function loadCareerClubs(): Promise<CareerClub[]> {
   if (!supabase) return CAREER_CLUBS;
-  const { data, error } = await supabase
-    .from("clubs")
-    .select("id,name,badge_url,career_category,domestic_division,domestic_league_name,countries(name)")
-    .eq("is_active", true)
-    .eq("is_national_team", false)
-    .limit(1000);
-  if (error || !data) return CAREER_CLUBS;
-  const rows = new Map(data.map((x) => [normalize(x.name), x]));
+  type ClubRow={id:number;name:string;badge_url:string|null;career_category:string;domestic_division:1|2|null;domestic_league_name:string|null;countries:{name:string}|{name:string}[]|null};
+  const data:ClubRow[]=[];
+  for(let from=0;;from+=1000){
+    const {data:page,error}=await supabase.from("clubs").select("id,name,badge_url,career_category,domestic_division,domestic_league_name,countries(name)").eq("is_active",true).eq("is_national_team",false).eq("is_game_eligible",true).order("id").range(from,from+999);
+    if(error||!page)return CAREER_CLUBS;
+    data.push(...page as unknown as ClubRow[]);
+    if(page.length<1000)break;
+  }
+  const dbCountry:Record<string,string>={España:"Spain",Inglaterra:"England",Alemania:"Germany",Italia:"Italy",Francia:"France","Países Bajos":"Netherlands",Brasil:"Brazil",Bélgica:"Belgium",Dinamarca:"Denmark"};
+  const relationName=(row:ClubRow)=>{const relation=row.countries;return Array.isArray(relation)?relation[0]?.name:relation?.name};
+  const rows = new Map<string,ClubRow>();
+  for(const row of data)rows.set(`${normalize(relationName(row)??"")}|${normalize(row.name)}`,row);
   const curated=CAREER_CLUBS.map((profile) => {
     const key = normalize(profile.name);
+    const country=normalize(dbCountry[profile.country]??profile.country);
     const row = [key, ...(CLUB_ALIASES[key] ?? [])]
-      .map((alias) => rows.get(alias))
+      .map((alias) => rows.get(`${country}|${alias}`))
       .find(Boolean);
     return row
       ? {
@@ -453,6 +466,7 @@ export const NATIONALITIES = [
   "Portugal",
   "Uruguay",
 ] as const;
+export const NATIONALITY_FLAG_PATHS:Record<(typeof NATIONALITIES)[number],string>={Alemania:"/flags/de.svg",Argentina:"/flags/ar.svg",Bélgica:"/flags/be.svg",Brasil:"/flags/br.svg",Chile:"/flags/cl.svg",Colombia:"/flags/co.svg",Dinamarca:"/flags/dk.svg",Ecuador:"/flags/ec.svg",España:"/flags/es.svg",Francia:"/flags/fr.svg",Inglaterra:"/flags/gb.svg",Italia:"/flags/it.svg","Países Bajos":"/flags/nl.svg",Paraguay:"/flags/py.svg",Portugal:"/flags/pt.svg",Uruguay:"/flags/uy.svg"};
 export function starterClubsFor(nationality: string, clubs: CareerClub[]) {
   const home = clubs.filter((c) => c.country === nationality);
   return [...(home.length ? home : clubs)].sort(

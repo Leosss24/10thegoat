@@ -80,3 +80,32 @@ test("a new career offers at most three home-country academies",()=>{
   assert.equal(options.length,3);
   assert.ok(options.every(x=>x.country==="España"));
 });
+
+test("talent distribution remains close to the designed probabilities",()=>{
+  const counts={normal:0,high:0,crack:0,generational:0};
+  for(let seed=1;seed<=10000;seed++)counts[createCareer({...input,seed}).player.talentBand]++;
+  assert.ok(counts.generational>=180&&counts.generational<=320,JSON.stringify(counts));
+  assert.ok(counts.crack>=750&&counts.crack<=1150,JSON.stringify(counts));
+  assert.ok(counts.high>=2100&&counts.high<=2700,JSON.stringify(counts));
+  assert.ok(counts.normal>=6000&&counts.normal<=6800,JSON.stringify(counts));
+});
+
+test("contracts prevent an offer carousel and second division blocks continental play",()=>{
+  const second={...club("second","España",70),careerCategory:"national_b" as const,domesticDivision:2 as const};
+  let state=createCareer({...input,club:second});
+  state=simulateSeason(state,"development",[second,...FALLBACK_CLUBS]);
+  assert.equal(state.offers.length,0);
+  assert.equal(state.seasons[0].competitions?.some(x=>x.kind==="continental"),false);
+  assert.equal(state.contractUntil,2029);
+});
+
+test("prohibited supplements preserve the declared 25 percent favorable outcome",()=>{
+  let favorable=0,total=0;
+  for(let seed=1;seed<=5000&&total<300;seed++){
+    const state=createCareer({...input,seed});
+    const next=simulateSeason(state,"development",FALLBACK_CLUBS,"balanced","yes");
+    if(next.seasons[0].decision?.title.includes("suplementos")){total++;if(next.seasons[0].decision?.success)favorable++;}
+  }
+  assert.ok(total>80);
+  assert.ok(favorable/total>.15&&favorable/total<.35,`${favorable}/${total}`);
+});
