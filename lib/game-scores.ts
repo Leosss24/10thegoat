@@ -58,14 +58,29 @@ function normalizeStats(value?: Partial<GameScoreStats>): GameScoreStats {
   };
 }
 
+function normalizeForGame(gameKey: string, value?: Partial<GameScoreStats>): GameScoreStats {
+  const stats = normalizeStats(value);
+  if (gameKey === "mayor-o-menor" && stats.bestScore >= 10) {
+    stats.wins = Math.max(stats.wins, Math.floor(stats.bestScore / 10));
+  }
+  return stats;
+}
+
 export function getGameScore(gameKey: string): GameScoreStats {
   const store = readStore();
-  return normalizeStats(store[gameKey] ?? EMPTY_STATS);
+  return normalizeForGame(gameKey, store[gameKey] ?? EMPTY_STATS);
+}
+
+export function getAllGameScores(): ScoreStore {
+  const store = readStore();
+  return Object.fromEntries(
+    Object.entries(store).map(([gameKey, stats]) => [gameKey, normalizeForGame(gameKey, stats)]),
+  );
 }
 
 export function recordGameResult(gameKey: string, result: GameResultInput): GameScoreStats {
   const store = readStore();
-  const current = normalizeStats(store[gameKey]);
+  const current = normalizeForGame(gameKey, store[gameKey]);
   const next: GameScoreStats = {
     points: Math.max(0, current.points + result.score),
     played: current.played + 1,
@@ -85,11 +100,12 @@ export function recordGameResult(gameKey: string, result: GameResultInput): Game
 
 export function addGamePoints(gameKey: string, points: number): GameScoreStats {
   const store = readStore();
-  const current = normalizeStats(store[gameKey]);
+  const current = normalizeForGame(gameKey, store[gameKey]);
   const next: GameScoreStats = {
     ...current,
     points: Math.max(0, current.points + points),
     bestScore: Math.max(0, current.bestScore, points),
+    wins: current.wins + 1,
   };
 
   store[gameKey] = next;

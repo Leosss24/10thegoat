@@ -39,7 +39,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   return <html lang={locale} data-scroll-behavior="smooth" className={careerFont.variable}><body><I18nProvider locale={locale} dictionary={d}>
     <header className="site-header"><div className="container nav">
       <Link className="brand" href={localizedPath(locale)} aria-label={`10theGOAT · ${d.nav.home}`}><img className="brand-logo" src="/brand/10thegoat-shield-raster.png" alt=""/><span><strong>10</strong>the<strong>GOAT</strong></span></Link>
-      <nav className="nav-links" aria-label={d.nav.main}><Link href={localizedPath(locale, "/juegos")}>{d.nav.games}</Link><LanguageSwitcher /></nav>
+      <nav className="nav-links" aria-label={d.nav.main}><Link href={localizedPath(locale, "/juegos")}>{d.nav.games}</Link><Link href={localizedPath(locale,"/usuario")}>{locale==="es"?"Mi zona":locale==="fr"?"Mon espace":"My account"}</Link><LanguageSwitcher /></nav>
     </div></header>{children}
     <footer className="footer"><div className="container footer-layout"><div className="footer-brand"><img src="/brand/10thegoat-shield-raster.png" alt=""/><span><strong>10</strong>the<strong>GOAT</strong></span></div><nav className="footer-links" aria-label={d.nav.legal}><Link href={localizedPath(locale, "/privacidad")}>{d.nav.privacy}</Link><Link href={localizedPath(locale, "/cookies")}>{d.nav.cookies}</Link><Link href={localizedPath(locale, "/aviso-legal")}>{d.nav.notice}</Link><Link href={localizedPath(locale, "/beta")}>{d.nav.feedback}</Link></nav></div></footer>
   </I18nProvider></body></html>;

@@ -5,6 +5,7 @@ import { supabase } from "../../lib/supabase";
 import { getGameScore, recordGameResult } from "../../lib/game-scores";
 import { readGameSession, writeGameSession } from "../../lib/game-session";
 import { useI18n } from "../I18nProvider";
+import { uniqueSeniorBadges } from "../../lib/football/club-filter";
 
 type Club = { id: number; name: string; badge_url: string | null; is_national_team: boolean; is_active: boolean; is_game_eligible: boolean };
 type Attempt = { id: number; name: string; correct: boolean };
@@ -39,48 +40,6 @@ function normalize(value: string) {
   return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("es").trim();
 }
 
-function isReserveOrYouthClub(name: string) {
-  const raw = name.trim();
-  const folded = normalize(raw);
-
-  // Sufijos/patrones habituales de filiales y equipos de desarrollo.
-  if (/\b(?:u|under)[ -]?(?:17|18|19|20|21|23)\b/i.test(raw)) return true;
-  if (/\b(?:reserves?|reserve|youth|academy|primavera)\b/i.test(raw)) return true;
-  if (/\s(?:b|c|ii|iii)$/i.test(raw)) return true;
-  if (/\b(?:b team|second team|2nd team)\b/i.test(raw)) return true;
-
-  // Filiales con nombre propio que no llevan un sufijo obvio.
-  const knownReserveNames = [
-    "real madrid castilla",
-    "barcelona atletic",
-    "barca atletic",
-    "villarreal b",
-    "real sociedad b",
-    "athletic club b",
-    "bilbao athletic",
-    "betis deportivo",
-    "sevilla atletico",
-    "atletico madrileno",
-    "valencia mestalla",
-    "espanyol b",
-    "deportivo fabril",
-    "celta fortuna",
-    "bayern munich ii",
-    "bayern munchen ii",
-    "borussia dortmund ii",
-    "mainz 05 ii",
-    "freiburg ii",
-    "werder bremen ii",
-    "hannover 96 ii",
-    "eintracht frankfurt ii",
-    "juventus next gen",
-    "atalanta u23",
-    "milan futuro",
-    "inter u23",
-  ];
-  return knownReserveNames.some((reserve) => folded === normalize(reserve));
-}
-
 export default function GuessTheBadgeGame() {
   const { locale } = useI18n();
   const c = locale === "en" ? { config: "Public Supabase configuration is missing.", few: "There are not enough clubs with badges.", loading: "Finding a badge…", attempt: "Attempt", of: "of", revealed: "Badge revealed", question: "Which club is it?", badgeOf: "Badge of", pixelated: "Pixelated club badge", resolution: "Visible resolution", complete: "full", placeholder: "Type a club…", try: "Try", won: "BADGE GUESSED!", was: "THE CLUB WAS", points: "points", total: "Total", again: "Play again" } : locale === "fr" ? { config: "La configuration publique de Supabase est manquante.", few: "Il n'y a pas assez de clubs avec un écusson.", loading: "Recherche d'un écusson…", attempt: "Essai", of: "sur", revealed: "Écusson dévoilé", question: "Quel est ce club ?", badgeOf: "Écusson de", pixelated: "Écusson de club pixelisé", resolution: "Résolution visible", complete: "complète", placeholder: "Saisissez un club…", try: "Essayer", won: "ÉCUSSON DEVINÉ !", was: "LE CLUB ÉTAIT", points: "points", total: "Total", again: "Rejouer" } : { config: "Falta la configuración pública de Supabase.", few: "No hay suficientes clubes con escudo.", loading: "Buscando un escudo…", attempt: "Intento", of: "de", revealed: "Escudo revelado", question: "¿Qué club es?", badgeOf: "Escudo de", pixelated: "Escudo de club pixelado", resolution: "Resolución visible", complete: "completa", placeholder: "Escribe un club…", try: "Probar", won: "¡ESCUDO ADIVINADO!", was: "EL CLUB ERA", points: "puntos", total: "Total", again: "Jugar otra" };
@@ -105,19 +64,14 @@ export default function GuessTheBadgeGame() {
   useEffect(() => {
     async function load() {
       if (!supabase) { setError(c.config); setLoading(false); return; }
-      const { data, error } = await supabase
-        .from("clubs")
-        .select("id,name,badge_url,is_national_team,is_active,is_game_eligible")
-        .eq("is_national_team", false)
-        .eq("is_game_eligible", true)
-        .eq("is_active", true)
-        .not("badge_url", "is", null);
-      if (error) { setError(error.message); setLoading(false); return; }
-      const ready = ((data ?? []) as Club[]).filter((club) =>
-        club.badge_url &&
-        club.name.length > 1 &&
-        !isReserveOrYouthClub(club.name)
-      );
+      const all:Club[]=[];
+      for(let from=0;;from+=1000){
+        const { data, error } = await supabase.from("clubs").select("id,name,badge_url,is_national_team,is_active,is_game_eligible").eq("is_national_team", false).eq("is_game_eligible", true).eq("is_active", true).not("badge_url", "is", null).order("name").range(from,from+999);
+        if (error) { setError(error.message); setLoading(false); return; }
+        all.push(...((data??[]) as Club[]));
+        if((data?.length??0)<1000)break;
+      }
+      const ready = uniqueSeniorBadges(all.filter(club=>club.name.length>1));
       if (ready.length < 10) { setError(c.few); setLoading(false); return; }
       setClubs(ready);
       const saved = readGameSession(GAME_KEY, isBadgeSession);

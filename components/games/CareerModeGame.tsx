@@ -14,19 +14,25 @@ import {
 } from "../../lib/career/clubs";
 import {
   createCareer,
+  domesticLeagueName,
   resolveOffer,
   retireCareer,
   simulateSeason,
 } from "../../lib/career/engine";
-import { decisionFor } from "../../lib/career/decisions";
+import { CAREER_DECISIONS, decisionFor, targetNationalityFor } from "../../lib/career/decisions";
+import type { DecisionEffects } from "../../lib/career/decisions";
+import { localizeDecision } from "../../lib/career/decision-i18n";
 import { clearCareer, loadCareer, saveCareer } from "../../lib/career/storage";
+import CareerAccountPanel from "./CareerAccountPanel";
 import type {
   CareerClub,
   CareerPosition,
   CareerState,
+  DecisionResult,
   SeasonFocus,
   TrainingFocus,
 } from "../../lib/career/types";
+type Celebration={kind:"title";name:string;scope:"collective"|"individual"}|{kind:"tournament";name:string;stage:string;year:number;nation:string};
 const positions: CareerPosition[] = [
   "centre_back",
   "right_back",
@@ -66,6 +72,7 @@ const copy = {
     reputation: "REPUTACIÓN",
     family: "FAMILIA",
     legacy: "LEGADO",
+    cabinet: "VITRINA",
     training: "Plan de entrenamiento",
     objective: "Objetivo de temporada",
     simulate: "Simular temporada",
@@ -83,6 +90,8 @@ const copy = {
     decision: "DECISIÓN DE TEMPORADA",
     competitions: "COMPETICIONES",
     offers: "OFERTAS Y CESIONES",
+    noOffers: "No hay ofertas en este momento",
+    noDecisions: "No hay decisiones que tomar en este momento",
     stay: "Quedarme",
     sign: "Aceptar",
     transfer: "Traspaso",
@@ -161,6 +170,7 @@ const copy = {
     reputation: "REPUTATION",
     family: "FAMILY",
     legacy: "LEGACY",
+    cabinet: "TROPHY CABINET",
     training: "Training plan",
     objective: "Season objective",
     simulate: "Simulate season",
@@ -178,6 +188,8 @@ const copy = {
     decision: "SEASON DECISION",
     competitions: "COMPETITIONS",
     offers: "OFFERS AND LOANS",
+    noOffers: "There are no offers at this time",
+    noDecisions: "There are no decisions to make at this time",
     stay: "Stay",
     sign: "Accept",
     transfer: "Transfer",
@@ -256,6 +268,7 @@ const copy = {
     reputation: "RÉPUTATION",
     family: "FAMILLE",
     legacy: "HÉRITAGE",
+    cabinet: "VITRINE",
     training: "Plan d’entraînement",
     objective: "Objectif de saison",
     simulate: "Simuler la saison",
@@ -273,6 +286,8 @@ const copy = {
     decision: "DÉCISION DE SAISON",
     competitions: "COMPÉTITIONS",
     offers: "OFFRES ET PRÊTS",
+    noOffers: "Aucune offre pour le moment",
+    noDecisions: "Aucune décision à prendre pour le moment",
     stay: "Rester",
     sign: "Accepter",
     transfer: "Transfert",
@@ -361,6 +376,7 @@ export default function CareerModeGame() {
     [focus, setFocus] = useState<SeasonFocus>("development"),
     [training, setTraining] = useState<TrainingFocus>("balanced"),
     [decisionChoice,setDecisionChoice]=useState("no"),
+    [celebrations,setCelebrations]=useState<Celebration[]>([]),
     [notice, setNotice] = useState("");
   const [form, setForm] = useState({
     name: "",
@@ -390,6 +406,16 @@ export default function CareerModeGame() {
       unlockedAchievementIds: evaluateCareerAchievements(next),
     };
     setCareer(final);
+    const previousSeason=career?.seasons.at(-1),newSeason=final.seasons.at(-1);
+    if(newSeason&&newSeason!==previousSeason){
+      const international=newSeason.competitions?.find(x=>x.kind==="international");
+      const earned:Celebration[]=[
+        ...(international?[{kind:"tournament" as const,name:international.name,stage:international.stage,year:newSeason.year,nation:final.player.nationality}]:[]),
+        ...(newSeason.competitions?.filter(x=>x.champion).map(x=>({kind:"title" as const,name:x.name,scope:"collective" as const}))??[]),
+        ...(newSeason.individualAwards?.map(name=>({kind:"title" as const,name,scope:"individual" as const}))??[]),
+      ];
+      if(earned.length)setCelebrations(x=>[...x,...earned]);
+    }
     setNotice(saveCareer(final) ? c.saved : c.saveError);
   }
   if (!ready)
@@ -401,6 +427,7 @@ export default function CareerModeGame() {
   if (!career)
     return (
       <section className="career-panel career-panel--create">
+        <CareerAccountPanel locale={locale} career={career} onLoad={state=>{setCareer(state);saveCareer(state)}}/>
         <div className="career-title-lockup">
           <span aria-hidden="true">★</span>
           <div><small>10theGOAT</small><h2>{c.newCareer}</h2></div>
@@ -509,9 +536,12 @@ export default function CareerModeGame() {
       </section>
     );
   const p = career.player,
-    last = career.seasons.at(-1),dilemma=decisionFor(career);
+    last = career.seasons.at(-1),dilemma=localizeDecision(decisionFor(career),locale),
+    lastDefinition=last?.decision?CAREER_DECISIONS.find(x=>x.id===last.decision?.decisionId||x.title===last.decision?.title):undefined,
+    localizedLast=lastDefinition?localizeDecision(lastDefinition,locale):undefined;
   return (
     <section className="career-panel career-panel--dashboard" aria-label={c.season}>
+      <CareerAccountPanel locale={locale} career={career} onLoad={state=>{setCareer(state);saveCareer(state)}}/>
       <div className="career-scoreboard">
         <div className="career-player-identity">
           <div className="career-shirt" aria-hidden="true"><span>{p.shirtNumber}</span></div>
@@ -536,6 +566,7 @@ export default function CareerModeGame() {
           </div>
         </div>
       </div>
+      <TrophyCabinet career={career} title={c.cabinet}/>
       <div className="career-rating-stack">
         <div className="career-rating-hero"><span>{c.overall}</span><strong>{p.overall}</strong></div>
         <div className="career-rating-bars">
@@ -548,8 +579,30 @@ export default function CareerModeGame() {
         </div>
         <div className="career-legacy-strip"><span>{c.legacy}</span><strong>{career.legacyScore}</strong></div>
       </div>
+      {career.status === "active" && <div className="career-market-grid">
+        <div className="career-offers">
+          <h3>{c.offers}</h3>
+          {career.phase === "offers" ? <>
+            <div className="career-offer-list">{career.offers.map((o) => (
+              <article key={o.id}>
+                <ClubCrest club={o.club} />
+                <div><strong>{o.club.name}</strong><span>{o.familyReturn ? c.returnHome : o.kind === "loan" ? c.loan : c.transfer} · {c[o.role === "academy" ? "academyRole" : o.role]}</span></div>
+                <button onClick={() => commit(resolveOffer(career, o.id))}>{c.sign}</button>
+              </article>
+            ))}</div>
+            <div className="career-offer-stay"><button className="career-secondary" onClick={() => commit(resolveOffer(career, null))}>{c.stay}</button></div>
+          </> : <p className="career-empty-state">{c.noOffers}</p>}
+        </div>
+        <div className="career-decision">
+          <h3>{c.decision}</h3>
+          {career.phase === "season" ? <>
+            <strong>{dilemma.title}</strong><p>{dilemma.description}{dilemma.id==="nationality"?` ${targetNationalityFor(career)} ${locale==="en"?"awaits your answer.":locale==="fr"?"attend votre réponse.":"espera tu respuesta."}`:""}</p>
+            <div>{dilemma.choices.map(choice=>{const selected=decisionChoice===choice.id;return <button key={choice.id} aria-pressed={selected} className={`${selected?"is-selected ":""}${choiceTone(choice.effects)}`} onClick={()=>setDecisionChoice(choice.id)}><b>{choice.label}</b><ChoiceEffects effects={choice.effects} labels={c}/>{choice.riskText&&<span className="career-risk">{choice.riskText}{choice.chance!==undefined?` · ${choice.chance}% ${locale==="en"?"FAVOURABLE":locale==="fr"?"FAVORABLE":"FAVORABLE"}`:""}</span>}</button>})}</div>
+          </> : <p className="career-empty-state">{c.noDecisions}</p>}
+        </div>
+      </div>}
       {career.phase === "season" && (
-        <><div className="career-decision"><small>{c.decision}</small><h3>{dilemma.title}</h3><div>{dilemma.choices.map(choice=><button key={choice.id} className={decisionChoice===choice.id?"is-selected":""} onClick={()=>setDecisionChoice(choice.id)}>{choice.label}{choice.riskText&&<span>{choice.riskText}{choice.chance!==undefined?` · ${choice.chance}% favorable`:""}</span>}</button>)}</div></div><div className="career-action">
+        <div className="career-action">
           <label>
             {c.training}
             <select value={training} onChange={(e) => setTraining(e.target.value as TrainingFocus)}>
@@ -587,36 +640,6 @@ export default function CareerModeGame() {
               {c.retire}
             </button>
           )}
-        </div></>
-      )}
-      {career.phase === "offers" && (
-        <div className="career-offers">
-          <h3>{c.offers}</h3>
-          {career.offers.map((o) => (
-            <article key={o.id}>
-              <ClubCrest club={o.club} />
-              <div>
-                <strong>{o.club.name}</strong>
-                <span>
-                  {o.familyReturn
-                    ? c.returnHome
-                    : o.kind === "loan"
-                      ? c.loan
-                      : c.transfer}{" "}
-                  · {c[o.role === "academy" ? "academyRole" : o.role]}
-                </span>
-              </div>
-              <button onClick={() => commit(resolveOffer(career, o.id))}>
-                {c.sign}
-              </button>
-            </article>
-          ))}
-          <button
-            className="career-secondary"
-            onClick={() => commit(resolveOffer(career, null))}
-          >
-            {c.stay}
-          </button>
         </div>
       )}
       {career.phase === "retired" && (
@@ -661,7 +684,7 @@ export default function CareerModeGame() {
             <strong>{c.coachReport}</strong>
             <p>{seasonReport(locale, last)}</p>
           </div>
-          {last.decision&&<div className={`career-season-result ${last.decision.success?"is-success":"is-risk"}`}><strong>{last.decision.title}</strong><p>{last.decision.choice} · {last.decision.outcome}{last.decision.chance!==undefined?` (${last.decision.chance}% favorable)`:""}</p></div>}
+          {last.decision&&<div className={`career-season-result ${last.decision.success?"is-success":"is-risk"}`}><strong>{localizedLast?.title??last.decision.title}</strong><p>{localizedLast?.choices.find(x=>x.id===(last.decision?.choiceId??"no"))?.label??last.decision.choice} · {localizedDecisionOutcome(last.decision,locale)}{last.decision.chance!==undefined?` (${last.decision.chance}% ${locale==="en"?"favourable":locale==="fr"?"favorable":"favorable"})`:""}</p></div>}
           {!!last.competitions?.length&&<div className="career-competitions"><strong>{c.competitions}</strong>{last.competitions.map(x=><span key={x.name}>{x.name}<b>{x.stage}</b></span>)}</div>}
         </div>
       )}
@@ -718,6 +741,7 @@ export default function CareerModeGame() {
           {c.newGame}
         </button>
       )}
+      {celebrations[0]&&<CelebrationModal item={celebrations[0]} seed={career.seed} onDone={()=>setCelebrations(x=>x.slice(1))}/>}
     </section>
   );
 }
@@ -730,15 +754,52 @@ function BarMetric({ label, value, trend }: { label: string; value: number; tren
     </div>
   );
 }
+const tournamentTeams:Record<string,string[]>={
+  "Copa Mundial":["Argentina","Australia","Austria","Bélgica","Brasil","Canadá","Chile","Colombia","Corea del Sur","Croacia","Dinamarca","Ecuador","Egipto","España","Estados Unidos","Francia","Alemania","Inglaterra","Italia","Japón","Marruecos","México","Nigeria","Noruega","Países Bajos","Paraguay","Polonia","Portugal","Senegal","Suiza","Turquía","Uruguay"],
+  Eurocopa:["Alemania","Austria","Bélgica","Croacia","Dinamarca","Escocia","Eslovaquia","Eslovenia","España","Francia","Georgia","Hungría","Inglaterra","Italia","Países Bajos","Polonia","Portugal","República Checa","Rumanía","Serbia","Suiza","Turquía","Ucrania","Gales"],
+  "Copa América":["Argentina","Bolivia","Brasil","Canadá","Chile","Colombia","Costa Rica","Ecuador","Estados Unidos","Jamaica","México","Panamá","Paraguay","Perú","Uruguay","Venezuela"],
+};
+function trophyImage(name:string,individual=false){if(individual)return "/trophies/individual.svg";if(name.includes("Mundial"))return "/trophies/world.svg";if(name.includes("Euro")||name.includes("América")||name.includes("Champions")||name.includes("Libertadores"))return "/trophies/continental.svg";return "/trophies/club.svg"}
+function TrophyCabinet({career,title}:{career:CareerState;title:string}){
+  const items=new Map<string,{count:number;individual:boolean}>();
+  for(const season of career.seasons){for(const competition of season.competitions?.filter(x=>x.champion)??[]){const name=competition.kind==="domestic"?domesticLeagueName(season.club):competition.name;const old=items.get(name);items.set(name,{count:(old?.count??0)+1,individual:false})}for(const award of season.individualAwards??[]){const old=items.get(award);items.set(award,{count:(old?.count??0)+1,individual:true})}}
+  return <section className="career-cabinet"><h3>{title}</h3>{items.size?<div>{[...items].map(([name,item])=><article key={name}><img src={trophyImage(name,item.individual)} alt=""/><span>{name}</span><strong>×{item.count}</strong></article>)}</div>:<p>TODAVÍA NO HAY TROFEOS. LA VITRINA TE ESTÁ ESPERANDO.</p>}</section>
+}
+function CelebrationModal({item,seed,onDone}:{item:Celebration;seed:number;onDone:()=>void}){
+  if(item.kind==="title")return <div className="career-modal-backdrop" role="presentation"><div className="career-title-modal" role="dialog" aria-modal="true"><small>{item.scope==="individual"?"PREMIO INDIVIDUAL":"TÍTULO CONSEGUIDO"}</small><img src={trophyImage(item.name,item.scope==="individual")} alt=""/><h2>{item.name}</h2><p>{item.scope==="individual"?"TU TEMPORADA HA SIDO RECONOCIDA. ESTE TROFEO YA ESTÁ EN TU VITRINA.":"CAMPEONES. EL TROFEO YA FORMA PARTE DE TU HISTORIA."}</p><button className="career-primary" onClick={onDone}>CONTINUAR</button></div></div>;
+  return <TournamentPredictor item={item} seed={seed} onDone={onDone}/>;
+}
+function TournamentPredictor({item,seed,onDone}:{item:Extract<Celebration,{kind:"tournament"}>;seed:number;onDone:()=>void}){
+  const rounds=item.name==="Copa América"?["CUARTOS DE FINAL","SEMIFINALES","FINAL"]:["OCTAVOS DE FINAL","CUARTOS DE FINAL","SEMIFINALES","FINAL"];
+  const exitIndex=item.stage.includes("Cuartos")?rounds.indexOf("CUARTOS DE FINAL"):item.stage.includes("Semifinales")?rounds.indexOf("SEMIFINALES"):rounds.length-1;
+  const [round,setRound]=useState(0),[guess,setGuess]=useState<[number,number]|null>(null);
+  const teams=tournamentTeams[item.name]??tournamentTeams["Copa Mundial"],rival=teams.filter(x=>x!==item.nation)[Math.abs(seed+item.year*13+round*7)%Math.max(1,teams.length-1)]??"Rival";
+  const loses=item.stage!=="Campeón"&&round===exitIndex,home=loses?Math.abs(seed+round)%2:1+Math.abs(seed+round)%3,away=loses?home+1:Math.abs(seed+round*3)%Math.max(1,home);
+  const finished=loses||round===rounds.length-1,hit=guess?.[0]===home&&guess?.[1]===away;
+  const advance=()=>{if(finished)onDone();else{setRound(x=>x+1);setGuess(null)}};
+  return <div className="career-modal-backdrop"><div className="career-tournament-modal" role="dialog" aria-modal="true"><header><img src={trophyImage(item.name)} alt=""/><div><small>{item.year} · {rounds[round]}</small><h2>{item.name}</h2><p>{item.nation} <b>VS</b> {rival}</p></div></header><p className="career-predict-help">ELIGE EL MARCADOR: TU SELECCIÓN A LA IZQUIERDA, EL RIVAL ARRIBA.</p><div className="career-score-grid"><i></i>{[0,1,2,3,4,5,6].map(x=><b key={`h${x}`}>{x}</b>)}{[0,1,2,3,4,5,6].flatMap(a=>[<b key={`v${a}`}>{a}</b>,...[0,1,2,3,4,5,6].map(b=><button key={`${a}-${b}`} disabled={!!guess} className={guess?.[0]===a&&guess?.[1]===b?"is-picked":""} onClick={()=>setGuess([a,b])}>{a}-{b}</button>)])}</div>{guess&&<div className={`career-match-result ${loses?"is-out":"is-through"}`}><span>TU PRONÓSTICO: {guess[0]}–{guess[1]} · {hit?"¡MARCADOR ACERTADO!":"NO ACERTASTE EL MARCADOR"}</span><strong>RESULTADO: {home}–{away}</strong><p>{loses?`${item.nation} QUEDA ELIMINADA`:round===rounds.length-1?`${item.nation} ES CAMPEONA`:"¡AVANZAMOS DE RONDA!"}</p><button className="career-primary" onClick={advance}>{finished?"CERRAR":"SIGUIENTE PARTIDO"}</button></div>}</div></div>
+}
+const effectKeys=["technical","physical","mentality","form","reputation","family"] as const;
+function choiceTone(effects:DecisionEffects){const values=Object.values(effects);return values.some(x=>x<0)?values.some(x=>x>0)?"is-mixed":"is-negative":values.some(x=>x>0)?"is-positive":"is-neutral"}
+function ChoiceEffects({effects,labels}:{effects:DecisionEffects;labels:{technical:string;physical:string;mentality:string;formState:string;reputation:string;family:string}}){
+  const names={technical:labels.technical,physical:labels.physical,mentality:labels.mentality,form:labels.formState,reputation:labels.reputation,family:labels.family};
+  return <span className="career-effect-list">{effectKeys.flatMap(key=>{const value=effects[key];return value?[<em key={key} className={value>0?"is-up":"is-down"}>{value>0?"↑":"↓"} {names[key]}</em>]:[]})}</span>
+}
+function localizedDecisionOutcome(result:DecisionResult,locale:"es"|"en"|"fr"){
+  if(result.nationalityChange)return locale==="en"?`You now represent ${result.nationalityChange.to}`:locale==="fr"?`Vous représentez désormais ${result.nationalityChange.to}`:`Ahora representas a ${result.nationalityChange.to}`;
+  if(result.chance===undefined)return {es:"Decisión aplicada",en:"Decision applied",fr:"Décision appliquée"}[locale];
+  return result.success?{es:"El riesgo salió a tu favor",en:"The risk paid off",fr:"Le risque a tourné en votre faveur"}[locale]:{es:"Las consecuencias negativas se hicieron realidad",en:"The negative consequences materialised",fr:"Les conséquences négatives se sont réalisées"}[locale];
+}
 function seasonReport(locale: "es" | "en" | "fr", season: NonNullable<CareerState["seasons"]>[number]) {
   const changes = season.blockChanges;
-  const strongest = changes ? (Object.entries(changes).sort((a, b) => b[1] - a[1])[0]?.[0] ?? "technical") : "technical";
-  const blocks = {
+  const strongest:[string,number] = changes ? (Object.entries(changes).sort((a, b) => b[1] - a[1])[0] ?? ["technical",0]) : ["technical",0];
+  const progress = {
     es: { technical: "Ha dado pasos adelante con balón.", physical: "Su evolución física ha sido lo más destacado.", mentality: "Está interpretando mejor el juego.", form: "Su estado competitivo ha mejorado." },
     en: { technical: "He has taken steps forward on the ball.", physical: "His physical development stood out most.", mentality: "He is reading the game better.", form: "His competitive form has improved." },
     fr: { technical: "Il a progressé avec le ballon.", physical: "Son évolution physique a été remarquable.", mentality: "Il lit mieux le jeu.", form: "Son état compétitif s’est amélioré." },
   } as const;
-  const legacy = { es: "El cuerpo técnico ha incorporado esta temporada al nuevo modelo de evaluación.", en: "The coaching staff has incorporated this season into the new evaluation model.", fr: "Le staff a intégré cette saison au nouveau modèle d’évaluation." } as const;
+  const regression={es:"No ha progresado esta temporada y necesita recuperar continuidad.",en:"He has not progressed this season and needs continuity.",fr:"Il n’a pas progressé cette saison et doit retrouver de la continuité."} as const;
+  const legacy = { es: "El cuerpo técnico todavía está reuniendo datos para evaluarlo.", en: "The coaching staff is still gathering data to assess him.", fr: "Le staff recueille encore des données pour l’évaluer." } as const;
   const context = season.injuredGames > 8
     ? { es: "Las lesiones limitaron su continuidad.", en: "Injuries limited his continuity.", fr: "Les blessures ont limité sa continuité." }[locale]
     : season.minutes < 700
@@ -748,7 +809,15 @@ function seasonReport(locale: "es" | "en" | "fr", season: NonNullable<CareerStat
         : season.titles > 0
           ? { es: "El éxito colectivo reforzó su confianza.", en: "Team success strengthened his confidence.", fr: "Le succès collectif a renforcé sa confiance." }[locale]
           : { es: "Los minutos disputados consolidaron su desarrollo.", en: "Playing time consolidated his development.", fr: "Le temps de jeu a consolidé son développement." }[locale];
-  return `${changes ? blocks[locale][strongest as keyof typeof blocks.es] : legacy[locale]} ${context}`;
+  const lowest=season.blocks?Object.entries(season.blocks).sort((a,b)=>a[1]-b[1])[0]:undefined;
+  const weaknessNames={es:{technical:"la técnica",physical:"el físico",mentality:"la mentalidad",form:"el estado de forma"},en:{technical:"technique",physical:"physical condition",mentality:"mentality",form:"form"},fr:{technical:"la technique",physical:"le physique",mentality:"le mental",form:"la forme"}} as const;
+  const weakness=lowest&&lowest[1]<70&&(season.year+season.age)%3===0?{
+    es:`Tiene ${weaknessNames.es[lowest[0] as keyof typeof weaknessNames.es]} en ${lowest[1]}, un valor bajo; quizá deba cuidarlo más.`,
+    en:`His ${weaknessNames.en[lowest[0] as keyof typeof weaknessNames.en]} is low at ${lowest[1]}; he should pay it more attention.`,
+    fr:`${weaknessNames.fr[lowest[0] as keyof typeof weaknessNames.fr]} est faible (${lowest[1]}) ; il devrait davantage la travailler.`,
+  }[locale]:"";
+  const opening=changes?(strongest[1]>0?progress[locale][strongest[0] as keyof typeof progress.es]:regression[locale]):legacy[locale];
+  return `${opening} ${context}${weakness?` ${weakness}`:""}`;
 }
 function Stat({ label, value }: { label: string; value: number }) {
   return (

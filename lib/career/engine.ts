@@ -14,7 +14,7 @@ import type {
   TrainingFocus,
   TransferOffer,
 } from "./types.ts";
-import { decisionFor } from "./decisions.ts";
+import { decisionFor, targetNationalityFor } from "./decisions.ts";
 const EMPTY: CareerTotals = {
   appearances: 0,
   goals: 0,
@@ -256,16 +256,43 @@ function makeOffers(
     }));
 }
 const focusValue=(focus:SeasonFocus|undefined)=>focus??"team";
-function competitionResults(state:CareerState,club:CareerClub,selected:boolean,year:number,overall:number,rand:()=>number){
+export function domesticLeagueName(club:CareerClub){
+  if(club.domesticDivision===2)return ({España:"LaLiga Hypermotion",Inglaterra:"Championship",Alemania:"2. Bundesliga",Italia:"Serie B",Francia:"Ligue 2",Portugal:"Liga Portugal 2",Argentina:"Primera Nacional",Brasil:"Série B"} as Record<string,string>)[club.country]??club.leagueName??"Segunda División";
+  return ({España:"LaLiga",Inglaterra:"Premier League",Alemania:"Bundesliga",Italia:"Serie A",Francia:"Ligue 1",Portugal:"Liga Portugal",Países_Bajos:"Eredivisie",Bélgica:"Pro League",Argentina:"Liga Profesional Argentina",Brasil:"Brasileirão",Uruguay:"Primera División de Uruguay",Chile:"Primera División de Chile",Colombia:"Categoría Primera A",Ecuador:"LigaPro",Paraguay:"Primera División de Paraguay",Dinamarca:"Superliga danesa"} as Record<string,string>)[club.country.replaceAll(" ","_")]??club.leagueName??"Liga nacional";
+}
+const nationalTeamStrength:Record<string,number>={
+  Argentina:94,Brasil:94,Francia:93,España:92,Inglaterra:91,Alemania:91,Italia:89,Portugal:88,
+  "Países Bajos":88,Uruguay:87,Bélgica:84,Colombia:83,Chile:79,Ecuador:78,Paraguay:77,Dinamarca:82,
+};
+function competitionResults(state:CareerState,club:CareerClub,selected:boolean,year:number,overall:number,rating:number,minutes:number,rand:()=>number){
   const strength=club.level+Math.max(-4,Math.min(6,(overall-club.level)/2));
   const champion=(difficulty:number)=>rand()<Math.max(.015,(strength-difficulty)/85+.08);
   const leagueChampion=champion(76),cupChampion=champion(73);
-  const results:CompetitionResult[]=[{name:"Liga nacional",stage:leagueChampion?"Campeón":`Posición ${Math.max(1,Math.round(13-(strength-65)/3+rand()*6))}`,champion:leagueChampion,kind:"domestic"},{name:"Copa nacional",stage:cupChampion?"Campeón":rand()<.5?"Semifinales":"Cuartos de final",champion:cupChampion,kind:"cup"}];
+  const results:CompetitionResult[]=[{name:domesticLeagueName(club),stage:leagueChampion?"Campeón":`Posición ${Math.max(1,Math.round(13-(strength-65)/3+rand()*6))}`,champion:leagueChampion,kind:"domestic"},{name:"Copa nacional",stage:cupChampion?"Campeón":rand()<.5?"Semifinales":"Cuartos de final",champion:cupChampion,kind:"cup"}];
   const previous=state.seasons.at(-1),position=Number(previous?.competitions?.find(x=>x.kind==="domestic")?.stage.match(/\d+/)?.[0]??99);
   const established=["premium_international","elite_international"].includes(club.careerCategory??"");
   const qualified=club.domesticDivision!==2&&(previous?.club.id===club.id?previous.trophies.includes("league")||position<=({europe_1:6,europe_2:5,europe_3:4,europe_4:3,south_america_a:6,south_america_b:4}[club.leagueBand]):established||club.level>=84);
-  if(qualified){const won=champion(89);const european=club.leagueBand.startsWith("europe");const name=european?(club.level>=88||club.careerCategory==="premium_international"?"Champions League":club.level>=82?"Europa League":"Conference League"):"Copa Libertadores";results.push({name,stage:won?"Campeón":rand()<.38?"Semifinales":"Octavos de final",champion:won,kind:"continental" as const})}
-  if(selected&&year%4===2){const won=rand()<.13;results.push({name:"Torneo internacional de selecciones",stage:won?"Campeón":rand()<.5?"Semifinales":"Cuartos de final",champion:won,kind:"international" as const})}
+  if(qualified){
+    const categoryBonus=club.careerCategory==="premium_international"?.09:club.careerCategory==="elite_international"?.055:club.careerCategory==="elite_national"?.025:0;
+    const playerBonus=Math.max(0,overall-76)*.004+Math.max(0,rating-7)*.035+Math.min(.025,minutes/100000);
+    const recentMisses=state.seasons.slice(-3).filter(s=>s.competitions?.some(c=>c.kind==="continental"&&!c.champion)).length;
+    const winChance=Math.min(.38,Math.max(.025,.035+(strength-72)*.006+categoryBonus+playerBonus+recentMisses*.012));
+    const won=rand()<winChance,european=club.leagueBand.startsWith("europe");
+    const name=european?(club.level>=88||club.careerCategory==="premium_international"?"Champions League":club.level>=82?"Europa League":"Conference League"):"Copa Libertadores";
+    const stageRoll=rand();
+    results.push({name,stage:won?"Campeón":stageRoll<.2?"Final":stageRoll<.48?"Semifinales":stageRoll<.75?"Cuartos de final":"Octavos de final",champion:won,kind:"continental" as const});
+  }
+  if(selected&&(year%4===2||year%4===0)){
+    const european=["España","Inglaterra","Francia","Alemania","Italia","Portugal","Países Bajos","Bélgica","Dinamarca"].includes(state.player.nationality);
+    const southAmerican=["Argentina","Brasil","Uruguay","Chile","Colombia","Ecuador","Paraguay"].includes(state.player.nationality);
+    const name=year%4===2?"Copa Mundial":european?"Eurocopa":southAmerican?"Copa América":"Copa Mundial";
+    const teamStrength=nationalTeamStrength[state.player.nationality]??73;
+    const playerImpact=Math.max(0,overall-70)*.004+Math.max(0,rating-6.8)*.035+Math.min(.025,minutes/100000);
+    const previousEliminations=state.seasons.filter(s=>s.competitions?.some(c=>c.kind==="international"&&!c.champion)).length;
+    const winChance=Math.min(.36,Math.max(.025,.035+(teamStrength-72)*.006+playerImpact+Math.min(.045,previousEliminations*.012)));
+    const won=rand()<winChance,stageRoll=rand();
+    results.push({name,stage:won?"Campeón":stageRoll<.16?"Final":stageRoll<.45?"Semifinales":stageRoll<.76?"Cuartos de final":"Fase de grupos",champion:won,kind:"international" as const});
+  }
   return results;
 }
 export function simulateSeason(
@@ -342,8 +369,17 @@ export function simulateSeason(
     internationalGoals = selected
       ? clamp(internationalCaps * attack[p.position] * rand(), 0, 10)
       : 0;
-  const competitions=competitionResults(state,club,selected,state.year,p.overall,rand);
+  const competitions=competitionResults(state,club,selected,state.year,p.overall,rating,minutes,rand);
   const trophies=competitions.filter(x=>x.champion).map(x=>x.kind==="domestic"?"league":x.kind);
+  const individualAwards:string[]=[];
+  if(p.age<=21&&minutes>=1500&&rating>=7.25)individualAwards.push("Mejor jugador joven");
+  if(goals>=({striker:24,second_striker:21,right_winger:18,left_winger:18} as Partial<Record<CareerPosition,number>>)[p.position]!)individualAwards.push("Bota de Oro");
+  if(minutes>=2200&&rating>=7.55&&rand()<Math.min(.55,.08+(rating-7.3)*.55+Math.max(0,p.overall-82)*.018))individualAwards.push("Jugador del Año");
+  const majorTitles=competitions.filter(x=>x.champion&&(x.kind==="continental"||x.kind==="international")).length;
+  const positionOutput=attack[p.position]<=.12?cleanSheets:goals+assists;
+  const ballonScore=(p.overall-80)*.02+(rating-7)*.24+Math.min(.18,positionOutput*.006)+majorTitles*.15+(trophies.includes("league")?.05:0)+(club.careerCategory==="premium_international"?.035:0);
+  const ballonChance=Math.min(.75,Math.max(0,ballonScore-.08));
+  if(p.overall>=81&&minutes>=1800&&positionOutput>=(attack[p.position]<=.12?9:12)&&rand()<ballonChance)individualAwards.push("Balón de Oro");
   const minutesFactor = Math.min(1.25, minutes / 1800);
   const ageCurve =
     p.age <= 18
@@ -398,6 +434,7 @@ export function simulateSeason(
   const previousBlocks = p.blocks;
   const attributes = evolveAttributes(p.attributes, growth, training, p.age, minutes, selected, p.familyBond, club, rand);
   const dilemma=decisionFor(state),choice=dilemma.choices.find(x=>x.id===decisionChoiceId)??dilemma.choices[1];
+  const nationalityTarget=dilemma.id==="nationality"&&choice.id==="yes"?targetNationalityFor(state):null;
   const decisionSuccess=choice.chance===undefined||rand()<choice.chance/100,factor=decisionSuccess?1:-.75;
   const effects=dilemma.id==="doping"&&choice.id==="yes"?(decisionSuccess?{physical:4}:{physical:2,form:-12,reputation:-35}):choice.effects;
   const nextFitness = clamp(84 - injuredGames + (focus === "recovery" || training === "recovery" ? 12 : 0)+(effects.form??0)*factor, 35, 100);
@@ -427,6 +464,7 @@ export function simulateSeason(
     rating,
     injuredGames,
     trophies,
+    individualAwards,
     selected,
     event,
     growth,
@@ -436,7 +474,7 @@ export function simulateSeason(
     training,
     focus,
     competitions,
-    decision:{title:dilemma.title,choice:choice.label,outcome:choice.chance===undefined?"Decisión aplicada":decisionSuccess?"El riesgo salió a tu favor":"Las consecuencias negativas se hicieron realidad",success:decisionSuccess,chance:choice.chance},
+    decision:{decisionId:dilemma.id,choiceId:choice.id,title:dilemma.title,choice:choice.label,outcome:nationalityTarget?`Ahora representas a ${nationalityTarget}`:choice.chance===undefined?"Decisión aplicada":decisionSuccess?"El riesgo salió a tu favor":"Las consecuencias negativas se hicieron realidad",success:decisionSuccess,chance:choice.chance,nationalityChange:nationalityTarget?{from:p.nationality,to:nationalityTarget}:undefined},
   };
   const totals = Object.fromEntries(
     Object.keys(EMPTY).map((k) => [
@@ -478,6 +516,7 @@ export function simulateSeason(
     legacyScore,
     player: {
       ...p,
+      nationality:nationalityTarget??p.nationality,
       age,
       overall,
       reputation,

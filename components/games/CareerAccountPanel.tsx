@@ -1,0 +1,16 @@
+"use client";
+import { useEffect,useState } from "react";
+import type { User } from "@supabase/supabase-js";
+import { supabase } from "../../lib/supabase";
+import { listCareerSnapshots,saveCareerSnapshot,type CareerSnapshot } from "../../lib/career/cloud-storage";
+import type { CareerState } from "../../lib/career/types";
+export default function CareerAccountPanel({locale,career,onLoad}:{locale:"es"|"en"|"fr";career:CareerState|null;onLoad:(s:CareerState)=>void}){
+ const [user,setUser]=useState<User|null>(null),[saves,setSaves]=useState<CareerSnapshot[]>([]),[message,setMessage]=useState(""),[busy,setBusy]=useState(false);
+ const es=locale==="es",fr=locale==="fr",t=(a:string,b:string,c:string)=>es?a:fr?c:b;
+ const refresh=async()=>{try{setSaves(await listCareerSnapshots())}catch(e){setMessage(e instanceof Error?e.message:String(e))}};
+ useEffect(()=>{if(!supabase)return;supabase.auth.getUser().then(({data})=>setUser(data.user));const {data}=supabase.auth.onAuthStateChange((_e,s)=>setUser(s?.user??null));return()=>data.subscription.unsubscribe()},[]);
+ useEffect(()=>{if(user)void refresh();else setSaves([])},[user]);
+ const login=(provider:"google"|"twitter")=>supabase?.auth.signInWithOAuth({provider:provider==="twitter"?"x":provider,options:{redirectTo:`${location.origin}/${locale}/usuario`}});
+ const save=async()=>{if(!career||!user)return;const oldest=saves[0];if(saves.length>=2&&!confirm(t(`YA TIENES DOS CARRERAS. SE BORRARÁ “${oldest.name}”, LA MÁS ANTIGUA. ¿CONTINUAR?`,`YOU ALREADY HAVE TWO CAREERS. “${oldest.name}”, THE OLDEST, WILL BE DELETED. CONTINUE?`,`VOUS AVEZ DÉJÀ DEUX CARRIÈRES. « ${oldest.name} », LA PLUS ANCIENNE, SERA SUPPRIMÉE. CONTINUER ?`)))return;setBusy(true);try{await saveCareerSnapshot(career);await refresh();setMessage(t("PUNTO DE CARRERA GUARDADO","CAREER SNAPSHOT SAVED","POINT DE CARRIÈRE SAUVEGARDÉ"))}catch(e){setMessage(e instanceof Error?e.message:String(e))}finally{setBusy(false)}};
+ return <section className="career-account"><header><div><small>{t("GUARDADO DE CARRERA","CAREER SAVES","SAUVEGARDE DE CARRIÈRE")}</small><strong>{user?t("SESIÓN INICIADA","SIGNED IN","CONNECTÉ"):t("GUARDA HASTA DOS PUNTOS","SAVE UP TO TWO SNAPSHOTS","SAUVEGARDEZ DEUX POINTS")}</strong></div>{user&&<button onClick={()=>supabase?.auth.signOut()}>{t("SALIR","SIGN OUT","SORTIR")}</button>}</header>{!user?<div className="career-social-login"><button onClick={()=>login("google")}>G&nbsp; · GOOGLE</button><button onClick={()=>login("twitter")}>𝕏&nbsp; · TWITTER / X</button></div>:<><div className="career-save-list">{saves.map(x=><article key={x.id}><div><strong>{x.summary.playerName} #{x.summary.shirtNumber}</strong><span>{x.summary.club} · {x.summary.year}/{String(x.summary.year+1).slice(-2)} · {t("MEDIA","OVR","NOTE")} {x.summary.overall}</span></div><button onClick={()=>onLoad(x.game_state)}>{t("CARGAR","LOAD","CHARGER")}</button></article>)}</div>{career&&<button className="career-primary career-link-save" disabled={busy} onClick={save}>{t("GUARDAR ESTE PUNTO","SAVE THIS POINT","SAUVEGARDER CE POINT")}</button>}<small className="career-save-limit">{t("CARGAR UNA PARTIDA NO MODIFICA EL PUNTO GUARDADO.","LOADING NEVER MODIFIES THE SAVED SNAPSHOT.","CHARGER NE MODIFIE JAMAIS LE POINT SAUVEGARDÉ.")}</small></>}{message&&<p className="career-account-message">{message}</p>}</section>
+}

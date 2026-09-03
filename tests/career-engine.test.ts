@@ -1,9 +1,10 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { evaluateCareerAchievements } from "../lib/achievements.ts";
-import { calculateOverall, createCareer, resolveOffer, simulateSeason } from "../lib/career/engine.ts";
+import { calculateOverall, createCareer, domesticLeagueName, resolveOffer, simulateSeason } from "../lib/career/engine.ts";
 import { parseCareer } from "../lib/career/storage.ts";
-import { CAREER_DECISIONS } from "../lib/career/decisions.ts";
+import { CAREER_DECISIONS, decisionFor, targetNationalityFor } from "../lib/career/decisions.ts";
+import { localizeDecision } from "../lib/career/decision-i18n.ts";
 import type { PlayerAttributes } from "../lib/career/types.ts";
 import { starterClubsFor } from "../lib/career/clubs.ts";
 
@@ -64,8 +65,8 @@ test("every player starts at 15 and low minutes can stall progression", () => {
   assert.equal(next.seasons[0].role,"academy");
 });
 
-test("career world includes 50 decisions, competitions and veteran decline",()=>{
-  assert.equal(CAREER_DECISIONS.length,50);
+test("career world includes 100 decisions, competitions and veteran decline",()=>{
+  assert.equal(CAREER_DECISIONS.length,100);
   const young=simulateSeason(createCareer(input),"team",FALLBACK_CLUBS,"balanced","yes");
   assert.ok(young.seasons[0].competitions?.some(x=>x.kind==="domestic"));
   assert.ok(young.seasons[0].decision);
@@ -75,10 +76,44 @@ test("career world includes 50 decisions, competitions and veteran decline",()=>
   assert.ok(next.player.overall<=93);
 });
 
+test("all career decisions are localized in English and French",()=>{
+  for(const decision of CAREER_DECISIONS)for(const locale of ["en","fr"] as const){
+    const translated=localizeDecision(decision,locale);
+    assert.notEqual(translated.title,decision.title,`${locale}:${decision.id}`);
+    assert.notEqual(translated.description,decision.description,`${locale}:${decision.id}`);
+    assert.ok(translated.choices.every((x,i)=>x.label&&x.label!==decision.choices[i].label),`${locale}:${decision.id}`);
+  }
+});
+
+test("both choices in every decision have consequences",()=>{
+  for(const decision of CAREER_DECISIONS)for(const choice of decision.choices){
+    assert.ok(Object.values(choice.effects).some(value=>value!==0),`${decision.id}:${choice.id}`);
+  }
+});
+
+test("sporting nationality changes only before an international debut",()=>{
+  const italian=club("italian","Italia",70);
+  let eligible=createCareer({...input,club:italian});
+  assert.equal(targetNationalityFor(eligible),"Italia");
+  for(let seed=1;decisionFor(eligible).id!=="nationality"&&seed<1000;seed++) eligible={...eligible,seed};
+  assert.equal(decisionFor(eligible).id,"nationality");
+  const changed=simulateSeason(eligible,"development",[italian,...FALLBACK_CLUBS],"balanced","yes");
+  assert.equal(changed.player.nationality,"Italia");
+  const capped={...eligible,totals:{...eligible.totals,internationalCaps:1}};
+  assert.equal(targetNationalityFor(capped),null);
+  assert.notEqual(decisionFor(capped).id,"nationality");
+});
+
 test("a new career offers at most three home-country academies",()=>{
   const options=starterClubsFor("España",[...FALLBACK_CLUBS,club("third","España",60),club("fourth","España",63)]);
   assert.equal(options.length,3);
   assert.ok(options.every(x=>x.country==="España"));
+});
+
+test("the trophy cabinet can distinguish domestic championships",()=>{
+  assert.equal(domesticLeagueName(club("spain","España",80)),"LaLiga");
+  assert.equal(domesticLeagueName(club("germany","Alemania",80)),"Bundesliga");
+  assert.equal(domesticLeagueName({...club("england","Inglaterra",70),domesticDivision:2}),"Championship");
 });
 
 test("talent distribution remains close to the designed probabilities",()=>{
@@ -101,11 +136,11 @@ test("contracts prevent an offer carousel and second division blocks continental
 
 test("prohibited supplements preserve the declared 25 percent favorable outcome",()=>{
   let favorable=0,total=0;
-  for(let seed=1;seed<=5000&&total<300;seed++){
+  for(let seed=1;seed<=30000&&total<300;seed++){
     const state=createCareer({...input,seed});
     const next=simulateSeason(state,"development",FALLBACK_CLUBS,"balanced","yes");
     if(next.seasons[0].decision?.title.includes("suplementos")){total++;if(next.seasons[0].decision?.success)favorable++;}
   }
-  assert.ok(total>80);
+  assert.ok(total>150);
   assert.ok(favorable/total>.15&&favorable/total<.35,`${favorable}/${total}`);
 });

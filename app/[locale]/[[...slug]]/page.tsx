@@ -7,10 +7,11 @@ import HigherLowerGame from "@/components/games/HigherLowerGame";
 import PlayerWordleGame from "@/components/games/PlayerWordleGame";
 import GuessTheBadgeGame from "@/components/games/GuessTheBadgeGame";
 import CareerModeGame from "@/components/games/CareerModeGame";
+import UserDashboard from "@/components/UserDashboard";
 import { dictionaries, isLocale, localizedPath, locales, type Dictionary, type Locale } from "@/lib/i18n";
 
 type Props = { params: Promise<{ locale: string; slug?: string[] }> };
-const routePaths = ["", "/juegos", "/juegos/mayor-o-menor", "/juegos/adivina-jugador", "/juegos/adivina-escudo", "/juegos/football-grid", "/juegos/carrera", "/juegos/mi-once", "/beta", "/privacidad", "/cookies", "/aviso-legal"];
+const routePaths = ["", "/usuario", "/juegos", "/juegos/mayor-o-menor", "/juegos/adivina-jugador", "/juegos/adivina-escudo", "/juegos/football-grid", "/juegos/carrera", "/juegos/mi-once", "/beta", "/privacidad", "/cookies", "/aviso-legal"];
 export function generateStaticParams() { return locales.flatMap((locale) => routePaths.map((path) => ({ locale, slug: path ? path.slice(1).split("/") : [] }))); }
 
 function pathFor(slug?: string[]) { return slug?.length ? `/${slug.join("/")}` : ""; }
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!isLocale(raw)) return {};
   const d = dictionaries[raw]; const path = pathFor(slug);
   const pages: Record<string, { title?: string; description?: string; noindex?: boolean }> = {
-    "": { description: d.meta.description }, "/juegos": { title: d.catalog.title },
+    "": { description: d.meta.description }, "/usuario": { title: "Usuario", noindex: true }, "/juegos": { title: d.catalog.title },
     "/juegos/mayor-o-menor": { title: d.games.higherLower.title, description: d.games.higherLower.meta },
     "/juegos/adivina-jugador": { title: d.games.wordle.title, description: d.games.wordle.meta },
     "/juegos/adivina-escudo": { title: d.games.badge.title, description: d.games.badge.meta },
@@ -48,6 +49,7 @@ export default async function LocalizedPage({ params }: Props) {
   const locale = raw as Locale; const d = dictionaries[locale]; const path = pathFor(slug); const games = gameCards(d);
   if (path === "/juegos/jugador-misterioso") redirect(localizedPath(locale, "/juegos/adivina-jugador"));
   if (path === "") return <main><section className="hero hero--interactive"><div className="hero-content"><div className="hero-brand-lockup"><img className="hero-shield" src="/brand/10thegoat-shield-raster.png" alt=""/><img className="hero-wordmark" src="/brand/10thegoat-wordmark.svg" alt={d.home.alt}/><img className="hero-shield hero-shield--mirror" src="/brand/10thegoat-shield-raster.png" alt=""/></div><ArenaGameMenu games={games} locale={locale} label={d.home.intro}/></div></section></main>;
+  if (path === "/usuario") return <UserDashboard locale={locale}/>;
   if (path === "/juegos") return <main className="section container"><h1>{d.catalog.title}</h1><div className="game-catalog-grid">{games.map((game) => <GameCard key={game.slug} game={game} locale={locale}/>)}</div></main>;
   if (path === "/juegos/mayor-o-menor") return <main className="game-shell game-room container hl-page"><div className="game-room-heading hl-heading"><Link href={`/${locale}`} className="game-room-back">← ARENA</Link><div><span className="eyebrow">{d.games.higherLower.eyebrow}</span><h1>{d.games.higherLower.title}</h1><p>{d.games.higherLower.intro}</p></div></div><HigherLowerGame /></main>;
   if (path === "/juegos/adivina-jugador") return <main className="game-shell game-room container wordle-page"><div className="game-room-heading wordle-heading"><Link href={`/${locale}`} className="game-room-back">← ARENA</Link><div><span className="eyebrow">{d.games.wordle.eyebrow}</span><h1>{d.games.wordle.title}</h1><p>{d.games.wordle.intro}</p></div></div><PlayerWordleGame /></main>;
