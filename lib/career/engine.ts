@@ -273,10 +273,10 @@ function competitionResults(state:CareerState,club:CareerClub,selected:boolean,y
   const established=["premium_international","elite_international"].includes(club.careerCategory??"");
   const qualified=club.domesticDivision!==2&&(previous?.club.id===club.id?previous.trophies.includes("league")||position<=({europe_1:6,europe_2:5,europe_3:4,europe_4:3,south_america_a:6,south_america_b:4}[club.leagueBand]):established||club.level>=84);
   if(qualified){
-    const categoryBonus=club.careerCategory==="premium_international"?.09:club.careerCategory==="elite_international"?.055:club.careerCategory==="elite_national"?.025:0;
-    const playerBonus=Math.max(0,overall-76)*.004+Math.max(0,rating-7)*.035+Math.min(.025,minutes/100000);
+    const categoryBonus=club.careerCategory==="premium_international"?.12:club.careerCategory==="elite_international"?.08:club.careerCategory==="elite_national"?.04:0;
+    const playerBonus=Math.max(0,overall-76)*.005+Math.max(0,rating-7)*.045+Math.min(.03,minutes/85000);
     const recentMisses=state.seasons.slice(-3).filter(s=>s.competitions?.some(c=>c.kind==="continental"&&!c.champion)).length;
-    const winChance=Math.min(.38,Math.max(.025,.035+(strength-72)*.006+categoryBonus+playerBonus+recentMisses*.012));
+    const winChance=Math.min(.46,Math.max(.035,.05+(strength-72)*.007+categoryBonus+playerBonus+recentMisses*.016));
     const won=rand()<winChance,european=club.leagueBand.startsWith("europe");
     const name=european?(club.level>=88||club.careerCategory==="premium_international"?"Champions League":club.level>=82?"Europa League":"Conference League"):"Copa Libertadores";
     const stageRoll=rand();
@@ -287,9 +287,9 @@ function competitionResults(state:CareerState,club:CareerClub,selected:boolean,y
     const southAmerican=["Argentina","Brasil","Uruguay","Chile","Colombia","Ecuador","Paraguay"].includes(state.player.nationality);
     const name=year%4===2?"Copa Mundial":european?"Eurocopa":southAmerican?"Copa América":"Copa Mundial";
     const teamStrength=nationalTeamStrength[state.player.nationality]??73;
-    const playerImpact=Math.max(0,overall-70)*.004+Math.max(0,rating-6.8)*.035+Math.min(.025,minutes/100000);
+    const playerImpact=Math.max(0,overall-70)*.005+Math.max(0,rating-6.8)*.045+Math.min(.03,minutes/85000);
     const previousEliminations=state.seasons.filter(s=>s.competitions?.some(c=>c.kind==="international"&&!c.champion)).length;
-    const winChance=Math.min(.36,Math.max(.025,.035+(teamStrength-72)*.006+playerImpact+Math.min(.045,previousEliminations*.012)));
+    const winChance=Math.min(.44,Math.max(.035,.05+(teamStrength-72)*.007+playerImpact+Math.min(.07,previousEliminations*.018)));
     const won=rand()<winChance,stageRoll=rand();
     results.push({name,stage:won?"Campeón":stageRoll<.16?"Final":stageRoll<.45?"Semifinales":stageRoll<.76?"Cuartos de final":"Fase de grupos",champion:won,kind:"international" as const});
   }
@@ -374,12 +374,14 @@ export function simulateSeason(
   const individualAwards:string[]=[];
   if(p.age<=21&&minutes>=1500&&rating>=7.25)individualAwards.push("Mejor jugador joven");
   if(goals>=({striker:24,second_striker:21,right_winger:18,left_winger:18} as Partial<Record<CareerPosition,number>>)[p.position]!)individualAwards.push("Bota de Oro");
-  if(minutes>=2200&&rating>=7.55&&rand()<Math.min(.55,.08+(rating-7.3)*.55+Math.max(0,p.overall-82)*.018))individualAwards.push("Jugador del Año");
+  if(attack[p.position]<=.12&&cleanSheets>=11&&rating>=7.25)individualAwards.push("Mejor defensor");
+  if(["holding_midfielder","central_midfielder","attacking_midfielder"].includes(p.position)&&assists>=11&&rating>=7.25)individualAwards.push("Mejor centrocampista");
+  if(minutes>=2000&&rating>=7.45&&rand()<Math.min(.68,.12+(rating-7.2)*.65+Math.max(0,p.overall-80)*.022))individualAwards.push("Jugador del Año");
   const majorTitles=competitions.filter(x=>x.champion&&(x.kind==="continental"||x.kind==="international")).length;
   const positionOutput=attack[p.position]<=.12?cleanSheets:goals+assists;
-  const ballonScore=(p.overall-80)*.02+(rating-7)*.24+Math.min(.18,positionOutput*.006)+majorTitles*.15+(trophies.includes("league")?.05:0)+(club.careerCategory==="premium_international"?.035:0);
-  const ballonChance=Math.min(.75,Math.max(0,ballonScore-.08));
-  if(p.overall>=81&&minutes>=1800&&positionOutput>=(attack[p.position]<=.12?9:12)&&rand()<ballonChance)individualAwards.push("Balón de Oro");
+  const ballonScore=(p.overall-79)*.022+(rating-7)*.28+Math.min(.2,positionOutput*.007)+majorTitles*.17+(trophies.includes("league")?.06:0)+(club.careerCategory==="premium_international"?.045:0);
+  const ballonChance=Math.min(.8,Math.max(0,ballonScore-.025));
+  if(p.overall>=80&&minutes>=1750&&positionOutput>=(attack[p.position]<=.12?8:11)&&rand()<ballonChance)individualAwards.push("Balón de Oro");
   const minutesFactor = Math.min(1.25, minutes / 1800);
   const ageCurve =
     p.age <= 18
