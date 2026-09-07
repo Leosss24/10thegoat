@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { useI18n } from "../I18nProvider";
 import {
   achievementDefinitions,
@@ -36,6 +36,7 @@ import type {
 } from "../../lib/career/types";
 type Celebration={kind:"title";name:string;scope:"collective"|"individual"}|{kind:"tournament";name:string;stage:string;year:number;nation:string}|{kind:"promotion";club:string;age:number};
 type TournamentOutcome={stage:string;champion:boolean};
+type RiskResolution={next:CareerState;title:string;choice:string;chance:number;success:boolean;successEffects:DecisionEffects;failureEffects:DecisionEffects};
 const positions: CareerPosition[] = [
   "centre_back",
   "right_back",
@@ -418,6 +419,7 @@ export default function CareerModeGame() {
     [focus, setFocus] = useState<SeasonFocus>("development"),
     [training, setTraining] = useState<TrainingFocus>("balanced"),
     [decisionChoice,setDecisionChoice]=useState(""),
+    [riskResolution,setRiskResolution]=useState<RiskResolution|null>(null),
     [celebrations,setCelebrations]=useState<Celebration[]>([]),
     [notice, setNotice] = useState(""),
     [careerSeed] = useState(()=>Date.now()&0x7fffffff);
@@ -590,10 +592,17 @@ export default function CareerModeGame() {
         </form>
       </section>
     );
-  const p = career.player,
+  const currentCareer=career,p = currentCareer.player,
     last = career.seasons.at(-1),dilemma=localizeDecision(decisionFor(career),locale),
     lastDefinition=last?.decision?CAREER_DECISIONS.find(x=>x.id===last.decision?.decisionId||x.title===last.decision?.title):undefined,
     localizedLast=lastDefinition?localizeDecision(lastDefinition,locale):undefined;
+  function playSeason(){
+    if(!decisionChoice){setNotice(c.chooseDecision);return}
+    const selected=dilemma.choices.find(choice=>choice.id===decisionChoice);
+    const next=simulateSeason(currentCareer,focus,clubs,training,decisionChoice),result=next.seasons.at(-1)?.decision;
+    if(selected?.chance!==undefined&&result){setRiskResolution({next,title:dilemma.title,choice:selected.label,chance:selected.chance,success:result.success,successEffects:selected.effects,failureEffects:selected.failureEffects??{}});return}
+    commit(next);
+  }
   return (
     <section className="career-panel career-panel--dashboard" aria-label={c.season}>
       <CareerAccountPanel locale={locale} career={career} onLoad={state=>{setCareer(state);saveCareer(state)}}/>
@@ -654,7 +663,7 @@ export default function CareerModeGame() {
           <h3>{c.decision}</h3>
           {career.phase === "season" ? <>
             <strong>{dilemma.title}</strong><p>{dilemma.description}{dilemma.id==="nationality"?` ${targetNationalityFor(career)} ${locale==="en"?"awaits your answer.":locale==="fr"?"attend votre réponse.":"espera tu respuesta."}`:""}</p>
-            <div>{dilemma.choices.map(choice=>{const selected=decisionChoice===choice.id;return <button key={choice.id} aria-pressed={selected} className={`${selected?"is-selected ":""}${choiceTone(choice.effects)}`} onClick={()=>{setDecisionChoice(choice.id);setNotice("")}}><b>{choice.label}</b><ChoiceEffects effects={choice.effects} labels={c}/>{choice.riskText&&<span className="career-risk">{choice.riskText}{choice.chance!==undefined?` · ${choice.chance}% ${locale==="en"?"FAVOURABLE":locale==="fr"?"FAVORABLE":"FAVORABLE"}`:""}</span>}</button>})}</div>
+            <div>{dilemma.choices.map(choice=>{const selected=decisionChoice===choice.id;return <button key={choice.id} aria-pressed={selected} className={`${selected?"is-selected ":""}${choiceTone(choice.effects)}`} onClick={()=>{setDecisionChoice(choice.id);setNotice("")}}><b>{choice.label}</b>{choice.chance!==undefined?<RiskPreview choice={choice} labels={c} locale={locale}/>:<ChoiceEffects effects={choice.effects} labels={c} neutralLabel={neutralCopy(locale)}/>}</button>})}</div>
           </> : <p className="career-empty-state">{c.noDecisions}</p>}
         </div>
       </div>}
@@ -685,7 +694,7 @@ export default function CareerModeGame() {
           </label>
           <button
             className="career-primary"
-            onClick={() => {if(!decisionChoice){setNotice(c.chooseDecision);return}commit(simulateSeason(career, focus, clubs, training,decisionChoice))}}
+            onClick={playSeason}
           >
             {c.simulate}
           </button>
@@ -744,7 +753,7 @@ export default function CareerModeGame() {
             <strong>{c.coachReport}</strong>
             <p>{seasonReport(locale, last)}</p>
           </div>
-          {last.decision&&<div className={`career-season-result ${last.decision.success?"is-success":"is-risk"}`}><strong>{localizedLast?.title??last.decision.title}</strong><p>{localizedLast?.choices.find(x=>x.id===(last.decision?.choiceId??"no"))?.label??last.decision.choice} · {localizedDecisionOutcome(last.decision,locale)}{last.decision.chance!==undefined?` (${last.decision.chance}% ${locale==="en"?"favourable":locale==="fr"?"favorable":"favorable"})`:""}</p></div>}
+          {last.decision&&<div className={`career-season-result ${last.decision.success?"is-success":"is-risk"}`}><strong>{localizedLast?.title??last.decision.title}</strong><p>{localizedLast?.choices.find(x=>x.id===(last.decision?.choiceId??"no"))?.label??last.decision.choice} · {localizedDecisionOutcome(last.decision,locale)}{last.decision.chance!==undefined?` (${successProbabilityCopy(last.decision.chance,locale)})`:""}</p></div>}
           {!!last.competitions?.length&&<div className="career-competitions"><strong>{c.competitions}</strong>{last.competitions.map(x=><span key={x.name}>{x.name}<b>{x.stage}</b></span>)}</div>}
         </div>
       )}
@@ -792,6 +801,7 @@ export default function CareerModeGame() {
         <button className="career-new" onClick={()=>{if(confirm(c.restart)){clearCareer();setCareer(null)}}}>{c.newGame}</button>
         <button className="career-abandon" onClick={()=>{if(confirm(c.abandonConfirm)){clearCareer();window.location.assign(`/${locale}/juegos`)}}}>{c.abandon}</button>
       </div>}
+      {riskResolution&&<RiskRouletteModal resolution={riskResolution} labels={c} locale={locale} onDone={()=>{const next=riskResolution.next;setRiskResolution(null);commit(next)}}/>}
       {celebrations[0]&&<CelebrationModal item={celebrations[0]} seed={career.seed} locale={locale} onDone={outcome=>{const item=celebrations[0];if(item.kind==="tournament"&&outcome)finishTournament(item,outcome);else setCelebrations(x=>x.slice(1))}}/>}
     </section>
   );
@@ -873,9 +883,23 @@ function formatMoney(value:number,locale:"es"|"en"|"fr"){
   return new Intl.NumberFormat(locale,{style:"currency",currency:"EUR",maximumFractionDigits:0,notation:value>=1_000_000?"compact":"standard"}).format(value);
 }
 function choiceTone(effects:DecisionEffects){const values=Object.values(effects);return values.some(x=>x<0)?values.some(x=>x>0)?"is-mixed":"is-negative":values.some(x=>x>0)?"is-positive":"is-neutral"}
-function ChoiceEffects({effects,labels}:{effects:DecisionEffects;labels:{technical:string;physical:string;mentality:string;formState:string;reputation:string;family:string;dressingRoom:string}}){
+type EffectLabels={technical:string;physical:string;mentality:string;formState:string;reputation:string;family:string;dressingRoom:string};
+function neutralCopy(locale:"es"|"en"|"fr"){return {es:"SIN CAMBIOS",en:"NO CHANGES",fr:"AUCUN CHANGEMENT"}[locale]}
+function successProbabilityCopy(chance:number,locale:"es"|"en"|"fr"){return locale==="en"?`${chance}% CHANCE OF SUCCESS`:locale==="fr"?`${chance} % DE CHANCES DE RÉUSSITE`:`${chance}% DE PROBABILIDADES DE ÉXITO`}
+function ChoiceEffects({effects,labels,neutralLabel}:{effects:DecisionEffects;labels:EffectLabels;neutralLabel?:string}){
   const names={technical:labels.technical,physical:labels.physical,mentality:labels.mentality,form:labels.formState,reputation:labels.reputation,family:labels.family,dressingRoom:labels.dressingRoom};
-  return <span className="career-effect-list">{effectKeys.flatMap(key=>{const value=effects[key];return value?[<em key={key} className={value>0?"is-up":"is-down"}>{value>0?"↑":"↓"} {names[key]}</em>]:[]})}</span>
+  const entries=effectKeys.flatMap(key=>{const value=effects[key];return value?[<em key={key} className={value>0?"is-up":"is-down"}>{value>0?"↑":"↓"} {Math.abs(value)} {names[key]}</em>]:[]});
+  return <span className="career-effect-list">{entries.length?entries:<em className="is-neutral">{neutralLabel}</em>}</span>
+}
+function RiskPreview({choice,labels,locale}:{choice:{effects:DecisionEffects;failureEffects?:DecisionEffects;chance?:number;riskText?:string};labels:EffectLabels;locale:"es"|"en"|"fr"}){
+  return <span className="career-risk-preview"><strong>{successProbabilityCopy(choice.chance??0,locale)}</strong><span>{locale==="en"?"SUCCESS":locale==="fr"?"RÉUSSITE":"ÉXITO"}<ChoiceEffects effects={choice.effects} labels={labels}/></span><span>{locale==="en"?"FAILURE":locale==="fr"?"ÉCHEC":"NO ÉXITO"}<ChoiceEffects effects={choice.failureEffects??{}} labels={labels}/></span>{choice.riskText&&<small>{choice.riskText}</small>}</span>
+}
+function RiskRouletteModal({resolution,labels,locale,onDone}:{resolution:RiskResolution;labels:EffectLabels;locale:"es"|"en"|"fr";onDone:()=>void}){
+  const [revealed,setRevealed]=useState(false);
+  const stop=useMemo(()=>{const fraction=.22+((resolution.next.seed+resolution.next.year*13)%57)/100;return resolution.success?Math.max(3,resolution.chance*fraction):resolution.chance+(100-resolution.chance)*fraction},[resolution]);
+  useEffect(()=>{const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;const timer=window.setTimeout(()=>setRevealed(true),reduced?250:2800);return()=>window.clearTimeout(timer)},[]);
+  const words=locale==="en"?{title:"RISK RESOLUTION",success:"SUCCESS",failure:"NO SUCCESS",rolling:"THE CURSOR IS DECIDING…",continue:"CONTINUE"}:locale==="fr"?{title:"RÉSOLUTION DU RISQUE",success:"RÉUSSITE",failure:"ÉCHEC",rolling:"LE CURSEUR DÉCIDE…",continue:"CONTINUER"}:{title:"RESOLUCIÓN DEL RIESGO",success:"ÉXITO",failure:"NO ÉXITO",rolling:"EL CURSOR ESTÁ DECIDIENDO…",continue:"CONTINUAR"};
+  return <div className="career-modal-backdrop"><section className="career-risk-modal" role="dialog" aria-modal="true" aria-label={words.title}><small>{words.title}</small><h2>{resolution.title}</h2><p>{resolution.choice} · {successProbabilityCopy(resolution.chance,locale)}</p><div className="career-risk-wheel"><div className="is-success" style={{width:`${resolution.chance}%`}}><b>{words.success}</b><span>{resolution.chance}%</span></div><div className="is-failure" style={{width:`${100-resolution.chance}%`}}><b>{words.failure}</b><span>{100-resolution.chance}%</span></div><i style={{"--risk-stop":`${stop}%`} as CSSProperties}/></div>{revealed?<div className={`career-risk-outcome ${resolution.success?"is-success":"is-failure"}`}><strong>{resolution.success?words.success:words.failure}</strong><ChoiceEffects effects={resolution.success?resolution.successEffects:resolution.failureEffects} labels={labels}/><button className="career-primary" onClick={onDone}>{words.continue}</button></div>:<strong className="career-risk-rolling">{words.rolling}</strong>}</section></div>
 }
 function localizedDecisionOutcome(result:DecisionResult,locale:"es"|"en"|"fr"){
   if(result.nationalityChange)return locale==="en"?`You now represent ${result.nationalityChange.to}`:locale==="fr"?`Vous représentez désormais ${result.nationalityChange.to}`:`Ahora representas a ${result.nationalityChange.to}`;

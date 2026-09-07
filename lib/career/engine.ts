@@ -512,8 +512,8 @@ export function simulateSeason(
   const attributes = evolveAttributes(p.attributes, growth, training, p.age, minutes, selected, p.familyBond, club, rand);
   const dilemma=decisionFor(state),choice=dilemma.choices.find(x=>x.id===decisionChoiceId)??dilemma.choices[1];
   const nationalityTarget=dilemma.id==="nationality"&&choice.id==="yes"?targetNationalityFor(state):null;
-  const decisionSuccess=choice.chance===undefined||rand()<choice.chance/100,factor=decisionSuccess?1:-.75;
-  const effects=dilemma.id==="doping"&&choice.id==="yes"?(decisionSuccess?{physical:4}:{physical:2,form:-12,reputation:-35}):choice.effects;
+  const decisionSuccess=choice.chance===undefined||rand()<choice.chance/100,factor=1;
+  const effects=choice.chance!==undefined&&!decisionSuccess?(choice.failureEffects??choice.effects):choice.effects;
   const nextFitness = clamp(84 - injuredGames + (focus === "recovery" || training === "recovery" ? 12 : 0)+(effects.form??0)*factor, 35, 100);
   const nextMorale = clamp(65 + trophies.length * 12 + rating * 2 + ((p.dressingRoom??65)-50)/10 + (focus === "family" ? 8 : 0) - (event === "family" ? 10 : 0)+(effects.form??0)*factor, 30, 100);
   const nextFamilyBond = clamp(p.familyBond + (club.country === p.nationality ? 8 : focus === "family" ? 10 : -4) - (event === "family" ? 10 : 0)+(effects.family??0)*factor, 0, 100);

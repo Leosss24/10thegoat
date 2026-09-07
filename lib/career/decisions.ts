@@ -1,7 +1,7 @@
 import type { CareerState, PlayerBlocks } from "./types.ts";
 import { NATIONALITIES } from "./clubs.ts";
 export type DecisionEffects=Partial<PlayerBlocks>&{reputation?:number;family?:number;dressingRoom?:number};
-export type DecisionChoice={id:string;label:string;effects:DecisionEffects;chance?:number;riskText?:string};
+export type DecisionChoice={id:string;label:string;effects:DecisionEffects;failureEffects?:DecisionEffects;chance?:number;riskText?:string};
 export type CareerDecision={id:string;title:string;description:string;choices:[DecisionChoice,DecisionChoice];available?:(s:CareerState)=>boolean};
 type Row=[string,string,string,string,string,DecisionEffects,number?,string?,CareerDecision["available"]?];
 const firstTeam=(s:CareerState)=>(s.player.squadStatus??(s.player.age>=17?"first_team":"academy"))==="first_team";
@@ -114,7 +114,29 @@ const rows:Row[]=[
 function alternativeEffects(effects:DecisionEffects):DecisionEffects{
   return Object.fromEntries(Object.entries(effects).map(([key,value])=>[key,-Math.sign(value)*Math.min(3,Math.max(1,Math.ceil(Math.abs(value)/2)))])) as DecisionEffects;
 }
-export const CAREER_DECISIONS:CareerDecision[]=rows.map(([id,title,description,yes,no,effects,chance,riskText,available])=>({id,title,description,choices:[{id:"yes",label:yes,effects,chance,riskText},{id:"no",label:no,effects:alternativeEffects(effects)}],available}));
+const riskUpsideFallback:Partial<Record<string,keyof DecisionEffects>>={party:"dressingRoom",social:"reputation"};
+function tradeoffEffects(effects:DecisionEffects):DecisionEffects{
+  const values=Object.values(effects),hasUp=values.some(value=>value>0),hasDown=values.some(value=>value<0);
+  if(hasUp&&hasDown)return effects;
+  if(hasUp){const key: keyof DecisionEffects=effects.form===undefined?"form":"reputation";return {...effects,[key]:-2}}
+  const key: keyof DecisionEffects=effects.mentality===undefined?"mentality":"dressingRoom";
+  return {...effects,[key]:2};
+}
+function riskEffects(id:string,effects:DecisionEffects,chance:number):[DecisionEffects,DecisionEffects]{
+  const multiplier=chance<=30?2.5:chance<=45?2:chance<=60?1.65:chance<=75?1.35:1.2;
+  const entries=Object.entries(effects) as [keyof DecisionEffects,number][];
+  const positive=entries.filter(([,value])=>value>0),negative=entries.filter(([,value])=>value<0);
+  const success=Object.fromEntries(positive.map(([key,value])=>[key,Math.max(4,Math.ceil(value*multiplier))])) as DecisionEffects;
+  if(!positive.length){const key=riskUpsideFallback[id]??negative.sort((a,b)=>Math.abs(b[1])-Math.abs(a[1]))[0]?.[0]??"mentality";success[key]=Math.max(5,Math.ceil(4*multiplier))}
+  const failure=Object.fromEntries(negative.map(([key,value])=>[key,-Math.max(4,Math.ceil(Math.abs(value)*1.1))])) as DecisionEffects;
+  if(!negative.length)for(const [key,value] of Object.entries(success) as [keyof DecisionEffects,number][])failure[key]=-Math.max(4,Math.ceil(value*.8));
+  return [success,failure];
+}
+export const CAREER_DECISIONS:CareerDecision[]=rows.map(([id,title,description,yes,no,rawEffects,chance,riskText,available])=>{
+  if(chance!==undefined){const [effects,failureEffects]=riskEffects(id,rawEffects,chance);return {id,title,description,choices:[{id:"yes",label:yes,effects,failureEffects,chance,riskText},{id:"no",label:no,effects:{}}],available}}
+  const effects=tradeoffEffects(rawEffects);
+  return {id,title,description,choices:[{id:"yes",label:yes,effects},{id:"no",label:no,effects:alternativeEffects(effects)}],available};
+});
 export function targetNationalityFor(s:CareerState){return s.totals.internationalCaps===0&&s.club.country!==s.player.nationality&&NATIONALITIES.includes(s.club.country as (typeof NATIONALITIES)[number])?s.club.country:null}
 const firstTeamOnly=new Set(["starter","rotation","loan","reject-loan","minutes","prestige","rival","criticise","penalty","final-injured","club-country","country-pain","country-break","cede-penalty","captain-secret","fake-injury","derby-promise","boos","referee","coach-son","snow","save-coach","bonus","bench-camera","keeper","overplayed","farewell"]);
 const leadershipOnly=new Set(["save-coach","farewell"]),establishedOnly=new Set(["captain-secret","academy-money","overplayed"]);

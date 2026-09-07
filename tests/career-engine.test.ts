@@ -108,9 +108,17 @@ test("all career decisions are localized in English and French",()=>{
   }
 });
 
-test("both choices in every decision have consequences",()=>{
-  for(const decision of CAREER_DECISIONS)for(const choice of decision.choices){
-    assert.ok(Object.values(choice.effects).some(value=>value!==0),`${decision.id}:${choice.id}`);
+test("decisions follow trade-off or risk-and-neutral models",()=>{
+  for(const decision of CAREER_DECISIONS){
+    const [first,second]=decision.choices;
+    if(first.chance!==undefined){
+      assert.ok(Object.values(first.effects).length>0&&Object.values(first.effects).every(value=>value>0),`${decision.id}:success`);
+      assert.ok(Object.values(first.failureEffects??{}).length>0&&Object.values(first.failureEffects??{}).every(value=>value<0),`${decision.id}:failure`);
+      assert.equal(Object.values(second.effects).some(value=>value!==0),false,`${decision.id}:neutral`);
+    }else for(const choice of decision.choices){
+      const values=Object.values(choice.effects);
+      assert.ok(values.some(value=>value>0)&&values.some(value=>value<0),`${decision.id}:${choice.id}`);
+    }
   }
 });
 
@@ -232,7 +240,7 @@ test("academy salaries are capped and leadership decisions require sporting auth
   assert.ok(CAREER_DECISIONS.some(x=>Object.values(x.choices[0].effects).length&&x.choices[0].effects.dressingRoom!==undefined));
 });
 
-test("prohibited supplements preserve the declared 25 percent favorable outcome",()=>{
+test("prohibited supplements preserve the declared 25 percent success probability",()=>{
   let favorable=0,total=0;
   for(let seed=1;seed<=30000&&total<300;seed++){
     const state=createCareer({...input,seed});
