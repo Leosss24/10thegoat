@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { evaluateCareerAchievements } from "../lib/achievements.ts";
-import { calculateOverall, continentalCompetitionFor, createCareer, domesticLeagueName, resolveOffer, simulateSeason, talentBandForSeed } from "../lib/career/engine.ts";
+import { academySalary, calculateOverall, continentalCompetitionFor, createCareer, domesticLeagueName, resolveOffer, simulateSeason, talentBandForSeed } from "../lib/career/engine.ts";
 import { parseCareer } from "../lib/career/storage.ts";
 import { CAREER_DECISIONS, decisionFor, targetNationalityFor } from "../lib/career/decisions.ts";
 import { localizeDecision } from "../lib/career/decision-i18n.ts";
@@ -197,6 +197,32 @@ test("continental competitions follow the previous domestic qualification",()=>{
   assert.equal(continentalCompetitionFor(qualified(european,5),european),"Europa League");
   assert.equal(continentalCompetitionFor(qualified(southAmerican,5),southAmerican),"Copa Sudamericana");
   assert.equal(continentalCompetitionFor(qualified(european,10,true),european),"Europa League");
+});
+
+test("minors remain in development until promoted and cannot inherit first-team titles",()=>{
+  const demanding={...club("demanding","España",94),careerCategory:"premium_international" as const,squadCompetition:94};
+  const created=createCareer({...input,club:demanding});
+  const state={...created,player:{...created.player,talentBand:"normal" as const}};
+  assert.equal(state.player.squadStatus,"academy");
+  assert.ok(state.currentAnnualSalary<=50000);
+  const academySeason=simulateSeason(state,"development",[demanding,...FALLBACK_CLUBS]);
+  assert.equal(academySeason.seasons[0].squadStatus,"academy");
+  assert.equal(academySeason.seasons[0].competitions?.length,0);
+  assert.equal(academySeason.seasons[0].titles,0);
+  const aged={...state,player:{...state.player,age:19,squadStatus:"academy" as const}};
+  const promoted=simulateSeason(aged,"team",[demanding,...FALLBACK_CLUBS]);
+  assert.equal(promoted.player.squadStatus,"first_team");
+  assert.equal(promoted.seasons[0].promotedToFirstTeam,true);
+  assert.equal(promoted.player.firstTeamDebutClub,state.club.name);
+});
+
+test("academy salaries are capped and leadership decisions require sporting authority",()=>{
+  const premium={...club("premium","España",94),careerCategory:"premium_international" as const};
+  assert.equal(academySalary(premium,"generational",7),50000);
+  const state=createCareer(input),captain=CAREER_DECISIONS.find(x=>x.id==="captain")!;
+  const tooYoung={...state,player:{...state.player,age:21,squadStatus:"first_team" as const,reputation:90},seasons:[{role:"star",minutes:3000} as typeof state.seasons[number]]};
+  assert.equal(captain.available?.(tooYoung),false);
+  assert.ok(CAREER_DECISIONS.some(x=>Object.values(x.choices[0].effects).length&&x.choices[0].effects.dressingRoom!==undefined));
 });
 
 test("prohibited supplements preserve the declared 25 percent favorable outcome",()=>{

@@ -1,10 +1,13 @@
 import type { CareerState, PlayerBlocks } from "./types.ts";
 import { NATIONALITIES } from "./clubs.ts";
-export type DecisionEffects=Partial<PlayerBlocks>&{reputation?:number;family?:number};
+export type DecisionEffects=Partial<PlayerBlocks>&{reputation?:number;family?:number;dressingRoom?:number};
 export type DecisionChoice={id:string;label:string;effects:DecisionEffects;chance?:number;riskText?:string};
 export type CareerDecision={id:string;title:string;description:string;choices:[DecisionChoice,DecisionChoice];available?:(s:CareerState)=>boolean};
 type Row=[string,string,string,string,string,DecisionEffects,number?,string?,CareerDecision["available"]?];
-const few=(s:CareerState)=>(s.seasons.at(-1)?.minutes??0)<900,many=(s:CareerState)=>(s.seasons.at(-1)?.minutes??0)>2400,veteran=(s:CareerState)=>s.player.age>=30;
+const firstTeam=(s:CareerState)=>(s.player.squadStatus??(s.player.age>=17?"first_team":"academy"))==="first_team";
+const few=(s:CareerState)=>firstTeam(s)&&(s.seasons.at(-1)?.minutes??0)<900,many=(s:CareerState)=>firstTeam(s)&&(s.seasons.at(-1)?.minutes??0)>2400,veteran=(s:CareerState)=>s.player.age>=30;
+const leader=(s:CareerState)=>firstTeam(s)&&s.player.age>=26&&s.player.reputation>=50&&["starter","star"].includes(s.seasons.at(-1)?.role??"");
+const established=(s:CareerState)=>firstTeam(s)&&s.player.age>=22&&(s.seasons.at(-1)?.minutes??0)>=1200;
 const rows:Row[]=[
 ["extra","El estadio se queda a oscuras","El utillero te deja entrenar una hora más, pero mañana hay sesión doble.","Seguir entrenando","Irme a descansar",{technical:2,form:-2}],
 ["gym","Un plan físico solo para ti","El preparador promete más potencia a cambio de llegar más cargado al fin de semana.","Añadir gimnasio","Mantener el plan",{physical:2,form:-1}],
@@ -36,12 +39,12 @@ const rows:Row[]=[
 ["prestige","Un grande llama antes de tiempo","Tu nombre crecerá, pero la competencia será feroz.","Dar el salto","Elegir minutos",{reputation:3,form:-2}],
 ["money","Una oferta rompe el mercado","Tu familia quedaría asegurada, aunque el proyecto deportivo convence menos.","Elegir dinero","Elegir proyecto",{reputation:-2,family:2}],
 ["home","Desde casa te necesitan","Volver reforzaría a tu familia, pero reduciría tu exposición.","Volver","Continuar fuera",{family:8,reputation:-2}],
-["number","Una promesa pide tu dorsal","Cedérselo uniría al vestuario, pero debilitaría tu marca.","Cederlo","Conservarlo",{mentality:2,reputation:-1}],
-["mentor","Un juvenil se sienta a tu lado","Te pide ayuda para adaptarse y competirá directamente contigo.","Ayudarle","Marcar distancia",{mentality:3,reputation:1}],
-["rival","Tu compañero te gana el puesto","Puedes convertir cada sesión en una batalla o colaborar.","Competir duro","Cooperar",{form:1,mentality:-2}],
-["support-coach","El vestuario duda del técnico","Tu apoyo puede estabilizarlo, pero quizá no sobreviva a la semana.","Apoyarlo","Ser neutral",{reputation:2,form:1},70,"PUEDE SER DESTITUIDO"],
+["number","Una promesa pide tu dorsal","Cedérselo uniría al vestuario, pero debilitaría tu marca.","Cederlo","Conservarlo",{mentality:2,reputation:-1,dressingRoom:4},undefined,undefined,established],
+["mentor","Un juvenil se sienta a tu lado","Te pide ayuda para adaptarse y competirá directamente contigo.","Ayudarle","Marcar distancia",{mentality:3,reputation:1,dressingRoom:5},undefined,undefined,established],
+["rival","Tu compañero te gana el puesto","Puedes convertir cada sesión en una batalla o colaborar.","Competir duro","Cooperar",{form:1,mentality:-2,dressingRoom:-4},undefined,undefined,firstTeam],
+["support-coach","El vestuario duda del técnico","Tu apoyo puede estabilizarlo, pero quizá no sobreviva a la semana.","Apoyarlo","Ser neutral",{reputation:2,form:1,dressingRoom:4},70,"PUEDE SER DESTITUIDO",established],
 ["criticise","La táctica te deja expuesto","Los micrófonos esperan una frase dura al terminar.","Criticar","Hablar en privado",{reputation:-3,mentality:1}],
-["captain","Te entregan el brazalete","Liderar elevará tu peso y también tus obligaciones.","Aceptar","Rechazar",{mentality:3,reputation:2,form:-1}],
+["captain","Te entregan el brazalete","Liderar elevará tu peso y también tus obligaciones.","Aceptar","Rechazar",{mentality:3,reputation:2,form:-1,dressingRoom:5},undefined,undefined,leader],
 ["penalty","Penalti en el descuento","El lanzador habitual te ofrece el balón y todo el estadio mira.","Lanzarlo","Cederlo",{reputation:4,form:3},72,"FALLAR DAÑARÁ TU CONFIANZA"],
 ["final-injured","La final empieza en una hora","No estás recuperado, pero quizá nunca vivas otra noche así.","Jugar","Descansar",{reputation:5,form:-6,physical:-2},45,"RIESGO FÍSICO EXTREMO"],
 ["club-country","Club o selección","El club pide que evites el viaje internacional para recuperarte.","Priorizar club","Viajar",{form:3,reputation:-3}],
@@ -82,7 +85,7 @@ const rows:Row[]=[
 ["documentary","Una plataforma quiere grabarlo todo","Habrá cámaras en casa y vestuario toda la temporada.","Abrir mis puertas","Protegerme",{reputation:5,family:-4}],
 ["crypto","Patrocinio demasiado bueno","El cheque es enorme y nadie explica de dónde sale.","Firmar","Rechazar",{family:3,reputation:-6},35,"LA EMPRESA PUEDE CAER"],
 ["referee","El árbitro admite su error","Puedes publicar su mensaje o aceptar la disculpa.","Publicarlo","Guardarlo",{reputation:2,mentality:-3}],
-["young-captain","El vestuario duda de ti","Varios veteranos esperaban recibir tu brazalete.","Aceptar el reto","Cederlo",{mentality:4,reputation:-1}],
+["young-captain","El vestuario duda de ti","Varios veteranos esperaban recibir tu brazalete.","Aceptar el reto","Cederlo",{mentality:4,reputation:-1,dressingRoom:-3},undefined,undefined,s=>leader(s)&&s.player.age<=28],
 ["old-role","Te quieren retrasar la posición","Perderías ataque, pero podrías alargar tu carrera.","Adaptarme","Mantenerme",{mentality:3,physical:-1},undefined,undefined,veteran],
 ["retirement-rumour","Dicen que vas a retirarte","El club exige que aclares tu futuro.","Desmentirlo","Dejar dudas",{reputation:2,mentality:-1},undefined,undefined,veteran],
 ["veteran-rest","Te reservan para grandes noches","Jugarías menos, pero llegarías fresco.","Aceptar","Exigir jugar",{form:4,reputation:-2},undefined,undefined,veteran],
@@ -113,4 +116,10 @@ function alternativeEffects(effects:DecisionEffects):DecisionEffects{
 }
 export const CAREER_DECISIONS:CareerDecision[]=rows.map(([id,title,description,yes,no,effects,chance,riskText,available])=>({id,title,description,choices:[{id:"yes",label:yes,effects,chance,riskText},{id:"no",label:no,effects:alternativeEffects(effects)}],available}));
 export function targetNationalityFor(s:CareerState){return s.totals.internationalCaps===0&&s.club.country!==s.player.nationality&&NATIONALITIES.includes(s.club.country as (typeof NATIONALITIES)[number])?s.club.country:null}
-export function decisionFor(s:CareerState){const pool=CAREER_DECISIONS.filter(x=>!x.available||x.available(s));return pool[Math.abs(s.seed+s.year*17)%pool.length]}
+const firstTeamOnly=new Set(["starter","rotation","loan","reject-loan","minutes","prestige","rival","criticise","penalty","final-injured","club-country","country-pain","country-break","cede-penalty","captain-secret","fake-injury","derby-promise","boos","referee","coach-son","snow","save-coach","bonus","bench-camera","keeper","overplayed","farewell"]);
+const leadershipOnly=new Set(["save-coach","farewell"]),establishedOnly=new Set(["captain-secret","academy-money","overplayed"]);
+export function decisionFor(s:CareerState){
+  const isFirstTeam=(s.player.squadStatus??(s.player.age>=17?"first_team":"academy"))==="first_team";
+  const pool=CAREER_DECISIONS.filter(x=>(!x.available||x.available(s))&&(isFirstTeam||!firstTeamOnly.has(x.id))&&(!leadershipOnly.has(x.id)||leader(s))&&(!establishedOnly.has(x.id)||established(s)));
+  return pool[Math.abs(s.seed+s.year*17)%pool.length];
+}

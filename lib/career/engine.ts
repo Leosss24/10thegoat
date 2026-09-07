@@ -90,13 +90,14 @@ const moneyRound=(value:number)=>Math.max(12000,Math.round(value/1000)*1000);
 export function academySalary(club:CareerClub,talent:TalentBand,seed:number){
   const multiplier={normal:1,high:1.45,crack:2.4,generational:3.8}[talent];
   const prestige=club.careerCategory==="premium_international"?2:club.careerCategory==="elite_international"?1.55:club.careerCategory==="elite_national"?1.25:1;
-  return moneyRound((15000+Math.max(0,club.level-55)*1800)*multiplier*prestige*(.88+random(seed+83)()*.28));
+  return Math.min(50000,moneyRound((15000+Math.max(0,club.level-55)*1800)*multiplier*prestige*(.88+random(seed+83)()*.28)));
 }
 function marketSalary(state:CareerState,club:CareerClub,rand:()=>number){
   const p=state.player,prestige=club.careerCategory==="premium_international"?1.65:club.careerCategory==="elite_international"?1.35:club.careerCategory==="elite_national"?1.15:club.careerCategory==="national_b"?.72:1;
   const development=Math.max(0,p.overall-55)**2*4800+Math.max(0,p.reputation-20)**1.45*1500;
   const ageFactor=p.age<=21?.72:p.age>=35?.78:1;
-  return moneyRound((45000+development)*prestige*ageFactor*(.82+rand()*.38));
+  const salary=moneyRound((45000+development)*prestige*ageFactor*(.82+rand()*.38));
+  return p.age<18?Math.min(50000,salary):salary;
 }
 function initialAttributes(overall: number, seed: number): PlayerAttributes {
   const rand = random(seed + 41);
@@ -135,13 +136,15 @@ export function calculateOverall(blocks: PlayerBlocks, position: CareerPosition)
 }
 export function hydrateCareer(state: CareerState): CareerState {
   const legacyPlayer = state.player as CareerState["player"] & { attributes?: PlayerAttributes; blocks?: PlayerBlocks };
-  const currentAnnualSalary=state.currentAnnualSalary??academySalary(state.club,legacyPlayer.talentBand,state.seed);
+  const currentAnnualSalary=legacyPlayer.age<18?Math.min(50000,state.currentAnnualSalary??academySalary(state.club,legacyPlayer.talentBand,state.seed)):state.currentAnnualSalary??academySalary(state.club,legacyPlayer.talentBand,state.seed);
   const careerEarnings=state.careerEarnings??state.seasons.reduce((sum,season)=>sum+(season.annualSalary??currentAnnualSalary),0);
-  const offers=state.offers.map(o=>({...o,annualSalary:o.annualSalary??marketSalary(state,o.club,random((state.seed+Number(o.club.id))||1)),signingBonus:o.signingBonus??0,contractYears:o.contractYears??3}));
+  const inferredSquad=legacyPlayer.squadStatus??(state.seasons.some(season=>season.minutes>0)||legacyPlayer.age>=19?"first_team":"academy");
+  const inferredDressingRoom=legacyPlayer.dressingRoom??state.seasons.at(-1)?.dressingRoom??65;
+  const offers=state.offers.map(o=>({...o,targetSquad:o.targetSquad??"first_team",expectedMinutes:o.expectedMinutes??roleMinutes[o.role],annualSalary:legacyPlayer.age<18?Math.min(50000,o.annualSalary??marketSalary(state,o.club,random((state.seed+Number(o.club.id))||1))):o.annualSalary??marketSalary(state,o.club,random((state.seed+Number(o.club.id))||1)),signingBonus:o.signingBonus??0,contractYears:o.contractYears??3}));
   const looksLikeCappedLegacyMigration = legacyPlayer.attributes && legacyPlayer.blocks && state.seasons.length > 0 && legacyPlayer.overall > 70 && Math.max(legacyPlayer.blocks.technical, legacyPlayer.blocks.physical, legacyPlayer.blocks.mentality) <= 65;
   if (legacyPlayer.attributes && legacyPlayer.blocks && !looksLikeCappedLegacyMigration) {
     const overall = calculateOverall(legacyPlayer.blocks, legacyPlayer.position);
-    return { ...state, contractUntil:state.contractUntil??state.year+2,seasonsAtClub:state.seasonsAtClub??0,currentAnnualSalary,careerEarnings,offers, player: { ...legacyPlayer, overall, potential: Math.max(legacyPlayer.potential, overall) } };
+    return { ...state, contractUntil:state.contractUntil??state.year+2,seasonsAtClub:state.seasonsAtClub??0,currentAnnualSalary,careerEarnings,offers, player: { ...legacyPlayer, dressingRoom:inferredDressingRoom,squadStatus:inferredSquad,overall, potential: Math.max(legacyPlayer.potential, overall) } };
   }
   const attributes = looksLikeCappedLegacyMigration
     ? Object.fromEntries(Object.entries(legacyPlayer.attributes!).map(([key, value]) => [key, clamp(value + legacyPlayer.overall - 64, 25, 99)])) as PlayerAttributes
@@ -159,6 +162,8 @@ export function hydrateCareer(state: CareerState): CareerState {
       ...legacyPlayer,
       attributes,
       blocks,
+      dressingRoom:inferredDressingRoom,
+      squadStatus:inferredSquad,
       overall,
       potential: Math.max(legacyPlayer.potential, overall),
     },
@@ -191,6 +196,16 @@ function roleFor(
   if (gap < -2) return "rotation";
   if (gap < 7) return "starter";
   return "star";
+}
+function shouldJoinFirstTeam(state:CareerState,club:CareerClub){
+  const p=state.player;if(p.squadStatus==="first_team"||p.age>=19)return true;
+  const categoryPenalty=club.careerCategory==="premium_international"?8:club.careerCategory==="elite_international"?5:club.careerCategory==="elite_national"?2:club.careerCategory==="national_b"?-5:0;
+  const talent=talentBoost[p.talentBand],readiness=p.overall+talent+(club.youthOpportunity-70)/5-(club.level-70)/4-categoryPenalty;
+  const threshold=p.age===15?58:p.age===16?55:p.age===17?52:48;
+  return readiness>=threshold;
+}
+function firstTeamRole(overall:number,club:CareerClub,talent:TalentBand,age:number):CareerRole{
+  const role=roleFor(overall,club,talent,age);return role==="academy"?"prospect":role;
 }
 const roleMinutes: Record<CareerRole, number> = {
   academy: 0,
@@ -231,6 +246,8 @@ export function createCareer(input: CreateCareerInput): CareerState {
       familyBond: 80,
       attributes,
       blocks,
+      dressingRoom:65,
+      squadStatus:"academy",
     },
     year: input.year ?? new Date().getFullYear(),
     club: input.club,
@@ -251,8 +268,11 @@ function makeOffers(
   rand: () => number,
 ): TransferOffer[] {
   const p = state.player;
+  const europeanCountries=new Set(["España","Inglaterra","Francia","Alemania","Italia","Portugal","Países Bajos","Bélgica","Dinamarca","Austria","Escocia","Suiza","Turquía"]);
+  const playerEuropean=europeanCountries.has(p.nationality),currentEuropean=state.club.leagueBand.startsWith("europe");
   const wantsHome = p.familyBond < 42;
   const last=state.seasons.at(-1);
+  const stalled=(last?.growth??1)<=0||(p.age>=23&&p.overall<74);
   const contractWindow=state.contractUntil-state.year<=1;
   const marketChance=Math.min(.72,.12+p.reputation/240+(last?.rating??6)/30+(focusValue(last?.focus)==="visibility"?.12:0)-(p.age>=34?.12:0));
   if(!wantsHome&&!contractWindow&&state.seasonsAtClub<3)return [];
@@ -261,18 +281,21 @@ function makeOffers(
   return clubs
     .filter((c) => c.id !== state.club.id)
     .filter((c) => (!wantsHome||c.country===p.nationality)&&c.level>=p.overall-(p.age>=33?10:15)&&c.level<=p.overall+(p.age<=21?10:7))
+    .filter(c=>!playerEuropean||c.leagueBand.startsWith("europe")||rand()<(p.age>=32?.08:.01))
     .filter((c) => p.overall>=90&&c.careerCategory==="premium_international" ? true : rand() < Math.min(.72,.12+p.reputation/220+(last?.rating??6)/28-(p.age>=36?.16:0)))
     .sort((a, b) => {
-      const score=(c:CareerClub)=>prestigeBonus(c)+leagueWeight[c.leagueBand]*8+c.level*1.4+Math.max(0,8-Math.abs(c.level-p.overall))*2+(c.country===p.nationality?5:0)+(last?.trophies.includes("continental")?8:0)+rand()*8;
+      const score=(c:CareerClub)=>prestigeBonus(c)+leagueWeight[c.leagueBand]*8+c.level*1.4+Math.max(0,8-Math.abs(c.level-p.overall))*2+(c.country===p.nationality?5:0)+(last?.trophies.includes("continental")?8:0)+(!playerEuropean&&c.leagueBand.startsWith("europe")&&(last?.growth??0)>0?12:0)+(!playerEuropean&&currentEuropean&&c.country===p.nationality&&((p.age>=23&&stalled)||p.age>=32)?18:0)+rand()*8;
       return score(b)-score(a);
     })
     .slice(0, 3)
     .map((club, i) => {
-      const annualSalary=marketSalary(state,club,rand),contractYears=p.age<=21?4:p.age>=33?2:3+Math.floor(rand()*2);
+      const annualSalary=marketSalary(state,club,rand),contractYears=p.age<=21?4:p.age>=33?2:3+Math.floor(rand()*2),academyException=p.age<18&&club.careerCategory==="premium_international"&&club.level>p.overall+12&&rand()<.08;
       return {
       id: `${state.year}-${club.id}-${i}`,
       club,
-      role: roleFor(p.overall, club, p.talentBand, p.age),
+      role: academyException?"academy":firstTeamRole(p.overall, club, p.talentBand, p.age),
+      targetSquad:academyException?"academy":"first_team",
+      expectedMinutes:academyException?0:roleMinutes[firstTeamRole(p.overall,club,p.talentBand,p.age)],
       kind: p.age <= 21 && club.level > p.overall + 9 ? "loan" : "transfer",
       familyReturn:
         club.country === p.nationality && state.club.country !== p.nationality,
@@ -318,7 +341,7 @@ export function continentalCompetitionFor(state:CareerState,club:CareerClub){
   return null;
 }
 function competitionResults(state:CareerState,club:CareerClub,selected:boolean,year:number,overall:number,rating:number,minutes:number,rand:()=>number){
-  const strength=club.level+Math.max(-4,Math.min(6,(overall-club.level)/2));
+  const strength=club.level+Math.max(-4,Math.min(6,(overall-club.level)/2))+((state.player.dressingRoom??65)-65)/20;
   const champion=(difficulty:number)=>rand()<Math.max(.015,(strength-difficulty)/85+.08);
   const leagueChampion=champion(76),cupChampion=champion(73);
   const results:CompetitionResult[]=[{name:domesticLeagueName(club),stage:leagueChampion?"Campeón":`Posición ${Math.max(1,Math.round(13-(strength-65)/3+rand()*6))}`,champion:leagueChampion,kind:"domestic"},{name:"Copa nacional",stage:cupChampion?"Campeón":rand()<.5?"Semifinales":"Cuartos de final",champion:cupChampion,kind:"cup"}];
@@ -356,7 +379,8 @@ export function simulateSeason(
   const rand = random(state.seed + state.year * 97 + state.revision * 7919),
     p = state.player,
     club = state.club;
-  const role = roleFor(p.overall, club, p.talentBand, p.age);
+  const firstTeam=shouldJoinFirstTeam(state,club),promotedToFirstTeam=(p.squadStatus??"academy")==="academy"&&firstTeam;
+  const role:CareerRole=firstTeam?firstTeamRole(p.overall, club, p.talentBand, p.age):"academy";
   const injuryRisk = Math.max(
     0.025,
     0.13 - p.fitness / 1200 - (focus === "recovery" ? 0.045 : 0),
@@ -378,19 +402,20 @@ export function simulateSeason(
             : "none";
   const opportunity =
     (club.youthOpportunity - 50) * 7 +
+    ((p.dressingRoom??65)-50)*2 +
     (focus === "team" ? 240 : 0) +
     (p.talentBand === "generational"
       ? 400
       : p.talentBand === "crack"
         ? 250
         : 0);
-  const minutes = clamp(
+  const minutes = firstTeam?clamp(
     roleMinutes[role] + opportunity - injuredGames * 75 + (rand() - 0.5) * 350,
     0,
     3420,
-  );
+  ):0;
   const appearances = clamp(minutes / 82, 0, 38);
-  const performanceBase = Math.max(.16,.32+rand()*.3+Math.max(0,p.overall-60)/100+(p.overall-club.level)/100);
+  const performanceBase = Math.max(.16,.32+rand()*.3+Math.max(0,p.overall-60)/100+(p.overall-club.level)/100+((p.dressingRoom??65)-65)/500);
   const goals = clamp(
     appearances * attack[p.position] * performanceBase,
     0,
@@ -411,7 +436,7 @@ export function simulateSeason(
       : 0;
   const rating =
     Math.round((5.7 + (p.overall - 48) / 35 + rand() * 0.6) * 10) / 10;
-  const selected =
+  const selected = firstTeam&&
     p.reputation > 34 &&
     p.overall > 69 &&
     rand() < Math.min(0.88, 0.2 + p.reputation / 130);
@@ -419,11 +444,11 @@ export function simulateSeason(
     internationalGoals = selected
       ? clamp(internationalCaps * attack[p.position] * rand(), 0, 10)
       : 0;
-  const competitions=competitionResults(state,club,selected,state.year,p.overall,rating,minutes,rand);
-  const trophies=competitions.filter(x=>x.champion).map(x=>x.kind==="domestic"?"league":x.kind);
+  const competitions=firstTeam?competitionResults(state,club,selected,state.year,p.overall,rating,minutes,rand).map(x=>({...x,participated:minutes>0||(x.kind==="international"&&internationalCaps>0)})):[];
+  const trophies=competitions.filter(x=>x.champion&&x.participated).map(x=>x.kind==="domestic"?"league":x.kind);
   const individualAwards:string[]=[];
-  if(p.age<=21&&minutes>=1500&&rating>=7.25)individualAwards.push("Mejor jugador joven");
-  if(goals>=28)individualAwards.push("Bota de Oro");
+  if(firstTeam&&p.age<=21&&minutes>=1500&&rating>=7.25)individualAwards.push("Mejor jugador joven");
+  if(firstTeam&&goals>=28)individualAwards.push("Bota de Oro");
   if(attack[p.position]<=.12&&cleanSheets>=11&&rating>=7.25)individualAwards.push("Mejor defensor");
   if(["holding_midfielder","central_midfielder","attacking_midfielder"].includes(p.position)&&assists>=11&&rating>=7.25)individualAwards.push("Mejor centrocampista");
   if(minutes>=2000&&rating>=7.45&&rand()<Math.min(.68,.12+(rating-7.2)*.65+Math.max(0,p.overall-80)*.022))individualAwards.push("Jugador del Año");
@@ -470,7 +495,7 @@ export function simulateSeason(
         : 0;
   const rawGrowth =
     ageCurve +
-    formation * minutesFactor +
+    formation * (firstTeam?minutesFactor:.8) +
     focusGrowth +
     trainingGrowth +
     contextGrowth +
@@ -490,10 +515,12 @@ export function simulateSeason(
   const decisionSuccess=choice.chance===undefined||rand()<choice.chance/100,factor=decisionSuccess?1:-.75;
   const effects=dilemma.id==="doping"&&choice.id==="yes"?(decisionSuccess?{physical:4}:{physical:2,form:-12,reputation:-35}):choice.effects;
   const nextFitness = clamp(84 - injuredGames + (focus === "recovery" || training === "recovery" ? 12 : 0)+(effects.form??0)*factor, 35, 100);
-  const nextMorale = clamp(65 + trophies.length * 12 + rating * 2 + (focus === "family" ? 8 : 0) - (event === "family" ? 10 : 0)+(effects.form??0)*factor, 30, 100);
+  const nextMorale = clamp(65 + trophies.length * 12 + rating * 2 + ((p.dressingRoom??65)-50)/10 + (focus === "family" ? 8 : 0) - (event === "family" ? 10 : 0)+(effects.form??0)*factor, 30, 100);
   const nextFamilyBond = clamp(p.familyBond + (club.country === p.nationality ? 8 : focus === "family" ? 10 : -4) - (event === "family" ? 10 : 0)+(effects.family??0)*factor, 0, 100);
+  const nextDressingRoom=clamp((p.dressingRoom??65)+(effects.dressingRoom??0)*factor+(firstTeam?(rating-6.5)*1.5:0),0,100);
   const calculatedBlocks=calculateBlocks(attributes,nextFitness,nextMorale,nextFamilyBond,p.reputation,rating);
   let nextBlocks=Object.fromEntries(Object.entries(calculatedBlocks).map(([key,value])=>[key,clamp(value+((effects as Partial<PlayerBlocks>)[key as keyof PlayerBlocks]??0)*factor,1,99)])) as PlayerBlocks;
+  nextBlocks.mentality=clamp(nextBlocks.mentality+(nextDressingRoom-50)/35,1,99);
   const veteranBonus=p.talentBand==="generational"?2:p.talentBand==="crack"?1:0;
   const ageCap=p.age<30?99:Math.max(72,93-(p.age-30)*1.65+veteranBonus);
   const ratingCap=Math.min(p.potential,ageCap),rawOverall=calculateOverall(nextBlocks,p.position);
@@ -505,6 +532,10 @@ export function simulateSeason(
     club,
     overall: p.overall,
     role,
+    squadStatus:firstTeam?"first_team":"academy",
+    promotedToFirstTeam,
+    dressingRoom:nextDressingRoom,
+    dressingRoomChange:nextDressingRoom-(p.dressingRoom??65),
     minutes,
     appearances,
     goals,
@@ -580,6 +611,10 @@ export function simulateSeason(
       morale: nextMorale,
       attributes,
       blocks: nextBlocks,
+      dressingRoom:nextDressingRoom,
+      squadStatus:firstTeam?"first_team":"academy",
+      firstTeamDebutYear:promotedToFirstTeam?state.year:p.firstTeamDebutYear,
+      firstTeamDebutClub:promotedToFirstTeam?club.name:p.firstTeamDebutClub,
     },
   };
   if (age >= 40) return retireCareer(base);
@@ -596,6 +631,7 @@ export function resolveOffer(
   if (state.phase !== "offers") return state;
   const offer = state.offers.find((x) => x.id === offerId);
   const renewal=!offer&&state.contractUntil<=state.year;
+  const joinsFirstTeam=offer?.targetSquad==="first_team"&&state.player.squadStatus!=="first_team";
   return {
     ...state,
     revision: state.revision + 1,
@@ -608,6 +644,9 @@ export function resolveOffer(
     phase: "season",
     player: {
       ...state.player,
+      squadStatus:offer?.targetSquad??state.player.squadStatus,
+      firstTeamDebutYear:joinsFirstTeam?state.year:state.player.firstTeamDebutYear,
+      firstTeamDebutClub:joinsFirstTeam?offer?.club.name:state.player.firstTeamDebutClub,
       morale: clamp(state.player.morale + (offer ? 5 : 1), 0, 100),
       familyBond: clamp(
         state.player.familyBond + (offer?.familyReturn ? 25 : 0),

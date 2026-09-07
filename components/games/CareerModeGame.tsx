@@ -34,7 +34,7 @@ import type {
   SeasonFocus,
   TrainingFocus,
 } from "../../lib/career/types";
-type Celebration={kind:"title";name:string;scope:"collective"|"individual"}|{kind:"tournament";name:string;stage:string;year:number;nation:string};
+type Celebration={kind:"title";name:string;scope:"collective"|"individual"}|{kind:"tournament";name:string;stage:string;year:number;nation:string}|{kind:"promotion";club:string;age:number};
 type TournamentOutcome={stage:string;champion:boolean};
 const positions: CareerPosition[] = [
   "centre_back",
@@ -75,6 +75,11 @@ const copy = {
     formState: "ESTADO",
     reputation: "REPUTACIÓN",
     family: "FAMILIA",
+    dressingRoom: "VESTUARIO",
+    chooseDecision: "ELIGE UNA RESPUESTA ANTES DE SIMULAR LA TEMPORADA.",
+    firstTeam: "PRIMER EQUIPO",
+    academySquad: "CATEGORÍAS INFERIORES",
+    expectedMinutes: "MINUTOS PREVISTOS",
     legacy: "LEGADO",
     cabinet: "VITRINA",
     training: "Plan de entrenamiento",
@@ -180,6 +185,11 @@ const copy = {
     formState: "FORM",
     reputation: "REPUTATION",
     family: "FAMILY",
+    dressingRoom: "DRESSING ROOM",
+    chooseDecision: "CHOOSE AN ANSWER BEFORE SIMULATING THE SEASON.",
+    firstTeam: "FIRST TEAM",
+    academySquad: "ACADEMY",
+    expectedMinutes: "EXPECTED MINUTES",
     legacy: "LEGACY",
     cabinet: "TROPHY CABINET",
     training: "Training plan",
@@ -285,6 +295,11 @@ const copy = {
     formState: "ÉTAT",
     reputation: "RÉPUTATION",
     family: "FAMILLE",
+    dressingRoom: "VESTIAIRE",
+    chooseDecision: "CHOISISSEZ UNE RÉPONSE AVANT DE SIMULER LA SAISON.",
+    firstTeam: "ÉQUIPE PREMIÈRE",
+    academySquad: "CENTRE DE FORMATION",
+    expectedMinutes: "MINUTES PRÉVUES",
     legacy: "HÉRITAGE",
     cabinet: "VITRINE",
     training: "Plan d’entraînement",
@@ -399,7 +414,7 @@ export default function CareerModeGame() {
     [ready, setReady] = useState(false),
     [focus, setFocus] = useState<SeasonFocus>("development"),
     [training, setTraining] = useState<TrainingFocus>("balanced"),
-    [decisionChoice,setDecisionChoice]=useState("no"),
+    [decisionChoice,setDecisionChoice]=useState(""),
     [celebrations,setCelebrations]=useState<Celebration[]>([]),
     [notice, setNotice] = useState(""),
     [careerSeed] = useState(()=>Date.now()&0x7fffffff);
@@ -424,7 +439,7 @@ export default function CareerModeGame() {
     if (starters.length && !starters.some((x) => x.id === form.clubId))
       setForm((x) => ({ ...x, clubId: starters[0].id }));
   }, [starters, form.clubId]);
-  useEffect(()=>setDecisionChoice("no"),[career?.year]);
+  useEffect(()=>setDecisionChoice(""),[career?.year]);
   function commit(next: CareerState) {
     const final = {
       ...next,
@@ -432,11 +447,13 @@ export default function CareerModeGame() {
     };
     setCareer(final);
     const previousSeason=career?.seasons.at(-1),newSeason=final.seasons.at(-1);
+    const promoted=career?.player.squadStatus!=="first_team"&&final.player.squadStatus==="first_team";
+    if(promoted)setCelebrations(x=>[...x,{kind:"promotion",club:final.player.firstTeamDebutClub??final.club.name,age:career?.player.age??final.player.age}]);
     if(newSeason&&newSeason!==previousSeason){
       const international=newSeason.competitions?.find(x=>x.kind==="international");
       const earned:Celebration[]=[
         ...(international?[{kind:"tournament" as const,name:international.name,stage:international.stage,year:newSeason.year,nation:final.player.nationality}]:[]),
-        ...(newSeason.competitions?.filter(x=>x.champion&&x.kind!=="international").map(x=>({kind:"title" as const,name:x.name,scope:"collective" as const}))??[]),
+        ...(newSeason.competitions?.filter(x=>x.champion&&x.participated!==false&&x.kind!=="international").map(x=>({kind:"title" as const,name:x.name,scope:"collective" as const}))??[]),
         ...(newSeason.individualAwards?.map(name=>({kind:"title" as const,name,scope:"individual" as const}))??[]),
       ];
       if(earned.length)setCelebrations(x=>[...x,...earned]);
@@ -453,7 +470,7 @@ export default function CareerModeGame() {
         if(!previous)return season;
         titleDelta=Number(outcome.champion)-Number(previous.champion);
         const competitions=season.competitions?.map(x=>x===previous?{...x,stage:outcome.stage,champion:outcome.champion}:x);
-        return {...season,competitions,trophies:competitions?.filter(x=>x.champion).map(x=>x.name)??[],titles:competitions?.filter(x=>x.champion).length??0};
+        return {...season,competitions,trophies:competitions?.filter(x=>x.champion&&x.participated!==false).map(x=>x.name)??[],titles:competitions?.filter(x=>x.champion&&x.participated!==false).length??0};
       });
       const updated={...current,seasons,totals:{...current.totals,titles:Math.max(0,current.totals.titles+titleDelta)}};
       const final={...updated,unlockedAchievementIds:evaluateCareerAchievements(updated)};
@@ -588,7 +605,7 @@ export default function CareerModeGame() {
             {p.name} <b>#{p.shirtNumber}</b>
           </h2>
           <span>
-            {p.age} {c.years} · {c[p.position]} · <img className="career-inline-flag" src={NATIONALITY_FLAG_PATHS[p.nationality as keyof typeof NATIONALITY_FLAG_PATHS]} alt=""/> {p.nationality}
+            {p.age} {c.years} · {c[p.position]} · {p.squadStatus==="first_team"?c.firstTeam:c.academySquad} · <img className="career-inline-flag" src={NATIONALITY_FLAG_PATHS[p.nationality as keyof typeof NATIONALITY_FLAG_PATHS]} alt=""/> {p.nationality}
           </span>
           </div>
         </div>
@@ -612,6 +629,7 @@ export default function CareerModeGame() {
           <BarMetric label={c.formState} value={p.blocks.form} trend={last?.blockChanges?.form} />
           <BarMetric label={c.reputation} value={p.reputation} />
           <BarMetric label={c.family} value={p.familyBond} />
+          <BarMetric label={`${c.dressingRoom} · ${dressingRoomStatus(p.dressingRoom??65,locale)}`} value={p.dressingRoom??65} trend={last?.dressingRoomChange} />
         </div>
         <div className="career-legacy-strip"><span>{c.legacy}</span><strong>{career.legacyScore}</strong></div>
       </div>
@@ -622,7 +640,7 @@ export default function CareerModeGame() {
             <div className="career-offer-list">{career.offers.map((o) => (
               <article key={o.id}>
                 <ClubCrest club={o.club} />
-                <div><strong>{o.club.name}</strong><span>{o.familyReturn ? c.returnHome : o.kind === "loan" ? c.loan : c.transfer} · {c[o.role === "academy" ? "academyRole" : o.role]}</span><small>{c.salary}: {formatMoney(o.annualSalary,locale)} · {c.signingBonus}: {formatMoney(o.signingBonus,locale)} · {o.contractYears} {c.years}</small></div>
+                <div><strong>{o.club.name}</strong><span>{o.familyReturn ? c.returnHome : o.kind === "loan" ? c.loan : c.transfer} · {o.targetSquad==="academy"?c.academySquad:`${c.firstTeam} · ${c[o.role === "academy" ? "academyRole" : o.role]}`}</span><small>{c.salary}: {formatMoney(o.annualSalary,locale)} · {c.signingBonus}: {formatMoney(o.signingBonus,locale)} · {o.contractYears} {c.years} · {c.expectedMinutes}: {o.expectedMinutes??0}</small></div>
                 <button onClick={() => commit(resolveOffer(career, o.id))}>{c.sign}</button>
               </article>
             ))}</div>
@@ -633,7 +651,7 @@ export default function CareerModeGame() {
           <h3>{c.decision}</h3>
           {career.phase === "season" ? <>
             <strong>{dilemma.title}</strong><p>{dilemma.description}{dilemma.id==="nationality"?` ${targetNationalityFor(career)} ${locale==="en"?"awaits your answer.":locale==="fr"?"attend votre réponse.":"espera tu respuesta."}`:""}</p>
-            <div>{dilemma.choices.map(choice=>{const selected=decisionChoice===choice.id;return <button key={choice.id} aria-pressed={selected} className={`${selected?"is-selected ":""}${choiceTone(choice.effects)}`} onClick={()=>setDecisionChoice(choice.id)}><b>{choice.label}</b><ChoiceEffects effects={choice.effects} labels={c}/>{choice.riskText&&<span className="career-risk">{choice.riskText}{choice.chance!==undefined?` · ${choice.chance}% ${locale==="en"?"FAVOURABLE":locale==="fr"?"FAVORABLE":"FAVORABLE"}`:""}</span>}</button>})}</div>
+            <div>{dilemma.choices.map(choice=>{const selected=decisionChoice===choice.id;return <button key={choice.id} aria-pressed={selected} className={`${selected?"is-selected ":""}${choiceTone(choice.effects)}`} onClick={()=>{setDecisionChoice(choice.id);setNotice("")}}><b>{choice.label}</b><ChoiceEffects effects={choice.effects} labels={c}/>{choice.riskText&&<span className="career-risk">{choice.riskText}{choice.chance!==undefined?` · ${choice.chance}% ${locale==="en"?"FAVOURABLE":locale==="fr"?"FAVORABLE":"FAVORABLE"}`:""}</span>}</button>})}</div>
           </> : <p className="career-empty-state">{c.noDecisions}</p>}
         </div>
       </div>}
@@ -664,7 +682,7 @@ export default function CareerModeGame() {
           </label>
           <button
             className="career-primary"
-            onClick={() => commit(simulateSeason(career, focus, clubs, training,decisionChoice))}
+            onClick={() => {if(!decisionChoice){setNotice(c.chooseDecision);return}commit(simulateSeason(career, focus, clubs, training,decisionChoice))}}
           >
             {c.simulate}
           </button>
@@ -768,7 +786,7 @@ export default function CareerModeGame() {
         <button className="career-reset" onClick={()=>{if(confirm(c.restart)){clearCareer();setCareer(null)}}}>{c.newGame}</button>
         <button className="career-abandon" onClick={()=>{if(confirm(c.abandonConfirm)){clearCareer();window.location.assign(`/${locale}/juegos`)}}}>{c.abandon}</button>
       </div>}
-      {celebrations[0]&&<CelebrationModal item={celebrations[0]} seed={career.seed} onDone={outcome=>{const item=celebrations[0];if(item.kind==="tournament"&&outcome)finishTournament(item,outcome);else setCelebrations(x=>x.slice(1))}}/>}
+      {celebrations[0]&&<CelebrationModal item={celebrations[0]} seed={career.seed} locale={locale} onDone={outcome=>{const item=celebrations[0];if(item.kind==="tournament"&&outcome)finishTournament(item,outcome);else setCelebrations(x=>x.slice(1))}}/>}
     </section>
   );
 }
@@ -777,9 +795,13 @@ function BarMetric({ label, value, trend }: { label: string; value: number; tren
     <div className="career-rating-bar">
       <span>{label}</span><strong>{value}</strong>
       <i aria-hidden="true"><b style={{ width: `${value}%` }} /></i>
-      {trend !== undefined && <small className={trend > 0 ? "is-up" : trend < 0 ? "is-down" : ""}>{trend > 0 ? "↑" : trend < 0 ? "↓" : "→"}</small>}
+      {trend !== undefined && <small className={trend > 0 ? "is-up" : trend < 0 ? "is-down" : ""}>{trend > 0 ? "↑" : trend < 0 ? "↓" : "→"} {Math.abs(trend)}</small>}
     </div>
   );
+}
+function dressingRoomStatus(value:number,locale:"es"|"en"|"fr"){
+  const index=value<25?0:value<45?1:value<65?2:value<85?3:4;
+  return ({es:["TENSO","DIVIDIDO","ESTABLE","UNIDO","LÍDER DEL GRUPO"],en:["TENSE","DIVIDED","STABLE","UNITED","GROUP LEADER"],fr:["TENDU","DIVISÉ","STABLE","SOUDÉ","LEADER DU GROUPE"]} as const)[locale][index];
 }
 const tournamentTeams:Record<string,string[]>={
   "Copa Mundial":["Argentina","Australia","Austria","Bélgica","Brasil","Canadá","Chile","Colombia","Corea del Sur","Croacia","Dinamarca","Ecuador","Egipto","España","Estados Unidos","Francia","Alemania","Inglaterra","Italia","Japón","Marruecos","México","Nigeria","Noruega","Países Bajos","Paraguay","Polonia","Portugal","Senegal","Suiza","Turquía","Uruguay"],
@@ -789,11 +811,12 @@ const tournamentTeams:Record<string,string[]>={
 function trophyImage(name:string,individual=false){if(individual)return "/trophies/individual.svg";if(name.includes("Mundial"))return "/trophies/world.svg";if(name.includes("Euro")||name.includes("América")||name.includes("Champions")||name.includes("Libertadores"))return "/trophies/continental.svg";return "/trophies/club.svg"}
 function TrophyCabinet({career,title}:{career:CareerState;title:string}){
   const items=new Map<string,{count:number;individual:boolean}>();
-  for(const season of career.seasons){for(const competition of season.competitions?.filter(x=>x.champion)??[]){const name=competition.kind==="domestic"?domesticLeagueName(season.club):competition.name;const old=items.get(name);items.set(name,{count:(old?.count??0)+1,individual:false})}for(const award of season.individualAwards??[]){const old=items.get(award);items.set(award,{count:(old?.count??0)+1,individual:true})}}
+  for(const season of career.seasons){for(const competition of season.competitions?.filter(x=>x.champion&&x.participated!==false)??[]){const name=competition.kind==="domestic"?domesticLeagueName(season.club):competition.name;const old=items.get(name);items.set(name,{count:(old?.count??0)+1,individual:false})}for(const award of season.individualAwards??[]){const old=items.get(award);items.set(award,{count:(old?.count??0)+1,individual:true})}}
   return <section className="career-cabinet"><h3>{title}</h3>{items.size?<div>{[...items].map(([name,item])=><article key={name}><img src={trophyImage(name,item.individual)} alt=""/><span>{name}</span><strong>×{item.count}</strong></article>)}</div>:<p>TODAVÍA NO HAY TROFEOS. LA VITRINA TE ESTÁ ESPERANDO.</p>}</section>
 }
-function CelebrationModal({item,seed,onDone}:{item:Celebration;seed:number;onDone:(outcome?:TournamentOutcome)=>void}){
+function CelebrationModal({item,seed,locale,onDone}:{item:Celebration;seed:number;locale:"es"|"en"|"fr";onDone:(outcome?:TournamentOutcome)=>void}){
   if(item.kind==="title")return <div className="career-modal-backdrop" role="presentation"><div className="career-title-modal" role="dialog" aria-modal="true"><small>{item.scope==="individual"?"PREMIO INDIVIDUAL":"TÍTULO CONSEGUIDO"}</small><img src={trophyImage(item.name,item.scope==="individual")} alt=""/><h2>{item.name}</h2><p>{item.scope==="individual"?"TU TEMPORADA HA SIDO RECONOCIDA. ESTE TROFEO YA ESTÁ EN TU VITRINA.":"CAMPEONES. EL TROFEO YA FORMA PARTE DE TU HISTORIA."}</p><button className="career-primary" onClick={()=>onDone()}>CONTINUAR</button></div></div>;
+  if(item.kind==="promotion"){const text={es:["PRIMER EQUIPO","HAS DADO EL SALTO",`EL ENTRENADOR TE HA CITADO: CON ${item.age} AÑOS PASAS A FORMAR PARTE DE LA PRIMERA PLANTILLA DEL ${item.club}.`,"CONTINUAR"],en:["FIRST TEAM","YOU HAVE MADE THE STEP UP",`THE COACH HAS CALLED YOU IN: AT ${item.age}, YOU JOIN THE ${item.club} FIRST-TEAM SQUAD.`,"CONTINUE"],fr:["ÉQUIPE PREMIÈRE","VOUS PASSEZ UN CAP",`L’ENTRAÎNEUR VOUS A CONVOQUÉ : À ${item.age} ANS, VOUS INTÉGREZ L’ÉQUIPE PREMIÈRE DU ${item.club}.`,"CONTINUER"]}[locale];return <div className="career-modal-backdrop"><div className="career-title-modal career-promotion-modal" role="dialog" aria-modal="true"><small>{text[0]}</small><div className="career-promotion-mark">↑</div><h2>{text[1]}</h2><p>{text[2]}</p><button className="career-primary" onClick={()=>onDone()}>{text[3]}</button></div></div>}
   return <TournamentPredictor item={item} seed={seed} onDone={onDone}/>;
 }
 type RevealedMatch={score:string;positive:boolean;note?:string};
@@ -820,22 +843,22 @@ function TournamentPredictor({item,seed,onDone}:{item:Extract<Celebration,{kind:
       setPending({message:last?(total>=4?`CLASIFICADOS CON ${total} PUNTOS`:`ELIMINADOS CON ${total} PUNTOS`):(positive?"VICTORIA · +3 PUNTOS":draw?"EMPATE · +1 PUNTO":"DERROTA · 0 PUNTOS"),outcome:last&&total<4?{stage:"Fase de grupos",champion:false}:undefined,next:last?"knockout":"group"});
       return;
     }
-    const penalties=variant===0,score=penalties?(variant%2?"0–0":"1–1"):positive?["2–1","1–0","3–1"][variant]:["1–2","0–1","1–3"][variant],note=penalties?(positive?"VICTORIA EN PENALTIS":"DERROTA EN PENALTIS"):undefined;
+    const penalties=variant===0,score=penalties?"1–1":positive?["2–1","1–0","3–1"][variant]:["1–2","0–1","1–3"][variant],note=penalties?(positive?"VICTORIA EN PENALTIS":"DERROTA EN PENALTIS"):undefined;
     const isFinal=round===rounds.length-1,outcome=!positive?{stage:rounds[round].stage,champion:false}:isFinal?{stage:"Campeón",champion:true}:undefined;
     setRevealed(old=>({...old,[cell]:{score,positive,note}}));
     setPending({message:!positive?`${item.nation} QUEDA ELIMINADA`:isFinal?`${item.nation} ES CAMPEONA`:"¡AVANZAMOS DE RONDA!",outcome,next:"round"});
   };
   const advance=()=>{if(!pending)return;if(pending.outcome){onDone(pending.outcome);return}if(pending.next==="group")setGroupMatch(x=>x+1);else if(pending.next==="knockout"){setPhase("knockout");setRound(0)}else setRound(x=>x+1);setPending(null)};
   const phaseLabel=phase==="group"?`FASE DE GRUPOS · PARTIDO ${groupMatch+1}/3 · ${points} PUNTOS`:rounds[round].label;
-  return <div className="career-modal-backdrop"><div className="career-tournament-modal" role="dialog" aria-modal="true"><header><img src={trophyImage(item.name)} alt=""/><div><small>{item.year} · {phaseLabel}</small><h2>{item.name}</h2><p>{item.nation} <b>VS</b> {rival}</p></div></header><p className="career-predict-help">DESTAPA UNA CASILLA PARA CONOCER EL RESULTADO. 16 DE LAS 49 SON FAVORABLES.</p><div className="career-score-grid">{Array.from({length:49},(_,cell)=>{const result=revealed[cell];return <button key={cell} disabled={!!pending||!!result} className={result?`is-revealed ${result.positive?"is-positive":"is-negative"}`:""} onClick={()=>reveal(cell)} aria-label={result?`Resultado ${result.score}`:`Destapar casilla ${cell+1}`}>{result?.score??"?"}{result?.note&&<small>{result.note}</small>}</button>})}</div>{pending&&<div className={`career-match-result ${pending.outcome&&!pending.outcome.champion?"is-out":"is-through"}`}><strong>{revealed[Number(Object.keys(revealed).at(-1))]?.score}</strong>{revealed[Number(Object.keys(revealed).at(-1))]?.note&&<span>{revealed[Number(Object.keys(revealed).at(-1))]?.note}</span>}<p>{pending.message}</p><button className="career-primary" onClick={advance}>{pending.outcome?"CERRAR":"SIGUIENTE PARTIDO"}</button></div>}</div></div>
+  return <div className="career-modal-backdrop"><div className="career-tournament-modal" role="dialog" aria-modal="true"><header><img src={trophyImage(item.name)} alt=""/><div><small>{item.year} · {phaseLabel}</small><h2>{item.name}</h2><p>{item.nation} <b>VS</b> {rival}</p></div></header><p className="career-predict-help">DESTAPA UNA CASILLA PARA CONOCER EL RESULTADO. 16 DE LAS 49 SON FAVORABLES.</p><div className="career-score-grid">{Array.from({length:49},(_,cell)=>{const result=revealed[cell];return <button key={cell} disabled={!!pending||!!result} className={result?`is-revealed ${result.positive?"is-positive":"is-negative"}`:""} onClick={()=>reveal(cell)} aria-label={result?`Resultado ${result.score}`:`Destapar casilla ${cell+1}`}>{result?.score??"?"}</button>})}</div>{pending&&<div className={`career-match-result ${pending.outcome&&!pending.outcome.champion?"is-out":"is-through"}`}><div className="career-result-line"><strong>{revealed[Number(Object.keys(revealed).at(-1))]?.score}</strong>{revealed[Number(Object.keys(revealed).at(-1))]?.note&&<span>{revealed[Number(Object.keys(revealed).at(-1))]?.note}</span>}</div><p>{pending.message}</p><button className="career-primary" onClick={advance}>{pending.outcome?"CERRAR":"SIGUIENTE PARTIDO"}</button></div>}</div></div>
 }
-const effectKeys=["technical","physical","mentality","form","reputation","family"] as const;
+const effectKeys=["technical","physical","mentality","form","reputation","family","dressingRoom"] as const;
 function formatMoney(value:number,locale:"es"|"en"|"fr"){
   return new Intl.NumberFormat(locale,{style:"currency",currency:"EUR",maximumFractionDigits:0,notation:value>=1_000_000?"compact":"standard"}).format(value);
 }
 function choiceTone(effects:DecisionEffects){const values=Object.values(effects);return values.some(x=>x<0)?values.some(x=>x>0)?"is-mixed":"is-negative":values.some(x=>x>0)?"is-positive":"is-neutral"}
-function ChoiceEffects({effects,labels}:{effects:DecisionEffects;labels:{technical:string;physical:string;mentality:string;formState:string;reputation:string;family:string}}){
-  const names={technical:labels.technical,physical:labels.physical,mentality:labels.mentality,form:labels.formState,reputation:labels.reputation,family:labels.family};
+function ChoiceEffects({effects,labels}:{effects:DecisionEffects;labels:{technical:string;physical:string;mentality:string;formState:string;reputation:string;family:string;dressingRoom:string}}){
+  const names={technical:labels.technical,physical:labels.physical,mentality:labels.mentality,form:labels.formState,reputation:labels.reputation,family:labels.family,dressingRoom:labels.dressingRoom};
   return <span className="career-effect-list">{effectKeys.flatMap(key=>{const value=effects[key];return value?[<em key={key} className={value>0?"is-up":"is-down"}>{value>0?"↑":"↓"} {names[key]}</em>]:[]})}</span>
 }
 function localizedDecisionOutcome(result:DecisionResult,locale:"es"|"en"|"fr"){
