@@ -8,10 +8,12 @@ import PlayerWordleGame from "@/components/games/PlayerWordleGame";
 import GuessTheBadgeGame from "@/components/games/GuessTheBadgeGame";
 import CareerModeGame from "@/components/games/CareerModeGame";
 import UserDashboard from "@/components/UserDashboard";
+import TriviaGame from "@/components/games/TriviaGame";
+import { triviaCopy } from "@/lib/trivia/copy";
 import { dictionaries, isLocale, localizedPath, locales, type Dictionary, type Locale } from "@/lib/i18n";
 
 type Props = { params: Promise<{ locale: string; slug?: string[] }> };
-const routePaths = ["", "/usuario", "/juegos", "/juegos/mayor-o-menor", "/juegos/adivina-jugador", "/juegos/adivina-escudo", "/juegos/football-grid", "/juegos/carrera", "/juegos/mi-once", "/beta", "/privacidad", "/cookies", "/aviso-legal"];
+const routePaths = ["", "/usuario", "/juegos", "/juegos/mayor-o-menor", "/juegos/adivina-jugador", "/juegos/adivina-escudo", "/juegos/football-grid", "/juegos/carrera", "/juegos/mi-once", "/juegos/trivia", "/beta", "/privacidad", "/cookies", "/aviso-legal"];
 export function generateStaticParams() { return locales.flatMap((locale) => routePaths.map((path) => ({ locale, slug: path ? path.slice(1).split("/") : [] }))); }
 
 function pathFor(slug?: string[]) { return slug?.length ? `/${slug.join("/")}` : ""; }
@@ -24,6 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!isLocale(raw)) return {};
   const d = dictionaries[raw]; const path = pathFor(slug);
   const pages: Record<string, { title?: string; description?: string; noindex?: boolean }> = {
+    "/juegos/trivia": { title: "TRIVIA", description: triviaCopy[raw].description },
     "": { description: d.meta.description }, "/usuario": { title: "Usuario", noindex: true }, "/juegos": { title: d.catalog.title },
     "/juegos/mayor-o-menor": { title: d.games.higherLower.title, description: d.games.higherLower.meta },
     "/juegos/adivina-jugador": { title: d.games.wordle.title, description: d.games.wordle.meta },
@@ -35,18 +38,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { ...page, alternates: alternates(raw, path), openGraph: { url: localizedPath(raw, path), title: page.title, description: page.description }, robots: page.noindex ? { index: false, follow: true } : undefined };
 }
 
-function gameCards(d: Dictionary) { return [
+function gameCards(d: Dictionary, locale: Locale) { return [
   { slug: "adivina-jugador", ...d.games.wordle, status: d.status.available },
   { slug: "carrera", ...d.games.career, status: d.status.beta },
   { slug: "mayor-o-menor", ...d.games.higherLower, status: d.status.available },
   { slug: "football-grid", ...d.games.grid, status: d.status.soon },
   { slug: "adivina-escudo", ...d.games.badge, status: d.status.available },
-  { slug: "mi-once", ...d.games.eleven, status: d.status.soon },
+  { slug: "trivia", title: "TRIVIA", description: triviaCopy[locale].description, status: d.status.available },
 ]; }
 
 export default async function LocalizedPage({ params }: Props) {
   const { locale: raw, slug } = await params; if (!isLocale(raw)) notFound();
-  const locale = raw as Locale; const d = dictionaries[locale]; const path = pathFor(slug); const games = gameCards(d);
+  const locale = raw as Locale; const d = dictionaries[locale]; const path = pathFor(slug); const games = gameCards(d, locale);
+  if (path === "/juegos/trivia") return <main className="game-shell game-room container trivia-page"><div className="game-room-heading"><Link href={`/${locale}`} className="game-room-back">← ARENA</Link><div><span className="eyebrow">10theGOAT</span><h1>TRIVIA</h1><p>{triviaCopy[locale].description}</p></div></div><TriviaGame /></main>;
   if (path === "/juegos/jugador-misterioso") redirect(localizedPath(locale, "/juegos/adivina-jugador"));
   if (path === "") return <main><section className="hero hero--interactive"><div className="hero-content"><div className="hero-brand-lockup"><img className="hero-shield" src="/brand/10thegoat-shield-raster.png" alt=""/><img className="hero-wordmark" src="/brand/10thegoat-wordmark.svg" alt={d.home.alt}/><img className="hero-shield hero-shield--mirror" src="/brand/10thegoat-shield-raster.png" alt=""/></div><ArenaGameMenu games={games} locale={locale} label={d.home.intro}/></div></section></main>;
   if (path === "/usuario") return <UserDashboard locale={locale}/>;

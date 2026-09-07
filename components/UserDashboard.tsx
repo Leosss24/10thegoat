@@ -15,6 +15,8 @@ type Profile = { username:string|null; display_name:string|null; avatar_url:stri
 type BadgeOption = { id:number; name:string; badge_url:string; is_national_team:boolean; domestic_division:1|2|null; countries:{name:string}|null };
 type RemoteStats = GameScoreStats & { game_key:string };
 const GAME_NAMES:Record<string,[string,string,string]> = {
+  "trivia-easy":["TRIVIA · FÁCIL","TRIVIA · EASY","TRIVIA · FACILE"],
+  "trivia-hard":["TRIVIA · DIFÍCIL","TRIVIA · HARD","TRIVIA · DIFFICILE"],
   "adivina-jugador":["ADIVINA EL JUGADOR","GUESS THE PLAYER","DEVINEZ LE JOUEUR"],
   "mayor-o-menor":["MAYOR O MENOR","HIGHER OR LOWER","PLUS OU MOINS"],
   "adivina-escudo":["ADIVINA EL ESCUDO","GUESS THE BADGE","DEVINEZ L'ÉCUSSON"],

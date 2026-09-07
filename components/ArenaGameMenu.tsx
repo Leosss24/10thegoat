@@ -5,7 +5,7 @@ import { useState } from "react";
 
 type ArenaGame = { slug: string; title: string; description: string; status: string };
 
-const portalOrder = ["adivina-escudo", "mi-once", "adivina-jugador", "mayor-o-menor", "carrera", "football-grid"];
+const portalOrder = ["adivina-escudo", "trivia", "adivina-jugador", "mayor-o-menor", "carrera", "football-grid"];
 
 export default function ArenaGameMenu({ games, locale, label }: { games: ArenaGame[]; locale: string; label: string }) {
   const ordered = portalOrder.map((slug) => games.find((game) => game.slug === slug)).filter((game): game is ArenaGame => Boolean(game));
