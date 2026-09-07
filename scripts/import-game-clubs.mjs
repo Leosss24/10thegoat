@@ -105,6 +105,16 @@ const LEAGUES_BY_COUNTRY = {
     { id: 265, name: "Primera División", tier: 1 },
   ],
 
+  Colombia: [
+    { id: 239, name: "Primera A", tier: 1 },
+    { id: 240, name: "Primera B", tier: 2 },
+  ],
+
+  Paraguay: [
+    { id: 250, name: "Division Profesional - Apertura", tier: 1 },
+    { id: 251, name: "Division Intermedia", tier: 2 },
+  ],
+
   Poland: [
     { id: 106, name: "Ekstraklasa", tier: 1 },
   ],

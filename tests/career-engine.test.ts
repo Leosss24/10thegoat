@@ -142,6 +142,13 @@ test("starter offers are deterministic and fall back to one major league",()=>{
   assert.ok(["Inglaterra","España","Italia"].includes(first[0].country));
 });
 
+test("a country with only one academy still receives three starter offers",()=>{
+  const pool=[club("colombia-only","Colombia",68),club("england-a","Inglaterra",70),club("england-b","Inglaterra",71),club("england-c","Inglaterra",72)];
+  const options=starterClubsFor("Colombia",pool,3,"normal");
+  assert.equal(options.length,3);
+  assert.ok(options.some(x=>x.country==="Colombia"));
+});
+
 test("career contracts accrue salary and transfer offers contain financial terms",()=>{
   let state=createCareer(input);
   assert.ok(state.currentAnnualSalary>=12000);

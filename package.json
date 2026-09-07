@@ -29,7 +29,8 @@
     "audit:career": "node --experimental-strip-types scripts/audit-career-simulations.mjs",
     "import:game-clubs": "node --env-file=.env.local scripts/import-game-clubs.mjs",
     "discover:continental-clubs": "node --env-file=.env.local scripts/discover-continental-club-leagues.mjs",
-    "import:continental-clubs": "node --env-file=.env.local scripts/import-game-clubs.mjs --plan=tmp/api-football-club-import-plan.json"
+    "import:continental-clubs": "node --env-file=.env.local scripts/import-game-clubs.mjs --plan=tmp/api-football-club-import-plan.json",
+    "import:career-gaps": "node --env-file=.env.local scripts/import-game-clubs.mjs --countries=Colombia,Paraguay --preserve-eligible"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",

@@ -1,4 +1,5 @@
 import { supabase } from "../supabase.ts";
+import { isReserveOrYouthClub, isWomensTeam } from "../football/club-filter.ts";
 import type { CareerCategory, CareerClub, LeagueBand, Prestige, TalentBand } from "./types.ts";
 type Profile = Omit<CareerClub, "id" | "badgeUrl">;
 const p = (
@@ -437,9 +438,9 @@ export async function loadCareerClubs(): Promise<CareerClub[]> {
       : profile;
   });
   const used=new Set(curated.map(x=>String(x.id)));
-  const countryNames:Record<string,string>={Spain:"España",England:"Inglaterra",Germany:"Alemania",Italy:"Italia",France:"Francia",Netherlands:"Países Bajos",Brazil:"Brasil"};
+  const countryNames:Record<string,string>={Spain:"España",England:"Inglaterra",Germany:"Alemania",Italy:"Italia",France:"Francia",Netherlands:"Países Bajos",Brazil:"Brasil",Belgium:"Bélgica",Denmark:"Dinamarca",Colombia:"Colombia",Ecuador:"Ecuador",Paraguay:"Paraguay",Portugal:"Portugal",Argentina:"Argentina",Chile:"Chile",Uruguay:"Uruguay"};
   const categoryLevel:Record<CareerCategory,number>={premium_international:92,elite_international:86,elite_national:80,national:71,national_b:63};
-  const extras=data.filter(x=>!used.has(String(x.id))&&x.career_category).map((x):CareerClub=>{
+  const extras=data.filter(x=>!used.has(String(x.id))&&x.career_category&&!isReserveOrYouthClub(x.name)&&!isWomensTeam(x.name)).map((x):CareerClub=>{
     const relation=x.countries as unknown as {name:string}|{name:string}[]|null;
     const category=x.career_category as CareerCategory,rawCountry=Array.isArray(relation)?relation[0]?.name:relation?.name,country=rawCountry?(countryNames[rawCountry]??rawCountry):"";
     const europe1=["España","Inglaterra"].includes(country),europe2=["Italia","Francia","Alemania"].includes(country),europe3=["Portugal","Países Bajos","Bélgica"].includes(country);
@@ -470,12 +471,12 @@ export const NATIONALITY_FLAG_PATHS:Record<(typeof NATIONALITIES)[number],string
 export function starterClubsFor(nationality: string, clubs: CareerClub[], seed=1, talent:TalentBand="normal") {
   const home = clubs.filter((c) => c.country === nationality);
   const fallbackCountries=["Inglaterra","España","Italia"],fallback=fallbackCountries[Math.abs(seed)%fallbackCountries.length];
-  const pool=home.length?home:clubs.filter(c=>c.country===fallback);
+  const fallbackPool=clubs.filter(c=>c.country===fallback);
   const category={premium_international:4,elite_international:3,elite_national:2,national:1,national_b:0};
   const talentWeight={normal:4,high:10,crack:18,generational:25}[talent];
   const noise=(id:string)=>{let n=seed;for(const char of id)n=Math.imul(n^char.charCodeAt(0),16777619);return ((n>>>0)%1000)/10};
-  return [...pool].sort((a,b)=>{
-    const score=(c:CareerClub)=>c.academyQuality*.32+c.youthOpportunity*.3+(category[c.careerCategory??"national"]??1)*talentWeight+noise(c.id);
-    return score(b)-score(a);
-  }).slice(0,3);
+  const score=(c:CareerClub)=>c.academyQuality*.32+c.youthOpportunity*.3+(category[c.careerCategory??"national"]??1)*talentWeight+noise(c.id);
+  const ranked=(pool:CareerClub[])=>[...pool].sort((a,b)=>score(b)-score(a));
+  if(home.length>=3)return ranked(home).slice(0,3);
+  return [...ranked(home),...ranked(fallbackPool.filter(c=>!home.some(x=>x.id===c.id)))].slice(0,3);
 }
