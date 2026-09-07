@@ -474,9 +474,13 @@ export function starterClubsFor(nationality: string, clubs: CareerClub[], seed=1
   const fallbackPool=clubs.filter(c=>c.country===fallback);
   const category={premium_international:4,elite_international:3,elite_national:2,national:1,national_b:0};
   const talentWeight={normal:4,high:10,crack:18,generational:25}[talent];
-  const noise=(id:string)=>{let n=seed;for(const char of id)n=Math.imul(n^char.charCodeAt(0),16777619);return ((n>>>0)%1000)/10};
+  // Enough variation to make careers differ, without drowning the category
+  // advantage that high-potential youngsters should have.
+  const noise=(id:string)=>{let n=seed;for(const char of id)n=Math.imul(n^char.charCodeAt(0),16777619);return ((n>>>0)%400)/10};
   const score=(c:CareerClub)=>c.academyQuality*.32+c.youthOpportunity*.3+(category[c.careerCategory??"national"]??1)*talentWeight+noise(c.id);
   const ranked=(pool:CareerClub[])=>[...pool].sort((a,b)=>score(b)-score(a));
-  if(home.length>=3)return ranked(home).slice(0,3);
-  return [...ranked(home),...ranked(fallbackPool.filter(c=>!home.some(x=>x.id===c.id)))].slice(0,3);
+  // Never mix countries in the initial academy offers. A country with an
+  // incomplete catalogue falls back as a whole to one major league; the
+  // coverage audit/import is responsible for keeping playable countries at 3+.
+  return ranked(home.length>=3?home:fallbackPool).slice(0,3);
 }

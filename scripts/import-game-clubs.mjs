@@ -129,10 +129,45 @@ const HARD_POOL_COUNTRIES = new Set([
   "France",
   "Argentina",
 ]);
-const PREMIUM_CLUBS=new Set(["real madrid","barcelona","manchester city","manchester united","liverpool","arsenal","chelsea","bayern munchen","borussia dortmund","juventus","inter","ac milan","paris saint germain","river plate","boca juniors","flamengo","palmeiras","corinthians","sao paulo","santos","gremio","penarol","nacional"]);
-const ELITE_INTERNATIONAL_CLUBS=new Set(["atletico de madrid","tottenham","napoli","roma","marseille","lyon","benfica","sporting cp","porto","ajax","psv","psv eindhoven","feyenoord","independiente","racing club","san lorenzo"]);
-const ELITE_NATIONAL_CLUBS=new Set(["athletic club","real sociedad","valencia","west ham","rennes","freiburg","az alkmaar","genk","argentinos juniors","velez sarsfield","newells old boys","rosario central"]);
-function careerCategory(name,tier){const key=normalize(name);return PREMIUM_CLUBS.has(key)?"premium_international":ELITE_INTERNATIONAL_CLUBS.has(key)?"elite_international":ELITE_NATIONAL_CLUBS.has(key)?"elite_national":tier===2?"national_b":"national"}
+const clubIdentity = (country, name) => `${normalize(country)}|${normalize(name)}`;
+const clubIdentities = (entries) => new Set(entries.map(([country, name]) => clubIdentity(country, name)));
+const PREMIUM_CLUBS=clubIdentities([
+  ["Spain","Real Madrid"],["Spain","Barcelona"],
+  ["England","Manchester City"],["England","Manchester United"],["England","Liverpool"],["England","Arsenal"],["England","Chelsea"],
+  ["Germany","Bayern Munich"],["Germany","Bayern Munchen"],["Germany","Borussia Dortmund"],
+  ["Italy","Juventus"],["Italy","Inter"],["Italy","AC Milan"],["France","Paris Saint Germain"],
+  ["Argentina","River Plate"],["Argentina","Boca Juniors"],
+  ["Brazil","Flamengo"],["Brazil","Palmeiras"],["Brazil","Corinthians"],["Brazil","Sao Paulo"],["Brazil","Santos"],["Brazil","Gremio"],
+  ["Uruguay","Penarol"],["Uruguay","Nacional"],["Uruguay","Club Nacional"],
+]);
+const ELITE_INTERNATIONAL_CLUBS=clubIdentities([
+  ["Spain","Atletico Madrid"],["Spain","Atletico de Madrid"],["England","Tottenham"],
+  ["Italy","Napoli"],["Italy","AS Roma"],["Italy","Roma"],
+  ["France","Marseille"],["France","Lyon"],
+  ["Portugal","Benfica"],["Portugal","Sporting CP"],["Portugal","FC Porto"],["Portugal","Porto"],
+  ["Netherlands","Ajax"],["Netherlands","PSV"],["Netherlands","PSV Eindhoven"],["Netherlands","Feyenoord"],
+  ["Turkey","Fenerbahce"],
+  ["Argentina","Independiente"],["Argentina","Racing Club"],["Argentina","San Lorenzo"],
+  ["Chile","Colo Colo"],["Colombia","Atletico Nacional"],
+  ["Ecuador","LDU de Quito"],["Ecuador","Independiente del Valle"],
+  ["Paraguay","Olimpia"],["Paraguay","Cerro Porteno"],
+]);
+const ELITE_NATIONAL_CLUBS=clubIdentities([
+  ["Spain","Athletic Club"],["Spain","Real Sociedad"],["Spain","Valencia"],
+  ["England","West Ham"],["France","Rennes"],["Germany","Freiburg"],
+  ["Netherlands","AZ Alkmaar"],["Belgium","Genk"],
+  ["Argentina","Argentinos Juniors"],["Argentina","Velez Sarsfield"],["Argentina","Newells Old Boys"],["Argentina","Rosario Central"],
+  ["Chile","U. Catolica"],["Chile","Universidad de Chile"],
+  ["Colombia","Millonarios"],["Colombia","America de Cali"],["Colombia","Junior"],["Colombia","Deportivo Cali"],["Colombia","Santa Fe"],
+  ["Ecuador","Barcelona SC"],["Ecuador","Emelec"],
+  ["Paraguay","Libertad Asuncion"],["Paraguay","Club Guarani"],
+]);
+function careerCategory(name,country,tier){const key=clubIdentity(country,name);return PREMIUM_CLUBS.has(key)?"premium_international":ELITE_INTERNATIONAL_CLUBS.has(key)?"elite_international":ELITE_NATIONAL_CLUBS.has(key)?"elite_national":tier===2?"national_b":"national"}
+
+function isSeniorMensClub(name) {
+  const key = normalize(name);
+  return !/(^| )(u ?\d{2}|sub ?\d{2}|under ?\d{2}|youth|juvenil|junioren|jong|reserves?|reserve|women|woman|wfc|femenin[oa]|femeni|ladies)( |$)/.test(key);
+}
 
 /* =========================================================
    TEMPORADA
@@ -644,7 +679,8 @@ async function main() {
           (team) =>
             team?.id &&
             team?.name &&
-            !team.national
+            !team.national &&
+            isSeniorMensClub(team.name)
         );
 
     leagueResults.push({
@@ -890,7 +926,7 @@ async function main() {
           is_hard_player_pool:
             HARD_POOL_COUNTRIES.has(league.country) && league.tier === 1,
 
-          career_category:careerCategory(team.name,league.tier),
+          career_category:careerCategory(team.name,league.country,league.tier),
           domestic_division:league.tier,
           domestic_league_name:league.name,
           domestic_league_external_id:String(league.id),

@@ -150,11 +150,26 @@ test("starter offers are deterministic and fall back to one major league",()=>{
   assert.ok(["Inglaterra","España","Italia"].includes(first[0].country));
 });
 
-test("a country with only one academy still receives three starter offers",()=>{
+test("starter offers never mix a partial home catalogue with another country",()=>{
   const pool=[club("colombia-only","Colombia",68),club("england-a","Inglaterra",70),club("england-b","Inglaterra",71),club("england-c","Inglaterra",72)];
   const options=starterClubsFor("Colombia",pool,3,"normal");
   assert.equal(options.length,3);
-  assert.ok(options.some(x=>x.country==="Colombia"));
+  assert.ok(options.every(x=>x.country==="Inglaterra"));
+});
+
+test("three available Colombian clubs produce three Colombian formation offers",()=>{
+  const pool=[club("colombia-a","Colombia",68),club("colombia-b","Colombia",70),club("colombia-c","Colombia",72),club("england-a","Inglaterra",75)];
+  const options=starterClubsFor("Colombia",pool,9,"high");
+  assert.equal(options.length,3);
+  assert.ok(options.every(x=>x.country==="Colombia"));
+});
+
+test("a generational prospect strongly favours a better home-country academy",()=>{
+  const elite={...club("atletico-nacional","Colombia",86),careerCategory:"elite_international" as const};
+  const pool=[elite,club("colombia-a","Colombia",68),club("colombia-b","Colombia",70),club("colombia-c","Colombia",72)];
+  const options=starterClubsFor("Colombia",pool,17,"generational");
+  assert.ok(options.some(x=>x.id===elite.id));
+  assert.ok(options.every(x=>x.country==="Colombia"));
 });
 
 test("career contracts accrue salary and transfer offers contain financial terms",()=>{
