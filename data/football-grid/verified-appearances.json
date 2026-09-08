@@ -1,5 +1,13 @@
 [
   {
+    "playerId": 1719,
+    "playerName": "Ousmane Dembélé",
+    "clubId": 4,
+    "clubName": "Barcelona",
+    "evidence": "FC Barcelona records official first-team appearances in seasons 2017-2023.",
+    "sources": ["https://players.fcbarcelona.com/en/player/2664-dembele-ousmane-dembele"]
+  },
+  {
     "playerId": 50,
     "playerName": "Javier Mascherano",
     "clubId": 1780,

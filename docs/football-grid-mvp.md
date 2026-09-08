@@ -74,7 +74,7 @@ Los IDs de jugadores y clubes permanecen canónicos. Los criterios de país usan
 
 ## Verificación
 
-- `npm test`: 46 pruebas, incluidas ocho de catálogo, selección de jugadores, ejemplos acordados, emparejamiento, búsqueda, reglas y traducciones.
+- `npm test`: 47 pruebas, incluida la regresión Dembélé para PSG × Barcelona.
 - `node --experimental-strip-types scripts/test-football-grid-db.mjs`: 23 comprobaciones sobre PostgreSQL embebido, ejecutando la migración y el seed reales; incluye RLS, aislamiento, inicio concurrente, reloj, límites, recompensas, penalizaciones, idempotencia y compatibilidad con estadísticas existentes.
 - `node scripts/test-football-grid-data.mjs`: ejecuta el SQL de datos dos veces sobre la instantánea local y compara con la vista previa. Preserva los campos existentes y evita duplicados.
 - Build de producción correcto con las rutas ES/EN/FR y Google Fonts preexistente.

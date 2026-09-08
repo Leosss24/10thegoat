@@ -26,6 +26,12 @@ test('matching detects shared-player traps and supports fixed cells',()=>{
   assert.deepEqual(solve([[1,2],[1]],[2,null]),[2,1]);
   assert.equal(solve([[1],[2]],[2,null]),null);
 });
+test('Dembélé is a valid distinct answer for PSG × Barcelona',()=>{
+  const player=catalog.players.find(p=>p.id===1719)!;
+  assert.ok(player);
+  assert.ok(matches(player,{kind:'club',id:'3',name:'PSG'}));
+  assert.ok(matches(player,{kind:'club',id:'4',name:'Barcelona'}));
+});
 test('catalog uses unique canonical identities, portraits and supported positions',()=>{
   assert.equal(new Set(catalog.players.map(p=>p.id)).size,catalog.players.length);
   assert.equal(catalog.players.filter(p=>p.legend).length,44);
