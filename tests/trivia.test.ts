@@ -1,11 +1,66 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { answer, isTriviaSession, newRound, nextQuestion, type Question, type TriviaSession } from "../lib/trivia/engine.ts";
+import { answer, expireRound, isTriviaSession, newRound, nextQuestion, type Question, type TriviaSession } from "../lib/trivia/engine.ts";
 
 const bank = JSON.parse(readFileSync(new URL("../data/trivia/questions.json", import.meta.url), "utf8")) as Question[];
 const session = (round: ReturnType<typeof newRound>): TriviaSession => ({ bankVersion: 1, difficulty: round.difficulty, rounds: { [round.difficulty]: round } });
 const current = (round: ReturnType<typeof newRound>) => bank.find(q => q.id === round.queue[round.index])!;
+
+test("time attack mixes both difficulties without repeats and keeps a fixed one-minute deadline", () => {
+  let round = newRound(bank, "timed", 1000);
+  assert.equal(round.deadline, 61000);
+  assert.equal(new Set(round.queue).size, 400);
+  for (let i = 0; i < round.queue.length; i += 2) {
+    assert.equal(new Set(round.queue.slice(i, i + 2).map(id => bank.find(q => q.id === id)!.difficulty)).size, 2);
+  }
+  round = answer(round, current(round), current(round).correctOptionId, 0, 2000);
+  assert.equal(round.points, 10);
+  round = nextQuestion(round, bank, 3000);
+  assert.equal(round.deadline, 61000);
+  assert.ok(isTriviaSession(JSON.parse(JSON.stringify(session(round))), bank));
+});
+
+test("time attack stops on a mistake and only awards new personal records", () => {
+  let round = newRound(bank, "timed", 1000);
+  for (let i = 1; i <= 3; i++) {
+    round = answer(round, current(round), current(round).correctOptionId, 2, 2000 + i);
+    assert.equal(round.lastAward, i === 3 ? 30 : 0);
+    round = nextQuestion(round, bank, 3000 + i);
+  }
+  const q = current(round);
+  round = answer(round, q, q.options.find(o => o.id !== q.correctOptionId)!.id, 3, 4000);
+  assert.equal(round.finished, true);
+  assert.equal(round.timedOut, false);
+  assert.equal(round.points, 30);
+  assert.equal(expireRound(round, 99999), round);
+  assert.ok(isTriviaSession(session(round), bank));
+});
+
+test("deadline rejects late answers and preserves earned points, including during feedback", () => {
+  const initial = newRound(bank, "timed", 1000);
+  const q = current(initial);
+  const correct = answer(initial, q, q.correctOptionId, 0, 60999);
+  assert.equal(correct.points, 10);
+  for (const round of [initial, correct, nextQuestion(correct, bank, 60999)]) {
+    const expired = expireRound(round, 61000);
+    assert.equal(expired.finished, true);
+    assert.equal(expired.timedOut, true);
+    assert.equal(expired.points, round.points);
+    assert.deepEqual(answer(round, current(round), current(round).correctOptionId, 0, 61000), expired);
+    assert.deepEqual(nextQuestion(round, bank, 61000), expired);
+    assert.equal(expireRound(expired, 90000), expired);
+    assert.ok(isTriviaSession(session(expired), bank));
+  }
+});
+
+test("invalid timed saves are rejected without affecting legacy classic sessions", () => {
+  const round = newRound(bank, "timed", 1000);
+  for (const patch of [{ deadline: undefined }, { deadline: -1 }, { deadline: Infinity }, { timedOut: true }, { timedOut: undefined }]) {
+    assert.equal(isTriviaSession(session({ ...round, ...patch }), bank), false);
+  }
+  assert.ok(isTriviaSession(session(newRound(bank, "easy")), bank));
+});
 
 test("trivia bank contains 200 unique, fully localized questions per difficulty with four distinct options and a source", () => {
   assert.equal(bank.length, 400);

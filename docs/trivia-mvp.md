@@ -5,11 +5,13 @@ Implementado sobre `dc31d40e6d55b317ac181740b70fb3395b72ff05` (referencia local 
 ## Reglas
 
 - Fácil y difícil: 200 preguntas distintas por modo (400 en total), cuatro opciones y una respuesta correcta.
-- Sin cronómetro. El primer fallo termina la partida; el resumen muestra racha, puntos ganados, preguntas respondidas, precisión y solución de la última pregunta.
+- Fácil y difícil no tienen cronómetro. El primer fallo termina la partida; el resumen muestra racha, puntos ganados, preguntas respondidas, precisión y solución de la última pregunta.
+- CONTRARRELOJ mezcla las 400 preguntas en parejas aleatorias de ambas dificultades, sin repetir. Termina al primer fallo o a los 60 segundos. Los aciertos avanzan automáticamente después de 650 ms (también se puede pulsar siguiente). El resumen por tiempo conserva los puntos y no cuenta la pregunta pendiente como respondida.
+- El plazo absoluto se guarda en la sesión: cambiar de modo, idioma o pestaña, o recargar, no reinicia ni pausa el reloj. Una partida caducada se cierra al volver, sin duplicar puntos ni partidas.
 - Preguntas y opciones barajadas. Se conserva el orden al recargar o cambiar de idioma. Después de completar el banco de la partida se baraja otra vuelta sin repetir inmediatamente la última pregunta: completar el banco no termina la partida.
-- Misma fórmula que `HigherLowerGame`: superar el récord personal otorga `nueva racha × 10`. Igualar un récord anterior no da puntos. Fácil y difícil tienen récords independientes.
+- Misma fórmula que `HigherLowerGame`: superar el récord personal otorga `nueva racha × 10`. Igualar un récord anterior no da puntos. Los tres modos tienen récords independientes.
 - Ejemplo: con récord 3, los tres primeros aciertos no suman; el cuarto suma 40 y el quinto 50. Fallar después conserva los 90 puntos.
-- Se reutilizan `addGamePoints` y `recordGameResult`: cada récord incrementa el contador de éxitos existente y cada fallo registra una partida. No se modifica la semántica de otros juegos.
+- Se reutilizan `addGamePoints` y `recordGameResult`: cada récord incrementa el contador de éxitos existente y cada final por fallo o tiempo registra una partida. No se modifica la semántica de otros juegos.
 
 ## Integración y persistencia
 
@@ -17,7 +19,7 @@ TRIVIA sustituye a Mi XI en el segundo portal, el menú móvil y el catálogo. S
 
 La sesión usa `10tg-game-session-v1:trivia`, con un sobre de versión 1, versión del banco y rondas independientes. Se guardan IDs, orden, respuesta, racha y premios, nunca textos localizados. Los estados corruptos o incompatibles se descartan. Las acciones se bloquean para impedir dobles respuestas o saltos por doble clic. Si el almacenamiento está bloqueado, se informa y se permite seguir jugando en memoria.
 
-Las estadísticas utilizan `trivia-easy` y `trivia-hard` dentro del almacén local compartido `10tg-game-scores-v1`. El panel de usuario ya sincroniza todas las claves mediante `sync_own_game_stats` y ahora muestra nombres localizados para ambos modos. Contribuyen a los logros generales de partidas, éxitos y puntos. No hay tablas nuevas, migraciones ni cambios en autenticación.
+Las estadísticas utilizan `trivia-easy`, `trivia-hard` y `trivia-timed` dentro del almacén local compartido `10tg-game-scores-v1`. El panel de usuario ya sincroniza todas las claves mediante `sync_own_game_stats` y muestra nombres localizados para los tres modos. Contribuyen a los logros generales de partidas, éxitos y puntos. No hay tablas nuevas, migraciones ni cambios en autenticación.
 
 Se mantiene el comportamiento existente: la sincronización se realiza al cargar el panel de usuario; no se añade una clasificación pública ni validación competitiva de respuestas en servidor. El banco es visible en el cliente, apropiado para el modelo local del MVP.
 
@@ -31,7 +33,8 @@ Para editar: conservar IDs y revisar las tres traducciones, una única respuesta
 
 ## Validación
 
-- `npm test`: 38 pruebas, incluidas ocho de TRIVIA que verifican el banco completo, puntuación, primer fallo, respuestas duplicadas, ciclo de 200, persistencia, ampliación del banco y datos corruptos.
+- `npm test`: 42 pruebas, incluidas doce de TRIVIA que verifican el banco completo, puntuación, primer fallo, respuestas duplicadas, ciclo de 200, persistencia, ampliación del banco, mezcla de dificultades, plazo exacto, respuestas tardías y datos corruptos.
+- `scripts/test-trivia-timed-ui.cjs`: comprueba el cronómetro con reloj controlado de Playwright, avance automático, fallo, vencimiento, récord propio, recarga, cambio de modo e idioma, resumen, móvil y títulos centrados en mayúsculas.
 - `npm run build`: build de producción con rutas ES/EN/FR generado correctamente. Requiere acceso a Google Fonts por la fuente Geist preexistente.
 - `scripts/test-trivia-ui.cjs`: prueba real de navegador con Playwright; cubre 1440 px, 390 px y 320 px, cambios de idioma, recarga, cambio de dificultad, dobles clics, resumen, récords, navegación, teclado y almacenamiento bloqueado. Capturas en `tmp/trivia-*.png`.
 - Revisión visual de inicio, pregunta y resumen en escritorio y móvil, sin desbordamiento horizontal.

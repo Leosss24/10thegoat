@@ -19,6 +19,7 @@ const GAME_NAMES:Record<string,[string,string,string]> = {
   "football-grid-easy":["FOOTBALL GRID · FÁCIL","FOOTBALL GRID · EASY","FOOTBALL GRID · FACILE"],
   "football-grid-hard":["FOOTBALL GRID · DIFÍCIL","FOOTBALL GRID · HARD","FOOTBALL GRID · DIFFICILE"],
   "trivia-easy":["TRIVIA · FÁCIL","TRIVIA · EASY","TRIVIA · FACILE"],
+  "trivia-timed":["TRIVIA · CONTRARRELOJ","TRIVIA · TIME ATTACK","TRIVIA · CONTRE-LA-MONTRE"],
   "trivia-hard":["TRIVIA · DIFÍCIL","TRIVIA · HARD","TRIVIA · DIFFICILE"],
   "adivina-jugador":["ADIVINA EL JUGADOR","GUESS THE PLAYER","DEVINEZ LE JOUEUR"],
   "mayor-o-menor":["MAYOR O MENOR","HIGHER OR LOWER","PLUS OU MOINS"],

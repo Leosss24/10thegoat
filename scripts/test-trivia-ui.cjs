@@ -31,8 +31,8 @@ await page.locator('.trivia-option:not([disabled])').first().waitFor();assert.eq
 await page.getByRole('button',{name:'Français'}).click();await page.waitForURL('**/fr/juegos/trivia');await page.locator('.trivia-option:not([disabled])').first().waitFor();
 await page.screenshot({path:'tmp/trivia-desktop-question.png',fullPage:true});
 const before=await read();await page.reload();await page.locator('.trivia-option:not([disabled])').first().waitFor();assert.deepEqual(await read(),before);
-await page.getByRole('button',{name:'Changer de difficulté'}).click();await page.locator('.trivia-mode').nth(1).click();assert.equal((await read()).difficulty,'hard');
-await page.getByRole('button',{name:'Changer de difficulté'}).click();await page.locator('.trivia-mode').first().click();assert.deepEqual((await read()).rounds.easy,before.rounds.easy);
+await page.getByRole('button',{name:'Changer de mode'}).click();await page.locator('.trivia-mode').nth(1).click();assert.equal((await read()).difficulty,'hard');
+await page.getByRole('button',{name:'Changer de mode'}).click();await page.locator('.trivia-mode').first().click();assert.deepEqual((await read()).rounds.easy,before.rounds.easy);
 await (await option(false)).click();await page.locator('.trivia-summary').waitFor();
 let s=await read();assert.equal(s.rounds.easy.finished,true);assert.equal(s.rounds.easy.streak,1);assert.equal(s.rounds.easy.points,10);
 assert.equal(await page.locator('.trivia-summary-stats dd').nth(2).textContent(),'50%');
@@ -44,9 +44,9 @@ await page.getByRole('button',{name:'Rejouer',exact:true}).click();await page.lo
 await page.screenshot({path:'tmp/trivia-mobile-question.png',fullPage:true});await fits();
 await (await option()).click();assert.equal((await read()).rounds.easy.points,0,'previous best must not award points');
 await page.getByRole('button',{name:'Question suivante'}).click();await (await option()).click();assert.equal((await read()).rounds.easy.points,20);
-await page.getByRole('button',{name:'Changer de difficulté'}).click();await page.locator('.trivia-mode').nth(1).click();
+await page.getByRole('button',{name:'Changer de mode'}).click();await page.locator('.trivia-mode').nth(1).click();
 await (await option()).click();assert.equal((await read()).rounds.hard.points,10,'hard record is independent');
-await page.getByRole('button',{name:'Changer de difficulté'}).click();await page.setViewportSize({width:320,height:740});await fits();
+await page.getByRole('button',{name:'Changer de mode'}).click();await page.setViewportSize({width:320,height:740});await fits();
 await page.screenshot({path:'tmp/trivia-mobile-start.png',fullPage:true});
 for(const locale of ['es','en','fr']){
  await page.goto(`${base}/${locale}/juegos`);assert.equal(await page.locator('a[href$="/juegos/trivia"]').count(),1);assert.equal(await page.locator('a[href$="/juegos/mi-once"]').count(),0);await fits();
