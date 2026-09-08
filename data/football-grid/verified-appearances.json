@@ -1,0 +1,18 @@
+[
+  {
+    "playerId": 50,
+    "playerName": "Javier Mascherano",
+    "clubId": 1780,
+    "clubName": "River Plate",
+    "evidence": "Official first-team debut against Nueva Chicago, Apertura, 2003-08-03.",
+    "sources": ["https://www.tycsports.com/river-plate/javier-mascherano-debut-river-seleccion-argentina-id526895.html", "https://www.fcbarcelona.com/en/football/first-team/news/1897856"]
+  },
+  {
+    "playerId": 1475,
+    "playerName": "Franco Mastantuono",
+    "clubId": 1780,
+    "clubName": "River Plate",
+    "evidence": "Real Madrid confirms 61 River appearances and an official debut at age 16.",
+    "sources": ["https://www.realmadrid.com/es-ES/noticias/futbol/primer-equipo/actualidad/mastantuono-nuevo-jugador-del-real-madrid-13-06-2025", "https://static.realmadrid.com/StaticFiles/RealMadrid/img/pdf/Discurso_integro_de_Florentino_Perez_en_el_acto_de_presentacion_de_Franco_Mastantuono.pdf"]
+  }
+]

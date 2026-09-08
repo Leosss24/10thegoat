@@ -7,6 +7,7 @@ import { supabase } from "../lib/supabase";
 import { deleteCareerSnapshot, listCareerSnapshots, type CareerSnapshot } from "../lib/career/cloud-storage";
 import { loadCareer, saveCareer } from "../lib/career/storage";
 import type { CareerState } from "../lib/career/types";
+import { gridCopy } from "../lib/football-grid/copy";
 import { getAllGameScores, type GameScoreStats } from "../lib/game-scores";
 import { uniqueSeniorBadges } from "../lib/football/club-filter";
 import { translatedCountry } from "../lib/football/country-i18n";
@@ -15,6 +16,8 @@ type Profile = { username:string|null; display_name:string|null; avatar_url:stri
 type BadgeOption = { id:number; name:string; badge_url:string; is_national_team:boolean; domestic_division:1|2|null; countries:{name:string}|null };
 type RemoteStats = GameScoreStats & { game_key:string };
 const GAME_NAMES:Record<string,[string,string,string]> = {
+  "football-grid-easy":["FOOTBALL GRID · FÁCIL","FOOTBALL GRID · EASY","FOOTBALL GRID · FACILE"],
+  "football-grid-hard":["FOOTBALL GRID · DIFÍCIL","FOOTBALL GRID · HARD","FOOTBALL GRID · DIFFICILE"],
   "trivia-easy":["TRIVIA · FÁCIL","TRIVIA · EASY","TRIVIA · FACILE"],
   "trivia-hard":["TRIVIA · DIFÍCIL","TRIVIA · HARD","TRIVIA · DIFFICILE"],
   "adivina-jugador":["ADIVINA EL JUGADOR","GUESS THE PLAYER","DEVINEZ LE JOUEUR"],
@@ -42,7 +45,7 @@ export default function UserDashboard({locale}:{locale:"es"|"en"|"fr"}) {
     if(!supabase)return;
     const client=supabase;
     const local=getAllGameScores();
-    await Promise.all(Object.entries(local).map(([gameKey,value])=>client.rpc("sync_own_game_stats",{
+    await Promise.all(Object.entries(local).filter(([key])=>!key.startsWith("football-grid-")).map(([gameKey,value])=>client.rpc("sync_own_game_stats",{
       p_game_key:gameKey,p_points:value.points,p_played:value.played,p_wins:value.wins,
       p_best_score:value.bestScore,p_hints_used:value.hintsUsed,p_surrenders:value.surrenders,
     })));
@@ -112,7 +115,12 @@ export default function UserDashboard({locale}:{locale:"es"|"en"|"fr"}) {
     const competitions=seasons.flatMap(x=>x.competitions??[]).filter(x=>x.champion),awards=seasons.flatMap(x=>x.individualAwards??[]);
     return {count:states.length,legacy:Math.max(0,...states.map(x=>x.legacyScore)),continental:competitions.filter(x=>x.kind==="continental").length,international:competitions.filter(x=>x.kind==="international").length,awards:awards.length,ballonDor:awards.filter(x=>x==="Balón de Oro").length};
   },[saves,localCareer]);
+  const gridEasy=stats.find(s=>s.game_key==="football-grid-easy")?.wins??0,gridHard=stats.find(s=>s.game_key==="football-grid-hard")?.wins??0;
   const achievements:[boolean,string,string][]=[
+    [gridEasy>0,gridCopy[locale].achievementEasy,`${Math.min(gridEasy,1)}/1`],
+    [gridHard>0,gridCopy[locale].achievementHard,`${Math.min(gridHard,1)}/1`],
+    [gridEasy>0&&gridHard>0,gridCopy[locale].achievementBoth,`${Number(gridEasy>0)+Number(gridHard>0)}/2`],
+    [gridEasy+gridHard>=10,gridCopy[locale].achievementTen,`${Math.min(gridEasy+gridHard,10)}/10`],
     [totals.played>0,t("PRIMER PARTIDO","FIRST GAME","PREMIER MATCH"),`${Math.min(totals.played,1)}/1`],
     [totals.wins>0,t("PRIMER ACIERTO","FIRST SUCCESS","PREMIER SUCCÈS"),`${Math.min(totals.wins,1)}/1`],
     [totals.played>=10,t("DIEZ PARTIDAS","TEN GAMES","DIX PARTIES"),`${Math.min(totals.played,10)}/10`],

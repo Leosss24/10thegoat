@@ -1,0 +1,447 @@
+{
+  "generatedAt": "2026-09-08T15:19:18.144Z",
+  "season": 2026,
+  "apiResponsesUsed": 243,
+  "newRequests": 4,
+  "europeanClubs": 26,
+  "historicalClubs": 45,
+  "currentSquadPlayers": 823,
+  "legends": 44,
+  "newPlayers": 356,
+  "profiles": 789,
+  "officialStatRows": 3067,
+  "unusable": [
+    {
+      "api_id": 445447,
+      "name": "A. Durmiši",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 491091,
+      "name": "Sergio Esteban",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 491107,
+      "name": "A. Vignaud",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 491108,
+      "name": "D. Boly",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 514183,
+      "name": "K. Kasanwirjo",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 515967,
+      "name": "A. Ouazane",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 543468,
+      "id": 695,
+      "name": "Eder Aller",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 546756,
+      "name": "P. Nash",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 548685,
+      "id": 698,
+      "name": "A. Ciria",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 548706,
+      "name": "I. Luque",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 548707,
+      "id": 701,
+      "name": "M. Llorente",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 548790,
+      "id": 704,
+      "name": "J. Castillo",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 548867,
+      "name": "T. Seidu",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 550547,
+      "id": 705,
+      "name": "H. Abdelkarim",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 551129,
+      "name": "M. Verkuijl",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 552669,
+      "name": "M. Marello",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 557460,
+      "name": "T. Fletcher",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 557462,
+      "id": 1097,
+      "name": "S. Lacey",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 560905,
+      "id": 709,
+      "name": "J. Cestero Sancho",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 561032,
+      "name": "L. Fati",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 561033,
+      "name": "J. Martinez",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 561568,
+      "name": "D. Elimoghale",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 563925,
+      "name": "D. Okolo",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 565689,
+      "id": 1498,
+      "name": "J. Iddrissou",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 567746,
+      "name": "S. Cornecion",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 568001,
+      "id": 714,
+      "name": "X. Espart",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 568002,
+      "name": "O. Goren",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 568042,
+      "name": "M. Cardozo",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 568043,
+      "name": "G. Della Rovere",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 568058,
+      "name": "U. Lamare El Kadmiri",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 568143,
+      "name": "E. Tunkara",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 568225,
+      "id": 1702,
+      "name": "L. Reggiani",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 568268,
+      "name": "D. Lucea",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 568287,
+      "id": 1500,
+      "name": "L. Bovio",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 568316,
+      "name": "L. Prescott",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 568427,
+      "name": "I. Voloshyn",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 568612,
+      "name": "T. Yamamoto",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 570752,
+      "id": 715,
+      "name": "J. Pesquer",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 574799,
+      "id": 717,
+      "name": "B. Farinas",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 579077,
+      "name": "F. Barido",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 580818,
+      "name": "Louis Reynaud",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 582073,
+      "name": "E. Borsani",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 584077,
+      "name": "T. Hall",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 584888,
+      "name": "J. Zinhagel",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 585333,
+      "name": "T. Goncalves",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 586131,
+      "name": "R. Watson",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 586133,
+      "name": "V. van der Velde",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 588436,
+      "name": "Joseph Gabriel",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 588501,
+      "name": "Joshua Abe",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 597936,
+      "name": "R. Radu",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 598615,
+      "id": 1508,
+      "name": "E. Lulli",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 606062,
+      "id": 2049,
+      "name": "A. Longoni",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 606267,
+      "name": "Ange Lago",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 606814,
+      "name": "T. Ndiaye",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 609590,
+      "name": "Denner",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 610507,
+      "name": "A. Bouhamdi",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 612947,
+      "name": "M. Berger",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 623922,
+      "name": "A. Hamdani",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 624605,
+      "name": "S. van Persie",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 626686,
+      "name": "M. Bah",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 626713,
+      "name": "M. Seck",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 628356,
+      "name": "F. Pavic",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 629173,
+      "name": "H. Agboluaje",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 629206,
+      "name": "J. Schaken",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 632814,
+      "name": "A. Nahany",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 633187,
+      "name": "A. Yesilyurt",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 633948,
+      "name": "Mohamed Abdalla",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 645969,
+      "name": "Steeve Kango",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 646997,
+      "name": "Álvaro Moreno",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 648615,
+      "name": "Erblin Osmani",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 653521,
+      "name": "I. Grootfaam",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 656975,
+      "name": "Hilan Hamzaoui Slimani",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 656976,
+      "name": "Nouhoum Kamissoko",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 657672,
+      "name": "B. Assomo",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 659070,
+      "name": "B. Laurendon",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 666811,
+      "name": "T. Wessels",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 673366,
+      "name": "Kuzey Sapaz",
+      "reason": "missing_nationality"
+    },
+    {
+      "api_id": 675841,
+      "name": "M. Camara",
+      "reason": "missing_nationality"
+    }
+  ],
+  "unknownStatMappings": [
+    {
+      "club": "Fenerbahçe",
+      "competition": "Super Cup"
+    },
+    {
+      "club": "Manchester City",
+      "competition": "FIFA Intercontinental Cup"
+    },
+    {
+      "club": "River Plate",
+      "competition": "Trofeo de Campeones de la Superliga"
+    },
+    {
+      "club": "Defensa Y Justicia",
+      "competition": "CONMEBOL Recopa"
+    },
+    {
+      "club": "Argentina",
+      "competition": "Copa America"
+    },
+    {
+      "club": "Palmeiras",
+      "competition": "CONMEBOL Libertadores"
+    }
+  ],
+  "appliedToSupabase": false
+}

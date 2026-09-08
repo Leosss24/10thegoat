@@ -1,0 +1,419 @@
+{
+  "exportedAt": "2026-09-08T15:19:18.144Z",
+  "version": "54fe57faccf424a6",
+  "totalPlayers": 3567,
+  "eligible": 804,
+  "usable": 789,
+  "legends": 44,
+  "europeanClubs": 26,
+  "historicalClubs": 45,
+  "withOfficialClubEvidence": 689,
+  "withoutOfficialClubEvidence": [
+    {
+      "id": 52,
+      "name": "RIQUELME"
+    },
+    {
+      "id": 643,
+      "name": "Sergio Mestre"
+    },
+    {
+      "id": 676,
+      "name": "Mario Rivas"
+    },
+    {
+      "id": 831,
+      "name": "K. Darlow"
+    },
+    {
+      "id": 832,
+      "name": "M. Dúbravka"
+    },
+    {
+      "id": 1125,
+      "name": "C. Pinsoglio"
+    },
+    {
+      "id": 1234,
+      "name": "I. Provedel"
+    },
+    {
+      "id": 1409,
+      "name": "C. Favasuli"
+    },
+    {
+      "id": 1433,
+      "name": "L. Torriani"
+    },
+    {
+      "id": 1476,
+      "name": "J. Ekhator"
+    },
+    {
+      "id": 1477,
+      "name": "C. Comotto"
+    },
+    {
+      "id": 1480,
+      "name": "S. Bocoum"
+    },
+    {
+      "id": 1487,
+      "name": "G. De Marzi"
+    },
+    {
+      "id": 1857,
+      "name": "T. Vermot"
+    },
+    {
+      "id": 3214,
+      "name": "T. Lemar"
+    },
+    {
+      "id": 3226,
+      "name": "J. Henderson"
+    },
+    {
+      "id": 3240,
+      "name": "R. Nelson"
+    },
+    {
+      "id": 3261,
+      "name": "T. Heaton"
+    },
+    {
+      "id": 3269,
+      "name": "K. Grabara"
+    },
+    {
+      "id": 3282,
+      "name": "I. Meslier"
+    },
+    {
+      "id": 3292,
+      "name": "P. Drewes"
+    },
+    {
+      "id": 3299,
+      "name": "Keito Nakamura"
+    },
+    {
+      "id": 3303,
+      "name": "S. Lammers"
+    },
+    {
+      "id": 3339,
+      "name": "G. Słonina"
+    },
+    {
+      "id": 3343,
+      "name": "F. Kastenmeier"
+    },
+    {
+      "id": 3349,
+      "name": "S. El Karouani"
+    },
+    {
+      "id": 3360,
+      "name": "B. Austin"
+    },
+    {
+      "id": 3376,
+      "name": "H. Davies"
+    },
+    {
+      "id": 3381,
+      "name": "Mario de Luis"
+    },
+    {
+      "id": 3384,
+      "name": "L. Bossin"
+    },
+    {
+      "id": 3386,
+      "name": "E. Emegha"
+    },
+    {
+      "id": 3395,
+      "name": "J. Bengui João"
+    },
+    {
+      "id": 3401,
+      "name": "L. Chambers"
+    },
+    {
+      "id": 3402,
+      "name": "Dermot William Mee"
+    },
+    {
+      "id": 3410,
+      "name": "Rio Kyerematen"
+    },
+    {
+      "id": 3418,
+      "name": "Diego Callai"
+    },
+    {
+      "id": 3421,
+      "name": "S. Vos"
+    },
+    {
+      "id": 3423,
+      "name": "J. Van Neck"
+    },
+    {
+      "id": 3429,
+      "name": "O. MimoviÄ"
+    },
+    {
+      "id": 3436,
+      "name": "Luís Gomes"
+    },
+    {
+      "id": 3438,
+      "name": "B. Clarke"
+    },
+    {
+      "id": 3439,
+      "name": "Kaique"
+    },
+    {
+      "id": 3440,
+      "name": "T. Hall"
+    },
+    {
+      "id": 3443,
+      "name": "Gonçalo Ribeiro"
+    },
+    {
+      "id": 3444,
+      "name": "C. Baleba"
+    },
+    {
+      "id": 3445,
+      "name": "Vincent Manuba"
+    },
+    {
+      "id": 3448,
+      "name": "Francisco Silva"
+    },
+    {
+      "id": 3449,
+      "name": "D. Ajayi"
+    },
+    {
+      "id": 3455,
+      "name": "T. Smolenaars"
+    },
+    {
+      "id": 3457,
+      "name": "S. Ouaissa"
+    },
+    {
+      "id": 3458,
+      "name": "C. Corradi"
+    },
+    {
+      "id": 3460,
+      "name": "M. Palestra"
+    },
+    {
+      "id": 3462,
+      "name": "Mauro Couto"
+    },
+    {
+      "id": 3468,
+      "name": "P. Reverson"
+    },
+    {
+      "id": 3469,
+      "name": "E. Mbondo"
+    },
+    {
+      "id": 3470,
+      "name": "Salvador Esquivel"
+    },
+    {
+      "id": 3471,
+      "name": "J. Heerkens"
+    },
+    {
+      "id": 3476,
+      "name": "J. Kamason"
+    },
+    {
+      "id": 3477,
+      "name": "H. Amass"
+    },
+    {
+      "id": 3478,
+      "name": "K. Ranson"
+    },
+    {
+      "id": 3479,
+      "name": "K. Peprah Oppong"
+    },
+    {
+      "id": 3481,
+      "name": "Daniel Armer"
+    },
+    {
+      "id": 3483,
+      "name": "Louie George Copley"
+    },
+    {
+      "id": 3486,
+      "name": "A. Diouf"
+    },
+    {
+      "id": 3489,
+      "name": "Allan"
+    },
+    {
+      "id": 3491,
+      "name": "J. Bisiwu"
+    },
+    {
+      "id": 3494,
+      "name": "Jannis Bärtl"
+    },
+    {
+      "id": 3495,
+      "name": "A. Santos"
+    },
+    {
+      "id": 3497,
+      "name": "Javier Gil"
+    },
+    {
+      "id": 3498,
+      "name": "J. Lambie"
+    },
+    {
+      "id": 3500,
+      "name": "Y. Konan"
+    },
+    {
+      "id": 3501,
+      "name": "G. Spina"
+    },
+    {
+      "id": 3508,
+      "name": "J. Sardo"
+    },
+    {
+      "id": 3510,
+      "name": "Gabriel Silva"
+    },
+    {
+      "id": 3512,
+      "name": "Rui Silva"
+    },
+    {
+      "id": 3513,
+      "name": "F. Nardin"
+    },
+    {
+      "id": 3515,
+      "name": "A. Hani"
+    },
+    {
+      "id": 3517,
+      "name": "M. van der Lans"
+    },
+    {
+      "id": 3519,
+      "name": "J. Afonso"
+    },
+    {
+      "id": 3523,
+      "name": "M. Hardy"
+    },
+    {
+      "id": 3525,
+      "name": "Justin Lerma"
+    },
+    {
+      "id": 3526,
+      "name": "T. Thompson"
+    },
+    {
+      "id": 3530,
+      "name": "M. Catovic"
+    },
+    {
+      "id": 3531,
+      "name": "Khadim Ngom"
+    },
+    {
+      "id": 3535,
+      "name": "M. Pittarella"
+    },
+    {
+      "id": 3536,
+      "name": "M. Muzungu"
+    },
+    {
+      "id": 3541,
+      "name": "R. van de Pavert"
+    },
+    {
+      "id": 3543,
+      "name": "Javier Navarro"
+    },
+    {
+      "id": 3544,
+      "name": "M. Eboue"
+    },
+    {
+      "id": 3545,
+      "name": "V. Vladimirov"
+    },
+    {
+      "id": 3546,
+      "name": "W. Wright"
+    },
+    {
+      "id": 3547,
+      "name": "E. Biterge"
+    },
+    {
+      "id": 3549,
+      "name": "M. Hansen"
+    },
+    {
+      "id": 3552,
+      "name": "M. Zekri"
+    },
+    {
+      "id": 3553,
+      "name": "K. Bezahaf"
+    },
+    {
+      "id": 3561,
+      "name": "Duarte Cunha"
+    },
+    {
+      "id": 3562,
+      "name": "E. Ferreira"
+    },
+    {
+      "id": 3563,
+      "name": "Felipe Lima"
+    },
+    {
+      "id": 3566,
+      "name": "Gabriel Indio"
+    },
+    {
+      "id": 3567,
+      "name": "Enzo Dos Santos"
+    }
+  ],
+  "boards": 300,
+  "byVariant": {
+    "country-position": 100,
+    "country-club": 100,
+    "club-club": 100
+  }
+}
