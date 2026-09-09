@@ -1,12 +1,12 @@
 # Football Grid · reglas y activación
 
-## Cambio pendiente de activar: puntuación proporcional
+## Puntuación proporcional
 
 Ejecutar en el SQL Editor de Supabase, después de la migración 014 ya aplicada:
 
 **supabase/migrations/20260909_015_football_grid_scoring.sql**
 
-La migración 015 todavía no se ha ejecutado en la base remota. Después hay que desplegar esta versión de la aplicación. No volver a ejecutar 014. La migración 015 es transaccional y admite repetición; no modifica los puntos ni las victorias ya obtenidos. Las rondas anteriores conservan su duración y premio originales mediante rules_version=1. Las nuevas usan rules_version=2. La interfaz impide iniciar rondas nuevas si la actualización del servidor no está disponible.
+La migración 015 fue ejecutada por el usuario y sus columnas se verificaron en Supabase el 9 de septiembre de 2026. No volver a ejecutar 014. La migración 015 es transaccional y admite repetición; no modifica los puntos ni las victorias ya obtenidos. Las rondas anteriores conservan su duración y premio originales mediante rules_version=1. Las nuevas usan rules_version=2. La interfaz impide iniciar rondas nuevas si la actualización del servidor no está disponible.
 
 ## Reglas
 
@@ -64,4 +64,4 @@ Usar node --experimental-strip-types; los scripts que acceden a proveedores admi
 - Build de producción con TypeScript y rutas ES/EN/FR.
 - scripts/test-football-grid-ui.mjs: interfaz real contra PostgreSQL local, escritorio/390/320 px, tres idiomas, autocompletado, puntos decrecientes sin contador de tiempo, recarga, dos pestañas, rendición, expiración, quota y recuperación de red. No juega partidas ni altera cuentas reales.
 
-La base de pruebas usa PGlite en tmp/grid-test. Las capturas locales están en tmp/grid-*.png. La verificación autenticada en producción de las nuevas reglas está pendiente de aplicar 015.
+La base de pruebas usa PGlite en tmp/grid-test. Las capturas locales están en tmp/grid-*.png. Las nuevas columnas y el catálogo están verificados en producción. Las partidas autenticadas se probaron con PostgreSQL local; la comprobación con una cuenta real queda para el usuario.
