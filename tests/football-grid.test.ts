@@ -32,6 +32,20 @@ test('Dembélé is a valid distinct answer for PSG × Barcelona',()=>{
   assert.ok(matches(player,{kind:'club',id:'3',name:'PSG'}));
   assert.ok(matches(player,{kind:'club',id:'4',name:'Barcelona'}));
 });
+test('historical first-team clubs remain valid after players move',()=>{
+  for(const [id,clubs] of [[339,['10','42','57']],[345,['9','19','50','92']],[344,['9','56','89']],[784,['10','57','92']],[323,['42']]] as [number,string[]][]){
+    const player=catalog.players.find(p=>p.id===id)!;
+    assert.ok(player);
+    for(const club of clubs)assert.ok(player.clubIds.includes(club),`${player.name}: missing official club ${club}`);
+  }
+});
+test('academy membership and friendlies do not make a senior club answer valid',()=>{
+  for(const [id,club] of [[313,'3'],[219,'53'],[132,'19']] as [number,string][]){
+    const player=catalog.players.find(p=>p.id===id)!;
+    assert.ok(player);
+    assert.ok(!player.clubIds.includes(club),`${player.name}: unverified first-team club admitted`);
+  }
+});
 test('catalog uses unique canonical identities, portraits and supported positions',()=>{
   assert.equal(new Set(catalog.players.map(p=>p.id)).size,catalog.players.length);
   assert.equal(catalog.players.filter(p=>p.legend).length,44);
@@ -64,12 +78,19 @@ test('autocomplete ignores accents, searches aliases and excludes used players',
   assert.equal(searchPlayers([player],'',[]).length,0);
 });
 test('agreed rewards, surrender penalties and nonnegative balances',()=>{
-  assert.deepEqual(RULES,{easy:{seconds:120,reward:100,surrender:20},hard:{seconds:90,reward:200,surrender:50}});
-  assert.equal(pointsAfter(0,'easy','won'),100);assert.equal(pointsAfter(0,'hard','won'),200);
+  assert.deepEqual(RULES,{easy:{seconds:600,reward:5000,surrender:20},hard:{seconds:600,reward:10000,surrender:50}});
+  assert.equal(pointsAfter(0,'easy','won'),5000);assert.equal(pointsAfter(0,'hard','won'),10000);
   assert.equal(pointsAfter(10,'easy','surrendered'),0);assert.equal(pointsAfter(20,'hard','surrendered'),0);
   assert.equal(pointsAfter(100,'easy','surrendered'),80);assert.equal(pointsAfter(200,'hard','surrendered'),150);
   assert.equal(pointsAfter(100,'hard','timeout'),100);
 });
 test('all UI messages and positions are present in ES/EN/FR',()=>{
   for(const locale of ['es','en','fr'] as const){assert.deepEqual(Object.keys(gridCopy[locale]),Object.keys(gridCopy.es));assert.ok(Object.values(gridCopy[locale]).every(text=>text.trim()));assert.equal(Object.keys(positionCopy[locale]).length,4);}
+});
+
+test('points decrease proportionally to remaining time, with a ten-minute ceiling',()=>{
+  for(const [elapsed,easy,hard] of [[0,5000,10000],[120000,4000,8000],[300000,2500,5000],[599000,8,16],[600000,0,0],[700000,0,0]]){
+    assert.equal(pointsAfter(0,'easy','won',elapsed),easy);
+    assert.equal(pointsAfter(0,'hard','won',elapsed),hard);
+  }
 });

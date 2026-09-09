@@ -4,7 +4,7 @@ import { resolve } from 'node:path';
 
 export const TEST_USER = '00000000-0000-4000-8000-000000000001';
 export const OTHER_USER = '00000000-0000-4000-8000-000000000002';
-export async function createTestDatabase() {
+export async function createTestDatabase({scoring=true}={}) {
   const modulePath = process.env.GRID_PGLITE_MODULE;
   const { PGlite } = modulePath ? await import(pathToFileURL(resolve(modulePath)).href) : await import('../../tmp/grid-test/node_modules/@electric-sql/pglite/dist/index.js');
   const db = new PGlite();
@@ -17,6 +17,7 @@ export async function createTestDatabase() {
   await db.exec(dashboard.slice(dashboard.indexOf('create table if not exists public.user_game_stats')));
   await db.exec('grant select on public.user_game_stats to authenticated;');
   await db.exec(readFileSync('supabase/migrations/20260908_014_football_grid.sql','utf8'));
+  if(scoring)await db.exec(readFileSync('supabase/migrations/20260909_015_football_grid_scoring.sql','utf8'));
   await db.exec(readFileSync('supabase/seeds/football_grid_catalog.sql','utf8'));
   // Each call uses the actual migration under the same role and identity boundary.
   // The transaction wrapper also keeps concurrent simulated browser requests isolated.

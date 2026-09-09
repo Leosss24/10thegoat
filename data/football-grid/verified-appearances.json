@@ -5,7 +5,9 @@
     "clubId": 4,
     "clubName": "Barcelona",
     "evidence": "FC Barcelona records official first-team appearances in seasons 2017-2023.",
-    "sources": ["https://players.fcbarcelona.com/en/player/2664-dembele-ousmane-dembele"]
+    "sources": [
+      "https://players.fcbarcelona.com/en/player/2664-dembele-ousmane-dembele"
+    ]
   },
   {
     "playerId": 50,
@@ -13,7 +15,10 @@
     "clubId": 1780,
     "clubName": "River Plate",
     "evidence": "Official first-team debut against Nueva Chicago, Apertura, 2003-08-03.",
-    "sources": ["https://www.tycsports.com/river-plate/javier-mascherano-debut-river-seleccion-argentina-id526895.html", "https://www.fcbarcelona.com/en/football/first-team/news/1897856"]
+    "sources": [
+      "https://www.tycsports.com/river-plate/javier-mascherano-debut-river-seleccion-argentina-id526895.html",
+      "https://www.fcbarcelona.com/en/football/first-team/news/1897856"
+    ]
   },
   {
     "playerId": 1475,
@@ -21,6 +26,20 @@
     "clubId": 1780,
     "clubName": "River Plate",
     "evidence": "Real Madrid confirms 61 River appearances and an official debut at age 16.",
-    "sources": ["https://www.realmadrid.com/es-ES/noticias/futbol/primer-equipo/actualidad/mastantuono-nuevo-jugador-del-real-madrid-13-06-2025", "https://static.realmadrid.com/StaticFiles/RealMadrid/img/pdf/Discurso_integro_de_Florentino_Perez_en_el_acto_de_presentacion_de_Franco_Mastantuono.pdf"]
+    "sources": [
+      "https://www.realmadrid.com/es-ES/noticias/futbol/primer-equipo/actualidad/mastantuono-nuevo-jugador-del-real-madrid-13-06-2025",
+      "https://static.realmadrid.com/StaticFiles/RealMadrid/img/pdf/Discurso_integro_de_Florentino_Perez_en_el_acto_de_presentacion_de_Franco_Mastantuono.pdf"
+    ]
+  },
+  {
+    "playerId": 440,
+    "playerName": "Marc Cucurella",
+    "clubId": 4,
+    "clubName": "Barcelona",
+    "evidence": "Official first-team debut against Real Murcia in Copa del Rey on 2017-10-24, entering in minute 83.",
+    "sources": [
+      "https://www.fcbarcelona.com/en/football/first-team/news/1702077",
+      "https://www.fcbarcelona.com/en/news/737817/jose-arnaiz-scores-in-barca-debut"
+    ]
   }
 ]

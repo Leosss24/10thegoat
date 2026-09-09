@@ -11,7 +11,7 @@ try{
   await assert.rejects(()=>asUser('insert into football_grid_rounds(user_id) values ($1)',[TEST_USER]),/permission denied/);checks++;
   let s=await rpc({p_action:'start'}),id=s.round.id;
   assert.equal(s.round.answers.length,16);assert.equal(s.round.status,'active');assert.equal(s.used,0);
-  assert.equal(Date.parse(s.round.expires_at)-Date.parse(s.round.started_at),120000);checks++;
+  assert.equal(Date.parse(s.round.expires_at)-Date.parse(s.round.started_at),600000);checks++;
   const starts=await Promise.all([rpc({p_action:'start'}),rpc({p_action:'start'})]);
   assert.ok(starts.every(s=>s.round.id===id));checks++;
   await assert.rejects(()=>rpc({p_action:'answer',p_round:id,p_cell:0,p_player:1},OTHER_USER),/round_not_found/);checks++;
@@ -24,28 +24,28 @@ try{
   s=await answer(0,solution[0]);assert.equal(s.feedback,'filled');checks++;
   s=await rpc({p_action:'clear',p_round:id,p_cell:0});assert.equal(s.round.answers[0],null);checks++;
   for(let i=0;i<16;i++)s=await answer(i,solution[i]);
-  assert.equal(s.round.status,'won');assert.equal(s.used,1);assert.equal(s.stats.points,100);assert.equal(s.stats.wins,1);checks++;
-  s=await answer(15,solution[15]);assert.equal(s.stats.points,100);assert.equal(s.stats.played,1);checks++;
+  assert.equal(s.round.status,'won');assert.equal(s.used,1);const easyScore=s.round.score;assert.ok(easyScore>4900&&easyScore<=5000);assert.equal(s.stats.points,easyScore);assert.equal(s.stats.wins,1);checks++;
+  s=await answer(15,solution[15]);assert.equal(s.stats.points,easyScore);assert.equal(s.stats.played,1);checks++;
   s=await rpc({p_action:'start'});id=s.round.id;
-  s=await rpc({p_action:'surrender',p_round:id});assert.equal(s.stats.points,80);assert.equal(s.used,1);assert.equal(s.stats.surrenders,1);checks++;
-  s=await rpc({p_action:'surrender',p_round:id});assert.equal(s.stats.points,80);checks++;
+  s=await rpc({p_action:'surrender',p_round:id});assert.equal(s.stats.points,easyScore-20);assert.equal(s.used,1);assert.equal(s.stats.surrenders,1);checks++;
+  s=await rpc({p_action:'surrender',p_round:id});assert.equal(s.stats.points,easyScore-20);checks++;
   await asUser("select sync_own_game_stats('football-grid-easy',999999,999,999,99999,0,0)");
-  s=await rpc();assert.equal(s.stats.points,80);checks++;
+  s=await rpc();assert.equal(s.stats.points,easyScore-20);checks++;
   for(let game=0;game<2;game++){
     s=await rpc({p_action:'start'});id=s.round.id;
     await db.query("update football_grid_rounds set expires_at=now()-interval '1 second' where id=$1",[id]);
     // Even surrender/answer after expiry must consume a timeout, never avoid quota.
     s=await rpc({p_action:game?'answer':'surrender',p_round:id,p_cell:0,p_player:solution[0]});
-    assert.equal(s.round.status,'timeout');assert.equal(s.stats.points,80);
+    assert.equal(s.round.status,'timeout');assert.equal(s.stats.points,easyScore-20);
   }checks++;
   s=await rpc({p_action:'start'});assert.equal(s.used,3);assert.equal(s.feedback,'daily_limit');assert.equal(s.round.status,'timeout');checks++;
   s=await rpc({p_action:'start',p_difficulty:'hard'});id=s.round.id;
-  assert.equal(s.used,0);assert.equal(Date.parse(s.round.expires_at)-Date.parse(s.round.started_at),90000);
+  assert.equal(s.used,0);assert.equal(Date.parse(s.round.expires_at)-Date.parse(s.round.started_at),600000);
   solution=solve(candidates(s.round.board,catalog.players));
   for(let i=0;i<16;i++)s=await answer(i,solution[i],'hard',id);
-  assert.equal(s.stats.points,200);assert.equal(s.stats.wins,1);checks++;
+  const hardScore=s.round.score;assert.ok(hardScore>9900&&hardScore<=10000);assert.equal(s.stats.points,hardScore);assert.equal(s.stats.wins,1);checks++;
   s=await rpc({p_action:'start',p_difficulty:'hard'});
-  s=await rpc({p_action:'surrender',p_difficulty:'hard',p_round:s.round.id});assert.equal(s.stats.points,150);assert.equal(s.used,1);checks++;
+  s=await rpc({p_action:'surrender',p_difficulty:'hard',p_round:s.round.id});assert.equal(s.stats.points,hardScore-50);assert.equal(s.used,1);checks++;
   const other=await rpc({p_action:'start'},OTHER_USER);assert.equal(other.used,0);assert.equal(other.stats.points,0);
   const surrendered=await rpc({p_action:'surrender',p_round:other.round.id},OTHER_USER);assert.equal(surrendered.stats.points,0);checks++;
   await db.exec("update football_grid_rounds set day=day-1 where difficulty='easy'");

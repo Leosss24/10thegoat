@@ -5,13 +5,13 @@ export type Axis = { kind: 'country' | 'club' | 'position'; id: string; name: st
 export type GridPlayer = { id: number; name: string; aliases: string[]; photo: string; countryId: string; position: Position; clubIds: string[]; legend: boolean; currentClubIds?: string[] };
 export type Board = { id: string; difficulty: Difficulty; variant: Variant; rows: Axis[]; columns: Axis[] };
 export type Catalog = { version: string; exportedAt: string; players: GridPlayer[]; boards: Board[] };
-export type GridRound = { id: string; catalog_version: string; difficulty: Difficulty; board: Board; answers: (number | null)[]; status: 'active' | 'won' | 'timeout' | 'surrendered'; started_at: string; expires_at: string; score: number };
-export type GridStats = { points: number; played: number; wins: number; best_score: number; surrenders: number };
-export type GridState = { round: GridRound | null; used: number; day: string; stats: GridStats; feedback?: string; server_now: string };
+export type GridRound = { id: string; catalog_version: string; difficulty: Difficulty; board: Board; answers: (number | null)[]; status: 'active' | 'won' | 'timeout' | 'surrendered'; started_at: string; expires_at: string; score: number; rules_version?: number; elapsed_ms?: number | null; streak_after?: number | null };
+export type GridStats = { points: number; played: number; wins: number; best_score: number; surrenders: number; current_streak?: number; best_streak?: number; best_time_ms?: number | null };
+export type GridState = { round: GridRound | null; used: number; day: string; stats: GridStats; feedback?: string; server_now: string; rules_version?: number; history?: {id:string;status:GridRound['status'];score:number;elapsed_ms:number|null;streak_after:number|null;finished_at:string}[] };
 
 export const RULES = {
-  easy: { seconds: 120, reward: 100, surrender: 20 },
-  hard: { seconds: 90, reward: 200, surrender: 50 },
+  easy: { seconds: 600, reward: 5000, surrender: 20 },
+  hard: { seconds: 600, reward: 10000, surrender: 50 },
 } as const;
 export const DAILY_LIMIT = 3;
 export const SIZE = 4;
@@ -58,7 +58,16 @@ export function searchPlayers(players: GridPlayer[], query: string, used: (numbe
   return players.filter(p => !used.includes(p.id) && tokens.every(token => normalizeSearch([p.name, ...p.aliases].join(' ')).includes(token)))
     .sort((a, b) => Number(normalizeSearch(b.name).startsWith(normalized)) - Number(normalizeSearch(a.name).startsWith(normalized)) || a.name.localeCompare(b.name)).slice(0, limit);
 }
-export function pointsAfter(current: number, difficulty: Difficulty, status: GridRound['status']) {
-  const delta = status === 'won' ? RULES[difficulty].reward : status === 'surrendered' ? -RULES[difficulty].surrender : 0;
+export function availablePoints(difficulty: Difficulty, remainingMs: number) {
+  if (!Number.isFinite(remainingMs)) return 0;
+  return Math.floor(RULES[difficulty].reward * Math.max(0, Math.min(1, remainingMs / (RULES[difficulty].seconds * 1000))));
+}
+export function formatResolution(ms: number | null | undefined) {
+  if (ms == null) return '—';
+  const seconds = Math.floor(Math.max(0, ms) / 1000);
+  return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}.${String(Math.floor(Math.max(0, ms) % 1000)).padStart(3, '0')}`;
+}
+export function pointsAfter(current: number, difficulty: Difficulty, status: GridRound['status'], elapsedMs = 0) {
+  const delta = status === 'won' ? availablePoints(difficulty, RULES[difficulty].seconds * 1000 - elapsedMs) : status === 'surrendered' ? -RULES[difficulty].surrender : 0;
   return Math.max(0, current + delta);
 }

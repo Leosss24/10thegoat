@@ -7,6 +7,7 @@ import { supabase } from "../lib/supabase";
 import { deleteCareerSnapshot, listCareerSnapshots, type CareerSnapshot } from "../lib/career/cloud-storage";
 import { loadCareer, saveCareer } from "../lib/career/storage";
 import type { CareerState } from "../lib/career/types";
+import { formatResolution } from "../lib/football-grid/engine";
 import { gridCopy } from "../lib/football-grid/copy";
 import { getAllGameScores, type GameScoreStats } from "../lib/game-scores";
 import { uniqueSeniorBadges } from "../lib/football/club-filter";
@@ -14,7 +15,7 @@ import { translatedCountry } from "../lib/football/country-i18n";
 
 type Profile = { username:string|null; display_name:string|null; avatar_url:string|null; avatar_club_id:number|null; username_changed_at:string|null; created_at:string; last_seen_at:string|null };
 type BadgeOption = { id:number; name:string; badge_url:string; is_national_team:boolean; domestic_division:1|2|null; countries:{name:string}|null };
-type RemoteStats = GameScoreStats & { game_key:string };
+type RemoteStats = GameScoreStats & { game_key:string; gridCurrentStreak?:number; gridBestStreak?:number; gridBestTime?:number|null };
 const GAME_NAMES:Record<string,[string,string,string]> = {
   "football-grid-easy":["FOOTBALL GRID · FÁCIL","FOOTBALL GRID · EASY","FOOTBALL GRID · FACILE"],
   "football-grid-hard":["FOOTBALL GRID · DIFÍCIL","FOOTBALL GRID · HARD","FOOTBALL GRID · DIFFICILE"],
@@ -50,8 +51,8 @@ export default function UserDashboard({locale}:{locale:"es"|"en"|"fr"}) {
       p_game_key:gameKey,p_points:value.points,p_played:value.played,p_wins:value.wins,
       p_best_score:value.bestScore,p_hints_used:value.hintsUsed,p_surrenders:value.surrenders,
     })));
-    const {data}=await client.from("user_game_stats").select("game_key,points,played,wins,best_score,hints_used,surrenders").eq("user_id",u.id);
-    setStats((data??[]).map(x=>({game_key:x.game_key,points:x.points,played:x.played,wins:x.wins,bestScore:x.best_score,hintsUsed:x.hints_used,surrenders:x.surrenders})));
+    const {data}=await client.from("user_game_stats").select("game_key,points,played,wins,best_score,hints_used,surrenders,grid_current_streak,grid_best_streak,grid_best_time_ms").eq("user_id",u.id);
+    setStats((data??[]).map(x=>({game_key:x.game_key,points:x.points,played:x.played,wins:x.wins,bestScore:x.best_score,hintsUsed:x.hints_used,surrenders:x.surrenders,gridCurrentStreak:x.grid_current_streak,gridBestStreak:x.grid_best_streak,gridBestTime:x.grid_best_time_ms})));
   };
   const load=async(u:User)=>{
     if(!supabase)return;
@@ -117,7 +118,12 @@ export default function UserDashboard({locale}:{locale:"es"|"en"|"fr"}) {
     return {count:states.length,legacy:Math.max(0,...states.map(x=>x.legacyScore)),continental:competitions.filter(x=>x.kind==="continental").length,international:competitions.filter(x=>x.kind==="international").length,awards:awards.length,ballonDor:awards.filter(x=>x==="Balón de Oro").length};
   },[saves,localCareer]);
   const gridEasy=stats.find(s=>s.game_key==="football-grid-easy")?.wins??0,gridHard=stats.find(s=>s.game_key==="football-grid-hard")?.wins??0;
+  const gridStats=stats.filter(s=>s.game_key.startsWith("football-grid-"));
+  const gridStreak=Math.max(0,...gridStats.map(s=>s.gridBestStreak??0));
+  const gridFastest=Math.min(Infinity,...gridStats.map(s=>s.gridBestTime??Infinity));
   const achievements:[boolean,string,string][]=[
+    [gridStreak>=3,gridCopy[locale].achievementStreak,`${Math.min(gridStreak,3)}/3`],
+    [gridFastest<=300000,gridCopy[locale].achievementFast,formatResolution(Number.isFinite(gridFastest)?gridFastest:null)],
     [gridEasy>0,gridCopy[locale].achievementEasy,`${Math.min(gridEasy,1)}/1`],
     [gridHard>0,gridCopy[locale].achievementHard,`${Math.min(gridHard,1)}/1`],
     [gridEasy>0&&gridHard>0,gridCopy[locale].achievementBoth,`${Number(gridEasy>0)+Number(gridHard>0)}/2`],
@@ -152,7 +158,7 @@ export default function UserDashboard({locale}:{locale:"es"|"en"|"fr"}) {
       {message&&<p className="user-message">{message}</p>}
     </section>
     <div className="user-dashboard-grid">
-      <section className="user-card user-game-stats"><header><span>01</span><h2>{t("ESTADÍSTICAS","STATISTICS","STATISTIQUES")}</h2></header>{!stats.length?<p>{t("JUEGA TU PRIMERA PARTIDA PARA ESTRENAR EL MARCADOR.","PLAY YOUR FIRST GAME TO START THE SCOREBOARD.","JOUEZ VOTRE PREMIÈRE PARTIE.")}</p>:stats.map(s=>{const higher=s.game_key==="mayor-o-menor",accuracy=higher?s.wins/Math.max(1,s.wins+s.played):s.wins/Math.max(1,s.played);return <article key={s.game_key}><div><strong>{t(...(GAME_NAMES[s.game_key]??[s.game_key,s.game_key,s.game_key]))}</strong><small>{s.played} {t("PARTIDAS","GAMES","PARTIES")} · {s.wins} {higher?t("ACIERTOS","CORRECT","SUCCÈS"):t("VICTORIAS","WINS","VICTOIRES")} · {Math.round(accuracy*100)}%</small></div><b>{s.points}</b><span>{higher?t("MEJOR RACHA","BEST STREAK","MEILLEURE SÉRIE"):t("RÉCORD","BEST","RECORD")} {higher?Math.floor(s.bestScore/10):s.bestScore}</span></article>})}</section>
+      <section className="user-card user-game-stats"><header><span>01</span><h2>{t("ESTADÍSTICAS","STATISTICS","STATISTIQUES")}</h2></header>{!stats.length?<p>{t("JUEGA TU PRIMERA PARTIDA PARA ESTRENAR EL MARCADOR.","PLAY YOUR FIRST GAME TO START THE SCOREBOARD.","JOUEZ VOTRE PREMIÈRE PARTIE.")}</p>:stats.map(s=>{const higher=s.game_key==="mayor-o-menor",accuracy=higher?s.wins/Math.max(1,s.wins+s.played):s.wins/Math.max(1,s.played);return <article key={s.game_key}><div><strong>{t(...(GAME_NAMES[s.game_key]??[s.game_key,s.game_key,s.game_key]))}</strong><small>{s.played} {t("PARTIDAS","GAMES","PARTIES")} · {s.wins} {higher?t("ACIERTOS","CORRECT","SUCCÈS"):t("VICTORIAS","WINS","VICTOIRES")} · {Math.round(accuracy*100)}%</small>{s.game_key.startsWith("football-grid-")&&<small>{gridCopy[locale].currentStreak}: {s.gridCurrentStreak??0} · {gridCopy[locale].bestStreak}: {s.gridBestStreak??0} · {gridCopy[locale].bestTime}: {formatResolution(s.gridBestTime)}</small>}</div><b>{s.points}</b><span>{higher?t("MEJOR RACHA","BEST STREAK","MEILLEURE SÉRIE"):t("RÉCORD","BEST","RECORD")} {higher?Math.floor(s.bestScore/10):s.bestScore}</span></article>})}</section>
       <section className="user-card user-achievements"><header><span>02</span><h2>{t("LOGROS","ACHIEVEMENTS","SUCCÈS")}</h2></header><div>{achievements.map(([ok,label,progress])=><article className={ok?"is-earned":""} key={label}><i>{ok?"✓":"◇"}</i><span><b>{label}</b><small>{progress}</small></span></article>)}</div></section>
     </div>
     <section className="pending-games user-card"><header><span>03</span><h2>{t("JUEGOS PENDIENTES DE ACABAR","UNFINISHED GAMES","JEUX À TERMINER")}</h2></header>{!saves.length?<p>{t("No hay minijuegos por finalizar.","There are no unfinished minigames.","Aucun mini-jeu à terminer.")}</p>:<div>{saves.map(x=><article key={x.id}><div><small>MODO CARRERA</small><h3>{x.summary.playerName} <b>#{x.summary.shirtNumber}</b></h3><span>{x.summary.club} · {x.summary.year}/{String(x.summary.year+1).slice(-2)} · {t("MEDIA","OVR","NOTE")} {x.summary.overall}</span></div><button onClick={()=>{saveCareer(x.game_state);router.push(`/${locale}/juegos/carrera`)}}>{t("CONTINUAR DESDE AQUÍ","CONTINUE FROM HERE","REPRENDRE ICI")}</button><button className="is-delete" onClick={async()=>{if(!confirm(t("¿ELIMINAR ESTA CARRERA?","DELETE THIS CAREER?","SUPPRIMER CETTE CARRIÈRE ?")))return;await deleteCareerSnapshot(x.id);await load(user)}}>{t("ELIMINAR","DELETE","SUPPRIMER")}</button></article>)}</div>}</section>

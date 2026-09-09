@@ -1,13 +1,13 @@
 {
   "exportedAt": "2026-09-08T15:19:18.144Z",
-  "version": "abdab888d3c1f253",
+  "version": "309abc085804a7fa",
   "totalPlayers": 3567,
   "eligible": 804,
   "usable": 789,
   "legends": 44,
   "europeanClubs": 26,
   "historicalClubs": 45,
-  "withOfficialClubEvidence": 689,
+  "withOfficialClubEvidence": 702,
   "withoutOfficialClubEvidence": [
     {
       "id": 52,
@@ -30,20 +30,12 @@
       "name": "M. Dúbravka"
     },
     {
-      "id": 1125,
-      "name": "C. Pinsoglio"
-    },
-    {
       "id": 1234,
       "name": "I. Provedel"
     },
     {
       "id": 1409,
       "name": "C. Favasuli"
-    },
-    {
-      "id": 1433,
-      "name": "L. Torriani"
     },
     {
       "id": 1476,
@@ -66,22 +58,6 @@
       "name": "T. Vermot"
     },
     {
-      "id": 3214,
-      "name": "T. Lemar"
-    },
-    {
-      "id": 3226,
-      "name": "J. Henderson"
-    },
-    {
-      "id": 3240,
-      "name": "R. Nelson"
-    },
-    {
-      "id": 3261,
-      "name": "T. Heaton"
-    },
-    {
       "id": 3269,
       "name": "K. Grabara"
     },
@@ -90,16 +66,8 @@
       "name": "I. Meslier"
     },
     {
-      "id": 3292,
-      "name": "P. Drewes"
-    },
-    {
       "id": 3299,
       "name": "Keito Nakamura"
-    },
-    {
-      "id": 3303,
-      "name": "S. Lammers"
     },
     {
       "id": 3339,
@@ -112,10 +80,6 @@
     {
       "id": 3349,
       "name": "S. El Karouani"
-    },
-    {
-      "id": 3360,
-      "name": "B. Austin"
     },
     {
       "id": 3376,
@@ -174,10 +138,6 @@
       "name": "B. Clarke"
     },
     {
-      "id": 3439,
-      "name": "Kaique"
-    },
-    {
       "id": 3440,
       "name": "T. Hall"
     },
@@ -192,10 +152,6 @@
     {
       "id": 3445,
       "name": "Vincent Manuba"
-    },
-    {
-      "id": 3448,
-      "name": "Francisco Silva"
     },
     {
       "id": 3449,
@@ -266,10 +222,6 @@
       "name": "A. Diouf"
     },
     {
-      "id": 3489,
-      "name": "Allan"
-    },
-    {
       "id": 3491,
       "name": "J. Bisiwu"
     },
@@ -328,10 +280,6 @@
     {
       "id": 3523,
       "name": "M. Hardy"
-    },
-    {
-      "id": 3525,
-      "name": "Justin Lerma"
     },
     {
       "id": 3526,

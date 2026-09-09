@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { candidates, solve, POSITIONS, matches } from '../lib/football-grid/engine.ts';
 import { isReserveOrYouthClub, isWomensTeam } from '../lib/football/club-filter.ts';
@@ -37,6 +37,15 @@ for (const stat of evidence) {
   clubHistory.get(stat.player_id).add(String(stat.club_id));
 }
 const eligible = source.players.filter(p=>legendIds.has(p.id)||currentClubs.has(p.id));
+if(existsSync('data/football-grid/api-appearances.json')){
+  const audit=JSON.parse(readFileSync('data/football-grid/history-audit.json','utf8'));
+  if(audit.reviewedPlayers!==audit.totalPlayers)throw new Error('History audit is incomplete; finish it before rebuilding.');
+  for(const fact of JSON.parse(readFileSync('data/football-grid/api-appearances.json','utf8'))){
+    if(!(fact.appearances>0) || !historicalIds.has(String(fact.clubId)) || !source.player_external_ids.some(x=>x.player_id===fact.playerId&&Number(x.external_id)===fact.apiPlayerId) || !source.club_external_ids.some(x=>x.club_id===fact.clubId&&Number(x.external_id)===fact.apiClubId) || !fact.source.startsWith('https://v3.football.api-sports.io/players?'))throw new Error('Invalid audited appearance identity/source');
+    if(!clubHistory.has(fact.playerId))clubHistory.set(fact.playerId,new Set());
+    clubHistory.get(fact.playerId).add(String(fact.clubId));
+  }
+}
 // Reviewed official appearances supplement provider gaps without inventing season totals.
 const reviewed=JSON.parse(readFileSync('data/football-grid/verified-appearances.json','utf8'));
 for(const fact of reviewed){

@@ -34,6 +34,12 @@ try{
   await page.locator('.fg-mode .fg-primary').first().evaluate(b=>{b.click();b.click();});
   await page.locator('.fg-cell').first().waitFor();let initial=await state();assert.equal(initial.stats.played,0);
   assert.equal(await page.locator('.fg-cell').count(),16);
+  assert.equal(await page.getByRole('timer').count(),0);
+  const initialPoints=Number((await page.locator('.fg-time strong').innerText()).replace(/[^0-9]/g,''));
+  assert.ok(initialPoints>4900&&initialPoints<=5000);
+  await page.waitForTimeout(1200);
+  assert.ok(Number((await page.locator('.fg-time strong').innerText()).replace(/[^0-9]/g,''))<initialPoints);
+  assert.equal(Date.parse(initial.round.expires_at)-Date.parse(initial.round.started_at),600000);
   const solution=solve(candidates(initial.round.board,catalog.players));
   async function fill(cell,id){
     await page.locator('.fg-cell').nth(cell).click();await page.locator('#fg-search').fill(catalog.players.find(p=>p.id===id).name);
@@ -60,22 +66,23 @@ try{
   // A second browser tab sees the same server round.
   const second=await context.newPage();await second.goto(`${base}/es/juegos/football-grid`);await second.locator('.fg-cell.is-solved').waitFor();assert.equal(await second.locator('.fg-cell.is-solved').count(),1);await second.close();
   for(let i=1;i<16;i++)await fill(i,solution[i]);
-  await page.locator('.fg-summary.is-win').waitFor();assert.equal((await state()).stats.points,100);assert.equal((await state()).used,1);
+  await page.locator('.fg-summary.is-win').waitFor();const wonScore=(await state()).round.score;assert.ok(wonScore>0&&wonScore<=5000);assert.equal((await state()).stats.points,wonScore);assert.equal((await state()).used,1);
+  assert.equal((await state()).stats.current_streak,1);assert.ok((await state()).stats.best_time_ms>0);assert.equal(await page.locator('.fg-history li').count(),1);
   await page.screenshot({path:'tmp/grid-mobile-win.png',fullPage:true});
   // Retry/reload does not award the result again.
-  await page.reload();await page.locator('.fg-summary.is-win').waitFor();assert.equal((await state()).stats.points,100);
+  await page.reload();await page.locator('.fg-summary.is-win').waitFor();assert.equal((await state()).stats.points,wonScore);
   await page.getByRole('button',{name:'Nouvelle partie',exact:true}).click();await page.locator('.fg-cell:not([disabled])').first().waitFor();
   await page.getByRole('button',{name:/Abandonner ·/}).click();await page.getByRole('button',{name:'Oui, abandonner'}).click();await page.locator('.fg-summary').waitFor();
-  assert.equal((await state()).stats.points,80);assert.equal((await state()).used,1);
+  assert.equal((await state()).stats.points,wonScore-20);assert.equal((await state()).used,1);
   // Server expiry survives navigation, with no surrender loophole.
   for(let i=0;i<2;i++){
     await page.getByRole('button',{name:'Nouvelle partie',exact:true}).click();await page.locator('.fg-cell:not([disabled])').first().waitFor();
     const current=await state();await db.query("update football_grid_rounds set expires_at=now()-interval '1 second' where id=$1",[current.round.id]);
-    await page.reload();await page.getByText('Temps écoulé',{exact:true}).waitFor();
+    await page.reload();await page.getByRole('heading',{name:'Temps écoulé',exact:true}).waitFor();
   }
   assert.equal((await state()).used,3);assert.ok(await page.locator('.fg-summary button').isDisabled());
   await page.getByRole('button',{name:'Changer de mode',exact:true}).click();await page.locator('.fg-mode .fg-primary').nth(1).click();await page.locator('.fg-cell').first().waitFor();
-  const hard=await state('hard');assert.equal(Date.parse(hard.round.expires_at)-Date.parse(hard.round.started_at),90000);
+  const hard=await state('hard');assert.equal(Date.parse(hard.round.expires_at)-Date.parse(hard.round.started_at),600000);
   await page.setViewportSize({width:1440,height:1100});await fits();await page.screenshot({path:'tmp/grid-desktop-hard.png',fullPage:true});
   // A transient error can recover the same round without resetting its deadline.
   failNetwork=true;await page.reload();await page.locator('.fg-notice').waitFor();failNetwork=false;

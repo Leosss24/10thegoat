@@ -1,0 +1,5280 @@
+{
+  "auditedAt": "2026-09-09T06:35:33.088Z",
+  "catalogVersion": "abdab888d3c1f253",
+  "totalPlayers": 789,
+  "reviewedPlayers": 789,
+  "newRequests": 586,
+  "confirmedMissingPairs": 234,
+  "affectedPlayers": 175,
+  "unresolved": [
+    {
+      "playerId": 132,
+      "playerName": "ROGERS",
+      "clubId": 19,
+      "clubName": "Manchester City",
+      "seasons": [
+        2022,
+        2021
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 181,
+      "playerName": "MALEN",
+      "clubId": 89,
+      "clubName": "Arsenal",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 205,
+      "playerName": "BREMER",
+      "clubId": 100,
+      "clubName": "Sao Paulo",
+      "seasons": [
+        2016
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 219,
+      "playerName": "KALULU",
+      "clubId": 53,
+      "clubName": "Lyon",
+      "seasons": [
+        2019
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 294,
+      "playerName": "GADOU",
+      "clubId": 3,
+      "clubName": "Paris Saint Germain",
+      "seasons": [
+        2023
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 308,
+      "playerName": "DOUGLAS LUIZ",
+      "clubId": 19,
+      "clubName": "Manchester City",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 313,
+      "playerName": "MAIGNAN",
+      "clubId": 3,
+      "clubName": "Paris Saint Germain",
+      "seasons": [
+        2014,
+        2013
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 333,
+      "playerName": "Álex Grimaldo",
+      "clubId": 4,
+      "clubName": "Barcelona",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 345,
+      "playerName": "João Cancelo",
+      "clubId": 367,
+      "clubName": "Benfica",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 440,
+      "playerName": "Marc Cucurella",
+      "clubId": 4,
+      "clubName": "Barcelona",
+      "seasons": [
+        2017
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 563,
+      "playerName": "Álvaro Fernández",
+      "clubId": 8,
+      "clubName": "Manchester United",
+      "seasons": [
+        2022,
+        2021
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 643,
+      "playerName": "Sergio Mestre",
+      "clubId": 10,
+      "clubName": "Real Madrid",
+      "seasons": [
+        2026,
+        2025,
+        2024
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 643,
+      "playerName": "Sergio Mestre",
+      "clubId": 42,
+      "clubName": "Atletico Madrid",
+      "seasons": [
+        2023,
+        2022
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 676,
+      "playerName": "Mario Rivas",
+      "clubId": 10,
+      "clubName": "Real Madrid",
+      "seasons": [
+        2026,
+        2024
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 757,
+      "playerName": "Diogo Dalot",
+      "clubId": 17,
+      "clubName": "AC Milan",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 803,
+      "playerName": "E. Fernández",
+      "clubId": 367,
+      "clubName": "Benfica",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 807,
+      "playerName": "A. Mac Allister",
+      "clubId": 1789,
+      "clubName": "Boca Juniors",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 831,
+      "playerName": "K. Darlow",
+      "clubId": 8,
+      "clubName": "Manchester United",
+      "seasons": [
+        2026
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 832,
+      "playerName": "M. Dúbravka",
+      "clubId": 64,
+      "clubName": "Tottenham",
+      "seasons": [
+        2026
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 832,
+      "playerName": "M. Dúbravka",
+      "clubId": 8,
+      "clubName": "Manchester United",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 916,
+      "playerName": "G. Rulli",
+      "clubId": 19,
+      "clubName": "Manchester City",
+      "seasons": [
+        2026,
+        2016
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 991,
+      "playerName": "M. Kerkez",
+      "clubId": 17,
+      "clubName": "AC Milan",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 1070,
+      "playerName": "A. Heaven",
+      "clubId": 89,
+      "clubName": "Arsenal",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 1116,
+      "playerName": "David Neres",
+      "clubId": 100,
+      "clubName": "Sao Paulo",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 1126,
+      "playerName": "D. Rugani",
+      "clubId": 45,
+      "clubName": "Ajax",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 1155,
+      "playerName": "Hermoso",
+      "clubId": 10,
+      "clubName": "Real Madrid",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 1168,
+      "playerName": "J. David",
+      "clubId": 42,
+      "clubName": "Atletico Madrid",
+      "seasons": [
+        2026
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 1203,
+      "playerName": "P. Gollini",
+      "clubId": 64,
+      "clubName": "Tottenham",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 1234,
+      "playerName": "I. Provedel",
+      "clubId": 92,
+      "clubName": "Inter",
+      "seasons": [
+        2026
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 1274,
+      "playerName": "Josep Martínez",
+      "clubId": 4,
+      "clubName": "Barcelona",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 1277,
+      "playerName": "S. Lobotka",
+      "clubId": 45,
+      "clubName": "Ajax",
+      "seasons": [
+        2013
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 1340,
+      "playerName": "Rafa Marín",
+      "clubId": 10,
+      "clubName": "Real Madrid",
+      "seasons": [
+        2022,
+        2021
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 1409,
+      "playerName": "C. Favasuli",
+      "clubId": 94,
+      "clubName": "Napoli",
+      "seasons": [
+        2026
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 1476,
+      "playerName": "J. Ekhator",
+      "clubId": 9,
+      "clubName": "Juventus",
+      "seasons": [
+        2026
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 1477,
+      "playerName": "C. Comotto",
+      "clubId": 17,
+      "clubName": "AC Milan",
+      "seasons": [
+        2026,
+        2025
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 1480,
+      "playerName": "S. Bocoum",
+      "clubId": 17,
+      "clubName": "AC Milan",
+      "seasons": [
+        2026
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 1487,
+      "playerName": "G. De Marzi",
+      "clubId": 56,
+      "clubName": "AS Roma",
+      "seasons": [
+        2026,
+        2025,
+        2024
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 1527,
+      "playerName": "F. Nmecha",
+      "clubId": 19,
+      "clubName": "Manchester City",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 1608,
+      "playerName": "Fábio Silva",
+      "clubId": 290,
+      "clubName": "PSV Eindhoven",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 1759,
+      "playerName": "L. Digne",
+      "clubId": 56,
+      "clubName": "AS Roma",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 1790,
+      "playerName": "R. Descamps",
+      "clubId": 3,
+      "clubName": "Paris Saint Germain",
+      "seasons": [
+        2017,
+        2016,
+        2015
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 1857,
+      "playerName": "T. Vermot",
+      "clubId": 141,
+      "clubName": "Marseille",
+      "seasons": [
+        2026,
+        2025
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 1871,
+      "playerName": "T. Morton",
+      "clubId": 43,
+      "clubName": "Liverpool",
+      "seasons": [
+        2022
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 1887,
+      "playerName": "C. Egan-Riley",
+      "clubId": 290,
+      "clubName": "PSV Eindhoven",
+      "seasons": [
+        2024,
+        2023
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3212,
+      "playerName": "L. Balerdi",
+      "clubId": 1789,
+      "clubName": "Boca Juniors",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3213,
+      "playerName": "N. Pérez",
+      "clubId": 42,
+      "clubName": "Atletico Madrid",
+      "seasons": [
+        2020,
+        2019,
+        2018
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3221,
+      "playerName": "I. Perišić",
+      "clubId": 50,
+      "clubName": "Bayern München",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3232,
+      "playerName": "D. Blind",
+      "clubId": 50,
+      "clubName": "Bayern München",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3240,
+      "playerName": "R. Nelson",
+      "clubId": 119,
+      "clubName": "Feyenoord",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3247,
+      "playerName": "Bruma",
+      "clubId": 113,
+      "clubName": "Fenerbahçe",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3247,
+      "playerName": "Bruma",
+      "clubId": 11,
+      "clubName": "Sporting CP",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3249,
+      "playerName": "D. Livaković",
+      "clubId": 4,
+      "clubName": "Barcelona",
+      "seasons": [
+        2026
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3254,
+      "playerName": "F. Kostić",
+      "clubId": 113,
+      "clubName": "Fenerbahçe",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3266,
+      "playerName": "Caio Henrique",
+      "clubId": 40,
+      "clubName": "Gremio",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3266,
+      "playerName": "Caio Henrique",
+      "clubId": 42,
+      "clubName": "Atletico Madrid",
+      "seasons": [
+        2016
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3269,
+      "playerName": "K. Grabara",
+      "clubId": 9,
+      "clubName": "Juventus",
+      "seasons": [
+        2026
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3269,
+      "playerName": "K. Grabara",
+      "clubId": 43,
+      "clubName": "Liverpool",
+      "seasons": [
+        2017
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3272,
+      "playerName": "Ç. Söyüncü",
+      "clubId": 42,
+      "clubName": "Atletico Madrid",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3283,
+      "playerName": "W. Saliba",
+      "clubId": 141,
+      "clubName": "Marseille",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3287,
+      "playerName": "D. Klaassen",
+      "clubId": 92,
+      "clubName": "Inter",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3289,
+      "playerName": "A. Pléa",
+      "clubId": 53,
+      "clubName": "Lyon",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3295,
+      "playerName": "S. Fofana",
+      "clubId": 19,
+      "clubName": "Manchester City",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3318,
+      "playerName": "Q. Timber",
+      "clubId": 45,
+      "clubName": "Ajax",
+      "seasons": [
+        2020,
+        2019
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3323,
+      "playerName": "Nuno Santos",
+      "clubId": 367,
+      "clubName": "Benfica",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3329,
+      "playerName": "L. Suárez",
+      "clubId": 141,
+      "clubName": "Marseille",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3339,
+      "playerName": "G. Słonina",
+      "clubId": 57,
+      "clubName": "Chelsea",
+      "seasons": [
+        2025,
+        2024,
+        2023,
+        2022
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3343,
+      "playerName": "F. Kastenmeier",
+      "clubId": 119,
+      "clubName": "Feyenoord",
+      "seasons": [
+        2026
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3353,
+      "playerName": "S. Dahl",
+      "clubId": 56,
+      "clubName": "AS Roma",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3354,
+      "playerName": "G. Vagiannidis",
+      "clubId": 92,
+      "clubName": "Inter",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3356,
+      "playerName": "M. Kovář",
+      "clubId": 8,
+      "clubName": "Manchester United",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3376,
+      "playerName": "H. Davies",
+      "clubId": 43,
+      "clubName": "Liverpool",
+      "seasons": [
+        2023,
+        2020
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3381,
+      "playerName": "Mario de Luis",
+      "clubId": 42,
+      "clubName": "Atletico Madrid",
+      "seasons": [
+        2025
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3381,
+      "playerName": "Mario de Luis",
+      "clubId": 10,
+      "clubName": "Real Madrid",
+      "seasons": [
+        2024,
+        2023,
+        2022
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3384,
+      "playerName": "L. Bossin",
+      "clubId": 119,
+      "clubName": "Feyenoord",
+      "seasons": [
+        2026,
+        2025,
+        2024
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3386,
+      "playerName": "E. Emegha",
+      "clubId": 57,
+      "clubName": "Chelsea",
+      "seasons": [
+        2026
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3395,
+      "playerName": "J. Bengui João",
+      "clubId": 53,
+      "clubName": "Lyon",
+      "seasons": [
+        2026,
+        2024,
+        2023
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3398,
+      "playerName": "Pedro Lima",
+      "clubId": 1752,
+      "clubName": "Palmeiras",
+      "seasons": [
+        2022,
+        2020
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3401,
+      "playerName": "L. Chambers",
+      "clubId": 43,
+      "clubName": "Liverpool",
+      "seasons": [
+        2022
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3402,
+      "playerName": "Dermot William Mee",
+      "clubId": 8,
+      "clubName": "Manchester United",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3410,
+      "playerName": "Rio Kyerematen",
+      "clubId": 64,
+      "clubName": "Tottenham",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3418,
+      "playerName": "Diego Callai",
+      "clubId": 11,
+      "clubName": "Sporting CP",
+      "seasons": [
+        2026,
+        2025,
+        2024,
+        2023,
+        2022,
+        2021
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3421,
+      "playerName": "S. Vos",
+      "clubId": 17,
+      "clubName": "AC Milan",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3421,
+      "playerName": "S. Vos",
+      "clubId": 45,
+      "clubName": "Ajax",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3423,
+      "playerName": "J. Van Neck",
+      "clubId": 141,
+      "clubName": "Marseille",
+      "seasons": [
+        2025,
+        2024,
+        2023,
+        2022
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3426,
+      "playerName": "N. Irankunda",
+      "clubId": 50,
+      "clubName": "Bayern München",
+      "seasons": [
+        2024,
+        2023
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3429,
+      "playerName": "O. MimoviÄ",
+      "clubId": 113,
+      "clubName": "Fenerbahçe",
+      "seasons": [
+        2025,
+        2024
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3432,
+      "playerName": "S. Andersen",
+      "clubId": 92,
+      "clubName": "Inter",
+      "seasons": [
+        2022
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3436,
+      "playerName": "Luís Gomes",
+      "clubId": 85,
+      "clubName": "FC Porto",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3438,
+      "playerName": "B. Clarke",
+      "clubId": 89,
+      "clubName": "Arsenal",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3439,
+      "playerName": "Kaique",
+      "clubId": 11,
+      "clubName": "Sporting CP",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3440,
+      "playerName": "T. Hall",
+      "clubId": 64,
+      "clubName": "Tottenham",
+      "seasons": [
+        2025
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3443,
+      "playerName": "Gonçalo Ribeiro",
+      "clubId": 85,
+      "clubName": "FC Porto",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3445,
+      "playerName": "Vincent Manuba",
+      "clubId": 50,
+      "clubName": "Bayern München",
+      "seasons": [
+        2025,
+        2024
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3449,
+      "playerName": "D. Ajayi",
+      "clubId": 64,
+      "clubName": "Tottenham",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3455,
+      "playerName": "T. Smolenaars",
+      "clubId": 290,
+      "clubName": "PSV Eindhoven",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3462,
+      "playerName": "Mauro Couto",
+      "clubId": 11,
+      "clubName": "Sporting CP",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3468,
+      "playerName": "P. Reverson",
+      "clubId": 45,
+      "clubName": "Ajax",
+      "seasons": [
+        2026,
+        2025,
+        2024
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3469,
+      "playerName": "E. Mbondo",
+      "clubId": 141,
+      "clubName": "Marseille",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3470,
+      "playerName": "Salvador Esquivel",
+      "clubId": 42,
+      "clubName": "Atletico Madrid",
+      "seasons": [
+        2025
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3471,
+      "playerName": "J. Heerkens",
+      "clubId": 45,
+      "clubName": "Ajax",
+      "seasons": [
+        2026,
+        2025
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3476,
+      "playerName": "J. Kamason",
+      "clubId": 8,
+      "clubName": "Manchester United",
+      "seasons": [
+        2024
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3477,
+      "playerName": "H. Amass",
+      "clubId": 8,
+      "clubName": "Manchester United",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3478,
+      "playerName": "K. Ranson",
+      "clubId": 89,
+      "clubName": "Arsenal",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3479,
+      "playerName": "K. Peprah Oppong",
+      "clubId": 113,
+      "clubName": "Fenerbahçe",
+      "seasons": [
+        2026
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3480,
+      "playerName": "Luis Guilherme",
+      "clubId": 1752,
+      "clubName": "Palmeiras",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3481,
+      "playerName": "Daniel Armer",
+      "clubId": 8,
+      "clubName": "Manchester United",
+      "seasons": [
+        2024
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3483,
+      "playerName": "Louie George Copley",
+      "clubId": 89,
+      "clubName": "Arsenal",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3489,
+      "playerName": "Allan",
+      "clubId": 19,
+      "clubName": "Manchester City",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3494,
+      "playerName": "Jannis Bärtl",
+      "clubId": 50,
+      "clubName": "Bayern München",
+      "seasons": [
+        2025
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3495,
+      "playerName": "A. Santos",
+      "clubId": 290,
+      "clubName": "PSV Eindhoven",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3497,
+      "playerName": "Javier Gil",
+      "clubId": 9,
+      "clubName": "Juventus",
+      "seasons": [
+        2025,
+        2024
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3500,
+      "playerName": "Y. Konan",
+      "clubId": 53,
+      "clubName": "Lyon",
+      "seasons": [
+        2026,
+        2025
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3501,
+      "playerName": "G. Spina",
+      "clubId": 42,
+      "clubName": "Atletico Madrid",
+      "seasons": [
+        2025,
+        2024
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3508,
+      "playerName": "J. Sardo",
+      "clubId": 17,
+      "clubName": "AC Milan",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3510,
+      "playerName": "Gabriel Silva",
+      "clubId": 11,
+      "clubName": "Sporting CP",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3513,
+      "playerName": "F. Nardin",
+      "clubId": 56,
+      "clubName": "AS Roma",
+      "seasons": [
+        2024
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3515,
+      "playerName": "A. Hani",
+      "clubId": 45,
+      "clubName": "Ajax",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3517,
+      "playerName": "M. van der Lans",
+      "clubId": 45,
+      "clubName": "Ajax",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3519,
+      "playerName": "J. Afonso",
+      "clubId": 85,
+      "clubName": "FC Porto",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3523,
+      "playerName": "M. Hardy",
+      "clubId": 64,
+      "clubName": "Tottenham",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3526,
+      "playerName": "T. Thompson",
+      "clubId": 64,
+      "clubName": "Tottenham",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3531,
+      "playerName": "Khadim Ngom",
+      "clubId": 290,
+      "clubName": "PSV Eindhoven",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3535,
+      "playerName": "M. Pittarella",
+      "clubId": 17,
+      "clubName": "AC Milan",
+      "seasons": [
+        2025
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3536,
+      "playerName": "M. Muzungu",
+      "clubId": 45,
+      "clubName": "Ajax",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3541,
+      "playerName": "R. van de Pavert",
+      "clubId": 45,
+      "clubName": "Ajax",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3543,
+      "playerName": "Javier Navarro",
+      "clubId": 10,
+      "clubName": "Real Madrid",
+      "seasons": [
+        2026,
+        2025
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3544,
+      "playerName": "M. Eboue",
+      "clubId": 57,
+      "clubName": "Chelsea",
+      "seasons": [
+        2025
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3545,
+      "playerName": "V. Vladimirov",
+      "clubId": 17,
+      "clubName": "AC Milan",
+      "seasons": [
+        2025
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3546,
+      "playerName": "W. Wright",
+      "clubId": 43,
+      "clubName": "Liverpool",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3547,
+      "playerName": "E. Biterge",
+      "clubId": 113,
+      "clubName": "Fenerbahçe",
+      "seasons": [
+        2025,
+        2024
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3553,
+      "playerName": "K. Bezahaf",
+      "clubId": 141,
+      "clubName": "Marseille",
+      "seasons": [
+        2026,
+        2025
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3561,
+      "playerName": "Duarte Cunha",
+      "clubId": 85,
+      "clubName": "FC Porto",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3562,
+      "playerName": "E. Ferreira",
+      "clubId": 85,
+      "clubName": "FC Porto",
+      "seasons": [
+        2026
+      ],
+      "reason": "no_verified_official_appearance"
+    },
+    {
+      "playerId": 3567,
+      "playerName": "Enzo Dos Santos",
+      "clubId": 21,
+      "clubName": "Borussia Dortmund",
+      "seasons": [],
+      "reason": "no_verified_official_appearance"
+    }
+  ],
+  "unknownCompetitions": [
+    {
+      "id": null,
+      "name": "International Super Cup"
+    },
+    {
+      "id": 26,
+      "name": "International Champions Cup"
+    },
+    {
+      "id": 667,
+      "name": "Friendlies Clubs"
+    },
+    {
+      "id": 241,
+      "name": "Copa Colombia"
+    },
+    {
+      "id": 550,
+      "name": "Super Cup"
+    },
+    {
+      "id": 1022,
+      "name": "Premier League - Summer Series"
+    },
+    {
+      "id": 475,
+      "name": "Paulista - A1"
+    },
+    {
+      "id": 624,
+      "name": "Carioca - 1"
+    },
+    {
+      "id": 543,
+      "name": "Super Cup"
+    },
+    {
+      "id": 547,
+      "name": "Super Cup"
+    },
+    {
+      "id": 937,
+      "name": "Emirates Cup"
+    },
+    {
+      "id": 556,
+      "name": "Super Cup"
+    },
+    {
+      "id": 526,
+      "name": "Trophée des Champions"
+    },
+    {
+      "id": 477,
+      "name": "Gaúcho - 1"
+    },
+    {
+      "id": 810,
+      "name": "Super Copa"
+    },
+    {
+      "id": 517,
+      "name": "Trofeo de Campeones de la Superliga"
+    }
+  ],
+  "reviewed": [
+    {
+      "playerId": 1,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 4,
+      "teams": 2,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 5,
+      "teams": 11,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 6,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 12,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 13,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 14,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 15,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 16,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 19,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 20,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 21,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 22,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 23,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 24,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 25,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 26,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 27,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 28,
+      "teams": 11,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 29,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 30,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 31,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 32,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 33,
+      "teams": 2,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 34,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 35,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 36,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 37,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 38,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 39,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 40,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 41,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 42,
+      "teams": 2,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 43,
+      "teams": 2,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 44,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 45,
+      "teams": 2,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 46,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 47,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 48,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 49,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 50,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 51,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 52,
+      "teams": 2,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 53,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 54,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 55,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 56,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 57,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 58,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 60,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 63,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 67,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 69,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 71,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 77,
+      "teams": 12,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 86,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 88,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 97,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 99,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 102,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 103,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 106,
+      "teams": 13,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 108,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 112,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 115,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 116,
+      "teams": 12,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 120,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 121,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 122,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 128,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 129,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 132,
+      "teams": 17,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 134,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 137,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 144,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 146,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 147,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 148,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 151,
+      "teams": 14,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 152,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 155,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 163,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 181,
+      "teams": 13,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 185,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 188,
+      "teams": 11,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 190,
+      "teams": 12,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 191,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 192,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 193,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 196,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 197,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 200,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 205,
+      "teams": 5,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 207,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 208,
+      "teams": 15,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 209,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 212,
+      "teams": 11,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 215,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 219,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 220,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 234,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 236,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 239,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 240,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 249,
+      "teams": 11,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 250,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 251,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 254,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 260,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 263,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 267,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 279,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 281,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 285,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 286,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 293,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 294,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 298,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 301,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 304,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 308,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 313,
+      "teams": 10,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 314,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 322,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 323,
+      "teams": 8,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 324,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 329,
+      "teams": 8,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 331,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 333,
+      "teams": 10,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 336,
+      "teams": 12,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 338,
+      "teams": 8,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 339,
+      "teams": 5,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 340,
+      "teams": 11,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 343,
+      "teams": 8,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 344,
+      "teams": 8,
+      "missingAllowedClubs": 3
+    },
+    {
+      "playerId": 345,
+      "teams": 14,
+      "missingAllowedClubs": 5
+    },
+    {
+      "playerId": 353,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 354,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 355,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 366,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 368,
+      "teams": 7,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 369,
+      "teams": 9,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 371,
+      "teams": 6,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 374,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 376,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 377,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 394,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 431,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 440,
+      "teams": 13,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 442,
+      "teams": 11,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 487,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 488,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 495,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 516,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 524,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 536,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 563,
+      "teams": 11,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 573,
+      "teams": 4,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 576,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 597,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 615,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 630,
+      "teams": 10,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 640,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 641,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 643,
+      "teams": 5,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 651,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 663,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 675,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 676,
+      "teams": 4,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 692,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 738,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 746,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 748,
+      "teams": 5,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 750,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 751,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 752,
+      "teams": 6,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 756,
+      "teams": 5,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 757,
+      "teams": 10,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 759,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 761,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 768,
+      "teams": 8,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 773,
+      "teams": 10,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 774,
+      "teams": 8,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 775,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 776,
+      "teams": 12,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 781,
+      "teams": 11,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 784,
+      "teams": 10,
+      "missingAllowedClubs": 3
+    },
+    {
+      "playerId": 787,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 788,
+      "teams": 6,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 798,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 800,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 801,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 803,
+      "teams": 8,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 806,
+      "teams": 6,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 807,
+      "teams": 6,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 809,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 815,
+      "teams": 10,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 823,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 830,
+      "teams": 13,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 831,
+      "teams": 8,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 832,
+      "teams": 10,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 841,
+      "teams": 12,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 866,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 870,
+      "teams": 11,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 874,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 880,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 885,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 887,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 888,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 895,
+      "teams": 12,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 897,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 902,
+      "teams": 7,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 913,
+      "teams": 7,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 916,
+      "teams": 10,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 917,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 918,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 920,
+      "teams": 7,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 926,
+      "teams": 16,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 927,
+      "teams": 11,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 931,
+      "teams": 11,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 936,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 937,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 942,
+      "teams": 7,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 945,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 950,
+      "teams": 13,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 954,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 955,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 956,
+      "teams": 11,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 959,
+      "teams": 8,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 963,
+      "teams": 11,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 964,
+      "teams": 6,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 969,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 976,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 990,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 991,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 996,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 998,
+      "teams": 10,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1007,
+      "teams": 11,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1009,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1010,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1017,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1018,
+      "teams": 5,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1023,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1024,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1026,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1027,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1030,
+      "teams": 8,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1034,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1035,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1038,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1040,
+      "teams": 12,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1045,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1046,
+      "teams": 7,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1048,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1051,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1061,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1063,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1069,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1070,
+      "teams": 6,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1075,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1076,
+      "teams": 8,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1077,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1078,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1080,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1082,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1083,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1085,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1089,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1098,
+      "teams": 7,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1099,
+      "teams": 6,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 1101,
+      "teams": 11,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1107,
+      "teams": 4,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1108,
+      "teams": 8,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1110,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1112,
+      "teams": 12,
+      "missingAllowedClubs": 3
+    },
+    {
+      "playerId": 1114,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1115,
+      "teams": 12,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 1116,
+      "teams": 9,
+      "missingAllowedClubs": 3
+    },
+    {
+      "playerId": 1117,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1118,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1121,
+      "teams": 11,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 1125,
+      "teams": 7,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1126,
+      "teams": 10,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1127,
+      "teams": 9,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 1132,
+      "teams": 5,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1138,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1148,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1150,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1152,
+      "teams": 10,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1155,
+      "teams": 10,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 1156,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1160,
+      "teams": 7,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1163,
+      "teams": 8,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1168,
+      "teams": 6,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1171,
+      "teams": 3,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1173,
+      "teams": 5,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1182,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1186,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1187,
+      "teams": 12,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1189,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1190,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1194,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1199,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1203,
+      "teams": 12,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 1205,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1206,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1215,
+      "teams": 11,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1219,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1232,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1233,
+      "teams": 11,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1234,
+      "teams": 12,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1235,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1240,
+      "teams": 11,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1256,
+      "teams": 11,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1261,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1273,
+      "teams": 13,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1274,
+      "teams": 10,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1276,
+      "teams": 6,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1277,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1283,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1286,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1296,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1299,
+      "teams": 4,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1304,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1306,
+      "teams": 12,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1317,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1319,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1334,
+      "teams": 10,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1340,
+      "teams": 7,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1343,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1347,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1362,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1374,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1375,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1378,
+      "teams": 6,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1388,
+      "teams": 7,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1395,
+      "teams": 15,
+      "missingAllowedClubs": 3
+    },
+    {
+      "playerId": 1400,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1404,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1408,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1409,
+      "teams": 8,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1411,
+      "teams": 3,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1418,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1423,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1433,
+      "teams": 3,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1439,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1442,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1467,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1476,
+      "teams": 6,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1477,
+      "teams": 6,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1480,
+      "teams": 3,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1487,
+      "teams": 2,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1525,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1527,
+      "teams": 10,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1533,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1535,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1536,
+      "teams": 12,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 1541,
+      "teams": 8,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 1590,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1600,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1608,
+      "teams": 14,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 1611,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1617,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1631,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1642,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1653,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1692,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1694,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1695,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1698,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1707,
+      "teams": 2,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1711,
+      "teams": 8,
+      "missingAllowedClubs": 3
+    },
+    {
+      "playerId": 1713,
+      "teams": 8,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 1714,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1715,
+      "teams": 11,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1719,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1722,
+      "teams": 6,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 1724,
+      "teams": 7,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1726,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1727,
+      "teams": 11,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1728,
+      "teams": 5,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1729,
+      "teams": 8,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 1734,
+      "teams": 14,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1735,
+      "teams": 13,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 1736,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1737,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1740,
+      "teams": 10,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1752,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1757,
+      "teams": 9,
+      "missingAllowedClubs": 4
+    },
+    {
+      "playerId": 1759,
+      "teams": 11,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 1760,
+      "teams": 13,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 1767,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1772,
+      "teams": 4,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1773,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1776,
+      "teams": 6,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1778,
+      "teams": 14,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1785,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1790,
+      "teams": 11,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1805,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1819,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1821,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1835,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1836,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1838,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1841,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1846,
+      "teams": 12,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1851,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1856,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1857,
+      "teams": 7,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1867,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1868,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1871,
+      "teams": 10,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1887,
+      "teams": 14,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 1899,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1917,
+      "teams": 3,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1931,
+      "teams": 7,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 1933,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1939,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1942,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1946,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1949,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1954,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1960,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1981,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1982,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1984,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 1999,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 2006,
+      "teams": 2,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 2023,
+      "teams": 2,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 2026,
+      "teams": 2,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 2033,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 2894,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3212,
+      "teams": 7,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 3213,
+      "teams": 10,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3214,
+      "teams": 11,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3215,
+      "teams": 11,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 3216,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3217,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3218,
+      "teams": 8,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 3219,
+      "teams": 13,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 3220,
+      "teams": 12,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 3221,
+      "teams": 12,
+      "missingAllowedClubs": 4
+    },
+    {
+      "playerId": 3222,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3223,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3224,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3225,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3226,
+      "teams": 8,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 3227,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3228,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3229,
+      "teams": 5,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 3230,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3231,
+      "teams": 12,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3232,
+      "teams": 8,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 3233,
+      "teams": 7,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3234,
+      "teams": 12,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3235,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3236,
+      "teams": 7,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3237,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3238,
+      "teams": 5,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3239,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3240,
+      "teams": 12,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 3241,
+      "teams": 10,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 3242,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3243,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3244,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3245,
+      "teams": 11,
+      "missingAllowedClubs": 4
+    },
+    {
+      "playerId": 3246,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3247,
+      "teams": 15,
+      "missingAllowedClubs": 3
+    },
+    {
+      "playerId": 3248,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3249,
+      "teams": 10,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3250,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3251,
+      "teams": 9,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 3252,
+      "teams": 10,
+      "missingAllowedClubs": 4
+    },
+    {
+      "playerId": 3253,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3254,
+      "teams": 11,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3255,
+      "teams": 15,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3256,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3257,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3258,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3259,
+      "teams": 7,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3260,
+      "teams": 11,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3261,
+      "teams": 13,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3262,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3263,
+      "teams": 16,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3264,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3265,
+      "teams": 7,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3266,
+      "teams": 10,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 3267,
+      "teams": 5,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3268,
+      "teams": 11,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3269,
+      "teams": 13,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 3270,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3271,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3272,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3273,
+      "teams": 11,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3274,
+      "teams": 14,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3275,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3276,
+      "teams": 7,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3277,
+      "teams": 11,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3278,
+      "teams": 11,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3279,
+      "teams": 12,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3280,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3281,
+      "teams": 13,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3282,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3283,
+      "teams": 10,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3284,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3285,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3286,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3287,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3288,
+      "teams": 14,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3289,
+      "teams": 10,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3290,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3291,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3292,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3293,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3294,
+      "teams": 6,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3295,
+      "teams": 15,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3296,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3297,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3298,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3299,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3300,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3301,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3302,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3303,
+      "teams": 13,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3304,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3305,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3306,
+      "teams": 6,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3307,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3308,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3309,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3310,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3311,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3312,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3313,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3314,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3315,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3316,
+      "teams": 9,
+      "missingAllowedClubs": 3
+    },
+    {
+      "playerId": 3317,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3318,
+      "teams": 10,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3319,
+      "teams": 6,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3320,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3321,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3322,
+      "teams": 12,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3323,
+      "teams": 10,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3324,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3325,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3326,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3327,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3328,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3329,
+      "teams": 12,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3330,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3331,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3332,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3333,
+      "teams": 7,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 3334,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3335,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3336,
+      "teams": 13,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3337,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3338,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3339,
+      "teams": 8,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3340,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3341,
+      "teams": 6,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3342,
+      "teams": 15,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3343,
+      "teams": 5,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3344,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3345,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3346,
+      "teams": 7,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3347,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3348,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3349,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3350,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3351,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3352,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3353,
+      "teams": 11,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3354,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3355,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3356,
+      "teams": 13,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3357,
+      "teams": 10,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3358,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3359,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3360,
+      "teams": 8,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3361,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3362,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3363,
+      "teams": 8,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3364,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3365,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3366,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3367,
+      "teams": 7,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3368,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3369,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3370,
+      "teams": 12,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3371,
+      "teams": 8,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 3372,
+      "teams": 7,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3373,
+      "teams": 6,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3374,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3375,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3376,
+      "teams": 8,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3377,
+      "teams": 12,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3378,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3379,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3380,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3381,
+      "teams": 7,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 3382,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3383,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3384,
+      "teams": 8,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3385,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3386,
+      "teams": 11,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3387,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3388,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3389,
+      "teams": 6,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3390,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3391,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3392,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3393,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3394,
+      "teams": 6,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 3395,
+      "teams": 11,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3396,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3397,
+      "teams": 3,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3398,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3399,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3400,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3401,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3402,
+      "teams": 8,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3403,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3404,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3405,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3406,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3407,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3408,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3409,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3410,
+      "teams": 6,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3411,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3412,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3413,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3414,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3415,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3416,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3417,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3418,
+      "teams": 4,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3419,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3420,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3421,
+      "teams": 7,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 3422,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3423,
+      "teams": 6,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3424,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3425,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3426,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3427,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3428,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3429,
+      "teams": 10,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3430,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3431,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3432,
+      "teams": 10,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3433,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3434,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3435,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3436,
+      "teams": 7,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3437,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3438,
+      "teams": 8,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3439,
+      "teams": 7,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 3440,
+      "teams": 6,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3441,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3442,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3443,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3444,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3445,
+      "teams": 4,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3446,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3447,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3448,
+      "teams": 10,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3449,
+      "teams": 7,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3450,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3451,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3452,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3453,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3454,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3455,
+      "teams": 4,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3456,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3457,
+      "teams": 2,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3458,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3459,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3460,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3461,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3462,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3463,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3464,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3465,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3466,
+      "teams": 8,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3467,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3468,
+      "teams": 5,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3469,
+      "teams": 7,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3470,
+      "teams": 3,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3471,
+      "teams": 8,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3472,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3473,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3474,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3475,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3476,
+      "teams": 4,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3477,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3478,
+      "teams": 4,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3479,
+      "teams": 5,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3480,
+      "teams": 5,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3481,
+      "teams": 4,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3482,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3483,
+      "teams": 5,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3484,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3485,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3486,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3487,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3488,
+      "teams": 5,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3489,
+      "teams": 3,
+      "missingAllowedClubs": 2
+    },
+    {
+      "playerId": 3490,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3491,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3492,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3493,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3494,
+      "teams": 2,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3495,
+      "teams": 3,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3496,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3497,
+      "teams": 5,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3498,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3499,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3500,
+      "teams": 4,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3501,
+      "teams": 4,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3502,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3503,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3504,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3505,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3506,
+      "teams": 10,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3507,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3508,
+      "teams": 5,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3509,
+      "teams": 4,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3510,
+      "teams": 9,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3511,
+      "teams": 9,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3512,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3513,
+      "teams": 5,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3514,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3515,
+      "teams": 4,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3516,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3517,
+      "teams": 4,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3518,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3519,
+      "teams": 7,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3520,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3521,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3522,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3523,
+      "teams": 5,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3524,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3525,
+      "teams": 4,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3526,
+      "teams": 4,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3527,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3528,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3529,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3530,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3531,
+      "teams": 3,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3532,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3533,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3534,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3535,
+      "teams": 4,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3536,
+      "teams": 5,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3537,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3538,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3539,
+      "teams": 2,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3540,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3541,
+      "teams": 4,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3542,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3543,
+      "teams": 3,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3544,
+      "teams": 3,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3545,
+      "teams": 5,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3546,
+      "teams": 4,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3547,
+      "teams": 1,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3548,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3549,
+      "teams": 1,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3550,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3551,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3552,
+      "teams": 2,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3553,
+      "teams": 2,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3554,
+      "teams": 2,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3555,
+      "teams": 0,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3556,
+      "teams": 0,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3557,
+      "teams": 6,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3558,
+      "teams": 5,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3559,
+      "teams": 7,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3560,
+      "teams": 4,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3561,
+      "teams": 5,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3562,
+      "teams": 4,
+      "missingAllowedClubs": 1
+    },
+    {
+      "playerId": 3563,
+      "teams": 3,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3564,
+      "teams": 1,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3565,
+      "teams": 1,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3566,
+      "teams": 2,
+      "missingAllowedClubs": 0
+    },
+    {
+      "playerId": 3567,
+      "teams": 1,
+      "missingAllowedClubs": 1
+    }
+  ]
+}

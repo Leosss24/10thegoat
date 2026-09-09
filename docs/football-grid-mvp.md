@@ -1,83 +1,67 @@
-# Football Grid · MVP
+# Football Grid · reglas y activación
 
-Base: `46bbd904ec0909428f5cbe4dd43aabda13d18882` (referencia local `origin/main` al iniciar). Solo se modifica la integración necesaria en navegación, catálogo, sitemap y panel de usuario.
+## Cambio pendiente de activar: puntuación proporcional
 
-## Reglas acordadas
+Ejecutar en el SQL Editor de Supabase, después de la migración 014 ya aplicada:
 
-- 4 × 4 casillas, 16 futbolistas distintos. Autocompletado por nombre y alias, ignorando tildes.
-- Fácil: nacionalidad × club o nacionalidad × posición; 120 segundos; +100 al completar, 0 si expira, −20 al rendirse.
-- Difícil: club × club; 90 segundos; +200 al completar, 0 si expira, −50 al rendirse.
-- Intentos ilimitados durante el tiempo. Sin puntos parciales ni penalización por respuestas incorrectas. Cada saldo de modo tiene suelo cero.
-- Tres partidas diarias por cuenta y dificultad. Ganar o agotar el tiempo consume una; rendirse antes del vencimiento no consume el límite.
-- Día de inicio de la partida, zona `Europe/Madrid`, reinicio a medianoche. Cerrar la pestaña o cambiar de idioma no pausa el tiempo. Una ronda que cruza medianoche se imputa al día en que comenzó.
-- Nacionalidad del perfil, no selección representada. Para un club se exige evidencia de al menos una aparición en una competición oficial del primer equipo. No se aceptan fichajes, relaciones de plantilla o amistosos como prueba.
-- Posiciones disponibles en la fuente: portero, defensa, centrocampista y delantero.
-- Se puede vaciar una casilla resuelta para cambiar su jugador y evitar quedarse sin solución por una elección válida compartida con otro cruce. Nunca puede repetirse un jugador simultáneamente en dos casillas.
+**supabase/migrations/20260909_015_football_grid_scoring.sql**
 
-Las reglas y los importes se muestran antes de empezar y durante el juego en ES/EN/FR. Las dos variantes fáciles se eligen con la misma probabilidad. Los tableros se seleccionan aleatoriamente de un banco comprobado mediante emparejamiento bipartito: cada uno admite 16 respuestas distintas.
+La migración 015 todavía no se ha ejecutado en la base remota. Después hay que desplegar esta versión de la aplicación. No volver a ejecutar 014. La migración 015 es transaccional y admite repetición; no modifica los puntos ni las victorias ya obtenidos. Las rondas anteriores conservan su duración y premio originales mediante rules_version=1. Las nuevas usan rules_version=2. La interfaz impide iniciar rondas nuevas si la actualización del servidor no está disponible.
 
-## Datos y SQL de API-Football
+## Reglas
 
-Se consultó Supabase en modo lectura usando la configuración existente del proyecto principal. La selección final sustituye la propuesta inicial de las cinco grandes ligas: **leyendas más jugadores de las plantillas actuales de los 26 clubes europeos de Premium Internacional y Élite Internacional del modo Carrera**. Las plantillas se consultaron en API-Football el 8 de septiembre de 2026; dependen de la actualización del proveedor.
+- Cuadrícula 4×4: 16 futbolistas diferentes, buscador con autocompletado y sin límite de respuestas incorrectas.
+- Fácil: nacionalidad × club o nacionalidad × posición. Empieza con **5.000 puntos disponibles**.
+- Difícil: club × club. Empieza con **10.000 puntos disponibles**.
+- Ambos modos tienen un máximo de **10 minutos**. La interfaz muestra puntos disponibles en lugar de una cuenta atrás.
+- Premio al completar: **suelo(puntos iniciales × tiempo restante / 600 segundos)**. El reloj de PostgreSQL calcula el premio; no se aceptan tiempos ni puntuaciones enviados por el cliente.
+- Ejemplos a los 2 / 5 / 9 minutos: fácil 4.000 / 2.500 / 500 puntos; difícil 8.000 / 5.000 / 1.000.
+- A los 10 minutos termina la partida con 0 puntos. No hay puntos parciales. El redondeo hacia abajo puede dejar 0 puntos en las últimas fracciones de segundo.
+- Rendirse resta **20 en fácil o 50 en difícil**, con saldo mínimo cero por modo. Rendirse antes de expirar no consume el cupo diario; hacerlo tras el vencimiento cuenta como timeout.
+- Tres partidas diarias por cuenta y dificultad. Completar o agotar el tiempo consume una. El día se fija al empezar, zona Europe/Madrid, con reinicio a medianoche. Salir, recargar o cambiar de idioma no detiene la pérdida de puntos.
+- Se puede cambiar una respuesta ya colocada para resolver cruces con jugadores compartidos, sin repetir un jugador simultáneamente.
+- País significa nacionalidad; club exige al menos un partido oficial del primer equipo. Ni fichajes, ni cantera, ni amistosos bastan. Posiciones: portero, defensa, centrocampista y delantero.
 
-En fácil, los ejes de club se limitan a esos 26 europeos. En difícil, se admiten los 45 clubes de ambas categorías, incluidos los no europeos, cuando las trayectorias verificadas permiten un tablero resoluble. Eso no incorpora a las plantillas actuales de los clubes no europeos. `data/football-grid/pool.json` conserva las listas y la procedencia de las plantillas; `lib/football-grid/pool.ts` define la política.
+## Rachas, récords e historial
 
-API-Football aporta plantillas, perfiles y estadísticas de 2026/2025, además de temporadas históricas concretas. Referencia: [documentación v3](https://www.api-football.com/documentation-v3). Las apariciones oficiales verificadas documentalmente que faltan en la API se conservan con sus fuentes en `data/football-grid/verified-appearances.json`; no se inventan totales de temporada.
+Se guardan por dificultad en user_game_stats: racha actual, mejor racha y mejor tiempo de resolución en milisegundos. Una victoria suma uno a la racha; rendirse o expirar la rompe. Las respuestas incorrectas y el cambio de día no la rompen. El mejor tiempo solo procede de victorias. La migración reconstruye estos datos desde los resultados históricos sin recalcular sus premios.
 
-Resultado preparado:
+Cada ronda conserva duración, puntuación, resultado y racha posterior. El RPC devuelve las diez últimas rondas terminadas de esa cuenta y dificultad. Los récords y logros aparecen en el juego y Mi zona. Se mantienen los logros de primera victoria por modo, ambos modos y diez grids; se añaden tres victorias consecutivas y resolver un grid en cinco minutos o menos.
 
-- **789 futbolistas**, incluidas **44 leyendas**: las 43 marcadas en Supabase y Messi, añadido solo para este juego según lo acordado.
-- 689 tienen evidencia oficial de al menos un club permitido. Los otros 100 pueden responder nacionalidad × posición.
-- **300 tableros**, 100 de cada variante. Siete tableros difíciles incluyen Palmeiras. River tiene tres jugadores elegibles con evidencia y todavía no aparece en un tablero 4×4; Julián Álvarez sí conserva sus cruces con River, Atlético y City. Messi conserva Barcelona y PSG.
-- 823 jugadores distintos en las plantillas consultadas. Se preparan 356 altas canónicas y 3.067 filas estadísticas para insertar o completar. 78 candidatos carecen de metadatos necesarios y quedan excluidos; el informe de extracción enumera los casos.
+RLS impide escrituras directas y cada acción toma un bloqueo transaccional por cuenta. Las respuestas repetidas no vuelven a premiar ni cambiar rachas. La sincronización antigua de otros juegos no puede sobrescribir resultados del Grid.
 
-Para jugadores existentes, el SQL rellena nacionalidad, nombre completo, foto y posición ausentes; conserva los nombres de juego y la curación existente. También actualiza la pertenencia actual de los miembros consultados y crea los jugadores nuevos con sus equivalencias API. Las apariciones ya informadas no se sobrescriben. Los IDs nuevos se reservan en la vista previa: si entretanto otro proceso ocupa un ID con otra identidad, el SQL aborta íntegramente y hay que reexportar/regenerar los dos seeds, sin saltarse la protección. Se bloquean las tablas durante esa comprobación y se avanza la secuencia sin reducirla. La importación transaccional se ha probado dos veces sin duplicados. El SQL **todavía no se ha aplicado a Supabase**.
+## Catálogo y auditoría de trayectorias
 
-La cobertura de trayectorias sigue siendo parcial. Los cruces de clubes solo utilizan evidencia disponible de partidos oficiales, con una lista explícita de competiciones sénior reconocidas, porque muchas competiciones del importador están clasificadas como `other`. No se interpreta esa categoría como prueba de oficialidad. Una respuesta ausente de las trayectorias del catálogo no demuestra que el futbolista nunca jugara en ese club.
+El conjunto elegible son las 43 leyendas de Supabase más Messi (excepción solo para Grid), y jugadores de las plantillas consultadas de los 26 clubes europeos Premium Internacional y Élite Internacional de Carrera. No se añaden plantillas actuales no europeas. Fácil usa clubes europeos; difícil permite los 45 clubes mundiales de ambas categorías si existe un tablero resoluble.
 
-El juego carga `data/football-grid/catalog.json`; Supabase guarda la misma versión como JSONB para validar respuestas y mantener partidas existentes. No consulta API-Football durante las partidas. Las fotos y escudos siguen siendo URLs de imagen, no imágenes incrustadas en el JSON. La excepción de Messi no modifica el campo global `is_legend` ni la selección de otros juegos.
+La revisión del 9 de septiembre de 2026 recorrió los **789 jugadores** mediante Players/Teams de API-Football y contrastó cada club permitido omitido con estadísticas por temporada. Confirmó **234 relaciones omitidas en 175 jugadores**. Cucurella–Barcelona se añadió además mediante el informe oficial del Barça de su debut en Copa. Se guardan fuentes, temporadas y apariciones en api-appearances.json y verified-appearances.json; history-audit.json conserva la revisión completa y los casos no acreditados por la API.
 
-## Activación en Supabase
+No acreditar un club en el proveedor no demuestra que el jugador nunca disputara un partido allí. La revisión distingue estos casos de la cantera y los amistosos, y admite evidencia editorial con fuente. Los 134 casos no acreditados por API incluyen estas relaciones y Cucurella, resuelto documentalmente. No se afirma cobertura histórica absoluta.
 
-Hay tres archivos revisables. Ejecutarlos como propietario de la base, en este orden, antes de desplegar el juego:
+Resultado: **789 jugadores, 44 leyendas y 300 tableros** (100 por variante). 702 jugadores tienen al menos un club permitido acreditado; los otros 87 sirven para nacionalidad × posición. Hay 16 tableros difíciles con clubes no europeos. River conserva trayectorias válidas pero no aparece aún en este banco de tableros completos.
 
-1. `supabase/migrations/20260908_014_football_grid.sql`: tablas, políticas y RPC del juego. Requiere las migraciones previas, incluida la 012 de estadísticas.
-2. `supabase/seeds/football_grid_data.sql`: datos recuperados de API-Football.
-3. `supabase/seeds/football_grid_catalog.sql`: catálogo de jugadores y tableros, con versión inmutable.
+Catálogo corregido **309abc085804a7fa**, ya publicado y verificado en Supabase. Las rondas iniciadas con versiones anteriores conservan sus respuestas originales.
 
-La migración se aplica una vez; los dos seeds pueden repetirse. La conexión REST disponible permite consultar datos, pero no ejecutar DDL/SQL arbitrario: falta aplicar estos archivos desde el SQL Editor de Supabase o una conexión PostgreSQL autorizada. No se ha probado OAuth ni una partida contra la base remota con esta migración instalada.
+El cliente carga data/football-grid/catalog.json y Supabase conserva la misma versión en JSONB para validar. No hay llamadas a API-Football durante una partida. Fotos y escudos se cargan desde URLs. Conservar catálogos anteriores permite terminar rondas existentes.
 
-Tras aplicarlos, verificar una cuenta real: iniciar una partida, cambiar ES → EN → FR, recargar, rendirse, completar un grid y comprobar estadísticas y logros en Mi zona. Desplegar la aplicación solo cuando la migración y el catálogo estén disponibles.
-
-## Persistencia y puntuación
-
-Se exige iniciar sesión. `football_grid_play` utiliza `auth.uid()`, reloj de PostgreSQL y un bloqueo transaccional por usuario. El servidor guarda el tablero, respuestas, fecha de inicio, vencimiento, dificultad, resultado y versión del catálogo. Solo permite una ronda activa por usuario y dificultad; las solicitudes repetidas de inicio recuperan la misma ronda.
-
-Las operaciones de respuesta, rendición, vencimiento y puntuación se liquidan una vez. Tras el vencimiento, responder o rendirse registra un timeout. RLS impide escribir directamente en las rondas. El cliente conserva únicamente el modo seleccionado en `sessionStorage`; puede reconstruir la partida desde la cuenta aunque se borre el almacenamiento local.
-
-Las estadísticas se guardan en `user_game_stats`, con claves `football-grid-easy` y `football-grid-hard`, y suman al total del perfil. La sincronización local antigua omite estas claves tanto en cliente como en SQL, evitando que un saldo local desactualizado reponga puntos perdidos al rendirse. El contrato de sincronización del resto de juegos se conserva.
-
-Logros propios, visibles en el juego y el perfil: primer grid fácil, primer grid difícil, completar ambos modos y diez grids completos. Se calculan desde las victorias persistidas. No se añade una clasificación pública.
+Fuentes de los casos documentales: [Cucurella](https://www.fcbarcelona.com/en/football/first-team/news/1702077), [Dembélé](https://players.fcbarcelona.com/en/player/2664-dembele-ousmane-dembele). La auditoría utiliza los [endpoints de historial del proveedor](https://www.api-football.com/news/post/api-football-new-release-available).
 
 ## Regeneración
 
-```powershell
-node --env-file=.env.local scripts/export-football-grid.mjs
-node --env-file=.env.local --experimental-strip-types scripts/prepare-football-grid-pool.mjs --season=2026 --max-requests=300
-node --experimental-strip-types scripts/build-football-grid.mjs --snapshot=tmp/football-grid-enriched.json
-node --experimental-strip-types scripts/seed-football-grid.mjs
-```
+1. scripts/export-football-grid.mjs lee Supabase y exporta la instantánea.
+2. scripts/prepare-football-grid-pool.mjs consulta plantillas/perfiles y genera SQL de datos y vista previa. Las nuevas identidades se reservan con protección contra conflictos; si un ID ya fue ocupado, reexportar y regenerar, sin saltarse la comprobación.
+3. scripts/audit-football-grid-history.mjs revisa trayectorias, reutiliza caché y guarda evidencias. Una auditoría incompleta bloquea el constructor.
+4. scripts/build-football-grid.mjs --snapshot=tmp/football-grid-enriched.json genera el catálogo y prueba que cada tablero admite 16 respuestas distintas.
+5. scripts/seed-football-grid.mjs genera el seed de catálogo.
 
-El exportador solo lee Supabase; el enriquecedor solo lee API-Football y produce SQL. Ninguno publica ni importa automáticamente. `--env=RUTA` permite cargar configuración existente sin copiar claves. Las respuestas de API se conservan en `tmp/grid-api-cache`; se reutilizan al reanudar. Para refrescar una temporada se debe retirar explícitamente su caché. No hay claves en los artefactos generados.
+Usar node --experimental-strip-types; los scripts que acceden a proveedores admiten --env=RUTA. La configuración y las respuestas privadas permanecen fuera de Git. La auditoría conserva las evidencias previas al repetirse. scripts/publish-football-grid-catalog.mjs permite publicar un catálogo validado con --expected=VERSION y --apply; verifica el JSONB antes de activar y restaura el catálogo anterior si falla la activación. No sustituye una migración SQL.
 
-Los IDs de jugadores y clubes permanecen canónicos. Los criterios de país usan nombres de país estables, de modo que las secuencias de nuevos países en PostgreSQL no afectan al catálogo. Conservar versiones antiguas de `football_grid_catalogs` permite terminar partidas previas después de actualizar el banco.
+## Verificación local
 
-## Verificación
+- npm test: 54 pruebas de juegos, catálogo, ejemplos positivos/negativos y fórmula proporcional.
+- scripts/test-football-grid-db.mjs: 23 comprobaciones SQL de RLS, aislamiento, reloj, cuota, idempotencia, puntuación y sincronización antigua.
+- scripts/test-football-grid-scoring.mjs: 24 comprobaciones SQL de fórmula exacta, límites, rachas, historial, récords y migración compatible con rondas anteriores.
+- Build de producción con TypeScript y rutas ES/EN/FR.
+- scripts/test-football-grid-ui.mjs: interfaz real contra PostgreSQL local, escritorio/390/320 px, tres idiomas, autocompletado, puntos decrecientes sin contador de tiempo, recarga, dos pestañas, rendición, expiración, quota y recuperación de red. No juega partidas ni altera cuentas reales.
 
-- `npm test`: 47 pruebas, incluida la regresión Dembélé para PSG × Barcelona.
-- `node --experimental-strip-types scripts/test-football-grid-db.mjs`: 23 comprobaciones sobre PostgreSQL embebido, ejecutando la migración y el seed reales; incluye RLS, aislamiento, inicio concurrente, reloj, límites, recompensas, penalizaciones, idempotencia y compatibilidad con estadísticas existentes.
-- `node scripts/test-football-grid-data.mjs`: ejecuta el SQL de datos dos veces sobre la instantánea local y compara con la vista previa. Preserva los campos existentes y evita duplicados.
-- Build de producción correcto con las rutas ES/EN/FR y Google Fonts preexistente.
-- `scripts/test-football-grid-ui.mjs`: navegador real conectado a los RPC SQL en PostgreSQL local mediante interceptación HTTP. Cubre escritorio, 390 px y 320 px, ES/EN/FR, teclado, respuestas incorrectas, victoria, rendición, vencimiento, cuota, recargas, dos pestañas, recuperación de red y acceso sin sesión. Comprueba que fotos y escudos cargan.
-
-Para PostgreSQL de pruebas: `npm install --prefix tmp/grid-test --no-audit --no-fund @electric-sql/pglite`. Para la prueba de navegador, arrancar la aplicación en el puerto 3108 con configuración pública de Supabase y ejecutar el script con `.env.local`. `GRID_PLAYWRIGHT_MODULE` permite señalar un Playwright instalado; `GRID_BROWSER_CHANNEL` usa `msedge` por defecto y `GRID_BASE_URL` cambia la URL local. Las capturas están en `tmp/grid-*.png`.
+La base de pruebas usa PGlite en tmp/grid-test. Las capturas locales están en tmp/grid-*.png. La verificación autenticada en producción de las nuevas reglas está pendiente de aplicar 015.
