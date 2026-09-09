@@ -9,7 +9,7 @@ fs.mkdirSync('tmp', { recursive: true });
 (async () => {
   const browser = await chromium.launch({ headless: true, ...(process.env.TRIVIA_BROWSER_CHANNEL ? { channel: process.env.TRIVIA_BROWSER_CHANNEL } : {}) });
   try {
-    const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+    const page = await browser.newPage({ viewport: { width: 1440, height: 1000 }, reducedMotion: "no-preference" });
     const errors = [];
     page.on('pageerror', e => errors.push(e.message));
     await page.clock.install();
@@ -33,7 +33,10 @@ fs.mkdirSync('tmp', { recursive: true });
     const deadline = (await read()).rounds.timed.deadline;
     await respond();
     assert.equal((await read()).rounds.timed.streak, 1);
+    const previousCorrect = await page.locator('.trivia-option.is-correct').elementHandle();
     await page.clock.runFor(700);
+    assert.equal(await previousCorrect.evaluate(e => e.isConnected), false, 'automatic advance must discard the previous green button');
+    await previousCorrect.dispose();
     assert.equal((await read()).rounds.timed.index, 1);
     await page.getByRole('button', { name: 'English' }).click();
     await page.waitForURL('**/en/juegos/trivia');

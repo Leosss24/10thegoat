@@ -198,7 +198,7 @@ export default function TriviaGame() {
         {round.optionOrder.map((id, i) => {
           const option = question.options.find(o => o.id === id)!;
           const correct = round.selected !== null && id === question.correctOptionId;
-          return <button type="button" key={id} disabled={round.selected !== null} className={`trivia-option${correct ? " is-correct" : ""}`} onClick={() => chooseAnswer(id)}>
+          return <button type="button" key={`${question.id}:${id}`} disabled={round.selected !== null} className={`trivia-option${correct ? " is-correct" : ""}`} onClick={() => chooseAnswer(id)}>
             <span className="trivia-option-letter" aria-hidden="true">{String.fromCharCode(65 + i)}</span><span>{option.text[locale]}</span>{correct && <span className="trivia-option-check" aria-label={t.correct}>✓</span>}
           </button>;
         })}

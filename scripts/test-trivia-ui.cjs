@@ -9,7 +9,7 @@ fs.mkdirSync('tmp', { recursive: true });
 (async()=>{
 const browser=await chromium.launch({headless:true,...(process.env.TRIVIA_BROWSER_CHANNEL ? {channel:process.env.TRIVIA_BROWSER_CHANNEL} : {})});
 try {
-const context=await browser.newContext({viewport:{width:1440,height:1000}});
+const context=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:"no-preference"});
 const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
 const read=()=>page.evaluate(k=>JSON.parse(sessionStorage.getItem(k)).value,key);
 async function option(correct=true){const s=await read(),r=s.rounds[s.difficulty],q=bank.find(q=>q.id===r.queue[r.index]);const id=correct?q.correctOptionId:q.options.find(o=>o.id!==q.correctOptionId).id;return page.locator('.trivia-option').nth(r.optionOrder.indexOf(id));}
@@ -26,7 +26,10 @@ const answeredEasy = (await read()).rounds.easy;
 await page.getByRole('button',{name:'English'}).click();await page.waitForURL('**/en/juegos/trivia');await page.getByRole('button',{name:'Next question'}).waitFor();
 assert.deepEqual((await read()).rounds.easy,answeredEasy);
 assert.equal((await read()).rounds.easy.queue[0],initial.rounds.easy.queue[0]);
+const previousCorrect = await page.locator('.trivia-option.is-correct').elementHandle();
 await page.getByRole('button',{name:'Next question'}).evaluate(b=>{b.click();b.click()});
+assert.equal(await previousCorrect.evaluate(e=>e.isConnected),false,'next question must not inherit a green button or its CSS transition');
+await previousCorrect.dispose();
 await page.locator('.trivia-option:not([disabled])').first().waitFor();assert.equal((await read()).rounds.easy.index,1);
 await page.getByRole('button',{name:'Français'}).click();await page.waitForURL('**/fr/juegos/trivia');await page.locator('.trivia-option:not([disabled])').first().waitFor();
 await page.screenshot({path:'tmp/trivia-desktop-question.png',fullPage:true});
