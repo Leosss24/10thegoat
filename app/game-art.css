@@ -1,0 +1,234 @@
+/* Shared typography and game art. Text stays in HTML for every locale. */
+:root {
+  --font-career: var(--font-body);
+}
+body { font-family: var(--font-body), Arial, sans-serif; letter-spacing: 0; }
+button, input, select, textarea { font-family: inherit; }
+.section > h1, .section h2, .info-page h1, .info-page h2,
+.user-page h1, .user-card h2, .user-badge-picker h2,
+.game-shell h1, .game-card h3, .hero h1 {
+  font-family: var(--font-display), "Arial Narrow", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: .01em;
+}
+.game-room h2, .game-room h3 { font-family: var(--font-body), Arial, sans-serif; }
+.arena-mobile-menu span, .arena-game-display strong {
+  font-family: var(--font-display), "Arial Narrow", sans-serif;
+  font-weight: 700;
+}
+
+/* One art direction per game, shared between its card and its room. */
+.game-card--adivina-jugador, .game-room.wordle-page {
+  --game-art: url('/brand/games/adivina-jugador.webp');
+  --room-accent: #8dff57;
+}
+.game-card--carrera, .game-room.career-page {
+  --game-art: url('/brand/games/carrera.webp');
+  --room-accent: #e8c568;
+}
+.game-card--mayor-o-menor, .game-room.hl-page {
+  --game-art: url('/brand/games/mayor-o-menor.webp');
+  --room-accent: #ff675f;
+}
+.game-card--football-grid, .game-room.fg-page {
+  --game-art: url('/brand/games/football-grid.webp');
+  --room-accent: #32a7ff;
+}
+.game-card--adivina-escudo, .game-room.badge-page {
+  --game-art: url('/brand/games/adivina-escudo.webp');
+  --room-accent: #b76cff;
+}
+.game-card--trivia, .game-room.trivia-page {
+  --game-art: url('/brand/games/trivia.webp');
+  --room-accent: #ffab5c;
+}
+.game-card--el-intruso, .game-room.odd-page {
+  --game-art: url('/brand/games/el-intruso.webp');
+  --room-accent: #f5f8fc;
+}
+.game-card--conexiones, .game-room.connections-page {
+  --game-art: url('/brand/games/conexiones.webp');
+  --room-accent: #b76cff;
+}
+.game-card--ordena-historia, .game-room.timeline-page {
+  --game-art: url('/brand/games/ordena-historia.webp');
+  --room-accent: #32a7ff;
+}
+
+.game-catalog-grid { gap: 18px; }
+.game-catalog-grid .game-card {
+  min-height: 282px;
+  padding: 22px;
+  border: 1px solid color-mix(in srgb, var(--game-accent) 72%, #263445);
+  border-radius: 16px;
+  background: #0a111a;
+  box-shadow: 0 8px 28px #0003, inset 0 0 0 1px #ffffff08;
+}
+.game-catalog-grid .game-card::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  width: auto;
+  height: auto;
+  border: 0;
+  background: var(--game-art) center / cover no-repeat;
+  transform: none;
+  filter: saturate(.86);
+  box-shadow: none;
+  transition: transform .25s ease;
+}
+.game-catalog-grid .game-card::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  width: auto;
+  height: auto;
+  opacity: 1;
+  transform: none;
+  background: linear-gradient(180deg, #060c15c7, #060c15ad 42%, #060c151a 70%, #060c15eb),
+    linear-gradient(90deg, #060c1559, transparent 85%);
+}
+.game-catalog-grid .game-card h3 {
+  margin: 0 0 10px;
+  color: #f5f8fc;
+  font: italic 700 clamp(1.45rem, 2.2vw, 1.85rem)/1.05 var(--font-display), "Arial Narrow", sans-serif;
+  letter-spacing: .01em;
+  text-shadow: 0 2px 12px #000b;
+}
+.game-catalog-grid .game-card p {
+  max-width: 31ch;
+  margin: 0;
+  color: #e0e7ef;
+  font: 400 .98rem/1.45 var(--font-body), Arial, sans-serif;
+  text-shadow: 0 1px 8px #000;
+}
+.game-catalog-grid .game-card .tag {
+  width: 100%;
+  margin-top: 52px;
+  gap: 12px;
+  align-items: end;
+  color: var(--game-accent);
+  font: 700 1.12rem/1.1 var(--font-display), "Arial Narrow", sans-serif;
+  letter-spacing: .025em;
+  text-shadow: 0 2px 8px #000;
+}
+.game-catalog-grid .game-card .tag b { font-family: var(--font-body), sans-serif; }
+.game-catalog-grid .game-card:focus-visible {
+  outline: 3px solid var(--game-accent);
+  outline-offset: 4px;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .game-catalog-grid .game-card:hover { transform: translateY(-3px); border-color: var(--game-accent); }
+  .game-catalog-grid .game-card:hover::before { transform: scale(1.035); }
+}
+
+/* Compact illustrated headers leave the actual game surface distraction-free. */
+.game-room::before {
+  background: radial-gradient(ellipse at 85% 0, color-mix(in srgb, var(--room-accent) 9%, transparent), transparent 55%), #080b10;
+  filter: none;
+}
+.game-room::after { background: none; }
+.game-room .game-room-heading {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  min-height: 220px;
+  margin: 0 0 22px;
+  padding: 20px 28px 26px;
+  border: 1px solid color-mix(in srgb, var(--room-accent) 38%, #263445);
+  border-radius: 18px;
+  background: #0a111a;
+  text-align: left;
+}
+.game-room .game-room-heading::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  background: var(--game-art) right 48% / auto 180% no-repeat;
+  opacity: .85;
+  pointer-events: none;
+}
+.game-room .game-room-heading::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(90deg, #080e18 15%, #080e18ed 38%, #080e1899 65%, #080e1833),
+    linear-gradient(0deg, #080e1880, transparent);
+  pointer-events: none;
+}
+.game-room .game-room-heading > div { width: min(68%, 760px); min-width: 0; }
+.game-room .game-room-heading h1 {
+  margin: 3px 0 10px !important;
+  font: italic 700 clamp(2rem, 4vw, 3.4rem)/1.02 var(--font-display), "Arial Narrow", sans-serif !important;
+  letter-spacing: .01em !important;
+  text-shadow: 0 2px 14px #0008;
+  overflow-wrap: anywhere;
+}
+.game-room .game-room-heading p {
+  display: block;
+  margin: 0 !important;
+  color: #d4dfe9;
+  font: 400 1rem/1.5 var(--font-body), Arial, sans-serif !important;
+  opacity: 1;
+  text-wrap: pretty;
+}
+.game-room .game-room-heading .eyebrow { color: var(--room-accent); font-size: .68rem; }
+.game-room .game-room-back {
+  position: static;
+  align-self: flex-start;
+  margin: 0;
+  padding: 0 10px;
+  border: 1px solid #ffffff26;
+  border-radius: 7px;
+  background: #080e18b8;
+  color: #e0e7ef;
+  font: 600 .8rem/1 var(--font-body), sans-serif;
+  text-decoration: none;
+}
+.game-room .game-room-back:hover { border-color: var(--room-accent); color: var(--room-accent); }
+
+@media (max-width: 900px) {
+  .game-catalog-grid .game-card { min-height: 280px; }
+  .game-room .game-room-heading > div { width: 78%; }
+}
+@media (max-width: 600px) {
+  .game-catalog-grid { gap: 14px; }
+  .game-catalog-grid .game-card { min-height: 270px; padding: 20px; }
+  .game-catalog-grid .game-card h3 { font-size: 1.8rem; }
+  .game-catalog-grid .game-card p { font-size: 1rem; max-width: 29ch; }
+  .game-room .game-room-heading { min-height: 200px; padding: 14px 16px 20px; border-radius: 14px; gap: 10px; }
+  .game-room .game-room-heading > div { width: 100%; }
+  .game-room .game-room-heading::before { background-size: auto 130%; opacity: .55; }
+  .game-room .game-room-heading::after { background: linear-gradient(90deg, #080e18ed, #080e18b3 65%, #080e1880); }
+  .game-room .game-room-heading h1 { font-size: 2rem !important; }
+  .game-room .game-room-heading p { font-size: .92rem !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .game-catalog-grid .game-card:hover, .game-catalog-grid .game-card:hover::before { transform: none; }
+}
+@media (forced-colors: active) {
+  .game-catalog-grid .game-card, .game-room .game-room-heading { border: 1px solid CanvasText; }
+  .game-catalog-grid .game-card::before, .game-catalog-grid .game-card::after,
+  .game-room .game-room-heading::before, .game-room .game-room-heading::after { display: none; }
+}
+/* Keep the fourth shirt visible when cards become taller in longer locales. */
+.game-catalog-grid .game-card--el-intruso::before { background-position: right center; }
+/* Score stays with the board instead of floating over the illustration. */
+.game-room .badge-progress {
+  position: static;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 14px auto;
+}
+.game-room.wordle-page .game-room-heading::before,
+.game-room.career-page .game-room-heading::before { background-position: right 20%; }

@@ -4,7 +4,7 @@ import { getAdsConfig, getVerificationClient } from "@/lib/ads/config";
 import "@/components/ads/ads.css";
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
-import { Geist } from "next/font/google";
+import localFont from "next/font/local";
 import { notFound } from "next/navigation";
 import { dictionaries, isLocale, localizedPath, type Locale } from "@/lib/i18n";
 import { I18nProvider } from "@/components/I18nProvider";
@@ -12,10 +12,23 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 import CookieNotice from "@/components/CookieNotice";
 import AccountScoreStorage from "@/components/AccountScoreStorage";
 import "../globals.css";
+import "../game-art.css";
 
-const careerFont = Geist({
-  subsets: ["latin"],
-  variable: "--font-career",
+const bodyFont = localFont({
+  src: [
+    { path: "../fonts/Barlow-Regular.ttf", weight: "400", style: "normal" },
+    { path: "../fonts/Barlow-SemiBold.ttf", weight: "600", style: "normal" },
+    { path: "../fonts/Barlow-Bold.ttf", weight: "700", style: "normal" },
+  ],
+  variable: "--font-body",
+  display: "swap",
+});
+const displayFont = localFont({
+  src: [
+    { path: "../fonts/BarlowCondensed-Bold.ttf", weight: "700", style: "normal" },
+    { path: "../fonts/BarlowCondensed-BoldItalic.ttf", weight: "700", style: "italic" },
+  ],
+  variable: "--font-display",
   display: "swap",
 });
 
@@ -41,7 +54,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   if (!isLocale(value)) notFound();
   const locale = value as Locale;
   const d = dictionaries[locale];
-  return <html lang={locale} data-scroll-behavior="smooth" className={careerFont.variable}><body><I18nProvider locale={locale} dictionary={d}><AdsProvider config={getAdsConfig(process.env)}>
+  return <html lang={locale} data-scroll-behavior="smooth" className={`${bodyFont.variable} ${displayFont.variable}`}><body><I18nProvider locale={locale} dictionary={d}><AdsProvider config={getAdsConfig(process.env)}>
     <header className="site-header"><div className="container nav">
       <Link className="brand" href={localizedPath(locale)} aria-label={`10theGOAT · ${d.nav.home}`}><img className="brand-logo" src="/brand/10thegoat-shield-raster.png" alt=""/><span><strong>10</strong>the<strong>GOAT</strong></span></Link>
       <nav className="nav-links" aria-label={d.nav.main}><Link href={localizedPath(locale, "/juegos")}>{d.nav.games}</Link><Link href={localizedPath(locale,"/usuario")}>{locale==="es"?"Mi zona":locale==="fr"?"Mon espace":"My account"}</Link><LanguageSwitcher /></nav>
