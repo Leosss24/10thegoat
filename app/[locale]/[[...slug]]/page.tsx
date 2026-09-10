@@ -12,10 +12,16 @@ import FootballGridGame from "@/components/games/FootballGridGame";
 import { gridCopy } from "@/lib/football-grid/copy";
 import TriviaGame from "@/components/games/TriviaGame";
 import { triviaCopy } from "@/lib/trivia/copy";
+import OddOneOutGame from "@/components/games/OddOneOutGame";
+import { oddOneOutCopy } from "@/lib/odd-one-out/copy";
+import ConnectionsGame from "@/components/games/ConnectionsGame";
+import { connectionsCopy } from "@/lib/connections/data";
+import TimelineGame from "@/components/games/TimelineGame";
+import { timelineCopy } from "@/lib/timeline/data";
 import { dictionaries, isLocale, localizedPath, locales, type Dictionary, type Locale } from "@/lib/i18n";
 
 type Props = { params: Promise<{ locale: string; slug?: string[] }> };
-const routePaths = ["", "/usuario", "/juegos", "/juegos/mayor-o-menor", "/juegos/adivina-jugador", "/juegos/adivina-escudo", "/juegos/football-grid", "/juegos/carrera", "/juegos/mi-once", "/juegos/trivia", "/beta", "/privacidad", "/cookies", "/aviso-legal"];
+const routePaths = ["", "/usuario", "/juegos", "/juegos/mayor-o-menor", "/juegos/adivina-jugador", "/juegos/adivina-escudo", "/juegos/football-grid", "/juegos/carrera", "/juegos/mi-once", "/juegos/trivia", "/juegos/el-intruso", "/juegos/conexiones", "/juegos/ordena-historia", "/beta", "/privacidad", "/cookies", "/aviso-legal"];
 export function generateStaticParams() { return locales.flatMap((locale) => routePaths.map((path) => ({ locale, slug: path ? path.slice(1).split("/") : [] }))); }
 
 function pathFor(slug?: string[]) { return slug?.length ? `/${slug.join("/")}` : ""; }
@@ -29,6 +35,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const d = dictionaries[raw]; const path = pathFor(slug);
   const pages: Record<string, { title?: string; description?: string; noindex?: boolean }> = {
     "/juegos/trivia": { title: "TRIVIA", description: triviaCopy[raw].description },
+    "/juegos/el-intruso": { title: oddOneOutCopy[raw].title, description: oddOneOutCopy[raw].description },
+    "/juegos/conexiones": { title: connectionsCopy[raw].title, description: connectionsCopy[raw].description },
+    "/juegos/ordena-historia": { title: timelineCopy[raw].title, description: timelineCopy[raw].description },
     "": { description: d.meta.description }, "/usuario": { title: "Usuario", noindex: true }, "/juegos": { title: d.catalog.title },
     "/juegos/mayor-o-menor": { title: d.games.higherLower.title, description: d.games.higherLower.meta },
     "/juegos/adivina-jugador": { title: d.games.wordle.title, description: d.games.wordle.meta },
@@ -47,6 +56,9 @@ function gameCards(d: Dictionary, locale: Locale) { return [
   { slug: "football-grid", ...d.games.grid, description: gridCopy[locale].description, status: d.status.available },
   { slug: "adivina-escudo", ...d.games.badge, status: d.status.available },
   { slug: "trivia", title: "TRIVIA", description: triviaCopy[locale].description, status: d.status.available },
+  { slug: "el-intruso", title: oddOneOutCopy[locale].title, description: oddOneOutCopy[locale].description, status: d.status.available },
+  { slug: "conexiones", title: connectionsCopy[locale].title, description: connectionsCopy[locale].description, status: d.status.available },
+  { slug: "ordena-historia", title: timelineCopy[locale].title, description: timelineCopy[locale].description, status: d.status.available },
 ]; }
 
 export default async function LocalizedPage({ params }: Props) {
@@ -54,6 +66,9 @@ export default async function LocalizedPage({ params }: Props) {
   const locale = raw as Locale; const d = dictionaries[locale]; const path = pathFor(slug); const games = gameCards(d, locale);
   if (path === "/juegos/football-grid") return <main className="game-shell game-room container fg-page"><div className="game-room-heading"><Link href={`/${locale}`} className="game-room-back">← ARENA</Link><div><span className="eyebrow">10theGOAT</span><h1>FOOTBALL GRID</h1><p>{gridCopy[locale].description}</p></div></div><FootballGridGame /></main>;
   if (path === "/juegos/trivia") return <main className="game-shell game-room container trivia-page"><div className="game-room-heading"><Link href={`/${locale}`} className="game-room-back">← ARENA</Link><div><span className="eyebrow">10theGOAT</span><h1>TRIVIA</h1><p>{triviaCopy[locale].description}</p></div></div><TriviaGame /></main>;
+  if (path === "/juegos/el-intruso") return <main className="game-shell game-room container odd-page"><div className="game-room-heading"><Link href={`/${locale}`} className="game-room-back">← ARENA</Link><div><span className="eyebrow">10theGOAT</span><h1>{oddOneOutCopy[locale].title}</h1><p>{oddOneOutCopy[locale].description}</p></div></div><OddOneOutGame /></main>;
+  if (path === "/juegos/conexiones") return <main className="game-shell game-room container connections-page"><div className="game-room-heading"><Link href={`/${locale}`} className="game-room-back">← ARENA</Link><div><span className="eyebrow">10theGOAT</span><h1>{connectionsCopy[locale].title}</h1><p>{connectionsCopy[locale].description}</p></div></div><ConnectionsGame /></main>;
+  if (path === "/juegos/ordena-historia") return <main className="game-shell game-room container timeline-page"><div className="game-room-heading"><Link href={`/${locale}`} className="game-room-back">← ARENA</Link><div><span className="eyebrow">10theGOAT</span><h1>{timelineCopy[locale].title}</h1><p>{timelineCopy[locale].description}</p></div></div><TimelineGame /></main>;
   if (path === "/juegos/jugador-misterioso") redirect(localizedPath(locale, "/juegos/adivina-jugador"));
   if (path === "") return <main><section className="hero hero--interactive"><div className="hero-content"><div className="hero-brand-lockup"><img className="hero-shield" src="/brand/10thegoat-shield-raster.png" alt=""/><img className="hero-wordmark" src="/brand/10thegoat-wordmark.svg" alt={d.home.alt}/><img className="hero-shield hero-shield--mirror" src="/brand/10thegoat-shield-raster.png" alt=""/></div><ArenaGameMenu games={games} locale={locale} label={d.home.intro}/></div></section></main>;
   if (path === "/usuario") return <UserDashboard locale={locale}/>;
