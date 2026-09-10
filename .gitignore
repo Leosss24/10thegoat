@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # Import manifests generated locally
 .import-state/
+
+/test-results/
+/playwright-report/

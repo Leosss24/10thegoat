@@ -7,7 +7,7 @@
     "build": "next build",
     "test": "node --test --experimental-strip-types tests/*.test.ts",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "test:football": "node --env-file=.env.local scripts/test-football-data.mjs",
     "test:stats": "node --env-file=.env.local scripts/test-season-stats.mjs",
     "test:supabase": "node --env-file=.env.local scripts/test-supabase.mjs",
@@ -30,7 +30,8 @@
     "import:game-clubs": "node --env-file=.env.local scripts/import-game-clubs.mjs",
     "discover:continental-clubs": "node --env-file=.env.local scripts/discover-continental-club-leagues.mjs",
     "import:continental-clubs": "node --env-file=.env.local scripts/import-game-clubs.mjs --plan=tmp/api-football-club-import-plan.json",
-    "import:career-gaps": "node --env-file=.env.local scripts/import-game-clubs.mjs --countries=Colombia,Paraguay --preserve-eligible"
+    "import:career-gaps": "node --env-file=.env.local scripts/import-game-clubs.mjs --countries=Colombia,Paraguay --preserve-eligible",
+    "test:ads:browser": "node scripts/test-ads-browser.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
@@ -39,9 +40,12 @@
     "react-dom": "^19.1.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "@types/node": "^24.3.0",
     "@types/react": "^19.1.12",
     "@types/react-dom": "^19.1.9",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.3.3",
     "typescript": "^5.9.2"
   }
 }

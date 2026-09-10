@@ -524,3 +524,9 @@ v0.11.2-beta.1
 ```
 
 **Juegos de fútbol online.**
+
+## Publicidad (punto 9)
+
+La primera fase de AdSense está integrada y desactivada por defecto. Incluye banners manuales ES/EN/FR, integración con la CMP de Google, preferencias de privacidad y una vista previa sin anuncios reales. No añade analítica propia.
+
+Consulta [Configuración y activación de publicidad](docs/advertising.md) para variables, aprobación del sitio, `ads.txt`, pasos de la cuenta y QA. Para inspeccionar las posiciones sin contactar con Google, usa `ADS_MODE=preview` en `.env.local` y ejecuta `npm run dev`.

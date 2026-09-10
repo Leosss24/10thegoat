@@ -695,3 +695,11 @@ button:not(:disabled),a{cursor:pointer}
 .game-card--conexiones{--game-accent:#b76cff;--game-soft:rgba(183,108,255,.17)}
 .game-card--ordena-historia{--game-accent:#32a7ff;--game-soft:rgba(50,167,255,.18)}
 .fg-page{--room-accent:#32a7ff}
+
+/* Decorative game backgrounds must not cover the consent controls in the footer. */
+.game-room::before, .game-room::after { pointer-events: none; }
+.footer { position: relative; isolation: isolate; }
+
+.cookie-notice{position:fixed;z-index:1001;right:16px;bottom:16px;display:flex;align-items:center;gap:20px;width:min(680px,calc(100vw - 32px));padding:18px 20px;border:1px solid #34506a;border-radius:16px;background:#101820;box-shadow:0 20px 60px rgba(0,0,0,.45);color:#f5f8fc}.cookie-notice__copy{min-width:0;flex:1}.cookie-notice__copy p{margin:6px 0 0;color:#bdc9d6;font-size:.78rem;line-height:1.5}.cookie-notice__actions{display:flex;align-items:center;gap:12px}.cookie-notice__actions a{min-height:44px;display:inline-flex;align-items:center;color:#74d5ff;font-size:.78rem;text-decoration:underline}.cookie-notice__actions .compact{min-height:44px;white-space:nowrap}@media(max-width:600px){.cookie-notice{display:block;padding:16px}.cookie-notice__actions{justify-content:space-between;margin-top:12px}}
+
+.legal-contacts{display:grid;gap:8px;margin:12px 0 0;padding:0;list-style:none}.legal-contacts li{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:rgba(255,255,255,.02)}.legal-contacts span{color:var(--muted)}.legal-contacts a{color:#74d5ff;overflow-wrap:anywhere}

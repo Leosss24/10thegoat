@@ -1,0 +1,63 @@
+.ad-space {
+  width: 100%;
+  max-width: 970px;
+  min-width: 0;
+  margin: 32px auto;
+  padding: 0 12px;
+  box-sizing: border-box;
+  text-align: center;
+  contain: layout;
+}
+.ad-space-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #a6b3c0;
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: .06em;
+}
+/* Exact sizes follow Google's documented CSS modification. Never clip ads. */
+.ad-space-frame, .ad-space-unit {
+  width: 250px;
+  height: 100px;
+  margin-inline: auto;
+}
+.ad-space-preview {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  border: 1px dashed #526171;
+  border-radius: 10px;
+  background: #121820;
+  color: #a6b3c0;
+  font-size: 12px;
+}
+@media (min-width: 380px) {
+  .ad-space-frame, .ad-space-unit { width: 320px; }
+}
+@media (min-width: 600px) {
+  .ad-space-frame, .ad-space-unit { width: 468px; height: 60px; }
+}
+/* Narrow game rooms also need to fit; 468px stays within every game shell. */
+@media (min-width: 1050px) {
+  .ad-space[data-placement^="home"] .ad-space-frame,
+  .ad-space[data-placement^="home"] .ad-space-unit,
+  .ad-space[data-placement^="catalog"] .ad-space-frame,
+  .ad-space[data-placement^="catalog"] .ad-space-unit { width: 728px; height: 90px; }
+}
+.privacy-preferences { display: inline-flex; flex-direction: column; max-width: 320px; }
+.privacy-preferences button {
+  min-height: 44px;
+  padding: 8px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.privacy-preferences button:focus-visible { outline: 2px solid #74d5ff; outline-offset: 3px; }
+.privacy-preferences [role="status"] { font-size: 12px; line-height: 1.5; }
