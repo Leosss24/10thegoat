@@ -15,6 +15,8 @@ export type GameResultInput = {
 };
 
 const STORAGE_KEY = "10tg-game-scores-v1";
+let memoryStore: ScoreStore = {};
+let scorePersistenceEnabled = false;
 
 const EMPTY_STATS: GameScoreStats = {
   points: 0,
@@ -32,15 +34,29 @@ function canUseStorage() {
 }
 
 function readStore(): ScoreStore {
-  if (!canUseStorage()) return {};
+  return memoryStore;
+}
+
+export function setScorePersistence(enabled: boolean) {
+  scorePersistenceEnabled = enabled;
+  if (!canUseStorage()) return;
+  if (!enabled) {
+    memoryStore = {};
+    window.localStorage.removeItem(STORAGE_KEY);
+    return;
+  }
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) return {};
-    const parsed = JSON.parse(raw);
-    return parsed && typeof parsed === "object" ? parsed : {};
+    const parsed = raw ? JSON.parse(raw) : {};
+    memoryStore = parsed && typeof parsed === "object" ? parsed : {};
   } catch {
-    return {};
+    memoryStore = {};
   }
+}
+
+function writeStore(store: ScoreStore) {
+  memoryStore = store;
+  if (scorePersistenceEnabled && canUseStorage()) window.localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
 }
 
 function normalizeStats(value?: Partial<GameScoreStats>): GameScoreStats {
@@ -91,9 +107,7 @@ export function recordGameResult(gameKey: string, result: GameResultInput): Game
   };
 
   store[gameKey] = next;
-  if (canUseStorage()) {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
-  }
+  writeStore(store);
   return next;
 }
 
@@ -109,9 +123,7 @@ export function addGamePoints(gameKey: string, points: number): GameScoreStats {
   };
 
   store[gameKey] = next;
-  if (canUseStorage()) {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
-  }
+  writeStore(store);
   return next;
 }
 

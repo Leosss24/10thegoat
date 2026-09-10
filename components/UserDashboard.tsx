@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { User } from "@supabase/supabase-js";
 import { supabase } from "../lib/supabase";
+import GoogleSignInButton from "./GoogleSignInButton";
 import { deleteCareerSnapshot, listCareerSnapshots, type CareerSnapshot } from "../lib/career/cloud-storage";
 import { loadCareer, saveCareer } from "../lib/career/storage";
 import type { CareerState } from "../lib/career/types";
@@ -75,7 +76,6 @@ export default function UserDashboard({locale}:{locale:"es"|"en"|"fr"}) {
     return()=>data.subscription.unsubscribe();
   },[]);
 
-  const login=(provider:"google"|"twitter")=>supabase?.auth.signInWithOAuth({provider:provider==="twitter"?"x":provider,options:{redirectTo:location.href}});
   const saveName=async()=>{
     if(!supabase||!user)return;
     const clean=username.trim();
@@ -147,7 +147,7 @@ export default function UserDashboard({locale}:{locale:"es"|"en"|"fr"}) {
   ];
   const date=(value?:string|null)=>value?new Intl.DateTimeFormat(locale,{dateStyle:"long",timeStyle:"short"}).format(new Date(value)):"—";
 
-  if(!user)return <main className="user-page container"><section className="user-hero user-login"><span>10THEGOAT ID</span><h1>{t("TU ZONA DE USUARIO","YOUR ACCOUNT","VOTRE ESPACE")}</h1><p>{t("ENTRA PARA GUARDAR CARRERAS, CONSERVAR ESTADÍSTICAS Y DESBLOQUEAR LOGROS.","SIGN IN TO SAVE CAREERS, KEEP STATS AND UNLOCK ACHIEVEMENTS.","CONNECTEZ-VOUS POUR SAUVEGARDER VOS CARRIÈRES ET VOS STATS.")}</p><div className="career-social-login"><button onClick={()=>login("google")}>G · GOOGLE</button><button onClick={()=>login("twitter")}>𝕏 · TWITTER / X</button></div></section></main>;
+  if(!user)return <main className="user-page container"><section className="user-hero user-login"><span>10THEGOAT ID</span><h1>{t("TU ZONA DE USUARIO","YOUR ACCOUNT","VOTRE ESPACE")}</h1><p>{t("ENTRA PARA GUARDAR CARRERAS, CONSERVAR ESTADÍSTICAS Y DESBLOQUEAR LOGROS.","SIGN IN TO SAVE CAREERS, KEEP STATS AND UNLOCK ACHIEVEMENTS.","CONNECTEZ-VOUS POUR SAUVEGARDER VOS CARRIÈRES ET VOS STATS.")}</p><GoogleSignInButton locale={locale} /></section></main>;
 
   return <main className="user-page container">
     <section className="user-hero">

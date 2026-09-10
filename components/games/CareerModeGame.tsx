@@ -111,9 +111,7 @@ const copy = {
     achievements: "LOGROS",
     locked: "Bloqueado",
     retire: "Retirarme",
-    newGame: "Nueva carrera",
-    shareOnX: "Compartir carrera en X",
-    noSeasons: "Tu historia empieza en la academia.",
+    newGame: "Nueva carrera",    noSeasons: "Tu historia empieza en la academia.",
     saved: "Partida guardada",
     saveError: "No se pudo guardar.",
     event: "Evento",
@@ -222,9 +220,7 @@ const copy = {
     achievements: "ACHIEVEMENTS",
     locked: "Locked",
     retire: "Retire",
-    newGame: "New career",
-    shareOnX: "Share career on X",
-    noSeasons: "Your story starts in the academy.",
+    newGame: "New career",    noSeasons: "Your story starts in the academy.",
     saved: "Game saved",
     saveError: "Could not save.",
     event: "Event",
@@ -333,9 +329,7 @@ const copy = {
     achievements: "SUCCÈS",
     locked: "Verrouillé",
     retire: "Retraite",
-    newGame: "Nouvelle carrière",
-    shareOnX: "Partager la carrière sur X",
-    noSeasons: "Votre histoire commence à l’académie.",
+    newGame: "Nouvelle carrière",    noSeasons: "Votre histoire commence à l’académie.",
     saved: "Partie enregistrée",
     saveError: "Enregistrement impossible.",
     event: "Événement",
@@ -713,7 +707,6 @@ export default function CareerModeGame() {
           <span>{c.legacy}</span>
           <strong>{career.legacyScore}</strong>
           <div className="career-retired-actions">
-            <button className="career-share-x" onClick={()=>window.open(careerShareUrl(career,locale),"_blank","noopener,noreferrer")}>{c.shareOnX}</button>
             <button
               className="career-new"
               onClick={() => {
@@ -805,16 +798,6 @@ export default function CareerModeGame() {
       {celebrations[0]&&<CelebrationModal item={celebrations[0]} seed={career.seed} locale={locale} onDone={outcome=>{const item=celebrations[0];if(item.kind==="tournament"&&outcome)finishTournament(item,outcome);else setCelebrations(x=>x.slice(1))}}/>}
     </section>
   );
-}
-function careerShareUrl(career:CareerState,locale:"es"|"en"|"fr"){
-  const awards=career.seasons.reduce((total,season)=>total+(season.individualAwards?.length??0),0);
-  const text={
-    es:`He terminado la carrera de ${career.player.name} en 10theGOAT: ${career.legacyScore} puntos de legado, ${career.totals.titles} títulos y ${awards} premios individuales. ¿Puedes superarla?`,
-    en:`I finished ${career.player.name}'s career in 10theGOAT: ${career.legacyScore} legacy points, ${career.totals.titles} titles and ${awards} individual awards. Can you beat it?`,
-    fr:`J'ai terminé la carrière de ${career.player.name} sur 10theGOAT : ${career.legacyScore} points d'héritage, ${career.totals.titles} titres et ${awards} trophées individuels. Pouvez-vous faire mieux ?`,
-  }[locale];
-  const params=new URLSearchParams({text,url:`https://10thegoat.com/${locale}/juegos/carrera`});
-  return `https://twitter.com/intent/tweet?${params.toString()}`;
 }
 function BarMetric({ label, value, trend }: { label: string; value: number; trend?: number }) {
   return (
