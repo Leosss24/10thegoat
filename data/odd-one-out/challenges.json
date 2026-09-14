@@ -10,19 +10,23 @@
     "options": [
       {
         "id": "messi",
-        "label": "Lionel Messi"
+        "label": "LIONEL MESSI",
+        "playerId": 1
       },
       {
         "id": "neymar",
-        "label": "Neymar"
+        "label": "NEYMAR",
+        "playerId": 7
       },
       {
         "id": "suarez",
-        "label": "Luis Suárez"
+        "label": "LUIS SUÁREZ",
+        "playerId": 8
       },
       {
         "id": "benzema",
-        "label": "Karim Benzema"
+        "label": "KARIM BENZEMA",
+        "playerId": 10
       }
     ],
     "oddOptionId": "benzema",
@@ -49,19 +53,23 @@
     "options": [
       {
         "id": "xavi",
-        "label": "Xavi"
+        "label": "XAVI",
+        "playerId": 16
       },
       {
         "id": "iniesta",
-        "label": "Andrés Iniesta"
+        "label": "ANDRÉS INIESTA",
+        "playerId": 15
       },
       {
         "id": "busquets",
-        "label": "Sergio Busquets"
+        "label": "SERGIO BUSQUETS",
+        "playerId": 17
       },
       {
         "id": "modric",
-        "label": "Luka Modrić"
+        "label": "L. MODRIĆ",
+        "playerId": 13
       }
     ],
     "oddOptionId": "modric",
@@ -88,19 +96,22 @@
     "options": [
       {
         "id": "buffon",
-        "label": "Gianluigi Buffon"
+        "label": "GIANLUIGI BUFFON",
+        "playerId": 20
       },
       {
         "id": "casillas",
-        "label": "Iker Casillas"
+        "label": "IKER CASILLAS",
+        "playerId": 19
       },
       {
         "id": "neuer",
-        "label": "Manuel Neuer"
+        "label": "MANUEL NEUER"
       },
       {
         "id": "xavi",
-        "label": "Xavi"
+        "label": "XAVI",
+        "playerId": 16
       }
     ],
     "oddOptionId": "xavi",
@@ -127,19 +138,20 @@
     "options": [
       {
         "id": "henry",
-        "label": "Thierry Henry"
+        "label": "THIERRY HENRY",
+        "playerId": 22
       },
       {
         "id": "vieira",
-        "label": "Patrick Vieira"
+        "label": "PATRICK VIEIRA"
       },
       {
         "id": "bergkamp",
-        "label": "Dennis Bergkamp"
+        "label": "DENNIS BERGKAMP"
       },
       {
         "id": "drogba",
-        "label": "Didier Drogba"
+        "label": "DIDIER DROGBA"
       }
     ],
     "oddOptionId": "drogba",
@@ -166,19 +178,20 @@
     "options": [
       {
         "id": "ronaldo",
-        "label": "Ronaldo Nazário"
+        "label": "RONALDO NAZÁRIO"
       },
       {
         "id": "rivaldo",
-        "label": "Rivaldo"
+        "label": "RIVALDO"
       },
       {
         "id": "ronaldinho",
-        "label": "Ronaldinho"
+        "label": "RONALDINHO",
+        "playerId": 3
       },
       {
         "id": "romario",
-        "label": "Romário"
+        "label": "ROMÁRIO"
       }
     ],
     "oddOptionId": "romario",
@@ -205,19 +218,22 @@
     "options": [
       {
         "id": "bale",
-        "label": "Gareth Bale"
+        "label": "GARETH BALE"
       },
       {
         "id": "benzema",
-        "label": "Karim Benzema"
+        "label": "KARIM BENZEMA",
+        "playerId": 10
       },
       {
         "id": "cristiano",
-        "label": "Cristiano Ronaldo"
+        "label": "CRISTIANO RONALDO",
+        "playerId": 2
       },
       {
         "id": "neymar",
-        "label": "Neymar"
+        "label": "NEYMAR",
+        "playerId": 7
       }
     ],
     "oddOptionId": "neymar",
@@ -244,19 +260,19 @@
     "options": [
       {
         "id": "italy",
-        "label": "Italia"
+        "label": "ITALIA"
       },
       {
         "id": "germany",
-        "label": "Alemania"
+        "label": "ALEMANIA"
       },
       {
         "id": "spain",
-        "label": "España"
+        "label": "ESPAÑA"
       },
       {
         "id": "netherlands",
-        "label": "Países Bajos"
+        "label": "PAÍSES BAJOS"
       }
     ],
     "oddOptionId": "netherlands",
@@ -283,19 +299,19 @@
     "options": [
       {
         "id": "guardiola",
-        "label": "Pep Guardiola"
+        "label": "PEP GUARDIOLA"
       },
       {
         "id": "mourinho",
-        "label": "José Mourinho"
+        "label": "JOSÉ MOURINHO"
       },
       {
         "id": "ancelotti",
-        "label": "Carlo Ancelotti"
+        "label": "CARLO ANCELOTTI"
       },
       {
         "id": "simeone",
-        "label": "Diego Simeone"
+        "label": "DIEGO SIMEONE"
       }
     ],
     "oddOptionId": "simeone",
@@ -322,19 +338,21 @@
     "options": [
       {
         "id": "zidane",
-        "label": "Zinedine Zidane"
+        "label": "ZINEDINE ZIDANE",
+        "playerId": 4
       },
       {
         "id": "bale",
-        "label": "Gareth Bale"
+        "label": "GARETH BALE"
       },
       {
         "id": "mandzukic",
-        "label": "Mario Mandžukić"
+        "label": "MARIO MANDŽUKIĆ"
       },
       {
         "id": "ibrahimovic",
-        "label": "Zlatan Ibrahimović"
+        "label": "ZLATAN IBRAHIMOVIĆ",
+        "playerId": 23
       }
     ],
     "oddOptionId": "ibrahimovic",
@@ -361,19 +379,20 @@
     "options": [
       {
         "id": "cruyff",
-        "label": "Johan Cruyff"
+        "label": "JOHAN CRUYFF"
       },
       {
         "id": "vanbasten",
-        "label": "Marco van Basten"
+        "label": "MARCO VAN BASTEN"
       },
       {
         "id": "platini",
-        "label": "Michel Platini"
+        "label": "MICHEL PLATINI"
       },
       {
         "id": "ronaldinho",
-        "label": "Ronaldinho"
+        "label": "RONALDINHO",
+        "playerId": 3
       }
     ],
     "oddOptionId": "ronaldinho",
@@ -400,19 +419,21 @@
     "options": [
       {
         "id": "seedorf",
-        "label": "Clarence Seedorf"
+        "label": "CLARENCE SEEDORF",
+        "playerId": 35
       },
       {
         "id": "eto'o",
-        "label": "Samuel Eto'o"
+        "label": "SAMUEL ETO'O",
+        "playerId": 28
       },
       {
         "id": "deco",
-        "label": "Deco"
+        "label": "DECO"
       },
       {
         "id": "maldini",
-        "label": "Paolo Maldini"
+        "label": "PAOLO MALDINI"
       }
     ],
     "oddOptionId": "maldini",
@@ -439,19 +460,21 @@
     "options": [
       {
         "id": "torres",
-        "label": "Fernando Torres"
+        "label": "FERNANDO TORRES",
+        "playerId": 47
       },
       {
         "id": "charisteas",
-        "label": "Angelos Charisteas"
+        "label": "ANGELOS CHARISTEAS"
       },
       {
         "id": "eder",
-        "label": "Éder"
+        "label": "ÉDER"
       },
       {
         "id": "villa",
-        "label": "David Villa"
+        "label": "DAVID VILLA",
+        "playerId": 46
       }
     ],
     "oddOptionId": "villa",
@@ -478,19 +501,19 @@
     "options": [
       {
         "id": "barcelona",
-        "label": "FC Barcelona"
+        "label": "FC BARCELONA"
       },
       {
         "id": "bayern",
-        "label": "Bayern München"
+        "label": "BAYERN MÜNCHEN"
       },
       {
         "id": "inter",
-        "label": "Inter"
+        "label": "INTER"
       },
       {
         "id": "juventus",
-        "label": "Juventus"
+        "label": "JUVENTUS"
       }
     ],
     "oddOptionId": "juventus",
@@ -517,19 +540,20 @@
     "options": [
       {
         "id": "vava",
-        "label": "Vavá"
+        "label": "VAVÁ"
       },
       {
         "id": "pele",
-        "label": "Pelé"
+        "label": "PELÉ"
       },
       {
         "id": "mbappe",
-        "label": "Kylian Mbappé"
+        "label": "KYLIAN MBAPPÉ",
+        "playerId": 6
       },
       {
         "id": "ronaldo",
-        "label": "Ronaldo Nazário"
+        "label": "RONALDO NAZÁRIO"
       }
     ],
     "oddOptionId": "ronaldo",
@@ -544,5 +568,3789 @@
       "fr": "Ronaldo a marqué en finale 2002, mais pas lors de celle de 1998."
     },
     "source": "https://www.fifa.com/tournaments/mens/worldcup"
+  },
+  {
+    "id": "expanded-001",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-1846",
+        "playerId": 1846,
+        "label": "A. GOUIRI"
+      },
+      {
+        "id": "player-1156",
+        "playerId": 1156,
+        "label": "B. PAVARD"
+      },
+      {
+        "id": "player-2006",
+        "playerId": 2006,
+        "label": "K. ABDALLAH"
+      },
+      {
+        "id": "player-26",
+        "playerId": 26,
+        "label": "DAVID BECKHAM"
+      }
+    ],
+    "oddOptionId": "player-26",
+    "commonReason": {
+      "es": "A. GOUIRI, B. PAVARD y K. ABDALLAH: País en común: Francia. Los tres jugaron en Marseille.",
+      "en": "A. GOUIRI, B. PAVARD and K. ABDALLAH: Shared nationality: France. All three played for Marseille.",
+      "fr": "A. GOUIRI, B. PAVARD et K. ABDALLAH : Nationalité commune : France. Les trois ont joué à Marseille."
+    },
+    "oddReason": {
+      "es": "DAVID BECKHAM figura con otra nacionalidad (Inglaterra) y no cumple esta conexión.",
+      "en": "DAVID BECKHAM has a different nationality (England) and does not fit this connection.",
+      "fr": "DAVID BECKHAM a une autre nationalité (Angleterre) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-France-141"
+  },
+  {
+    "id": "expanded-002",
+    "difficulty": "hard",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-353",
+        "playerId": 353,
+        "label": "I. KONATÉ"
+      },
+      {
+        "id": "player-260",
+        "playerId": 260,
+        "label": "J. JACQUET"
+      },
+      {
+        "id": "player-3367",
+        "playerId": 3367,
+        "label": "B. BARCOLA"
+      },
+      {
+        "id": "player-30",
+        "playerId": 30,
+        "label": "ROBERTO CARLOS"
+      }
+    ],
+    "oddOptionId": "player-30",
+    "commonReason": {
+      "es": "I. KONATÉ, J. JACQUET y B. BARCOLA: País en común: Francia. Los tres jugaron en Liverpool.",
+      "en": "I. KONATÉ, J. JACQUET and B. BARCOLA: Shared nationality: France. All three played for Liverpool.",
+      "fr": "I. KONATÉ, J. JACQUET et B. BARCOLA : Nationalité commune : France. Les trois ont joué à Liverpool."
+    },
+    "oddReason": {
+      "es": "ROBERTO CARLOS figura con otra nacionalidad (Brasil) y no cumple esta conexión.",
+      "en": "ROBERTO CARLOS has a different nationality (Brazil) and does not fit this connection.",
+      "fr": "ROBERTO CARLOS a une autre nationalité (Brésil) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-France-43"
+  },
+  {
+    "id": "expanded-003",
+    "difficulty": "easy",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-1299",
+        "playerId": 1299,
+        "label": "J. CABAL"
+      },
+      {
+        "id": "player-3329",
+        "playerId": 3329,
+        "label": "L. SUÁREZ"
+      },
+      {
+        "id": "player-155",
+        "playerId": 155,
+        "label": "L. DÍAZ"
+      },
+      {
+        "id": "player-77",
+        "playerId": 77,
+        "label": "A. LOOKMAN"
+      }
+    ],
+    "oddOptionId": "player-77",
+    "commonReason": {
+      "es": "J. CABAL, L. SUÁREZ y L. DÍAZ: País en común: Colombia.",
+      "en": "J. CABAL, L. SUÁREZ and L. DÍAZ: Shared nationality: Colombia.",
+      "fr": "J. CABAL, L. SUÁREZ et L. DÍAZ : Nationalité commune : Colombie."
+    },
+    "oddReason": {
+      "es": "A. LOOKMAN figura con otra nacionalidad (Nigeria) y no cumple esta conexión.",
+      "en": "A. LOOKMAN has a different nationality (Nigeria) and does not fit this connection.",
+      "fr": "A. LOOKMAN a une autre nationalité (Nigeria) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Colombia"
+  },
+  {
+    "id": "expanded-004",
+    "difficulty": "hard",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-757",
+        "playerId": 757,
+        "label": "DIOGO DALOT"
+      },
+      {
+        "id": "player-196",
+        "playerId": 196,
+        "label": "FRANCISCO CONCEIÇÃO"
+      },
+      {
+        "id": "player-1608",
+        "playerId": 1608,
+        "label": "FÁBIO SILVA"
+      },
+      {
+        "id": "player-102",
+        "playerId": 102,
+        "label": "C. GAKPO"
+      }
+    ],
+    "oddOptionId": "player-102",
+    "commonReason": {
+      "es": "DIOGO DALOT, FRANCISCO CONCEIÇÃO y FÁBIO SILVA: País en común: Portugal. Los tres jugaron en FC Porto.",
+      "en": "DIOGO DALOT, FRANCISCO CONCEIÇÃO and FÁBIO SILVA: Shared nationality: Portugal. All three played for FC Porto.",
+      "fr": "DIOGO DALOT, FRANCISCO CONCEIÇÃO et FÁBIO SILVA : Nationalité commune : Portugal. Les trois ont joué à FC Porto."
+    },
+    "oddReason": {
+      "es": "C. GAKPO figura con otra nacionalidad (Países Bajos) y no cumple esta conexión.",
+      "en": "C. GAKPO has a different nationality (Netherlands) and does not fit this connection.",
+      "fr": "C. GAKPO a une autre nationalité (Pays-Bas) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Portugal-85"
+  },
+  {
+    "id": "expanded-005",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-190",
+        "playerId": 190,
+        "label": "GONÇALO RAMOS"
+      },
+      {
+        "id": "player-3322",
+        "playerId": 3322,
+        "label": "JOÃO PALHINHA"
+      },
+      {
+        "id": "player-1395",
+        "playerId": 1395,
+        "label": "DIEGO MOREIRA"
+      },
+      {
+        "id": "player-88",
+        "playerId": 88,
+        "label": "VINÍCIUS JÚNIOR"
+      }
+    ],
+    "oddOptionId": "player-88",
+    "commonReason": {
+      "es": "GONÇALO RAMOS, JOÃO PALHINHA y DIEGO MOREIRA: País en común: Portugal. Los tres jugaron en Benfica.",
+      "en": "GONÇALO RAMOS, JOÃO PALHINHA and DIEGO MOREIRA: Shared nationality: Portugal. All three played for Benfica.",
+      "fr": "GONÇALO RAMOS, JOÃO PALHINHA et DIEGO MOREIRA : Nationalité commune : Portugal. Les trois ont joué à Benfica."
+    },
+    "oddReason": {
+      "es": "VINÍCIUS JÚNIOR figura con otra nacionalidad (Brasil) y no cumple esta conexión.",
+      "en": "VINÍCIUS JÚNIOR has a different nationality (Brazil) and does not fit this connection.",
+      "fr": "VINÍCIUS JÚNIOR a une autre nationalité (Brésil) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Portugal-367"
+  },
+  {
+    "id": "expanded-006",
+    "difficulty": "hard",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-954",
+        "playerId": 954,
+        "label": "J. FRIMPONG"
+      },
+      {
+        "id": "player-751",
+        "playerId": 751,
+        "label": "V. VAN DIJK"
+      },
+      {
+        "id": "player-102",
+        "playerId": 102,
+        "label": "C. GAKPO"
+      },
+      {
+        "id": "player-5",
+        "playerId": 5,
+        "label": "E. HAALAND"
+      }
+    ],
+    "oddOptionId": "player-5",
+    "commonReason": {
+      "es": "J. FRIMPONG, V. VAN DIJK y C. GAKPO: País en común: Países Bajos. Los tres jugaron en Liverpool.",
+      "en": "J. FRIMPONG, V. VAN DIJK and C. GAKPO: Shared nationality: Netherlands. All three played for Liverpool.",
+      "fr": "J. FRIMPONG, V. VAN DIJK et C. GAKPO : Nationalité commune : Pays-Bas. Les trois ont joué à Liverpool."
+    },
+    "oddReason": {
+      "es": "E. HAALAND figura con otra nacionalidad (Noruega) y no cumple esta conexión.",
+      "en": "E. HAALAND has a different nationality (Norway) and does not fit this connection.",
+      "fr": "E. HAALAND a une autre nationalité (Norvège) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Netherlands-43"
+  },
+  {
+    "id": "expanded-007",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-6",
+        "playerId": 6,
+        "label": "KYLIAN MBAPPÉ"
+      },
+      {
+        "id": "player-3248",
+        "playerId": 3248,
+        "label": "A. TCHOUAMÉNI"
+      },
+      {
+        "id": "player-366",
+        "playerId": 366,
+        "label": "E. CAMAVINGA"
+      },
+      {
+        "id": "player-112",
+        "playerId": 112,
+        "label": "C. PALMER"
+      }
+    ],
+    "oddOptionId": "player-112",
+    "commonReason": {
+      "es": "KYLIAN MBAPPÉ, A. TCHOUAMÉNI y E. CAMAVINGA: País en común: Francia. Los tres jugaron en Real Madrid.",
+      "en": "KYLIAN MBAPPÉ, A. TCHOUAMÉNI and E. CAMAVINGA: Shared nationality: France. All three played for Real Madrid.",
+      "fr": "KYLIAN MBAPPÉ, A. TCHOUAMÉNI et E. CAMAVINGA : Nationalité commune : France. Les trois ont joué à Real Madrid."
+    },
+    "oddReason": {
+      "es": "C. PALMER figura con otra nacionalidad (Inglaterra) y no cumple esta conexión.",
+      "en": "C. PALMER has a different nationality (England) and does not fit this connection.",
+      "fr": "C. PALMER a une autre nationalité (Angleterre) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-France-10"
+  },
+  {
+    "id": "expanded-008",
+    "difficulty": "hard",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-1375",
+        "playerId": 1375,
+        "label": "S. CASTRO"
+      },
+      {
+        "id": "player-1388",
+        "playerId": 1388,
+        "label": "M. SOULÉ"
+      },
+      {
+        "id": "player-1163",
+        "playerId": 1163,
+        "label": "N. MOLINA"
+      },
+      {
+        "id": "player-5",
+        "playerId": 5,
+        "label": "E. HAALAND"
+      }
+    ],
+    "oddOptionId": "player-5",
+    "commonReason": {
+      "es": "S. CASTRO, M. SOULÉ y N. MOLINA: País en común: Argentina. Los tres jugaron en AS Roma.",
+      "en": "S. CASTRO, M. SOULÉ and N. MOLINA: Shared nationality: Argentina. All three played for AS Roma.",
+      "fr": "S. CASTRO, M. SOULÉ et N. MOLINA : Nationalité commune : Argentine. Les trois ont joué à AS Roma."
+    },
+    "oddReason": {
+      "es": "E. HAALAND figura con otra nacionalidad (Noruega) y no cumple esta conexión.",
+      "en": "E. HAALAND has a different nationality (Norway) and does not fit this connection.",
+      "fr": "E. HAALAND a une autre nationalité (Norvège) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Argentina-56"
+  },
+  {
+    "id": "expanded-009",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-219",
+        "playerId": 219,
+        "label": "P. KALULU"
+      },
+      {
+        "id": "player-3285",
+        "playerId": 3285,
+        "label": "Y. FOFANA"
+      },
+      {
+        "id": "player-313",
+        "playerId": 313,
+        "label": "M. MAIGNAN"
+      },
+      {
+        "id": "player-69",
+        "playerId": 69,
+        "label": "LEE KANG-IN"
+      }
+    ],
+    "oddOptionId": "player-69",
+    "commonReason": {
+      "es": "P. KALULU, Y. FOFANA y M. MAIGNAN: País en común: Francia. Los tres jugaron en AC Milan.",
+      "en": "P. KALULU, Y. FOFANA and M. MAIGNAN: Shared nationality: France. All three played for AC Milan.",
+      "fr": "P. KALULU, Y. FOFANA et M. MAIGNAN : Nationalité commune : France. Les trois ont joué à AC Milan."
+    },
+    "oddReason": {
+      "es": "LEE KANG-IN figura con otra nacionalidad (Corea del Sur) y no cumple esta conexión.",
+      "en": "LEE KANG-IN has a different nationality (South Korea) and does not fit this connection.",
+      "fr": "LEE KANG-IN a une autre nationalité (Corée du Sud) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-France-17"
+  },
+  {
+    "id": "expanded-010",
+    "difficulty": "hard",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-3352",
+        "playerId": 3352,
+        "label": "O. AYDIN"
+      },
+      {
+        "id": "player-3272",
+        "playerId": 3272,
+        "label": "Ç. SÖYÜNCÜ"
+      },
+      {
+        "id": "player-3253",
+        "playerId": 3253,
+        "label": "M. MÜLDÜR"
+      },
+      {
+        "id": "player-12",
+        "playerId": 12,
+        "label": "H. KANE"
+      }
+    ],
+    "oddOptionId": "player-12",
+    "commonReason": {
+      "es": "O. AYDIN, Ç. SÖYÜNCÜ y M. MÜLDÜR: País en común: Turquía.",
+      "en": "O. AYDIN, Ç. SÖYÜNCÜ and M. MÜLDÜR: Shared nationality: Türkiye.",
+      "fr": "O. AYDIN, Ç. SÖYÜNCÜ et M. MÜLDÜR : Nationalité commune : Turquie."
+    },
+    "oddReason": {
+      "es": "H. KANE figura con otra nacionalidad (Inglaterra) y no cumple esta conexión.",
+      "en": "H. KANE has a different nationality (England) and does not fit this connection.",
+      "fr": "H. KANE a une autre nationalité (Angleterre) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Türkiye"
+  },
+  {
+    "id": "expanded-011",
+    "difficulty": "easy",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-3493",
+        "playerId": 3493,
+        "label": "A. PURIC"
+      },
+      {
+        "id": "player-301",
+        "playerId": 301,
+        "label": "S. PAVLOVIĆ"
+      },
+      {
+        "id": "player-3429",
+        "playerId": 3429,
+        "label": "O. MIMOVIÄ"
+      },
+      {
+        "id": "player-51",
+        "playerId": 51,
+        "label": "DIEGO FORLÁN"
+      }
+    ],
+    "oddOptionId": "player-51",
+    "commonReason": {
+      "es": "A. PURIC, S. PAVLOVIĆ y O. MIMOVIÄ: País en común: Serbia.",
+      "en": "A. PURIC, S. PAVLOVIĆ and O. MIMOVIÄ: Shared nationality: Serbia.",
+      "fr": "A. PURIC, S. PAVLOVIĆ et O. MIMOVIÄ : Nationalité commune : Serbie."
+    },
+    "oddReason": {
+      "es": "DIEGO FORLÁN figura con otra nacionalidad (Uruguay) y no cumple esta conexión.",
+      "en": "DIEGO FORLÁN has a different nationality (Uruguay) and does not fit this connection.",
+      "fr": "DIEGO FORLÁN a une autre nationalité (Uruguay) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Serbia"
+  },
+  {
+    "id": "expanded-012",
+    "difficulty": "hard",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-3236",
+        "playerId": 3236,
+        "label": "EDERSON"
+      },
+      {
+        "id": "player-1075",
+        "playerId": 1075,
+        "label": "VITOR NUNES"
+      },
+      {
+        "id": "player-3393",
+        "playerId": 3393,
+        "label": "SÁVIO"
+      },
+      {
+        "id": "player-56",
+        "playerId": 56,
+        "label": "BASTIAN SCHWEINSTEIGER"
+      }
+    ],
+    "oddOptionId": "player-56",
+    "commonReason": {
+      "es": "EDERSON, VITOR NUNES y SÁVIO: País en común: Brasil. Los tres jugaron en Manchester City.",
+      "en": "EDERSON, VITOR NUNES and SÁVIO: Shared nationality: Brazil. All three played for Manchester City.",
+      "fr": "EDERSON, VITOR NUNES et SÁVIO : Nationalité commune : Brésil. Les trois ont joué à Manchester City."
+    },
+    "oddReason": {
+      "es": "BASTIAN SCHWEINSTEIGER figura con otra nacionalidad (Alemania) y no cumple esta conexión.",
+      "en": "BASTIAN SCHWEINSTEIGER has a different nationality (Germany) and does not fit this connection.",
+      "fr": "BASTIAN SCHWEINSTEIGER a une autre nationalité (Allemagne) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Brazil-19"
+  },
+  {
+    "id": "expanded-013",
+    "difficulty": "easy",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-1767",
+        "playerId": 1767,
+        "label": "F. BACHER"
+      },
+      {
+        "id": "player-3415",
+        "playerId": 3415,
+        "label": "P. WANNER"
+      },
+      {
+        "id": "player-1536",
+        "playerId": 1536,
+        "label": "M. SABITZER"
+      },
+      {
+        "id": "player-34",
+        "playerId": 34,
+        "label": "ALESSANDRO DEL PIERO"
+      }
+    ],
+    "oddOptionId": "player-34",
+    "commonReason": {
+      "es": "F. BACHER, P. WANNER y M. SABITZER: País en común: Austria.",
+      "en": "F. BACHER, P. WANNER and M. SABITZER: Shared nationality: Austria.",
+      "fr": "F. BACHER, P. WANNER et M. SABITZER : Nationalité commune : Autriche."
+    },
+    "oddReason": {
+      "es": "ALESSANDRO DEL PIERO figura con otra nacionalidad (Italia) y no cumple esta conexión.",
+      "en": "ALESSANDRO DEL PIERO has a different nationality (Italy) and does not fit this connection.",
+      "fr": "ALESSANDRO DEL PIERO a une autre nationalité (Italie) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Austria"
+  },
+  {
+    "id": "expanded-014",
+    "difficulty": "hard",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-3256",
+        "playerId": 3256,
+        "label": "V. TSYGANKOV"
+      },
+      {
+        "id": "player-3369",
+        "playerId": 3369,
+        "label": "H. SUDAKOV"
+      },
+      {
+        "id": "player-442",
+        "playerId": 442,
+        "label": "A. LUNIN"
+      },
+      {
+        "id": "player-46",
+        "playerId": 46,
+        "label": "DAVID VILLA"
+      }
+    ],
+    "oddOptionId": "player-46",
+    "commonReason": {
+      "es": "V. TSYGANKOV, H. SUDAKOV y A. LUNIN: País en común: Ucrania.",
+      "en": "V. TSYGANKOV, H. SUDAKOV and A. LUNIN: Shared nationality: Ukraine.",
+      "fr": "V. TSYGANKOV, H. SUDAKOV et A. LUNIN : Nationalité commune : Ukraine."
+    },
+    "oddReason": {
+      "es": "DAVID VILLA figura con otra nacionalidad (España) y no cumple esta conexión.",
+      "en": "DAVID VILLA has a different nationality (Spain) and does not fit this connection.",
+      "fr": "DAVID VILLA a une autre nationalité (Espagne) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Ukraine"
+  },
+  {
+    "id": "expanded-015",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-1343",
+        "playerId": 1343,
+        "label": "F. GATTI"
+      },
+      {
+        "id": "player-215",
+        "playerId": 215,
+        "label": "G. VICARIO"
+      },
+      {
+        "id": "player-298",
+        "playerId": 298,
+        "label": "M. LOCATELLI"
+      },
+      {
+        "id": "player-19",
+        "playerId": 19,
+        "label": "IKER CASILLAS"
+      }
+    ],
+    "oddOptionId": "player-19",
+    "commonReason": {
+      "es": "F. GATTI, G. VICARIO y M. LOCATELLI: País en común: Italia. Los tres jugaron en Juventus.",
+      "en": "F. GATTI, G. VICARIO and M. LOCATELLI: Shared nationality: Italy. All three played for Juventus.",
+      "fr": "F. GATTI, G. VICARIO et M. LOCATELLI : Nationalité commune : Italie. Les trois ont joué à Juventus."
+    },
+    "oddReason": {
+      "es": "IKER CASILLAS figura con otra nacionalidad (España) y no cumple esta conexión.",
+      "en": "IKER CASILLAS has a different nationality (Spain) and does not fit this connection.",
+      "fr": "IKER CASILLAS a une autre nationalité (Espagne) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Italy-9"
+  },
+  {
+    "id": "expanded-016",
+    "difficulty": "hard",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-3389",
+        "playerId": 3389,
+        "label": "NUNO MENDES"
+      },
+      {
+        "id": "player-1931",
+        "playerId": 1931,
+        "label": "JOÃO NEVES"
+      },
+      {
+        "id": "player-190",
+        "playerId": 190,
+        "label": "GONÇALO RAMOS"
+      },
+      {
+        "id": "player-26",
+        "playerId": 26,
+        "label": "DAVID BECKHAM"
+      }
+    ],
+    "oddOptionId": "player-26",
+    "commonReason": {
+      "es": "NUNO MENDES, JOÃO NEVES y GONÇALO RAMOS: País en común: Portugal. Los tres jugaron en Paris Saint Germain.",
+      "en": "NUNO MENDES, JOÃO NEVES and GONÇALO RAMOS: Shared nationality: Portugal. All three played for Paris Saint Germain.",
+      "fr": "NUNO MENDES, JOÃO NEVES et GONÇALO RAMOS : Nationalité commune : Portugal. Les trois ont joué à Paris Saint Germain."
+    },
+    "oddReason": {
+      "es": "DAVID BECKHAM figura con otra nacionalidad (Inglaterra) y no cumple esta conexión.",
+      "en": "DAVID BECKHAM has a different nationality (England) and does not fit this connection.",
+      "fr": "DAVID BECKHAM a une autre nationalité (Angleterre) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Portugal-3"
+  },
+  {
+    "id": "expanded-017",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-1347",
+        "playerId": 1347,
+        "label": "A. BONNY"
+      },
+      {
+        "id": "player-1187",
+        "playerId": 1187,
+        "label": "M. THURAM"
+      },
+      {
+        "id": "player-200",
+        "playerId": 200,
+        "label": "A. DIOUF"
+      },
+      {
+        "id": "player-86",
+        "playerId": 86,
+        "label": "D. HANCKO"
+      }
+    ],
+    "oddOptionId": "player-86",
+    "commonReason": {
+      "es": "A. BONNY, M. THURAM y A. DIOUF: País en común: Francia. Los tres jugaron en Inter.",
+      "en": "A. BONNY, M. THURAM and A. DIOUF: Shared nationality: France. All three played for Inter.",
+      "fr": "A. BONNY, M. THURAM et A. DIOUF : Nationalité commune : France. Les trois ont joué à Inter."
+    },
+    "oddReason": {
+      "es": "D. HANCKO figura con otra nacionalidad (Eslovaquia) y no cumple esta conexión.",
+      "en": "D. HANCKO has a different nationality (Slovakia) and does not fit this connection.",
+      "fr": "D. HANCKO a une autre nationalité (Slovaquie) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-France-92"
+  },
+  {
+    "id": "expanded-018",
+    "difficulty": "hard",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-3394",
+        "playerId": 3394,
+        "label": "MARCOS LEONARDO"
+      },
+      {
+        "id": "player-3335",
+        "playerId": 3335,
+        "label": "LUCAS ROSA"
+      },
+      {
+        "id": "player-1116",
+        "playerId": 1116,
+        "label": "DAVID NERES"
+      },
+      {
+        "id": "player-63",
+        "playerId": 63,
+        "label": "FERMÍN"
+      }
+    ],
+    "oddOptionId": "player-63",
+    "commonReason": {
+      "es": "MARCOS LEONARDO, LUCAS ROSA y DAVID NERES: País en común: Brasil. Los tres jugaron en Ajax.",
+      "en": "MARCOS LEONARDO, LUCAS ROSA and DAVID NERES: Shared nationality: Brazil. All three played for Ajax.",
+      "fr": "MARCOS LEONARDO, LUCAS ROSA et DAVID NERES : Nationalité commune : Brésil. Les trois ont joué à Ajax."
+    },
+    "oddReason": {
+      "es": "FERMÍN figura con otra nacionalidad (España) y no cumple esta conexión.",
+      "en": "FERMÍN has a different nationality (Spain) and does not fit this connection.",
+      "fr": "FERMÍN a une autre nationalité (Espagne) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Brazil-45"
+  },
+  {
+    "id": "expanded-019",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-193",
+        "playerId": 193,
+        "label": "F. ESPOSITO"
+      },
+      {
+        "id": "player-3496",
+        "playerId": 3496,
+        "label": "M. SPINACCÈ"
+      },
+      {
+        "id": "player-1232",
+        "playerId": 1232,
+        "label": "A. BASTONI"
+      },
+      {
+        "id": "player-5",
+        "playerId": 5,
+        "label": "E. HAALAND"
+      }
+    ],
+    "oddOptionId": "player-5",
+    "commonReason": {
+      "es": "F. ESPOSITO, M. SPINACCÈ y A. BASTONI: País en común: Italia. Los tres jugaron en Inter.",
+      "en": "F. ESPOSITO, M. SPINACCÈ and A. BASTONI: Shared nationality: Italy. All three played for Inter.",
+      "fr": "F. ESPOSITO, M. SPINACCÈ et A. BASTONI : Nationalité commune : Italie. Les trois ont joué à Inter."
+    },
+    "oddReason": {
+      "es": "E. HAALAND figura con otra nacionalidad (Noruega) y no cumple esta conexión.",
+      "en": "E. HAALAND has a different nationality (Norway) and does not fit this connection.",
+      "fr": "E. HAALAND a une autre nationalité (Norvège) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Italy-92"
+  },
+  {
+    "id": "expanded-020",
+    "difficulty": "hard",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-784",
+        "playerId": 784,
+        "label": "M. KOVAČIĆ"
+      },
+      {
+        "id": "player-3221",
+        "playerId": 3221,
+        "label": "I. PERIŠIĆ"
+      },
+      {
+        "id": "player-3249",
+        "playerId": 3249,
+        "label": "D. LIVAKOVIĆ"
+      },
+      {
+        "id": "player-14",
+        "playerId": 14,
+        "label": "TONI KROOS"
+      }
+    ],
+    "oddOptionId": "player-14",
+    "commonReason": {
+      "es": "M. KOVAČIĆ, I. PERIŠIĆ y D. LIVAKOVIĆ: País en común: Croacia.",
+      "en": "M. KOVAČIĆ, I. PERIŠIĆ and D. LIVAKOVIĆ: Shared nationality: Croatia.",
+      "fr": "M. KOVAČIĆ, I. PERIŠIĆ et D. LIVAKOVIĆ : Nationalité commune : Croatie."
+    },
+    "oddReason": {
+      "es": "TONI KROOS figura con otra nacionalidad (Alemania) y no cumple esta conexión.",
+      "en": "TONI KROOS has a different nationality (Germany) and does not fit this connection.",
+      "fr": "TONI KROOS a une autre nationalité (Allemagne) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Croatia"
+  },
+  {
+    "id": "expanded-021",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-781",
+        "playerId": 781,
+        "label": "KEPA"
+      },
+      {
+        "id": "player-918",
+        "playerId": 918,
+        "label": "MARTÍN ZUBIMENDI"
+      },
+      {
+        "id": "player-49",
+        "playerId": 49,
+        "label": "CESC FÀBREGAS"
+      },
+      {
+        "id": "player-34",
+        "playerId": 34,
+        "label": "ALESSANDRO DEL PIERO"
+      }
+    ],
+    "oddOptionId": "player-34",
+    "commonReason": {
+      "es": "KEPA, MARTÍN ZUBIMENDI y CESC FÀBREGAS: País en común: España. Los tres jugaron en Arsenal.",
+      "en": "KEPA, MARTÍN ZUBIMENDI and CESC FÀBREGAS: Shared nationality: Spain. All three played for Arsenal.",
+      "fr": "KEPA, MARTÍN ZUBIMENDI et CESC FÀBREGAS : Nationalité commune : Espagne. Les trois ont joué à Arsenal."
+    },
+    "oddReason": {
+      "es": "ALESSANDRO DEL PIERO figura con otra nacionalidad (Italia) y no cumple esta conexión.",
+      "en": "ALESSANDRO DEL PIERO has a different nationality (Italy) and does not fit this connection.",
+      "fr": "ALESSANDRO DEL PIERO a une autre nationalité (Italie) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Spain-89"
+  },
+  {
+    "id": "expanded-022",
+    "difficulty": "hard",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-2023",
+        "playerId": 2023,
+        "label": "PEDRO FERNÁNDEZ"
+      },
+      {
+        "id": "player-1724",
+        "playerId": 1724,
+        "label": "FABIÁN RUIZ"
+      },
+      {
+        "id": "player-1736",
+        "playerId": 1736,
+        "label": "FERRAN TORRES"
+      },
+      {
+        "id": "player-1",
+        "playerId": 1,
+        "label": "LIONEL MESSI"
+      }
+    ],
+    "oddOptionId": "player-1",
+    "commonReason": {
+      "es": "PEDRO FERNÁNDEZ, FABIÁN RUIZ y FERRAN TORRES: País en común: España. Los tres jugaron en Paris Saint Germain.",
+      "en": "PEDRO FERNÁNDEZ, FABIÁN RUIZ and FERRAN TORRES: Shared nationality: Spain. All three played for Paris Saint Germain.",
+      "fr": "PEDRO FERNÁNDEZ, FABIÁN RUIZ et FERRAN TORRES : Nationalité commune : Espagne. Les trois ont joué à Paris Saint Germain."
+    },
+    "oddReason": {
+      "es": "LIONEL MESSI figura con otra nacionalidad (Argentina) y no cumple esta conexión.",
+      "en": "LIONEL MESSI has a different nationality (Argentina) and does not fit this connection.",
+      "fr": "LIONEL MESSI a une autre nationalité (Argentine) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Spain-3"
+  },
+  {
+    "id": "expanded-023",
+    "difficulty": "easy",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-800",
+        "playerId": 800,
+        "label": "H. MAGUIRE"
+      },
+      {
+        "id": "player-761",
+        "playerId": 761,
+        "label": "M. RASHFORD"
+      },
+      {
+        "id": "player-250",
+        "playerId": 250,
+        "label": "B. SAKA"
+      },
+      {
+        "id": "player-86",
+        "playerId": 86,
+        "label": "D. HANCKO"
+      }
+    ],
+    "oddOptionId": "player-86",
+    "commonReason": {
+      "es": "H. MAGUIRE, M. RASHFORD y B. SAKA: País en común: Inglaterra.",
+      "en": "H. MAGUIRE, M. RASHFORD and B. SAKA: Shared nationality: England.",
+      "fr": "H. MAGUIRE, M. RASHFORD et B. SAKA : Nationalité commune : Angleterre."
+    },
+    "oddReason": {
+      "es": "D. HANCKO figura con otra nacionalidad (Eslovaquia) y no cumple esta conexión.",
+      "en": "D. HANCKO has a different nationality (Slovakia) and does not fit this connection.",
+      "fr": "D. HANCKO a une autre nationalité (Slovaquie) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-England"
+  },
+  {
+    "id": "expanded-024",
+    "difficulty": "hard",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-345",
+        "playerId": 345,
+        "label": "JOÃO CANCELO"
+      },
+      {
+        "id": "player-249",
+        "playerId": 249,
+        "label": "RÚBEN DIAS"
+      },
+      {
+        "id": "player-913",
+        "playerId": 913,
+        "label": "MATHEUS NUNES"
+      },
+      {
+        "id": "player-97",
+        "playerId": 97,
+        "label": "PABLO BARRIOS"
+      }
+    ],
+    "oddOptionId": "player-97",
+    "commonReason": {
+      "es": "JOÃO CANCELO, RÚBEN DIAS y MATHEUS NUNES: País en común: Portugal. Los tres jugaron en Manchester City.",
+      "en": "JOÃO CANCELO, RÚBEN DIAS and MATHEUS NUNES: Shared nationality: Portugal. All three played for Manchester City.",
+      "fr": "JOÃO CANCELO, RÚBEN DIAS et MATHEUS NUNES : Nationalité commune : Portugal. Les trois ont joué à Manchester City."
+    },
+    "oddReason": {
+      "es": "PABLO BARRIOS figura con otra nacionalidad (España) y no cumple esta conexión.",
+      "en": "PABLO BARRIOS has a different nationality (Spain) and does not fit this connection.",
+      "fr": "PABLO BARRIOS a une autre nationalité (Espagne) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Portugal-19"
+  },
+  {
+    "id": "expanded-025",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-1695",
+        "playerId": 1695,
+        "label": "L. KARL"
+      },
+      {
+        "id": "player-55",
+        "playerId": 55,
+        "label": "PHILIPP LAHM"
+      },
+      {
+        "id": "player-3554",
+        "playerId": 3554,
+        "label": "CASSIANO KIALA"
+      },
+      {
+        "id": "player-46",
+        "playerId": 46,
+        "label": "DAVID VILLA"
+      }
+    ],
+    "oddOptionId": "player-46",
+    "commonReason": {
+      "es": "L. KARL, PHILIPP LAHM y CASSIANO KIALA: País en común: Alemania. Los tres jugaron en Bayern München.",
+      "en": "L. KARL, PHILIPP LAHM and CASSIANO KIALA: Shared nationality: Germany. All three played for Bayern München.",
+      "fr": "L. KARL, PHILIPP LAHM et CASSIANO KIALA : Nationalité commune : Allemagne. Les trois ont joué à Bayern München."
+    },
+    "oddReason": {
+      "es": "DAVID VILLA figura con otra nacionalidad (España) y no cumple esta conexión.",
+      "en": "DAVID VILLA has a different nationality (Spain) and does not fit this connection.",
+      "fr": "DAVID VILLA a une autre nationalité (Espagne) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Germany-50"
+  },
+  {
+    "id": "expanded-026",
+    "difficulty": "hard",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-3549",
+        "playerId": 3549,
+        "label": "M. HANSEN"
+      },
+      {
+        "id": "player-377",
+        "playerId": 377,
+        "label": "M. HJULMAND"
+      },
+      {
+        "id": "player-1362",
+        "playerId": 1362,
+        "label": "R. HØJLUND"
+      },
+      {
+        "id": "player-40",
+        "playerId": 40,
+        "label": "JOHN TERRY"
+      }
+    ],
+    "oddOptionId": "player-40",
+    "commonReason": {
+      "es": "M. HANSEN, M. HJULMAND y R. HØJLUND: País en común: Dinamarca.",
+      "en": "M. HANSEN, M. HJULMAND and R. HØJLUND: Shared nationality: Denmark.",
+      "fr": "M. HANSEN, M. HJULMAND et R. HØJLUND : Nationalité commune : Danemark."
+    },
+    "oddReason": {
+      "es": "JOHN TERRY figura con otra nacionalidad (Inglaterra) y no cumple esta conexión.",
+      "en": "JOHN TERRY has a different nationality (England) and does not fit this connection.",
+      "fr": "JOHN TERRY a une autre nationalité (Angleterre) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Denmark"
+  },
+  {
+    "id": "expanded-027",
+    "difficulty": "easy",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-88",
+        "playerId": 88,
+        "label": "VINÍCIUS JÚNIOR"
+      },
+      {
+        "id": "player-768",
+        "playerId": 768,
+        "label": "MATHEUS CUNHA"
+      },
+      {
+        "id": "player-1116",
+        "playerId": 1116,
+        "label": "DAVID NERES"
+      },
+      {
+        "id": "player-13",
+        "playerId": 13,
+        "label": "L. MODRIĆ"
+      }
+    ],
+    "oddOptionId": "player-13",
+    "commonReason": {
+      "es": "VINÍCIUS JÚNIOR, MATHEUS CUNHA y DAVID NERES: País en común: Brasil.",
+      "en": "VINÍCIUS JÚNIOR, MATHEUS CUNHA and DAVID NERES: Shared nationality: Brazil.",
+      "fr": "VINÍCIUS JÚNIOR, MATHEUS CUNHA et DAVID NERES : Nationalité commune : Brésil."
+    },
+    "oddReason": {
+      "es": "L. MODRIĆ figura con otra nacionalidad (Croacia) y no cumple esta conexión.",
+      "en": "L. MODRIĆ has a different nationality (Croatia) and does not fit this connection.",
+      "fr": "L. MODRIĆ a une autre nationalité (Croatie) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Brazil"
+  },
+  {
+    "id": "expanded-028",
+    "difficulty": "hard",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-3459",
+        "playerId": 3459,
+        "label": "C. OLUSESI"
+      },
+      {
+        "id": "player-3360",
+        "playerId": 3360,
+        "label": "B. AUSTIN"
+      },
+      {
+        "id": "player-1089",
+        "playerId": 1089,
+        "label": "L. WILLIAMS-BARNETT"
+      },
+      {
+        "id": "player-50",
+        "playerId": 50,
+        "label": "JAVIER MASCHERANO"
+      }
+    ],
+    "oddOptionId": "player-50",
+    "commonReason": {
+      "es": "C. OLUSESI, B. AUSTIN y L. WILLIAMS-BARNETT: País en común: Inglaterra. Los tres jugaron en Tottenham.",
+      "en": "C. OLUSESI, B. AUSTIN and L. WILLIAMS-BARNETT: Shared nationality: England. All three played for Tottenham.",
+      "fr": "C. OLUSESI, B. AUSTIN et L. WILLIAMS-BARNETT : Nationalité commune : Angleterre. Les trois ont joué à Tottenham."
+    },
+    "oddReason": {
+      "es": "JAVIER MASCHERANO figura con otra nacionalidad (Argentina) y no cumple esta conexión.",
+      "en": "JAVIER MASCHERANO has a different nationality (Argentina) and does not fit this connection.",
+      "fr": "JAVIER MASCHERANO a une autre nationalité (Argentine) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-England-64"
+  },
+  {
+    "id": "expanded-029",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-1734",
+        "playerId": 1734,
+        "label": "A. GOMES"
+      },
+      {
+        "id": "player-3244",
+        "playerId": 3244,
+        "label": "M. GREENWOOD"
+      },
+      {
+        "id": "player-1887",
+        "playerId": 1887,
+        "label": "C. EGAN-RILEY"
+      },
+      {
+        "id": "player-6",
+        "playerId": 6,
+        "label": "KYLIAN MBAPPÉ"
+      }
+    ],
+    "oddOptionId": "player-6",
+    "commonReason": {
+      "es": "A. GOMES, M. GREENWOOD y C. EGAN-RILEY: País en común: Inglaterra. Los tres jugaron en Marseille.",
+      "en": "A. GOMES, M. GREENWOOD and C. EGAN-RILEY: Shared nationality: England. All three played for Marseille.",
+      "fr": "A. GOMES, M. GREENWOOD et C. EGAN-RILEY : Nationalité commune : Angleterre. Les trois ont joué à Marseille."
+    },
+    "oddReason": {
+      "es": "KYLIAN MBAPPÉ figura con otra nacionalidad (Francia) y no cumple esta conexión.",
+      "en": "KYLIAN MBAPPÉ has a different nationality (France) and does not fit this connection.",
+      "fr": "KYLIAN MBAPPÉ a une autre nationalité (France) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-England-141"
+  },
+  {
+    "id": "expanded-030",
+    "difficulty": "hard",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-1374",
+        "playerId": 1374,
+        "label": "ALISSON SANTOS"
+      },
+      {
+        "id": "player-60",
+        "playerId": 60,
+        "label": "RAPHINHA"
+      },
+      {
+        "id": "player-3480",
+        "playerId": 3480,
+        "label": "LUIS GUILHERME"
+      },
+      {
+        "id": "player-13",
+        "playerId": 13,
+        "label": "L. MODRIĆ"
+      }
+    ],
+    "oddOptionId": "player-13",
+    "commonReason": {
+      "es": "ALISSON SANTOS, RAPHINHA y LUIS GUILHERME: País en común: Brasil. Los tres jugaron en Sporting CP.",
+      "en": "ALISSON SANTOS, RAPHINHA and LUIS GUILHERME: Shared nationality: Brazil. All three played for Sporting CP.",
+      "fr": "ALISSON SANTOS, RAPHINHA et LUIS GUILHERME : Nationalité commune : Brésil. Les trois ont joué à Sporting CP."
+    },
+    "oddReason": {
+      "es": "L. MODRIĆ figura con otra nacionalidad (Croacia) y no cumple esta conexión.",
+      "en": "L. MODRIĆ has a different nationality (Croatia) and does not fit this connection.",
+      "fr": "L. MODRIĆ a une autre nationalité (Croatie) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Brazil-11"
+  },
+  {
+    "id": "expanded-031",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-240",
+        "playerId": 240,
+        "label": "MARC PUBILL"
+      },
+      {
+        "id": "player-3505",
+        "playerId": 3505,
+        "label": "RAYANE BELID"
+      },
+      {
+        "id": "player-431",
+        "playerId": 431,
+        "label": "ROBIN LE NORMAND"
+      },
+      {
+        "id": "player-38",
+        "playerId": 38,
+        "label": "FRANK LAMPARD"
+      }
+    ],
+    "oddOptionId": "player-38",
+    "commonReason": {
+      "es": "MARC PUBILL, RAYANE BELID y ROBIN LE NORMAND: País en común: España. Los tres jugaron en Atletico Madrid.",
+      "en": "MARC PUBILL, RAYANE BELID and ROBIN LE NORMAND: Shared nationality: Spain. All three played for Atletico Madrid.",
+      "fr": "MARC PUBILL, RAYANE BELID et ROBIN LE NORMAND : Nationalité commune : Espagne. Les trois ont joué à Atletico Madrid."
+    },
+    "oddReason": {
+      "es": "FRANK LAMPARD figura con otra nacionalidad (Inglaterra) y no cumple esta conexión.",
+      "en": "FRANK LAMPARD has a different nationality (England) and does not fit this connection.",
+      "fr": "FRANK LAMPARD a une autre nationalité (Angleterre) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Spain-42"
+  },
+  {
+    "id": "expanded-032",
+    "difficulty": "hard",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-1736",
+        "playerId": 1736,
+        "label": "FERRAN TORRES"
+      },
+      {
+        "id": "player-49",
+        "playerId": 49,
+        "label": "CESC FÀBREGAS"
+      },
+      {
+        "id": "player-663",
+        "playerId": 663,
+        "label": "MARC BERNAL"
+      },
+      {
+        "id": "player-56",
+        "playerId": 56,
+        "label": "BASTIAN SCHWEINSTEIGER"
+      }
+    ],
+    "oddOptionId": "player-56",
+    "commonReason": {
+      "es": "FERRAN TORRES, CESC FÀBREGAS y MARC BERNAL: País en común: España. Los tres jugaron en Barcelona.",
+      "en": "FERRAN TORRES, CESC FÀBREGAS and MARC BERNAL: Shared nationality: Spain. All three played for Barcelona.",
+      "fr": "FERRAN TORRES, CESC FÀBREGAS et MARC BERNAL : Nationalité commune : Espagne. Les trois ont joué à Barcelona."
+    },
+    "oddReason": {
+      "es": "BASTIAN SCHWEINSTEIGER figura con otra nacionalidad (Alemania) y no cumple esta conexión.",
+      "en": "BASTIAN SCHWEINSTEIGER has a different nationality (Germany) and does not fit this connection.",
+      "fr": "BASTIAN SCHWEINSTEIGER a une autre nationalité (Allemagne) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Spain-4"
+  },
+  {
+    "id": "expanded-033",
+    "difficulty": "easy",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-1160",
+        "playerId": 1160,
+        "label": "A. ZAMBO ANGUISSA"
+      },
+      {
+        "id": "player-1851",
+        "playerId": 1851,
+        "label": "F. MOUMBAGNA"
+      },
+      {
+        "id": "player-3444",
+        "playerId": 3444,
+        "label": "C. BALEBA"
+      },
+      {
+        "id": "player-37",
+        "playerId": 37,
+        "label": "ROBIN VAN PERSIE"
+      }
+    ],
+    "oddOptionId": "player-37",
+    "commonReason": {
+      "es": "A. ZAMBO ANGUISSA, F. MOUMBAGNA y C. BALEBA: País en común: Camerún.",
+      "en": "A. ZAMBO ANGUISSA, F. MOUMBAGNA and C. BALEBA: Shared nationality: Cameroon.",
+      "fr": "A. ZAMBO ANGUISSA, F. MOUMBAGNA et C. BALEBA : Nationalité commune : Cameroun."
+    },
+    "oddReason": {
+      "es": "ROBIN VAN PERSIE figura con otra nacionalidad (Países Bajos) y no cumple esta conexión.",
+      "en": "ROBIN VAN PERSIE has a different nationality (Netherlands) and does not fit this connection.",
+      "fr": "ROBIN VAN PERSIE a une autre nationalité (Pays-Bas) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Cameroon"
+  },
+  {
+    "id": "expanded-034",
+    "difficulty": "hard",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-1121",
+        "playerId": 1121,
+        "label": "B. CRISTANTE"
+      },
+      {
+        "id": "player-1125",
+        "playerId": 1125,
+        "label": "C. PINSOGLIO"
+      },
+      {
+        "id": "player-298",
+        "playerId": 298,
+        "label": "M. LOCATELLI"
+      },
+      {
+        "id": "player-40",
+        "playerId": 40,
+        "label": "JOHN TERRY"
+      }
+    ],
+    "oddOptionId": "player-40",
+    "commonReason": {
+      "es": "B. CRISTANTE, C. PINSOGLIO y M. LOCATELLI: País en común: Italia.",
+      "en": "B. CRISTANTE, C. PINSOGLIO and M. LOCATELLI: Shared nationality: Italy.",
+      "fr": "B. CRISTANTE, C. PINSOGLIO et M. LOCATELLI : Nationalité commune : Italie."
+    },
+    "oddReason": {
+      "es": "JOHN TERRY figura con otra nacionalidad (Inglaterra) y no cumple esta conexión.",
+      "en": "JOHN TERRY has a different nationality (England) and does not fit this connection.",
+      "fr": "JOHN TERRY a une autre nationalité (Angleterre) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Italy"
+  },
+  {
+    "id": "expanded-035",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-293",
+        "playerId": 293,
+        "label": "J. BELLINGHAM"
+      },
+      {
+        "id": "player-1017",
+        "playerId": 1017,
+        "label": "J. BYNOE-GITTENS"
+      },
+      {
+        "id": "player-1026",
+        "playerId": 1026,
+        "label": "E. NWANERI"
+      },
+      {
+        "id": "player-53",
+        "playerId": 53,
+        "label": "CARLOS TÉVEZ"
+      }
+    ],
+    "oddOptionId": "player-53",
+    "commonReason": {
+      "es": "J. BELLINGHAM, J. BYNOE-GITTENS y E. NWANERI: País en común: Inglaterra. Los tres jugaron en Borussia Dortmund.",
+      "en": "J. BELLINGHAM, J. BYNOE-GITTENS and E. NWANERI: Shared nationality: England. All three played for Borussia Dortmund.",
+      "fr": "J. BELLINGHAM, J. BYNOE-GITTENS et E. NWANERI : Nationalité commune : Angleterre. Les trois ont joué à Borussia Dortmund."
+    },
+    "oddReason": {
+      "es": "CARLOS TÉVEZ figura con otra nacionalidad (Argentina) y no cumple esta conexión.",
+      "en": "CARLOS TÉVEZ has a different nationality (Argentina) and does not fit this connection.",
+      "fr": "CARLOS TÉVEZ a une autre nationalité (Argentine) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-England-21"
+  },
+  {
+    "id": "expanded-036",
+    "difficulty": "hard",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-3439",
+        "playerId": 3439,
+        "label": "KAIQUE"
+      },
+      {
+        "id": "player-3489",
+        "playerId": 3489,
+        "label": "ALLAN"
+      },
+      {
+        "id": "player-3456",
+        "playerId": 3456,
+        "label": "ENDRICK"
+      },
+      {
+        "id": "player-56",
+        "playerId": 56,
+        "label": "BASTIAN SCHWEINSTEIGER"
+      }
+    ],
+    "oddOptionId": "player-56",
+    "commonReason": {
+      "es": "KAIQUE, ALLAN y ENDRICK: País en común: Brasil. Los tres jugaron en Palmeiras.",
+      "en": "KAIQUE, ALLAN and ENDRICK: Shared nationality: Brazil. All three played for Palmeiras.",
+      "fr": "KAIQUE, ALLAN et ENDRICK : Nationalité commune : Brésil. Les trois ont joué à Palmeiras."
+    },
+    "oddReason": {
+      "es": "BASTIAN SCHWEINSTEIGER figura con otra nacionalidad (Alemania) y no cumple esta conexión.",
+      "en": "BASTIAN SCHWEINSTEIGER has a different nationality (Germany) and does not fit this connection.",
+      "fr": "BASTIAN SCHWEINSTEIGER a une autre nationalité (Allemagne) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Brazil-1752"
+  },
+  {
+    "id": "expanded-037",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-3246",
+        "playerId": 3246,
+        "label": "J. BRANDT"
+      },
+      {
+        "id": "player-286",
+        "playerId": 286,
+        "label": "W. ANTON"
+      },
+      {
+        "id": "player-1590",
+        "playerId": 1590,
+        "label": "A. MEYER"
+      },
+      {
+        "id": "player-37",
+        "playerId": 37,
+        "label": "ROBIN VAN PERSIE"
+      }
+    ],
+    "oddOptionId": "player-37",
+    "commonReason": {
+      "es": "J. BRANDT, W. ANTON y A. MEYER: País en común: Alemania. Los tres jugaron en Borussia Dortmund.",
+      "en": "J. BRANDT, W. ANTON and A. MEYER: Shared nationality: Germany. All three played for Borussia Dortmund.",
+      "fr": "J. BRANDT, W. ANTON et A. MEYER : Nationalité commune : Allemagne. Les trois ont joué à Borussia Dortmund."
+    },
+    "oddReason": {
+      "es": "ROBIN VAN PERSIE figura con otra nacionalidad (Países Bajos) y no cumple esta conexión.",
+      "en": "ROBIN VAN PERSIE has a different nationality (Netherlands) and does not fit this connection.",
+      "fr": "ROBIN VAN PERSIE a une autre nationalité (Pays-Bas) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Germany-21"
+  },
+  {
+    "id": "expanded-038",
+    "difficulty": "hard",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-788",
+        "playerId": 788,
+        "label": "LISANDRO MARTÍNEZ"
+      },
+      {
+        "id": "player-371",
+        "playerId": 371,
+        "label": "J. MUSSO"
+      },
+      {
+        "id": "player-50",
+        "playerId": 50,
+        "label": "JAVIER MASCHERANO"
+      },
+      {
+        "id": "player-33",
+        "playerId": 33,
+        "label": "FRANCESCO TOTTI"
+      }
+    ],
+    "oddOptionId": "player-33",
+    "commonReason": {
+      "es": "LISANDRO MARTÍNEZ, J. MUSSO y JAVIER MASCHERANO: País en común: Argentina.",
+      "en": "LISANDRO MARTÍNEZ, J. MUSSO and JAVIER MASCHERANO: Shared nationality: Argentina.",
+      "fr": "LISANDRO MARTÍNEZ, J. MUSSO et JAVIER MASCHERANO : Nationalité commune : Argentine."
+    },
+    "oddReason": {
+      "es": "FRANCESCO TOTTI figura con otra nacionalidad (Italia) y no cumple esta conexión.",
+      "en": "FRANCESCO TOTTI has a different nationality (Italy) and does not fit this connection.",
+      "fr": "FRANCESCO TOTTI a une autre nationalité (Italie) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Argentina"
+  },
+  {
+    "id": "expanded-039",
+    "difficulty": "easy",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-1215",
+        "playerId": 1215,
+        "label": "J. BOGA"
+      },
+      {
+        "id": "player-3361",
+        "playerId": 3361,
+        "label": "A. DIALLO"
+      },
+      {
+        "id": "player-692",
+        "playerId": 692,
+        "label": "Y. DIOMANDE"
+      },
+      {
+        "id": "player-99",
+        "playerId": 99,
+        "label": "R. CHERKI"
+      }
+    ],
+    "oddOptionId": "player-99",
+    "commonReason": {
+      "es": "J. BOGA, A. DIALLO y Y. DIOMANDE: País en común: Côte d’Ivoire.",
+      "en": "J. BOGA, A. DIALLO and Y. DIOMANDE: Shared nationality: Côte d’Ivoire.",
+      "fr": "J. BOGA, A. DIALLO et Y. DIOMANDE : Nationalité commune : Côte d’Ivoire."
+    },
+    "oddReason": {
+      "es": "R. CHERKI figura con otra nacionalidad (Francia) y no cumple esta conexión.",
+      "en": "R. CHERKI has a different nationality (France) and does not fit this connection.",
+      "fr": "R. CHERKI a une autre nationalité (France) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Côte d'Ivoire"
+  },
+  {
+    "id": "expanded-040",
+    "difficulty": "hard",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-3414",
+        "playerId": 3414,
+        "label": "A. HADJ-MOUSSA"
+      },
+      {
+        "id": "player-1785",
+        "playerId": 1785,
+        "label": "H. ABDELLI"
+      },
+      {
+        "id": "player-3257",
+        "playerId": 3257,
+        "label": "R. BENSEBAÏNI"
+      },
+      {
+        "id": "player-43",
+        "playerId": 43,
+        "label": "RYAN GIGGS"
+      }
+    ],
+    "oddOptionId": "player-43",
+    "commonReason": {
+      "es": "A. HADJ-MOUSSA, H. ABDELLI y R. BENSEBAÏNI: País en común: Argelia.",
+      "en": "A. HADJ-MOUSSA, H. ABDELLI and R. BENSEBAÏNI: Shared nationality: Algeria.",
+      "fr": "A. HADJ-MOUSSA, H. ABDELLI et R. BENSEBAÏNI : Nationalité commune : Algérie."
+    },
+    "oddReason": {
+      "es": "RYAN GIGGS figura con otra nacionalidad (Gales) y no cumple esta conexión.",
+      "en": "RYAN GIGGS has a different nationality (Wales) and does not fit this connection.",
+      "fr": "RYAN GIGGS a une autre nationalité (Pays de Galles) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Algeria"
+  },
+  {
+    "id": "expanded-041",
+    "difficulty": "easy",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-1711",
+        "playerId": 1711,
+        "label": "A. HAKIMI"
+      },
+      {
+        "id": "player-1726",
+        "playerId": 1726,
+        "label": "A. HARIT"
+      },
+      {
+        "id": "player-3400",
+        "playerId": 3400,
+        "label": "O. TARGHALLINE"
+      },
+      {
+        "id": "player-14",
+        "playerId": 14,
+        "label": "TONI KROOS"
+      }
+    ],
+    "oddOptionId": "player-14",
+    "commonReason": {
+      "es": "A. HAKIMI, A. HARIT y O. TARGHALLINE: País en común: Marruecos.",
+      "en": "A. HAKIMI, A. HARIT and O. TARGHALLINE: Shared nationality: Morocco.",
+      "fr": "A. HAKIMI, A. HARIT et O. TARGHALLINE : Nationalité commune : Maroc."
+    },
+    "oddReason": {
+      "es": "TONI KROOS figura con otra nacionalidad (Alemania) y no cumple esta conexión.",
+      "en": "TONI KROOS has a different nationality (Germany) and does not fit this connection.",
+      "fr": "TONI KROOS a une autre nationalité (Allemagne) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Morocco"
+  },
+  {
+    "id": "expanded-042",
+    "difficulty": "hard",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-803",
+        "playerId": 803,
+        "label": "E. FERNÁNDEZ"
+      },
+      {
+        "id": "player-53",
+        "playerId": 53,
+        "label": "CARLOS TÉVEZ"
+      },
+      {
+        "id": "player-374",
+        "playerId": 374,
+        "label": "J. ÁLVAREZ"
+      },
+      {
+        "id": "player-43",
+        "playerId": 43,
+        "label": "RYAN GIGGS"
+      }
+    ],
+    "oddOptionId": "player-43",
+    "commonReason": {
+      "es": "E. FERNÁNDEZ, CARLOS TÉVEZ y J. ÁLVAREZ: País en común: Argentina. Los tres jugaron en Manchester City.",
+      "en": "E. FERNÁNDEZ, CARLOS TÉVEZ and J. ÁLVAREZ: Shared nationality: Argentina. All three played for Manchester City.",
+      "fr": "E. FERNÁNDEZ, CARLOS TÉVEZ et J. ÁLVAREZ : Nationalité commune : Argentine. Les trois ont joué à Manchester City."
+    },
+    "oddReason": {
+      "es": "RYAN GIGGS figura con otra nacionalidad (Gales) y no cumple esta conexión.",
+      "en": "RYAN GIGGS has a different nationality (Wales) and does not fit this connection.",
+      "fr": "RYAN GIGGS a une autre nationalité (Pays de Galles) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Argentina-19"
+  },
+  {
+    "id": "expanded-043",
+    "difficulty": "easy",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-3427",
+        "playerId": 3427,
+        "label": "R. BARDGHJI"
+      },
+      {
+        "id": "player-841",
+        "playerId": 841,
+        "label": "V. GYÖKERES"
+      },
+      {
+        "id": "player-23",
+        "playerId": 23,
+        "label": "ZLATAN IBRAHIMOVIĆ"
+      },
+      {
+        "id": "player-6",
+        "playerId": 6,
+        "label": "KYLIAN MBAPPÉ"
+      }
+    ],
+    "oddOptionId": "player-6",
+    "commonReason": {
+      "es": "R. BARDGHJI, V. GYÖKERES y ZLATAN IBRAHIMOVIĆ: País en común: Suecia.",
+      "en": "R. BARDGHJI, V. GYÖKERES and ZLATAN IBRAHIMOVIĆ: Shared nationality: Sweden.",
+      "fr": "R. BARDGHJI, V. GYÖKERES et ZLATAN IBRAHIMOVIĆ : Nationalité commune : Suède."
+    },
+    "oddReason": {
+      "es": "KYLIAN MBAPPÉ figura con otra nacionalidad (Francia) y no cumple esta conexión.",
+      "en": "KYLIAN MBAPPÉ has a different nationality (France) and does not fit this connection.",
+      "fr": "KYLIAN MBAPPÉ a une autre nationalité (France) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Sweden"
+  },
+  {
+    "id": "expanded-044",
+    "difficulty": "hard",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-3315",
+        "playerId": 3315,
+        "label": "J. SCHOUTEN"
+      },
+      {
+        "id": "player-181",
+        "playerId": 181,
+        "label": "D. MALEN"
+      },
+      {
+        "id": "player-3434",
+        "playerId": 3434,
+        "label": "R. FLAMINGO"
+      },
+      {
+        "id": "player-33",
+        "playerId": 33,
+        "label": "FRANCESCO TOTTI"
+      }
+    ],
+    "oddOptionId": "player-33",
+    "commonReason": {
+      "es": "J. SCHOUTEN, D. MALEN y R. FLAMINGO: País en común: Países Bajos. Los tres jugaron en PSV Eindhoven.",
+      "en": "J. SCHOUTEN, D. MALEN and R. FLAMINGO: Shared nationality: Netherlands. All three played for PSV Eindhoven.",
+      "fr": "J. SCHOUTEN, D. MALEN et R. FLAMINGO : Nationalité commune : Pays-Bas. Les trois ont joué à PSV Eindhoven."
+    },
+    "oddReason": {
+      "es": "FRANCESCO TOTTI figura con otra nacionalidad (Italia) y no cumple esta conexión.",
+      "en": "FRANCESCO TOTTI has a different nationality (Italy) and does not fit this connection.",
+      "fr": "FRANCESCO TOTTI a une autre nationalité (Italie) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Netherlands-290"
+  },
+  {
+    "id": "expanded-045",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-3358",
+        "playerId": 3358,
+        "label": "K. AKTÜRKOĞLU"
+      },
+      {
+        "id": "player-3253",
+        "playerId": 3253,
+        "label": "M. MÜLDÜR"
+      },
+      {
+        "id": "player-3387",
+        "playerId": 3387,
+        "label": "İ. YÜKSEK"
+      },
+      {
+        "id": "player-58",
+        "playerId": 58,
+        "label": "ÁLEX BAENA"
+      }
+    ],
+    "oddOptionId": "player-58",
+    "commonReason": {
+      "es": "K. AKTÜRKOĞLU, M. MÜLDÜR y İ. YÜKSEK: País en común: Turquía. Los tres jugaron en Fenerbahçe.",
+      "en": "K. AKTÜRKOĞLU, M. MÜLDÜR and İ. YÜKSEK: Shared nationality: Türkiye. All three played for Fenerbahçe.",
+      "fr": "K. AKTÜRKOĞLU, M. MÜLDÜR et İ. YÜKSEK : Nationalité commune : Turquie. Les trois ont joué à Fenerbahçe."
+    },
+    "oddReason": {
+      "es": "ÁLEX BAENA figura con otra nacionalidad (España) y no cumple esta conexión.",
+      "en": "ÁLEX BAENA has a different nationality (Spain) and does not fit this connection.",
+      "fr": "ÁLEX BAENA a une autre nationalité (Espagne) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Türkiye-113"
+  },
+  {
+    "id": "expanded-046",
+    "difficulty": "hard",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-1759",
+        "playerId": 1759,
+        "label": "L. DIGNE"
+      },
+      {
+        "id": "player-3219",
+        "playerId": 3219,
+        "label": "C. LENGLET"
+      },
+      {
+        "id": "player-22",
+        "playerId": 22,
+        "label": "THIERRY HENRY"
+      },
+      {
+        "id": "player-58",
+        "playerId": 58,
+        "label": "ÁLEX BAENA"
+      }
+    ],
+    "oddOptionId": "player-58",
+    "commonReason": {
+      "es": "L. DIGNE, C. LENGLET y THIERRY HENRY: País en común: Francia. Los tres jugaron en Barcelona.",
+      "en": "L. DIGNE, C. LENGLET and THIERRY HENRY: Shared nationality: France. All three played for Barcelona.",
+      "fr": "L. DIGNE, C. LENGLET et THIERRY HENRY : Nationalité commune : France. Les trois ont joué à Barcelona."
+    },
+    "oddReason": {
+      "es": "ÁLEX BAENA figura con otra nacionalidad (España) y no cumple esta conexión.",
+      "en": "ÁLEX BAENA has a different nationality (Spain) and does not fit this connection.",
+      "fr": "ÁLEX BAENA a une autre nationalité (Espagne) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-France-4"
+  },
+  {
+    "id": "expanded-047",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-2033",
+        "playerId": 2033,
+        "label": "K. MERAH"
+      },
+      {
+        "id": "player-99",
+        "playerId": 99,
+        "label": "R. CHERKI"
+      },
+      {
+        "id": "player-1790",
+        "playerId": 1790,
+        "label": "R. DESCAMPS"
+      },
+      {
+        "id": "player-38",
+        "playerId": 38,
+        "label": "FRANK LAMPARD"
+      }
+    ],
+    "oddOptionId": "player-38",
+    "commonReason": {
+      "es": "K. MERAH, R. CHERKI y R. DESCAMPS: País en común: Francia. Los tres jugaron en Lyon.",
+      "en": "K. MERAH, R. CHERKI and R. DESCAMPS: Shared nationality: France. All three played for Lyon.",
+      "fr": "K. MERAH, R. CHERKI et R. DESCAMPS : Nationalité commune : France. Les trois ont joué à Lyon."
+    },
+    "oddReason": {
+      "es": "FRANK LAMPARD figura con otra nacionalidad (Inglaterra) y no cumple esta conexión.",
+      "en": "FRANK LAMPARD has a different nationality (England) and does not fit this connection.",
+      "fr": "FRANK LAMPARD a une autre nationalité (Angleterre) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-France-53"
+  },
+  {
+    "id": "expanded-048",
+    "difficulty": "hard",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-3464",
+        "playerId": 3464,
+        "label": "RAFAEL FERREIRA NEL"
+      },
+      {
+        "id": "player-3322",
+        "playerId": 3322,
+        "label": "JOÃO PALHINHA"
+      },
+      {
+        "id": "player-3392",
+        "playerId": 3392,
+        "label": "GONÇALO INÁCIO"
+      },
+      {
+        "id": "player-57",
+        "playerId": 57,
+        "label": "FRANCK RIBÉRY"
+      }
+    ],
+    "oddOptionId": "player-57",
+    "commonReason": {
+      "es": "RAFAEL FERREIRA NEL, JOÃO PALHINHA y GONÇALO INÁCIO: País en común: Portugal. Los tres jugaron en Sporting CP.",
+      "en": "RAFAEL FERREIRA NEL, JOÃO PALHINHA and GONÇALO INÁCIO: Shared nationality: Portugal. All three played for Sporting CP.",
+      "fr": "RAFAEL FERREIRA NEL, JOÃO PALHINHA et GONÇALO INÁCIO : Nationalité commune : Portugal. Les trois ont joué à Sporting CP."
+    },
+    "oddReason": {
+      "es": "FRANCK RIBÉRY figura con otra nacionalidad (Francia) y no cumple esta conexión.",
+      "en": "FRANCK RIBÉRY has a different nationality (France) and does not fit this connection.",
+      "fr": "FRANCK RIBÉRY a une autre nationalité (France) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Portugal-11"
+  },
+  {
+    "id": "expanded-049",
+    "difficulty": "easy",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-51",
+        "playerId": 51,
+        "label": "DIEGO FORLÁN"
+      },
+      {
+        "id": "player-322",
+        "playerId": 322,
+        "label": "J. GIMÉNEZ"
+      },
+      {
+        "id": "player-3344",
+        "playerId": 3344,
+        "label": "R. ZALAZAR"
+      },
+      {
+        "id": "player-102",
+        "playerId": 102,
+        "label": "C. GAKPO"
+      }
+    ],
+    "oddOptionId": "player-102",
+    "commonReason": {
+      "es": "DIEGO FORLÁN, J. GIMÉNEZ y R. ZALAZAR: País en común: Uruguay.",
+      "en": "DIEGO FORLÁN, J. GIMÉNEZ and R. ZALAZAR: Shared nationality: Uruguay.",
+      "fr": "DIEGO FORLÁN, J. GIMÉNEZ et R. ZALAZAR : Nationalité commune : Uruguay."
+    },
+    "oddReason": {
+      "es": "C. GAKPO figura con otra nacionalidad (Países Bajos) y no cumple esta conexión.",
+      "en": "C. GAKPO has a different nationality (Netherlands) and does not fit this connection.",
+      "fr": "C. GAKPO a une autre nationalité (Pays-Bas) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Uruguay"
+  },
+  {
+    "id": "expanded-050",
+    "difficulty": "hard",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-800",
+        "playerId": 800,
+        "label": "H. MAGUIRE"
+      },
+      {
+        "id": "player-1010",
+        "playerId": 1010,
+        "label": "K. MAINOO"
+      },
+      {
+        "id": "player-1734",
+        "playerId": 1734,
+        "label": "A. GOMES"
+      },
+      {
+        "id": "player-29",
+        "playerId": 29,
+        "label": "RAÚL GONZÁLEZ"
+      }
+    ],
+    "oddOptionId": "player-29",
+    "commonReason": {
+      "es": "H. MAGUIRE, K. MAINOO y A. GOMES: País en común: Inglaterra. Los tres jugaron en Manchester United.",
+      "en": "H. MAGUIRE, K. MAINOO and A. GOMES: Shared nationality: England. All three played for Manchester United.",
+      "fr": "H. MAGUIRE, K. MAINOO et A. GOMES : Nationalité commune : Angleterre. Les trois ont joué à Manchester United."
+    },
+    "oddReason": {
+      "es": "RAÚL GONZÁLEZ figura con otra nacionalidad (España) y no cumple esta conexión.",
+      "en": "RAÚL GONZÁLEZ has a different nationality (Spain) and does not fit this connection.",
+      "fr": "RAÚL GONZÁLEZ a une autre nationalité (Espagne) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-England-8"
+  },
+  {
+    "id": "expanded-051",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-1076",
+        "playerId": 1076,
+        "label": "C. ECHEVERRI"
+      },
+      {
+        "id": "player-803",
+        "playerId": 803,
+        "label": "E. FERNÁNDEZ"
+      },
+      {
+        "id": "player-50",
+        "playerId": 50,
+        "label": "JAVIER MASCHERANO"
+      },
+      {
+        "id": "player-23",
+        "playerId": 23,
+        "label": "ZLATAN IBRAHIMOVIĆ"
+      }
+    ],
+    "oddOptionId": "player-23",
+    "commonReason": {
+      "es": "C. ECHEVERRI, E. FERNÁNDEZ y JAVIER MASCHERANO: País en común: Argentina. Los tres jugaron en River Plate.",
+      "en": "C. ECHEVERRI, E. FERNÁNDEZ and JAVIER MASCHERANO: Shared nationality: Argentina. All three played for River Plate.",
+      "fr": "C. ECHEVERRI, E. FERNÁNDEZ et JAVIER MASCHERANO : Nationalité commune : Argentine. Les trois ont joué à River Plate."
+    },
+    "oddReason": {
+      "es": "ZLATAN IBRAHIMOVIĆ figura con otra nacionalidad (Suecia) y no cumple esta conexión.",
+      "en": "ZLATAN IBRAHIMOVIĆ has a different nationality (Sweden) and does not fit this connection.",
+      "fr": "ZLATAN IBRAHIMOVIĆ a une autre nationalité (Suède) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Argentina-1780"
+  },
+  {
+    "id": "expanded-052",
+    "difficulty": "hard",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-3372",
+        "playerId": 3372,
+        "label": "D. RENSCH"
+      },
+      {
+        "id": "player-181",
+        "playerId": 181,
+        "label": "D. MALEN"
+      },
+      {
+        "id": "player-630",
+        "playerId": 630,
+        "label": "D. HUIJSEN"
+      },
+      {
+        "id": "player-13",
+        "playerId": 13,
+        "label": "L. MODRIĆ"
+      }
+    ],
+    "oddOptionId": "player-13",
+    "commonReason": {
+      "es": "D. RENSCH, D. MALEN y D. HUIJSEN: País en común: Países Bajos. Los tres jugaron en AS Roma.",
+      "en": "D. RENSCH, D. MALEN and D. HUIJSEN: Shared nationality: Netherlands. All three played for AS Roma.",
+      "fr": "D. RENSCH, D. MALEN et D. HUIJSEN : Nationalité commune : Pays-Bas. Les trois ont joué à AS Roma."
+    },
+    "oddReason": {
+      "es": "L. MODRIĆ figura con otra nacionalidad (Croacia) y no cumple esta conexión.",
+      "en": "L. MODRIĆ has a different nationality (Croatia) and does not fit this connection.",
+      "fr": "L. MODRIĆ a une autre nationalité (Croatie) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Netherlands-56"
+  },
+  {
+    "id": "expanded-053",
+    "difficulty": "easy",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-354",
+        "playerId": 354,
+        "label": "J. KOUNDÉ"
+      },
+      {
+        "id": "player-4",
+        "playerId": 4,
+        "label": "ZINEDINE ZIDANE"
+      },
+      {
+        "id": "player-260",
+        "playerId": 260,
+        "label": "J. JACQUET"
+      },
+      {
+        "id": "player-108",
+        "playerId": 108,
+        "label": "P. FODEN"
+      }
+    ],
+    "oddOptionId": "player-108",
+    "commonReason": {
+      "es": "J. KOUNDÉ, ZINEDINE ZIDANE y J. JACQUET: País en común: Francia.",
+      "en": "J. KOUNDÉ, ZINEDINE ZIDANE and J. JACQUET: Shared nationality: France.",
+      "fr": "J. KOUNDÉ, ZINEDINE ZIDANE et J. JACQUET : Nationalité commune : France."
+    },
+    "oddReason": {
+      "es": "P. FODEN figura con otra nacionalidad (Inglaterra) y no cumple esta conexión.",
+      "en": "P. FODEN has a different nationality (England) and does not fit this connection.",
+      "fr": "P. FODEN a une autre nationalité (Angleterre) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-France"
+  },
+  {
+    "id": "expanded-054",
+    "difficulty": "hard",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-298",
+        "playerId": 298,
+        "label": "M. LOCATELLI"
+      },
+      {
+        "id": "player-1286",
+        "playerId": 1286,
+        "label": "M. GABBIA"
+      },
+      {
+        "id": "player-191",
+        "playerId": 191,
+        "label": "A. CISSÈ"
+      },
+      {
+        "id": "player-23",
+        "playerId": 23,
+        "label": "ZLATAN IBRAHIMOVIĆ"
+      }
+    ],
+    "oddOptionId": "player-23",
+    "commonReason": {
+      "es": "M. LOCATELLI, M. GABBIA y A. CISSÈ: País en común: Italia. Los tres jugaron en AC Milan.",
+      "en": "M. LOCATELLI, M. GABBIA and A. CISSÈ: Shared nationality: Italy. All three played for AC Milan.",
+      "fr": "M. LOCATELLI, M. GABBIA et A. CISSÈ : Nationalité commune : Italie. Les trois ont joué à AC Milan."
+    },
+    "oddReason": {
+      "es": "ZLATAN IBRAHIMOVIĆ figura con otra nacionalidad (Suecia) y no cumple esta conexión.",
+      "en": "ZLATAN IBRAHIMOVIĆ has a different nationality (Sweden) and does not fit this connection.",
+      "fr": "ZLATAN IBRAHIMOVIĆ a une autre nationalité (Suède) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Italy-17"
+  },
+  {
+    "id": "expanded-055",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-1163",
+        "playerId": 1163,
+        "label": "N. MOLINA"
+      },
+      {
+        "id": "player-1194",
+        "playerId": 1194,
+        "label": "N. GONZÁLEZ"
+      },
+      {
+        "id": "player-394",
+        "playerId": 394,
+        "label": "C. ROMERO"
+      },
+      {
+        "id": "player-88",
+        "playerId": 88,
+        "label": "VINÍCIUS JÚNIOR"
+      }
+    ],
+    "oddOptionId": "player-88",
+    "commonReason": {
+      "es": "N. MOLINA, N. GONZÁLEZ y C. ROMERO: País en común: Argentina. Los tres jugaron en Atletico Madrid.",
+      "en": "N. MOLINA, N. GONZÁLEZ and C. ROMERO: Shared nationality: Argentina. All three played for Atletico Madrid.",
+      "fr": "N. MOLINA, N. GONZÁLEZ et C. ROMERO : Nationalité commune : Argentine. Les trois ont joué à Atletico Madrid."
+    },
+    "oddReason": {
+      "es": "VINÍCIUS JÚNIOR figura con otra nacionalidad (Brasil) y no cumple esta conexión.",
+      "en": "VINÍCIUS JÚNIOR has a different nationality (Brazil) and does not fit this connection.",
+      "fr": "VINÍCIUS JÚNIOR a une autre nationalité (Brésil) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Argentina-42"
+  },
+  {
+    "id": "expanded-056",
+    "difficulty": "hard",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-3233",
+        "playerId": 3233,
+        "label": "F. DE JONG"
+      },
+      {
+        "id": "player-3308",
+        "playerId": 3308,
+        "label": "M. PAES"
+      },
+      {
+        "id": "player-1046",
+        "playerId": 1046,
+        "label": "J. HATO"
+      },
+      {
+        "id": "player-33",
+        "playerId": 33,
+        "label": "FRANCESCO TOTTI"
+      }
+    ],
+    "oddOptionId": "player-33",
+    "commonReason": {
+      "es": "F. DE JONG, M. PAES y J. HATO: País en común: Países Bajos. Los tres jugaron en Ajax.",
+      "en": "F. DE JONG, M. PAES and J. HATO: Shared nationality: Netherlands. All three played for Ajax.",
+      "fr": "F. DE JONG, M. PAES et J. HATO : Nationalité commune : Pays-Bas. Les trois ont joué à Ajax."
+    },
+    "oddReason": {
+      "es": "FRANCESCO TOTTI figura con otra nacionalidad (Italia) y no cumple esta conexión.",
+      "en": "FRANCESCO TOTTI has a different nationality (Italy) and does not fit this connection.",
+      "fr": "FRANCESCO TOTTI a une autre nationalité (Italie) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Netherlands-45"
+  },
+  {
+    "id": "expanded-057",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-106",
+        "playerId": 106,
+        "label": "M. GUÉHI"
+      },
+      {
+        "id": "player-1887",
+        "playerId": 1887,
+        "label": "C. EGAN-RILEY"
+      },
+      {
+        "id": "player-112",
+        "playerId": 112,
+        "label": "C. PALMER"
+      },
+      {
+        "id": "player-56",
+        "playerId": 56,
+        "label": "BASTIAN SCHWEINSTEIGER"
+      }
+    ],
+    "oddOptionId": "player-56",
+    "commonReason": {
+      "es": "M. GUÉHI, C. EGAN-RILEY y C. PALMER: País en común: Inglaterra. Los tres jugaron en Manchester City.",
+      "en": "M. GUÉHI, C. EGAN-RILEY and C. PALMER: Shared nationality: England. All three played for Manchester City.",
+      "fr": "M. GUÉHI, C. EGAN-RILEY et C. PALMER : Nationalité commune : Angleterre. Les trois ont joué à Manchester City."
+    },
+    "oddReason": {
+      "es": "BASTIAN SCHWEINSTEIGER figura con otra nacionalidad (Alemania) y no cumple esta conexión.",
+      "en": "BASTIAN SCHWEINSTEIGER has a different nationality (Germany) and does not fit this connection.",
+      "fr": "BASTIAN SCHWEINSTEIGER a une autre nationalité (Allemagne) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-England-19"
+  },
+  {
+    "id": "expanded-058",
+    "difficulty": "hard",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-3320",
+        "playerId": 3320,
+        "label": "J. KAMIŃSKI"
+      },
+      {
+        "id": "player-209",
+        "playerId": 209,
+        "label": "P. ZIELIŃSKI"
+      },
+      {
+        "id": "player-3321",
+        "playerId": 3321,
+        "label": "J. MODER"
+      },
+      {
+        "id": "player-21",
+        "playerId": 21,
+        "label": "ANDREA PIRLO"
+      }
+    ],
+    "oddOptionId": "player-21",
+    "commonReason": {
+      "es": "J. KAMIŃSKI, P. ZIELIŃSKI y J. MODER: País en común: Polonia.",
+      "en": "J. KAMIŃSKI, P. ZIELIŃSKI and J. MODER: Shared nationality: Poland.",
+      "fr": "J. KAMIŃSKI, P. ZIELIŃSKI et J. MODER : Nationalité commune : Pologne."
+    },
+    "oddReason": {
+      "es": "ANDREA PIRLO figura con otra nacionalidad (Italia) y no cumple esta conexión.",
+      "en": "ANDREA PIRLO has a different nationality (Italy) and does not fit this connection.",
+      "fr": "ANDREA PIRLO a une autre nationalité (Italie) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Poland"
+  },
+  {
+    "id": "expanded-059",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-3456",
+        "playerId": 3456,
+        "label": "ENDRICK"
+      },
+      {
+        "id": "player-25",
+        "playerId": 25,
+        "label": "KAKÁ"
+      },
+      {
+        "id": "player-30",
+        "playerId": 30,
+        "label": "ROBERTO CARLOS"
+      },
+      {
+        "id": "player-69",
+        "playerId": 69,
+        "label": "LEE KANG-IN"
+      }
+    ],
+    "oddOptionId": "player-69",
+    "commonReason": {
+      "es": "ENDRICK, KAKÁ y ROBERTO CARLOS: País en común: Brasil. Los tres jugaron en Real Madrid.",
+      "en": "ENDRICK, KAKÁ and ROBERTO CARLOS: Shared nationality: Brazil. All three played for Real Madrid.",
+      "fr": "ENDRICK, KAKÁ et ROBERTO CARLOS : Nationalité commune : Brésil. Les trois ont joué à Real Madrid."
+    },
+    "oddReason": {
+      "es": "LEE KANG-IN figura con otra nacionalidad (Corea del Sur) y no cumple esta conexión.",
+      "en": "LEE KANG-IN has a different nationality (South Korea) and does not fit this connection.",
+      "fr": "LEE KANG-IN a une autre nationalité (Corée du Sud) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Brazil-10"
+  },
+  {
+    "id": "expanded-060",
+    "difficulty": "hard",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-39",
+        "playerId": 39,
+        "label": "STEVEN GERRARD"
+      },
+      {
+        "id": "player-331",
+        "playerId": 331,
+        "label": "T. ALEXANDER-ARNOLD"
+      },
+      {
+        "id": "player-3226",
+        "playerId": 3226,
+        "label": "J. HENDERSON"
+      },
+      {
+        "id": "player-1",
+        "playerId": 1,
+        "label": "LIONEL MESSI"
+      }
+    ],
+    "oddOptionId": "player-1",
+    "commonReason": {
+      "es": "STEVEN GERRARD, T. ALEXANDER-ARNOLD y J. HENDERSON: País en común: Inglaterra. Los tres jugaron en Liverpool.",
+      "en": "STEVEN GERRARD, T. ALEXANDER-ARNOLD and J. HENDERSON: Shared nationality: England. All three played for Liverpool.",
+      "fr": "STEVEN GERRARD, T. ALEXANDER-ARNOLD et J. HENDERSON : Nationalité commune : Angleterre. Les trois ont joué à Liverpool."
+    },
+    "oddReason": {
+      "es": "LIONEL MESSI figura con otra nacionalidad (Argentina) y no cumple esta conexión.",
+      "en": "LIONEL MESSI has a different nationality (Argentina) and does not fit this connection.",
+      "fr": "LIONEL MESSI a une autre nationalité (Argentine) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-England-43"
+  },
+  {
+    "id": "expanded-061",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-188",
+        "playerId": 188,
+        "label": "A. RABIOT"
+      },
+      {
+        "id": "player-1942",
+        "playerId": 1942,
+        "label": "D. DOUÉ"
+      },
+      {
+        "id": "player-1899",
+        "playerId": 1899,
+        "label": "M. AKLIOUCHE"
+      },
+      {
+        "id": "player-13",
+        "playerId": 13,
+        "label": "L. MODRIĆ"
+      }
+    ],
+    "oddOptionId": "player-13",
+    "commonReason": {
+      "es": "A. RABIOT, D. DOUÉ y M. AKLIOUCHE: País en común: Francia. Los tres jugaron en Paris Saint Germain.",
+      "en": "A. RABIOT, D. DOUÉ and M. AKLIOUCHE: Shared nationality: France. All three played for Paris Saint Germain.",
+      "fr": "A. RABIOT, D. DOUÉ et M. AKLIOUCHE : Nationalité commune : France. Les trois ont joué à Paris Saint Germain."
+    },
+    "oddReason": {
+      "es": "L. MODRIĆ figura con otra nacionalidad (Croacia) y no cumple esta conexión.",
+      "en": "L. MODRIĆ has a different nationality (Croatia) and does not fit this connection.",
+      "fr": "L. MODRIĆ a une autre nationalité (Croatie) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-France-3"
+  },
+  {
+    "id": "expanded-062",
+    "difficulty": "hard",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-1729",
+        "playerId": 1729,
+        "label": "N. TAGLIAFICO"
+      },
+      {
+        "id": "player-916",
+        "playerId": 916,
+        "label": "G. RULLI"
+      },
+      {
+        "id": "player-2894",
+        "playerId": 2894,
+        "label": "M. CARRIZO"
+      },
+      {
+        "id": "player-88",
+        "playerId": 88,
+        "label": "VINÍCIUS JÚNIOR"
+      }
+    ],
+    "oddOptionId": "player-88",
+    "commonReason": {
+      "es": "N. TAGLIAFICO, G. RULLI y M. CARRIZO: País en común: Argentina. Los tres jugaron en Ajax.",
+      "en": "N. TAGLIAFICO, G. RULLI and M. CARRIZO: Shared nationality: Argentina. All three played for Ajax.",
+      "fr": "N. TAGLIAFICO, G. RULLI et M. CARRIZO : Nationalité commune : Argentine. Les trois ont joué à Ajax."
+    },
+    "oddReason": {
+      "es": "VINÍCIUS JÚNIOR figura con otra nacionalidad (Brasil) y no cumple esta conexión.",
+      "en": "VINÍCIUS JÚNIOR has a different nationality (Brazil) and does not fit this connection.",
+      "fr": "VINÍCIUS JÚNIOR a une autre nationalité (Brésil) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Argentina-45"
+  },
+  {
+    "id": "expanded-063",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-942",
+        "playerId": 942,
+        "label": "P. HINCAPIÉ"
+      },
+      {
+        "id": "player-3525",
+        "playerId": 3525,
+        "label": "JUSTIN LERMA"
+      },
+      {
+        "id": "player-3346",
+        "playerId": 3346,
+        "label": "M. CAICEDO"
+      },
+      {
+        "id": "player-35",
+        "playerId": 35,
+        "label": "CLARENCE SEEDORF"
+      }
+    ],
+    "oddOptionId": "player-35",
+    "commonReason": {
+      "es": "P. HINCAPIÉ, JUSTIN LERMA y M. CAICEDO: País en común: Ecuador. Los tres jugaron en Independiente del Valle.",
+      "en": "P. HINCAPIÉ, JUSTIN LERMA and M. CAICEDO: Shared nationality: Ecuador. All three played for Independiente del Valle.",
+      "fr": "P. HINCAPIÉ, JUSTIN LERMA et M. CAICEDO : Nationalité commune : Équateur. Les trois ont joué à Independiente del Valle."
+    },
+    "oddReason": {
+      "es": "CLARENCE SEEDORF figura con otra nacionalidad (Países Bajos) y no cumple esta conexión.",
+      "en": "CLARENCE SEEDORF has a different nationality (Netherlands) and does not fit this connection.",
+      "fr": "CLARENCE SEEDORF a une autre nationalité (Pays-Bas) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Ecuador-2363"
+  },
+  {
+    "id": "expanded-064",
+    "difficulty": "hard",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-19",
+        "playerId": 19,
+        "label": "IKER CASILLAS"
+      },
+      {
+        "id": "player-46",
+        "playerId": 46,
+        "label": "DAVID VILLA"
+      },
+      {
+        "id": "player-16",
+        "playerId": 16,
+        "label": "XAVI"
+      },
+      {
+        "id": "player-27",
+        "playerId": 27,
+        "label": "WAYNE ROONEY"
+      }
+    ],
+    "oddOptionId": "player-27",
+    "commonReason": {
+      "es": "IKER CASILLAS, DAVID VILLA y XAVI: País en común: España.",
+      "en": "IKER CASILLAS, DAVID VILLA and XAVI: Shared nationality: Spain.",
+      "fr": "IKER CASILLAS, DAVID VILLA et XAVI : Nationalité commune : Espagne."
+    },
+    "oddReason": {
+      "es": "WAYNE ROONEY figura con otra nacionalidad (Inglaterra) y no cumple esta conexión.",
+      "en": "WAYNE ROONEY has a different nationality (England) and does not fit this connection.",
+      "fr": "WAYNE ROONEY a une autre nationalité (Angleterre) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Spain"
+  },
+  {
+    "id": "expanded-065",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-1917",
+        "playerId": 1917,
+        "label": "BERALDO"
+      },
+      {
+        "id": "player-25",
+        "playerId": 25,
+        "label": "KAKÁ"
+      },
+      {
+        "id": "player-3229",
+        "playerId": 3229,
+        "label": "ÉDER MILITÃO"
+      },
+      {
+        "id": "player-33",
+        "playerId": 33,
+        "label": "FRANCESCO TOTTI"
+      }
+    ],
+    "oddOptionId": "player-33",
+    "commonReason": {
+      "es": "BERALDO, KAKÁ y ÉDER MILITÃO: País en común: Brasil. Los tres jugaron en Sao Paulo.",
+      "en": "BERALDO, KAKÁ and ÉDER MILITÃO: Shared nationality: Brazil. All three played for Sao Paulo.",
+      "fr": "BERALDO, KAKÁ et ÉDER MILITÃO : Nationalité commune : Brésil. Les trois ont joué à Sao Paulo."
+    },
+    "oddReason": {
+      "es": "FRANCESCO TOTTI figura con otra nacionalidad (Italia) y no cumple esta conexión.",
+      "en": "FRANCESCO TOTTI has a different nationality (Italy) and does not fit this connection.",
+      "fr": "FRANCESCO TOTTI a une autre nationalité (Italie) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Brazil-100"
+  },
+  {
+    "id": "expanded-066",
+    "difficulty": "hard",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-3504",
+        "playerId": 3504,
+        "label": "JESÚS FORTEA"
+      },
+      {
+        "id": "player-48",
+        "playerId": 48,
+        "label": "XABI ALONSO"
+      },
+      {
+        "id": "player-304",
+        "playerId": 304,
+        "label": "MARIO GILA"
+      },
+      {
+        "id": "player-132",
+        "playerId": 132,
+        "label": "M. ROGERS"
+      }
+    ],
+    "oddOptionId": "player-132",
+    "commonReason": {
+      "es": "JESÚS FORTEA, XABI ALONSO y MARIO GILA: País en común: España. Los tres jugaron en Real Madrid.",
+      "en": "JESÚS FORTEA, XABI ALONSO and MARIO GILA: Shared nationality: Spain. All three played for Real Madrid.",
+      "fr": "JESÚS FORTEA, XABI ALONSO et MARIO GILA : Nationalité commune : Espagne. Les trois ont joué à Real Madrid."
+    },
+    "oddReason": {
+      "es": "M. ROGERS figura con otra nacionalidad (Inglaterra) y no cumple esta conexión.",
+      "en": "M. ROGERS has a different nationality (England) and does not fit this connection.",
+      "fr": "M. ROGERS a une autre nationalité (Angleterre) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Spain-10"
+  },
+  {
+    "id": "expanded-067",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-1007",
+        "playerId": 1007,
+        "label": "R. LAVIA"
+      },
+      {
+        "id": "player-339",
+        "playerId": 339,
+        "label": "T. COURTOIS"
+      },
+      {
+        "id": "player-1045",
+        "playerId": 1045,
+        "label": "M. PENDERS"
+      },
+      {
+        "id": "player-44",
+        "playerId": 44,
+        "label": "PETR ČECH"
+      }
+    ],
+    "oddOptionId": "player-44",
+    "commonReason": {
+      "es": "R. LAVIA, T. COURTOIS y M. PENDERS: País en común: Bélgica. Los tres jugaron en Chelsea.",
+      "en": "R. LAVIA, T. COURTOIS and M. PENDERS: Shared nationality: Belgium. All three played for Chelsea.",
+      "fr": "R. LAVIA, T. COURTOIS et M. PENDERS : Nationalité commune : Belgique. Les trois ont joué à Chelsea."
+    },
+    "oddReason": {
+      "es": "PETR ČECH figura con otra nacionalidad (Chequia) y no cumple esta conexión.",
+      "en": "PETR ČECH has a different nationality (Czechia) and does not fit this connection.",
+      "fr": "PETR ČECH a une autre nationalité (Tchéquie) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Belgium-57"
+  },
+  {
+    "id": "expanded-068",
+    "difficulty": "hard",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-3442",
+        "playerId": 3442,
+        "label": "K. SANO"
+      },
+      {
+        "id": "player-3299",
+        "playerId": 3299,
+        "label": "KEITO NAKAMURA"
+      },
+      {
+        "id": "player-809",
+        "playerId": 809,
+        "label": "W. ENDO"
+      },
+      {
+        "id": "player-86",
+        "playerId": 86,
+        "label": "D. HANCKO"
+      }
+    ],
+    "oddOptionId": "player-86",
+    "commonReason": {
+      "es": "K. SANO, KEITO NAKAMURA y W. ENDO: País en común: Japón.",
+      "en": "K. SANO, KEITO NAKAMURA and W. ENDO: Shared nationality: Japan.",
+      "fr": "K. SANO, KEITO NAKAMURA et W. ENDO : Nationalité commune : Japon."
+    },
+    "oddReason": {
+      "es": "D. HANCKO figura con otra nacionalidad (Eslovaquia) y no cumple esta conexión.",
+      "en": "D. HANCKO has a different nationality (Slovakia) and does not fit this connection.",
+      "fr": "D. HANCKO a une autre nationalité (Slovaquie) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Japan"
+  },
+  {
+    "id": "expanded-069",
+    "difficulty": "easy",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-1946",
+        "playerId": 1946,
+        "label": "E. NUAMAH"
+      },
+      {
+        "id": "player-3479",
+        "playerId": 3479,
+        "label": "K. PEPRAH OPPONG"
+      },
+      {
+        "id": "player-815",
+        "playerId": 815,
+        "label": "M. KUDUS"
+      },
+      {
+        "id": "player-51",
+        "playerId": 51,
+        "label": "DIEGO FORLÁN"
+      }
+    ],
+    "oddOptionId": "player-51",
+    "commonReason": {
+      "es": "E. NUAMAH, K. PEPRAH OPPONG y M. KUDUS: País en común: Ghana.",
+      "en": "E. NUAMAH, K. PEPRAH OPPONG and M. KUDUS: Shared nationality: Ghana.",
+      "fr": "E. NUAMAH, K. PEPRAH OPPONG et M. KUDUS : Nationalité commune : Ghana."
+    },
+    "oddReason": {
+      "es": "DIEGO FORLÁN figura con otra nacionalidad (Uruguay) y no cumple esta conexión.",
+      "en": "DIEGO FORLÁN has a different nationality (Uruguay) and does not fit this connection.",
+      "fr": "DIEGO FORLÁN a une autre nationalité (Uruguay) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Ghana"
+  },
+  {
+    "id": "expanded-070",
+    "difficulty": "hard",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-86",
+        "playerId": 86,
+        "label": "D. HANCKO"
+      },
+      {
+        "id": "player-1277",
+        "playerId": 1277,
+        "label": "S. LOBOTKA"
+      },
+      {
+        "id": "player-3220",
+        "playerId": 3220,
+        "label": "M. ŠKRINIAR"
+      },
+      {
+        "id": "player-3",
+        "playerId": 3,
+        "label": "RONALDINHO"
+      }
+    ],
+    "oddOptionId": "player-3",
+    "commonReason": {
+      "es": "D. HANCKO, S. LOBOTKA y M. ŠKRINIAR: País en común: Eslovaquia.",
+      "en": "D. HANCKO, S. LOBOTKA and M. ŠKRINIAR: Shared nationality: Slovakia.",
+      "fr": "D. HANCKO, S. LOBOTKA et M. ŠKRINIAR : Nationalité commune : Slovaquie."
+    },
+    "oddReason": {
+      "es": "RONALDINHO figura con otra nacionalidad (Brasil) y no cumple esta conexión.",
+      "en": "RONALDINHO has a different nationality (Brazil) and does not fit this connection.",
+      "fr": "RONALDINHO a une autre nationalité (Brésil) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Slovakia"
+  },
+  {
+    "id": "expanded-071",
+    "difficulty": "easy",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-3316",
+        "playerId": 3316,
+        "label": "S. DEST"
+      },
+      {
+        "id": "player-1740",
+        "playerId": 1740,
+        "label": "T. WEAH"
+      },
+      {
+        "id": "player-3340",
+        "playerId": 3340,
+        "label": "R. PEPI"
+      },
+      {
+        "id": "player-38",
+        "playerId": 38,
+        "label": "FRANK LAMPARD"
+      }
+    ],
+    "oddOptionId": "player-38",
+    "commonReason": {
+      "es": "S. DEST, T. WEAH y R. PEPI: País en común: Estados Unidos.",
+      "en": "S. DEST, T. WEAH and R. PEPI: Shared nationality: United States.",
+      "fr": "S. DEST, T. WEAH et R. PEPI : Nationalité commune : États-Unis."
+    },
+    "oddReason": {
+      "es": "FRANK LAMPARD figura con otra nacionalidad (Inglaterra) y no cumple esta conexión.",
+      "en": "FRANK LAMPARD has a different nationality (England) and does not fit this connection.",
+      "fr": "FRANK LAMPARD a une autre nationalité (Angleterre) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-USA"
+  },
+  {
+    "id": "expanded-072",
+    "difficulty": "hard",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-3397",
+        "playerId": 3397,
+        "label": "A. VARELA"
+      },
+      {
+        "id": "player-1163",
+        "playerId": 1163,
+        "label": "N. MOLINA"
+      },
+      {
+        "id": "player-3488",
+        "playerId": 3488,
+        "label": "A. ANSELMINO"
+      },
+      {
+        "id": "player-33",
+        "playerId": 33,
+        "label": "FRANCESCO TOTTI"
+      }
+    ],
+    "oddOptionId": "player-33",
+    "commonReason": {
+      "es": "A. VARELA, N. MOLINA y A. ANSELMINO: País en común: Argentina. Los tres jugaron en Boca Juniors.",
+      "en": "A. VARELA, N. MOLINA and A. ANSELMINO: Shared nationality: Argentina. All three played for Boca Juniors.",
+      "fr": "A. VARELA, N. MOLINA et A. ANSELMINO : Nationalité commune : Argentine. Les trois ont joué à Boca Juniors."
+    },
+    "oddReason": {
+      "es": "FRANCESCO TOTTI figura con otra nacionalidad (Italia) y no cumple esta conexión.",
+      "en": "FRANCESCO TOTTI has a different nationality (Italy) and does not fit this connection.",
+      "fr": "FRANCESCO TOTTI a une autre nationalité (Italie) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Argentina-1789"
+  },
+  {
+    "id": "expanded-073",
+    "difficulty": "easy",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-3406",
+        "playerId": 3406,
+        "label": "A. SCHJELDERUP"
+      },
+      {
+        "id": "player-3355",
+        "playerId": 3355,
+        "label": "O. EDVARDSEN"
+      },
+      {
+        "id": "player-134",
+        "playerId": 134,
+        "label": "M. ØDEGAARD"
+      },
+      {
+        "id": "player-41",
+        "playerId": 41,
+        "label": "RIO FERDINAND"
+      }
+    ],
+    "oddOptionId": "player-41",
+    "commonReason": {
+      "es": "A. SCHJELDERUP, O. EDVARDSEN y M. ØDEGAARD: País en común: Noruega.",
+      "en": "A. SCHJELDERUP, O. EDVARDSEN and M. ØDEGAARD: Shared nationality: Norway.",
+      "fr": "A. SCHJELDERUP, O. EDVARDSEN et M. ØDEGAARD : Nationalité commune : Norvège."
+    },
+    "oddReason": {
+      "es": "RIO FERDINAND figura con otra nacionalidad (Inglaterra) y no cumple esta conexión.",
+      "en": "RIO FERDINAND has a different nationality (England) and does not fit this connection.",
+      "fr": "RIO FERDINAND a une autre nationalité (Angleterre) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Norway"
+  },
+  {
+    "id": "expanded-074",
+    "difficulty": "hard",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-3446",
+        "playerId": 3446,
+        "label": "G. READ"
+      },
+      {
+        "id": "player-3307",
+        "playerId": 3307,
+        "label": "S. BERGHUIS"
+      },
+      {
+        "id": "player-3304",
+        "playerId": 3304,
+        "label": "L. GEERTRUIDA"
+      },
+      {
+        "id": "player-58",
+        "playerId": 58,
+        "label": "ÁLEX BAENA"
+      }
+    ],
+    "oddOptionId": "player-58",
+    "commonReason": {
+      "es": "G. READ, S. BERGHUIS y L. GEERTRUIDA: País en común: Países Bajos. Los tres jugaron en Feyenoord.",
+      "en": "G. READ, S. BERGHUIS and L. GEERTRUIDA: Shared nationality: Netherlands. All three played for Feyenoord.",
+      "fr": "G. READ, S. BERGHUIS et L. GEERTRUIDA : Nationalité commune : Pays-Bas. Les trois ont joué à Feyenoord."
+    },
+    "oddReason": {
+      "es": "ÁLEX BAENA figura con otra nacionalidad (España) y no cumple esta conexión.",
+      "en": "ÁLEX BAENA has a different nationality (Spain) and does not fit this connection.",
+      "fr": "ÁLEX BAENA a une autre nationalité (Espagne) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Netherlands-119"
+  },
+  {
+    "id": "expanded-075",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-3521",
+        "playerId": 3521,
+        "label": "A. ANNOUS"
+      },
+      {
+        "id": "player-3240",
+        "playerId": 3240,
+        "label": "R. NELSON"
+      },
+      {
+        "id": "player-250",
+        "playerId": 250,
+        "label": "B. SAKA"
+      },
+      {
+        "id": "player-88",
+        "playerId": 88,
+        "label": "VINÍCIUS JÚNIOR"
+      }
+    ],
+    "oddOptionId": "player-88",
+    "commonReason": {
+      "es": "A. ANNOUS, R. NELSON y B. SAKA: País en común: Inglaterra. Los tres jugaron en Arsenal.",
+      "en": "A. ANNOUS, R. NELSON and B. SAKA: Shared nationality: England. All three played for Arsenal.",
+      "fr": "A. ANNOUS, R. NELSON et B. SAKA : Nationalité commune : Angleterre. Les trois ont joué à Arsenal."
+    },
+    "oddReason": {
+      "es": "VINÍCIUS JÚNIOR figura con otra nacionalidad (Brasil) y no cumple esta conexión.",
+      "en": "VINÍCIUS JÚNIOR has a different nationality (Brazil) and does not fit this connection.",
+      "fr": "VINÍCIUS JÚNIOR a une autre nationalité (Brésil) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-England-89"
+  },
+  {
+    "id": "expanded-076",
+    "difficulty": "hard",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-148",
+        "playerId": 148,
+        "label": "A. PAVLOVIĆ"
+      },
+      {
+        "id": "player-1631",
+        "playerId": 1631,
+        "label": "J. URBIG"
+      },
+      {
+        "id": "player-286",
+        "playerId": 286,
+        "label": "W. ANTON"
+      },
+      {
+        "id": "player-45",
+        "playerId": 45,
+        "label": "CARLES PUYOL"
+      }
+    ],
+    "oddOptionId": "player-45",
+    "commonReason": {
+      "es": "A. PAVLOVIĆ, J. URBIG y W. ANTON: País en común: Alemania.",
+      "en": "A. PAVLOVIĆ, J. URBIG and W. ANTON: Shared nationality: Germany.",
+      "fr": "A. PAVLOVIĆ, J. URBIG et W. ANTON : Nationalité commune : Allemagne."
+    },
+    "oddReason": {
+      "es": "CARLES PUYOL figura con otra nacionalidad (España) y no cumple esta conexión.",
+      "en": "CARLES PUYOL has a different nationality (Spain) and does not fit this connection.",
+      "fr": "CARLES PUYOL a une autre nationalité (Espagne) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Germany"
+  },
+  {
+    "id": "expanded-077",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-3357",
+        "playerId": 3357,
+        "label": "C. CHUKWUEMEKA"
+      },
+      {
+        "id": "player-773",
+        "playerId": 773,
+        "label": "D. WELBECK"
+      },
+      {
+        "id": "player-1017",
+        "playerId": 1017,
+        "label": "J. BYNOE-GITTENS"
+      },
+      {
+        "id": "player-50",
+        "playerId": 50,
+        "label": "JAVIER MASCHERANO"
+      }
+    ],
+    "oddOptionId": "player-50",
+    "commonReason": {
+      "es": "C. CHUKWUEMEKA, D. WELBECK y J. BYNOE-GITTENS: País en común: Inglaterra. Los tres jugaron en Chelsea.",
+      "en": "C. CHUKWUEMEKA, D. WELBECK and J. BYNOE-GITTENS: Shared nationality: England. All three played for Chelsea.",
+      "fr": "C. CHUKWUEMEKA, D. WELBECK et J. BYNOE-GITTENS : Nationalité commune : Angleterre. Les trois ont joué à Chelsea."
+    },
+    "oddReason": {
+      "es": "JAVIER MASCHERANO figura con otra nacionalidad (Argentina) y no cumple esta conexión.",
+      "en": "JAVIER MASCHERANO has a different nationality (Argentina) and does not fit this connection.",
+      "fr": "JAVIER MASCHERANO a une autre nationalité (Argentine) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-England-57"
+  },
+  {
+    "id": "expanded-078",
+    "difficulty": "hard",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-3426",
+        "playerId": 3426,
+        "label": "N. IRANKUNDA"
+      },
+      {
+        "id": "player-3534",
+        "playerId": 3534,
+        "label": "A. ARENA"
+      },
+      {
+        "id": "player-3425",
+        "playerId": 3425,
+        "label": "J. BOS"
+      },
+      {
+        "id": "player-106",
+        "playerId": 106,
+        "label": "M. GUÉHI"
+      }
+    ],
+    "oddOptionId": "player-106",
+    "commonReason": {
+      "es": "N. IRANKUNDA, A. ARENA y J. BOS: País en común: Australia.",
+      "en": "N. IRANKUNDA, A. ARENA and J. BOS: Shared nationality: Australia.",
+      "fr": "N. IRANKUNDA, A. ARENA et J. BOS : Nationalité commune : Australie."
+    },
+    "oddReason": {
+      "es": "M. GUÉHI figura con otra nacionalidad (Inglaterra) y no cumple esta conexión.",
+      "en": "M. GUÉHI has a different nationality (England) and does not fit this connection.",
+      "fr": "M. GUÉHI a une autre nationalité (Angleterre) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Australia"
+  },
+  {
+    "id": "expanded-079",
+    "difficulty": "easy",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-1737",
+        "playerId": 1737,
+        "label": "U. GARCIA"
+      },
+      {
+        "id": "player-1098",
+        "playerId": 1098,
+        "label": "M. AKANJI"
+      },
+      {
+        "id": "player-285",
+        "playerId": 285,
+        "label": "G. KOBEL"
+      },
+      {
+        "id": "player-106",
+        "playerId": 106,
+        "label": "M. GUÉHI"
+      }
+    ],
+    "oddOptionId": "player-106",
+    "commonReason": {
+      "es": "U. GARCIA, M. AKANJI y G. KOBEL: País en común: Suiza.",
+      "en": "U. GARCIA, M. AKANJI and G. KOBEL: Shared nationality: Switzerland.",
+      "fr": "U. GARCIA, M. AKANJI et G. KOBEL : Nationalité commune : Suisse."
+    },
+    "oddReason": {
+      "es": "M. GUÉHI figura con otra nacionalidad (Inglaterra) y no cumple esta conexión.",
+      "en": "M. GUÉHI has a different nationality (England) and does not fit this connection.",
+      "fr": "M. GUÉHI a une autre nationalité (Angleterre) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Switzerland"
+  },
+  {
+    "id": "expanded-080",
+    "difficulty": "hard",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-1115",
+        "playerId": 1115,
+        "label": "N. LANG"
+      },
+      {
+        "id": "player-1206",
+        "playerId": 1206,
+        "label": "M. DE ROON"
+      },
+      {
+        "id": "player-1046",
+        "playerId": 1046,
+        "label": "J. HATO"
+      },
+      {
+        "id": "player-19",
+        "playerId": 19,
+        "label": "IKER CASILLAS"
+      }
+    ],
+    "oddOptionId": "player-19",
+    "commonReason": {
+      "es": "N. LANG, M. DE ROON y J. HATO: País en común: Países Bajos.",
+      "en": "N. LANG, M. DE ROON and J. HATO: Shared nationality: Netherlands.",
+      "fr": "N. LANG, M. DE ROON et J. HATO : Nationalité commune : Pays-Bas."
+    },
+    "oddReason": {
+      "es": "IKER CASILLAS figura con otra nacionalidad (España) y no cumple esta conexión.",
+      "en": "IKER CASILLAS has a different nationality (Spain) and does not fit this connection.",
+      "fr": "IKER CASILLAS a une autre nationalité (Espagne) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Netherlands"
+  },
+  {
+    "id": "expanded-081",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-1186",
+        "playerId": 1186,
+        "label": "R. KOLO MUANI"
+      },
+      {
+        "id": "player-219",
+        "playerId": 219,
+        "label": "P. KALULU"
+      },
+      {
+        "id": "player-188",
+        "playerId": 188,
+        "label": "A. RABIOT"
+      },
+      {
+        "id": "player-77",
+        "playerId": 77,
+        "label": "A. LOOKMAN"
+      }
+    ],
+    "oddOptionId": "player-77",
+    "commonReason": {
+      "es": "R. KOLO MUANI, P. KALULU y A. RABIOT: País en común: Francia. Los tres jugaron en Juventus.",
+      "en": "R. KOLO MUANI, P. KALULU and A. RABIOT: Shared nationality: France. All three played for Juventus.",
+      "fr": "R. KOLO MUANI, P. KALULU et A. RABIOT : Nationalité commune : France. Les trois ont joué à Juventus."
+    },
+    "oddReason": {
+      "es": "A. LOOKMAN figura con otra nacionalidad (Nigeria) y no cumple esta conexión.",
+      "en": "A. LOOKMAN has a different nationality (Nigeria) and does not fit this connection.",
+      "fr": "A. LOOKMAN a une autre nationalité (Nigeria) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-France-9"
+  },
+  {
+    "id": "expanded-082",
+    "difficulty": "hard",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-1442",
+        "playerId": 1442,
+        "label": "RODRIGO MORA"
+      },
+      {
+        "id": "player-757",
+        "playerId": 757,
+        "label": "DIOGO DALOT"
+      },
+      {
+        "id": "player-774",
+        "playerId": 774,
+        "label": "BRUNO FERNANDES"
+      },
+      {
+        "id": "player-22",
+        "playerId": 22,
+        "label": "THIERRY HENRY"
+      }
+    ],
+    "oddOptionId": "player-22",
+    "commonReason": {
+      "es": "RODRIGO MORA, DIOGO DALOT y BRUNO FERNANDES: País en común: Portugal.",
+      "en": "RODRIGO MORA, DIOGO DALOT and BRUNO FERNANDES: Shared nationality: Portugal.",
+      "fr": "RODRIGO MORA, DIOGO DALOT et BRUNO FERNANDES : Nationalité commune : Portugal."
+    },
+    "oddReason": {
+      "es": "THIERRY HENRY figura con otra nacionalidad (Francia) y no cumple esta conexión.",
+      "en": "THIERRY HENRY has a different nationality (France) and does not fit this connection.",
+      "fr": "THIERRY HENRY a une autre nationalité (France) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Portugal"
+  },
+  {
+    "id": "expanded-083",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-3281",
+        "playerId": 3281,
+        "label": "E. MARTÍNEZ"
+      },
+      {
+        "id": "player-1030",
+        "playerId": 1030,
+        "label": "V. BARCO"
+      },
+      {
+        "id": "player-3488",
+        "playerId": 3488,
+        "label": "A. ANSELMINO"
+      },
+      {
+        "id": "player-40",
+        "playerId": 40,
+        "label": "JOHN TERRY"
+      }
+    ],
+    "oddOptionId": "player-40",
+    "commonReason": {
+      "es": "E. MARTÍNEZ, V. BARCO y A. ANSELMINO: País en común: Argentina. Los tres jugaron en Chelsea.",
+      "en": "E. MARTÍNEZ, V. BARCO and A. ANSELMINO: Shared nationality: Argentina. All three played for Chelsea.",
+      "fr": "E. MARTÍNEZ, V. BARCO et A. ANSELMINO : Nationalité commune : Argentine. Les trois ont joué à Chelsea."
+    },
+    "oddReason": {
+      "es": "JOHN TERRY figura con otra nacionalidad (Inglaterra) y no cumple esta conexión.",
+      "en": "JOHN TERRY has a different nationality (England) and does not fit this connection.",
+      "fr": "JOHN TERRY a une autre nationalité (Angleterre) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Argentina-57"
+  },
+  {
+    "id": "expanded-084",
+    "difficulty": "hard",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-1132",
+        "playerId": 1132,
+        "label": "S. MCTOMINAY"
+      },
+      {
+        "id": "player-750",
+        "playerId": 750,
+        "label": "A. ROBERTSON"
+      },
+      {
+        "id": "player-950",
+        "playerId": 950,
+        "label": "E. ANDERSON"
+      },
+      {
+        "id": "player-27",
+        "playerId": 27,
+        "label": "WAYNE ROONEY"
+      }
+    ],
+    "oddOptionId": "player-27",
+    "commonReason": {
+      "es": "S. MCTOMINAY, A. ROBERTSON y E. ANDERSON: País en común: Escocia.",
+      "en": "S. MCTOMINAY, A. ROBERTSON and E. ANDERSON: Shared nationality: Scotland.",
+      "fr": "S. MCTOMINAY, A. ROBERTSON et E. ANDERSON : Nationalité commune : Écosse."
+    },
+    "oddReason": {
+      "es": "WAYNE ROONEY figura con otra nacionalidad (Inglaterra) y no cumple esta conexión.",
+      "en": "WAYNE ROONEY has a different nationality (England) and does not fit this connection.",
+      "fr": "WAYNE ROONEY a une autre nationalité (Angleterre) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Scotland"
+  },
+  {
+    "id": "expanded-085",
+    "difficulty": "easy",
+    "category": {
+      "es": "Trayectorias internacionales",
+      "en": "International careers",
+      "fr": "Parcours internationaux"
+    },
+    "options": [
+      {
+        "id": "player-1121",
+        "playerId": 1121,
+        "label": "B. CRISTANTE"
+      },
+      {
+        "id": "player-959",
+        "playerId": 959,
+        "label": "R. CALAFIORI"
+      },
+      {
+        "id": "player-1127",
+        "playerId": 1127,
+        "label": "L. SPINAZZOLA"
+      },
+      {
+        "id": "player-45",
+        "playerId": 45,
+        "label": "CARLES PUYOL"
+      }
+    ],
+    "oddOptionId": "player-45",
+    "commonReason": {
+      "es": "B. CRISTANTE, R. CALAFIORI y L. SPINAZZOLA: País en común: Italia. Los tres jugaron en AS Roma.",
+      "en": "B. CRISTANTE, R. CALAFIORI and L. SPINAZZOLA: Shared nationality: Italy. All three played for AS Roma.",
+      "fr": "B. CRISTANTE, R. CALAFIORI et L. SPINAZZOLA : Nationalité commune : Italie. Les trois ont joué à AS Roma."
+    },
+    "oddReason": {
+      "es": "CARLES PUYOL figura con otra nacionalidad (España) y no cumple esta conexión.",
+      "en": "CARLES PUYOL has a different nationality (Spain) and does not fit this connection.",
+      "fr": "CARLES PUYOL a une autre nationalité (Espagne) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-club-Italy-56"
+  },
+  {
+    "id": "expanded-086",
+    "difficulty": "hard",
+    "category": {
+      "es": "Nacionalidades",
+      "en": "Nationalities",
+      "fr": "Nationalités"
+    },
+    "options": [
+      {
+        "id": "player-1776",
+        "playerId": 1776,
+        "label": "W. PACHO"
+      },
+      {
+        "id": "player-1273",
+        "playerId": 1273,
+        "label": "P. ESTUPIÑÁN"
+      },
+      {
+        "id": "player-3346",
+        "playerId": 3346,
+        "label": "M. CAICEDO"
+      },
+      {
+        "id": "player-54",
+        "playerId": 54,
+        "label": "MIROSLAV KLOSE"
+      }
+    ],
+    "oddOptionId": "player-54",
+    "commonReason": {
+      "es": "W. PACHO, P. ESTUPIÑÁN y M. CAICEDO: País en común: Ecuador.",
+      "en": "W. PACHO, P. ESTUPIÑÁN and M. CAICEDO: Shared nationality: Ecuador.",
+      "fr": "W. PACHO, P. ESTUPIÑÁN et M. CAICEDO : Nationalité commune : Équateur."
+    },
+    "oddReason": {
+      "es": "MIROSLAV KLOSE figura con otra nacionalidad (Alemania) y no cumple esta conexión.",
+      "en": "MIROSLAV KLOSE has a different nationality (Germany) and does not fit this connection.",
+      "fr": "MIROSLAV KLOSE a une autre nationalité (Allemagne) et ne correspond pas à ce lien."
+    },
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "relationId": "nation-Ecuador"
   }
 ]

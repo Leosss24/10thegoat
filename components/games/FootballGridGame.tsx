@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { playerDisplayName } from '../../lib/football/player-identity';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { supabase } from '../../lib/supabase';
 import { useI18n } from '../I18nProvider';
@@ -10,7 +11,10 @@ import { gridCopy, positionCopy } from '../../lib/football-grid/copy';
 import catalogData from '../../data/football-grid/catalog.json';
 import './FootballGridGame.css';
 
-const bundled = catalogData as Catalog;
+function namedCatalog(catalog: Catalog): Catalog {
+  return { ...catalog, players: catalog.players.map(player => ({ ...player, name: playerDisplayName(player.id, player.name), aliases: [...new Set([...player.aliases, player.name])] })) };
+}
+const bundled = namedCatalog(catalogData as Catalog);
 const localFlags: Record<string,string> = {Argentina:'ar',Belgium:'be',Brazil:'br',Chile:'cl',Colombia:'co',Denmark:'dk',Ecuador:'ec',England:'gb-eng',France:'fr',Germany:'de',Italy:'it',Netherlands:'nl',Nigeria:'ng',Paraguay:'py',Portugal:'pt',Spain:'es',Switzerland:'ch',Uruguay:'uy'};
 
 export default function FootballGridGame() {
@@ -58,7 +62,7 @@ export default function FootballGridGame() {
     if (version === bundled.version) { setCatalog(bundled); return; }
     const {data,error:catalogError} = await supabase!.from('football_grid_catalogs').select('payload').eq('version',version).single();
     if (catalogError || !data?.payload) throw new Error('catalog_unavailable');
-    setCatalog(data.payload as Catalog);
+    setCatalog(namedCatalog(data.payload as Catalog));
   }
   async function refresh(mode = difficulty, showRound = false) {
     if (lock.current || !user) return;

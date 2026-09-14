@@ -1,0 +1,500 @@
+[
+  {
+    "id": 310,
+    "country": "Albania",
+    "name": "Superliga",
+    "season": 2026
+  },
+  {
+    "id": 312,
+    "country": "Andorra",
+    "name": "1a Divisió",
+    "season": 2026
+  },
+  {
+    "id": 342,
+    "country": "Armenia",
+    "name": "Premier League",
+    "season": 2026
+  },
+  {
+    "id": 218,
+    "country": "Austria",
+    "name": "Bundesliga",
+    "season": 2026
+  },
+  {
+    "id": 419,
+    "country": "Azerbaijan",
+    "name": "Premyer Liqa",
+    "season": 2026
+  },
+  {
+    "id": 116,
+    "country": "Belarus",
+    "name": "Premier League",
+    "season": 2026
+  },
+  {
+    "id": 144,
+    "country": "Belgium",
+    "name": "Jupiler Pro League",
+    "season": 2026
+  },
+  {
+    "id": 315,
+    "country": "Bosnia",
+    "name": "Premijer Liga",
+    "season": 2026
+  },
+  {
+    "id": 172,
+    "country": "Bulgaria",
+    "name": "First League",
+    "season": 2026
+  },
+  {
+    "id": 210,
+    "country": "Croatia",
+    "name": "HNL",
+    "season": 2026
+  },
+  {
+    "id": 318,
+    "country": "Cyprus",
+    "name": "1. Division",
+    "season": 2026
+  },
+  {
+    "id": 345,
+    "country": "Czech-Republic",
+    "name": "Czech Liga",
+    "season": 2026
+  },
+  {
+    "id": 119,
+    "country": "Denmark",
+    "name": "Superliga",
+    "season": 2026
+  },
+  {
+    "id": 39,
+    "country": "England",
+    "name": "Premier League",
+    "season": 2026
+  },
+  {
+    "id": 329,
+    "country": "Estonia",
+    "name": "Meistriliiga",
+    "season": 2026
+  },
+  {
+    "id": 367,
+    "country": "Faroe-Islands",
+    "name": "Meistaradeildin",
+    "season": 2026
+  },
+  {
+    "id": 244,
+    "country": "Finland",
+    "name": "Veikkausliiga",
+    "season": 2026
+  },
+  {
+    "id": 61,
+    "country": "France",
+    "name": "Ligue 1",
+    "season": 2026
+  },
+  {
+    "id": 327,
+    "country": "Georgia",
+    "name": "Erovnuli Liga",
+    "season": 2026
+  },
+  {
+    "id": 78,
+    "country": "Germany",
+    "name": "Bundesliga",
+    "season": 2026
+  },
+  {
+    "id": 758,
+    "country": "Gibraltar",
+    "name": "Premier Division",
+    "season": 2026
+  },
+  {
+    "id": 197,
+    "country": "Greece",
+    "name": "Super League 1",
+    "season": 2026
+  },
+  {
+    "id": 271,
+    "country": "Hungary",
+    "name": "NB I",
+    "season": 2026
+  },
+  {
+    "id": 164,
+    "country": "Iceland",
+    "name": "Úrvalsdeild",
+    "season": 2026
+  },
+  {
+    "id": 357,
+    "country": "Ireland",
+    "name": "Premier Division",
+    "season": 2026
+  },
+  {
+    "id": 383,
+    "country": "Israel",
+    "name": "Ligat Ha'al",
+    "season": 2026
+  },
+  {
+    "id": 135,
+    "country": "Italy",
+    "name": "Serie A",
+    "season": 2026
+  },
+  {
+    "id": 389,
+    "country": "Kazakhstan",
+    "name": "Premier League",
+    "season": 2026
+  },
+  {
+    "id": 664,
+    "country": "Kosovo",
+    "name": "Superliga",
+    "season": 2026
+  },
+  {
+    "id": 365,
+    "country": "Latvia",
+    "name": "Virsliga",
+    "season": 2026
+  },
+  {
+    "id": 362,
+    "country": "Lithuania",
+    "name": "A Lyga",
+    "season": 2026
+  },
+  {
+    "id": 261,
+    "country": "Luxembourg",
+    "name": "National Division",
+    "season": 2026
+  },
+  {
+    "id": 393,
+    "country": "Malta",
+    "name": "Premier League",
+    "season": 2026
+  },
+  {
+    "id": 394,
+    "country": "Moldova",
+    "name": "Super Liga",
+    "season": 2026
+  },
+  {
+    "id": 355,
+    "country": "Montenegro",
+    "name": "First League",
+    "season": 2026
+  },
+  {
+    "id": 88,
+    "country": "Netherlands",
+    "name": "Eredivisie",
+    "season": 2026
+  },
+  {
+    "id": 371,
+    "country": "Macedonia",
+    "name": "First League",
+    "season": 2026
+  },
+  {
+    "id": 408,
+    "country": "Northern-Ireland",
+    "name": "Premiership",
+    "season": 2026
+  },
+  {
+    "id": 103,
+    "country": "Norway",
+    "name": "Eliteserien",
+    "season": 2026
+  },
+  {
+    "id": 106,
+    "country": "Poland",
+    "name": "Ekstraklasa",
+    "season": 2026
+  },
+  {
+    "id": 94,
+    "country": "Portugal",
+    "name": "Primeira Liga",
+    "season": 2026
+  },
+  {
+    "id": 283,
+    "country": "Romania",
+    "name": "Liga I",
+    "season": 2026
+  },
+  {
+    "id": 235,
+    "country": "Russia",
+    "name": "Premier League",
+    "season": 2026
+  },
+  {
+    "id": 404,
+    "country": "San-Marino",
+    "name": "Campionato",
+    "season": 2026
+  },
+  {
+    "id": 179,
+    "country": "Scotland",
+    "name": "Premiership",
+    "season": 2026
+  },
+  {
+    "id": 286,
+    "country": "Serbia",
+    "name": "Super Liga",
+    "season": 2026
+  },
+  {
+    "id": 332,
+    "country": "Slovakia",
+    "name": "Super Liga",
+    "season": 2026
+  },
+  {
+    "id": 373,
+    "country": "Slovenia",
+    "name": "1. SNL",
+    "season": 2026
+  },
+  {
+    "id": 140,
+    "country": "Spain",
+    "name": "La Liga",
+    "season": 2026
+  },
+  {
+    "id": 113,
+    "country": "Sweden",
+    "name": "Allsvenskan",
+    "season": 2026
+  },
+  {
+    "id": 207,
+    "country": "Switzerland",
+    "name": "Super League",
+    "season": 2026
+  },
+  {
+    "id": 203,
+    "country": "Turkey",
+    "name": "Süper Lig",
+    "season": 2026
+  },
+  {
+    "id": 333,
+    "country": "Ukraine",
+    "name": "Premier League",
+    "season": 2026
+  },
+  {
+    "id": 110,
+    "country": "Wales",
+    "name": "Premier League",
+    "season": 2026
+  },
+  {
+    "id": 128,
+    "country": "Argentina",
+    "name": "Liga Profesional Argentina",
+    "season": 2026
+  },
+  {
+    "id": 344,
+    "country": "Bolivia",
+    "name": "Primera División",
+    "season": 2026
+  },
+  {
+    "id": 71,
+    "country": "Brazil",
+    "name": "Serie A",
+    "season": 2026
+  },
+  {
+    "id": 265,
+    "country": "Chile",
+    "name": "Primera División",
+    "season": 2026
+  },
+  {
+    "id": 239,
+    "country": "Colombia",
+    "name": "Primera A",
+    "season": 2026
+  },
+  {
+    "id": 242,
+    "country": "Ecuador",
+    "name": "Liga Pro",
+    "season": 2026
+  },
+  {
+    "id": 250,
+    "country": "Paraguay",
+    "name": "Division Profesional - Apertura",
+    "season": 2026
+  },
+  {
+    "id": 281,
+    "country": "Peru",
+    "name": "Primera División",
+    "season": 2026
+  },
+  {
+    "id": 268,
+    "country": "Uruguay",
+    "name": "Primera División",
+    "season": 2026
+  },
+  {
+    "id": 299,
+    "country": "Venezuela",
+    "name": "Primera División",
+    "season": 2026
+  },
+  {
+    "id": 253,
+    "country": "USA",
+    "name": "Major League Soccer",
+    "season": 2026
+  },
+  {
+    "id": 262,
+    "country": "Mexico",
+    "name": "Liga MX",
+    "season": 2026
+  },
+  {
+    "id": 479,
+    "country": "Canada",
+    "name": "Canadian Premier League",
+    "season": 2026
+  },
+  {
+    "id": 162,
+    "country": "Costa-Rica",
+    "name": "Primera División",
+    "season": 2026
+  },
+  {
+    "id": 304,
+    "country": "Panama",
+    "name": "Liga Panameña de Fútbol",
+    "season": 2026
+  },
+  {
+    "id": 234,
+    "country": "Honduras",
+    "name": "Liga Nacional",
+    "season": 2026
+  },
+  {
+    "id": 339,
+    "country": "Guatemala",
+    "name": "Liga Nacional",
+    "season": 2026
+  },
+  {
+    "id": 370,
+    "country": "El-Salvador",
+    "name": "Primera Division",
+    "season": 2026
+  },
+  {
+    "id": 396,
+    "country": "Nicaragua",
+    "name": "Primera Division",
+    "season": 2026
+  },
+  {
+    "id": 416,
+    "country": "Belize",
+    "name": "Premier League",
+    "season": 2025
+  },
+  {
+    "id": 322,
+    "country": "Jamaica",
+    "name": "Premier League",
+    "season": 2025
+  },
+  {
+    "id": 379,
+    "country": "Haiti",
+    "name": "Ligue Haïtienne",
+    "season": 2025
+  },
+  {
+    "id": 759,
+    "country": "Dominican-Republic",
+    "name": "Liga Mayor",
+    "season": 2026
+  },
+  {
+    "id": 907,
+    "country": "Cuba",
+    "name": "Primera Division",
+    "season": 2025
+  },
+  {
+    "id": 591,
+    "country": "Trinidad-And-Tobago",
+    "name": "Pro League",
+    "season": 2026
+  },
+  {
+    "id": 568,
+    "country": "Suriname",
+    "name": "Eerste Divisie",
+    "season": 2025
+  },
+  {
+    "id": 422,
+    "country": "Barbados",
+    "name": "Premier League",
+    "season": 2026
+  },
+  {
+    "id": 1048,
+    "country": "Antigua-And-Barbuda",
+    "name": "Premier Division",
+    "season": 2025
+  },
+  {
+    "id": 1080,
+    "country": "Grenada",
+    "name": "Premier Division",
+    "season": 2025
+  }
+]

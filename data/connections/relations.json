@@ -1,0 +1,5182 @@
+[
+  {
+    "id": "club-3",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Paris Saint Germain",
+      "en": "PLAYED FOR Paris Saint Germain",
+      "fr": "ONT JOUÉ À Paris Saint Germain"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Paris Saint Germain durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Paris Saint Germain during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Paris Saint Germain au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      1,
+      6,
+      20,
+      23,
+      26,
+      69,
+      188,
+      190,
+      263,
+      1186,
+      1711,
+      1713,
+      1719,
+      1722,
+      1724,
+      1727,
+      1736,
+      1740,
+      1752,
+      1759,
+      1776,
+      1856,
+      1868,
+      1899,
+      1917,
+      1931,
+      1933,
+      1939,
+      1942,
+      1982,
+      2023,
+      3220,
+      3241,
+      3333,
+      3365,
+      3367,
+      3371,
+      3375,
+      3389,
+      3527,
+      3542
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-4",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Barcelona",
+      "en": "PLAYED FOR Barcelona",
+      "fr": "ONT JOUÉ À Barcelona"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Barcelona durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Barcelona during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Barcelona au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      1,
+      3,
+      15,
+      16,
+      22,
+      23,
+      28,
+      45,
+      46,
+      49,
+      50,
+      60,
+      63,
+      234,
+      323,
+      336,
+      344,
+      345,
+      354,
+      355,
+      368,
+      376,
+      440,
+      488,
+      495,
+      516,
+      524,
+      576,
+      640,
+      651,
+      663,
+      761,
+      936,
+      1719,
+      1736,
+      1759,
+      2023,
+      3217,
+      3218,
+      3219,
+      3233,
+      3237,
+      3316,
+      3373,
+      3427,
+      3540
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-17",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR AC Milan",
+      "en": "PLAYED FOR AC Milan",
+      "fr": "ONT JOUÉ À AC Milan"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en AC Milan durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for AC Milan during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à AC Milan au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      3,
+      13,
+      21,
+      23,
+      25,
+      26,
+      31,
+      35,
+      47,
+      188,
+      190,
+      191,
+      192,
+      212,
+      219,
+      220,
+      263,
+      298,
+      301,
+      304,
+      313,
+      314,
+      340,
+      902,
+      1099,
+      1121,
+      1152,
+      1199,
+      1273,
+      1286,
+      1317,
+      1395,
+      1423,
+      1433,
+      1467,
+      3255,
+      3277,
+      3285,
+      3316,
+      3341,
+      3390,
+      3391,
+      3473
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-10",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Real Madrid",
+      "en": "PLAYED FOR Real Madrid",
+      "fr": "ONT JOUÉ À Real Madrid"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Real Madrid durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Real Madrid during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Real Madrid au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      4,
+      6,
+      13,
+      14,
+      19,
+      25,
+      26,
+      29,
+      30,
+      36,
+      48,
+      67,
+      88,
+      121,
+      134,
+      239,
+      304,
+      329,
+      331,
+      338,
+      339,
+      340,
+      343,
+      353,
+      366,
+      369,
+      440,
+      442,
+      563,
+      573,
+      630,
+      675,
+      692,
+      781,
+      784,
+      1711,
+      3229,
+      3238,
+      3241,
+      3248,
+      3409,
+      3430,
+      3456,
+      3502,
+      3504,
+      3514,
+      3550
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-19",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Manchester City",
+      "en": "PLAYED FOR Manchester City",
+      "fr": "ONT JOUÉ À Manchester City"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Manchester City durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Manchester City during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Manchester City au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      5,
+      24,
+      38,
+      53,
+      99,
+      103,
+      106,
+      108,
+      112,
+      122,
+      128,
+      249,
+      263,
+      267,
+      323,
+      336,
+      338,
+      340,
+      345,
+      374,
+      784,
+      803,
+      888,
+      913,
+      931,
+      950,
+      1007,
+      1009,
+      1024,
+      1075,
+      1076,
+      1080,
+      1083,
+      1098,
+      1118,
+      1736,
+      1887,
+      3236,
+      3237,
+      3250,
+      3273,
+      3275,
+      3276,
+      3393
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-21",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Borussia Dortmund",
+      "en": "PLAYED FOR Borussia Dortmund",
+      "fr": "ONT JOUÉ À Borussia Dortmund"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Borussia Dortmund durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Borussia Dortmund during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Borussia Dortmund au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      5,
+      67,
+      116,
+      151,
+      163,
+      181,
+      279,
+      285,
+      286,
+      293,
+      294,
+      376,
+      917,
+      1017,
+      1026,
+      1098,
+      1099,
+      1527,
+      1536,
+      1590,
+      1608,
+      1611,
+      1617,
+      1698,
+      1711,
+      1719,
+      1960,
+      3212,
+      3221,
+      3246,
+      3252,
+      3257,
+      3286,
+      3291,
+      3292,
+      3312,
+      3357,
+      3362,
+      3399,
+      3433,
+      3488
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-50",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Bayern München",
+      "en": "PLAYED FOR Bayern München",
+      "fr": "ONT JOUÉ À Bayern München"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Bayern München durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Bayern München during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Bayern München au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      12,
+      14,
+      36,
+      48,
+      54,
+      55,
+      56,
+      57,
+      137,
+      144,
+      146,
+      147,
+      148,
+      152,
+      155,
+      281,
+      345,
+      752,
+      927,
+      998,
+      1156,
+      1525,
+      1533,
+      1535,
+      1536,
+      1541,
+      1600,
+      1631,
+      1642,
+      1653,
+      1695,
+      1713,
+      1728,
+      1760,
+      3230,
+      3231,
+      3258,
+      3298,
+      3322,
+      3378,
+      3415,
+      3554
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-64",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Tottenham",
+      "en": "PLAYED FOR Tottenham",
+      "fr": "ONT JOUÉ À Tottenham"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Tottenham durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Tottenham during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Tottenham au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      12,
+      13,
+      215,
+      254,
+      394,
+      746,
+      750,
+      756,
+      787,
+      806,
+      815,
+      823,
+      830,
+      902,
+      920,
+      926,
+      931,
+      955,
+      990,
+      996,
+      998,
+      1034,
+      1040,
+      1051,
+      1089,
+      1186,
+      1760,
+      3219,
+      3221,
+      3279,
+      3322,
+      3338,
+      3360,
+      3371,
+      3393,
+      3450,
+      3459
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-85",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR FC Porto",
+      "en": "PLAYED FOR FC Porto",
+      "fr": "ONT JOUÉ À FC Porto"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en FC Porto durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for FC Porto during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à FC Porto au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      19,
+      155,
+      196,
+      757,
+      1442,
+      1608,
+      1856,
+      3213,
+      3224,
+      3228,
+      3229,
+      3255,
+      3260,
+      3262,
+      3267,
+      3295,
+      3324,
+      3326,
+      3336,
+      3341,
+      3342,
+      3347,
+      3350,
+      3351,
+      3379,
+      3397,
+      3419,
+      3422,
+      3428,
+      3466,
+      3467,
+      3503,
+      3509
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-9",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Juventus",
+      "en": "PLAYED FOR Juventus",
+      "fr": "ONT JOUÉ À Juventus"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Juventus durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Juventus during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Juventus au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      20,
+      21,
+      23,
+      34,
+      53,
+      185,
+      188,
+      196,
+      205,
+      207,
+      215,
+      219,
+      298,
+      308,
+      314,
+      344,
+      345,
+      630,
+      756,
+      1101,
+      1112,
+      1114,
+      1125,
+      1126,
+      1127,
+      1150,
+      1168,
+      1182,
+      1186,
+      1190,
+      1194,
+      1215,
+      1283,
+      1299,
+      1304,
+      1343,
+      1388,
+      1400,
+      1439,
+      1715,
+      1740,
+      3254,
+      3294,
+      3363,
+      3419
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-89",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Arsenal",
+      "en": "PLAYED FOR Arsenal",
+      "fr": "ONT JOUÉ À Arsenal"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Arsenal durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Arsenal during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Arsenal au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      22,
+      37,
+      44,
+      49,
+      134,
+      250,
+      251,
+      344,
+      773,
+      781,
+      801,
+      841,
+      866,
+      874,
+      880,
+      895,
+      917,
+      918,
+      942,
+      945,
+      959,
+      963,
+      1026,
+      1027,
+      1038,
+      3231,
+      3237,
+      3240,
+      3251,
+      3252,
+      3265,
+      3280,
+      3281,
+      3283,
+      3317,
+      3336,
+      3487,
+      3521
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-8",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Manchester United",
+      "en": "PLAYED FOR Manchester United",
+      "fr": "ONT JOUÉ À Manchester United"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Manchester United durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Manchester United during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Manchester United au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      23,
+      26,
+      27,
+      37,
+      41,
+      43,
+      51,
+      53,
+      56,
+      752,
+      757,
+      759,
+      761,
+      768,
+      773,
+      774,
+      788,
+      798,
+      800,
+      885,
+      927,
+      937,
+      969,
+      1010,
+      1023,
+      1048,
+      1063,
+      1070,
+      1132,
+      1362,
+      1536,
+      1734,
+      3215,
+      3232,
+      3244,
+      3245,
+      3252,
+      3261,
+      3278,
+      3333,
+      3361,
+      3461
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-92",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Inter",
+      "en": "PLAYED FOR Inter",
+      "fr": "ONT JOUÉ À Inter"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Inter durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Inter during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Inter au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      23,
+      28,
+      51,
+      193,
+      200,
+      208,
+      209,
+      212,
+      329,
+      345,
+      784,
+      1098,
+      1107,
+      1108,
+      1118,
+      1156,
+      1171,
+      1173,
+      1187,
+      1219,
+      1232,
+      1233,
+      1274,
+      1296,
+      1347,
+      1408,
+      1711,
+      1735,
+      3220,
+      3221,
+      3227,
+      3245,
+      3252,
+      3435,
+      3496,
+      3524
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-57",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Chelsea",
+      "en": "PLAYED FOR Chelsea",
+      "fr": "ONT JOUÉ À Chelsea"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Chelsea durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Chelsea during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Chelsea au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      24,
+      28,
+      36,
+      38,
+      40,
+      44,
+      47,
+      49,
+      106,
+      112,
+      120,
+      132,
+      251,
+      339,
+      368,
+      369,
+      440,
+      773,
+      776,
+      781,
+      784,
+      803,
+      830,
+      870,
+      887,
+      926,
+      945,
+      956,
+      964,
+      976,
+      1007,
+      1017,
+      1023,
+      1030,
+      1045,
+      1046,
+      1061,
+      1077,
+      1078,
+      1099,
+      1152,
+      1215,
+      1306,
+      1395,
+      1757,
+      3216,
+      3245,
+      3259,
+      3273,
+      3275,
+      3276,
+      3277,
+      3278,
+      3281,
+      3284,
+      3338,
+      3346,
+      3357,
+      3377,
+      3485,
+      3488
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-94",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Napoli",
+      "en": "PLAYED FOR Napoli",
+      "fr": "ONT JOUÉ À Napoli"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Napoli durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Napoli during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Napoli au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      24,
+      197,
+      209,
+      1108,
+      1110,
+      1112,
+      1115,
+      1116,
+      1127,
+      1132,
+      1138,
+      1160,
+      1203,
+      1235,
+      1240,
+      1256,
+      1261,
+      1276,
+      1277,
+      1306,
+      1334,
+      1340,
+      1362,
+      1374,
+      1378,
+      1541,
+      1724,
+      1727,
+      3216,
+      3245,
+      3296,
+      3465
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-100",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Sao Paulo",
+      "en": "PLAYED FOR Sao Paulo",
+      "fr": "ONT JOUÉ À Sao Paulo"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Sao Paulo durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Sao Paulo during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Sao Paulo au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      25,
+      1917,
+      3229,
+      3509
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-113",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Fenerbahçe",
+      "en": "PLAYED FOR Fenerbahçe",
+      "fr": "ONT JOUÉ À Fenerbahçe"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Fenerbahçe durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Fenerbahçe during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Fenerbahçe au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      30,
+      37,
+      573,
+      1541,
+      3215,
+      3218,
+      3220,
+      3236,
+      3241,
+      3243,
+      3244,
+      3245,
+      3249,
+      3251,
+      3253,
+      3259,
+      3268,
+      3272,
+      3273,
+      3330,
+      3331,
+      3332,
+      3337,
+      3348,
+      3352,
+      3358,
+      3364,
+      3370,
+      3387,
+      3396,
+      3407,
+      3452,
+      3564
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-56",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR AS Roma",
+      "en": "PLAYED FOR AS Roma",
+      "fr": "ONT JOUÉ À AS Roma"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en AS Roma durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for AS Roma during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à AS Roma au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      33,
+      181,
+      185,
+      220,
+      344,
+      369,
+      630,
+      748,
+      775,
+      959,
+      1117,
+      1121,
+      1127,
+      1148,
+      1155,
+      1163,
+      1189,
+      1190,
+      1203,
+      1205,
+      1206,
+      1319,
+      1375,
+      1388,
+      1404,
+      1411,
+      1418,
+      1442,
+      1722,
+      1757,
+      3212,
+      3242,
+      3245,
+      3252,
+      3372,
+      3534
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-119",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Feyenoord",
+      "en": "PLAYED FOR Feyenoord",
+      "fr": "ONT JOUÉ À Feyenoord"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Feyenoord durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Feyenoord during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Feyenoord au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      37,
+      86,
+      806,
+      1772,
+      3215,
+      3260,
+      3264,
+      3297,
+      3302,
+      3304,
+      3305,
+      3306,
+      3307,
+      3310,
+      3311,
+      3313,
+      3318,
+      3319,
+      3321,
+      3341,
+      3350,
+      3373,
+      3380,
+      3385,
+      3400,
+      3413,
+      3414,
+      3425,
+      3441,
+      3446,
+      3454,
+      3490,
+      3522,
+      3539
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-43",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Liverpool",
+      "en": "PLAYED FOR Liverpool",
+      "fr": "ONT JOUÉ À Liverpool"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Liverpool durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Liverpool during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Liverpool au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      39,
+      47,
+      48,
+      50,
+      102,
+      115,
+      116,
+      121,
+      129,
+      137,
+      155,
+      260,
+      331,
+      353,
+      748,
+      750,
+      751,
+      775,
+      807,
+      809,
+      830,
+      897,
+      936,
+      954,
+      991,
+      1018,
+      1035,
+      1069,
+      1085,
+      3225,
+      3226,
+      3227,
+      3274,
+      3294,
+      3367,
+      3375
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-42",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Atletico Madrid",
+      "en": "PLAYED FOR Atletico Madrid",
+      "fr": "ONT JOUÉ À Atletico Madrid"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Atletico Madrid durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Atletico Madrid during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Atletico Madrid au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      46,
+      47,
+      51,
+      58,
+      69,
+      71,
+      77,
+      86,
+      97,
+      236,
+      239,
+      240,
+      322,
+      323,
+      324,
+      333,
+      339,
+      371,
+      374,
+      377,
+      394,
+      431,
+      487,
+      597,
+      615,
+      641,
+      768,
+      926,
+      1155,
+      1163,
+      1194,
+      1713,
+      1735,
+      3214,
+      3219,
+      3263,
+      3411,
+      3493,
+      3505
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-132",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Corinthians",
+      "en": "PLAYED FOR Corinthians",
+      "fr": "ONT JOUÉ À Corinthians"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Corinthians durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Corinthians during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Corinthians au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      50,
+      53,
+      1173,
+      1378,
+      1722
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-1780",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR River Plate",
+      "en": "PLAYED FOR River Plate",
+      "fr": "ONT JOUÉ À River Plate"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en River Plate durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for River Plate during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à River Plate au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      50,
+      374,
+      803,
+      1076
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-141",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Marseille",
+      "en": "PLAYED FOR Marseille",
+      "fr": "ONT JOUÉ À Marseille"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Marseille durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Marseille during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Marseille au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      57,
+      122,
+      188,
+      916,
+      1026,
+      1112,
+      1156,
+      1160,
+      1171,
+      1726,
+      1734,
+      1735,
+      1737,
+      1740,
+      1757,
+      1760,
+      1772,
+      1778,
+      1785,
+      1805,
+      1821,
+      1835,
+      1846,
+      1851,
+      1887,
+      1949,
+      2006,
+      3212,
+      3244,
+      3251,
+      3318,
+      3370,
+      3400
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-11",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Sporting CP",
+      "en": "PLAYED FOR Sporting CP",
+      "fr": "ONT JOUÉ À Sporting CP"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Sporting CP durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Sporting CP during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Sporting CP au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      60,
+      377,
+      774,
+      841,
+      913,
+      920,
+      1040,
+      1077,
+      1374,
+      3271,
+      3293,
+      3306,
+      3322,
+      3323,
+      3325,
+      3328,
+      3329,
+      3333,
+      3334,
+      3344,
+      3354,
+      3359,
+      3388,
+      3389,
+      3392,
+      3398,
+      3403,
+      3408,
+      3420,
+      3426,
+      3431,
+      3432,
+      3448,
+      3464,
+      3474,
+      3480,
+      3485,
+      3507,
+      3511
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-53",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Lyon",
+      "en": "PLAYED FOR Lyon",
+      "fr": "ONT JOUÉ À Lyon"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Lyon durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Lyon during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Lyon au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      99,
+      964,
+      1395,
+      1714,
+      1715,
+      1728,
+      1729,
+      1757,
+      1767,
+      1773,
+      1790,
+      1819,
+      1836,
+      1838,
+      1841,
+      1846,
+      1867,
+      1871,
+      1946,
+      1954,
+      1960,
+      1981,
+      1984,
+      1999,
+      2033,
+      3238,
+      3265,
+      3367,
+      3383,
+      3456,
+      3473,
+      3482,
+      3542
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-290",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR PSV Eindhoven",
+      "en": "PLAYED FOR PSV Eindhoven",
+      "fr": "ONT JOUÉ À PSV Eindhoven"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en PSV Eindhoven durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for PSV Eindhoven during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à PSV Eindhoven au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      102,
+      146,
+      181,
+      329,
+      945,
+      1115,
+      3221,
+      3222,
+      3223,
+      3224,
+      3247,
+      3254,
+      3289,
+      3302,
+      3303,
+      3304,
+      3309,
+      3312,
+      3314,
+      3315,
+      3316,
+      3327,
+      3340,
+      3356,
+      3371,
+      3382,
+      3393,
+      3415,
+      3416,
+      3434,
+      3442,
+      3447,
+      3453,
+      3528
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-45",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Ajax",
+      "en": "PLAYED FOR Ajax",
+      "fr": "ONT JOUÉ À Ajax"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Ajax durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Ajax during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Ajax au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      137,
+      196,
+      752,
+      788,
+      815,
+      916,
+      1018,
+      1046,
+      1112,
+      1115,
+      1116,
+      1334,
+      1729,
+      1939,
+      2894,
+      3215,
+      3217,
+      3226,
+      3232,
+      3233,
+      3234,
+      3246,
+      3256,
+      3266,
+      3287,
+      3301,
+      3307,
+      3308,
+      3316,
+      3317,
+      3335,
+      3345,
+      3355,
+      3366,
+      3372,
+      3394,
+      3405,
+      3412,
+      3417,
+      3472,
+      3484,
+      3506,
+      3516,
+      3540
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-367",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Benfica",
+      "en": "PLAYED FOR Benfica",
+      "fr": "ONT JOUÉ À Benfica"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Benfica durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Benfica during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Benfica au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      190,
+      236,
+      249,
+      333,
+      338,
+      563,
+      1116,
+      1117,
+      1121,
+      1395,
+      1931,
+      3218,
+      3219,
+      3235,
+      3236,
+      3239,
+      3247,
+      3268,
+      3270,
+      3288,
+      3290,
+      3300,
+      3319,
+      3320,
+      3322,
+      3353,
+      3358,
+      3363,
+      3368,
+      3369,
+      3374,
+      3394,
+      3404,
+      3406,
+      3437,
+      3451,
+      3463,
+      3555,
+      3556,
+      3558,
+      3559
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-1789",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Boca Juniors",
+      "en": "PLAYED FOR Boca Juniors",
+      "fr": "ONT JOUÉ À Boca Juniors"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Boca Juniors durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Boca Juniors during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Boca Juniors au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      756,
+      1030,
+      1163,
+      3397,
+      3488
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-2363",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Independiente del Valle",
+      "en": "PLAYED FOR Independiente del Valle",
+      "fr": "ONT JOUÉ À Independiente del Valle"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Independiente del Valle durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Independiente del Valle during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Independiente del Valle au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      942,
+      1776,
+      3346,
+      3525
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "club-1752",
+    "kind": "club",
+    "title": {
+      "es": "PASARON POR Palmeiras",
+      "en": "PLAYED FOR Palmeiras",
+      "fr": "ONT JOUÉ À Palmeiras"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron en Palmeiras durante su carrera; no necesariamente al mismo tiempo.",
+      "en": "All four played for Palmeiras during their careers, not necessarily at the same time.",
+      "fr": "Tous les quatre ont joué à Palmeiras au cours de leur carrière, pas nécessairement ensemble."
+    },
+    "playerIds": [
+      1075,
+      1078,
+      3237,
+      3439,
+      3456,
+      3489
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Argentina",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Argentina",
+      "en": "NATIONALITY: Argentina",
+      "fr": "NATIONALITÉ : Argentine"
+    },
+    "reason": {
+      "es": "País en común: Argentina.",
+      "en": "Shared nationality: Argentina.",
+      "fr": "Nationalité commune : Argentine."
+    },
+    "playerIds": [
+      1,
+      50,
+      53,
+      71,
+      185,
+      371,
+      374,
+      394,
+      788,
+      803,
+      806,
+      807,
+      916,
+      1030,
+      1076,
+      1107,
+      1163,
+      1194,
+      1375,
+      1388,
+      1729,
+      2894,
+      3212,
+      3213,
+      3281,
+      3363,
+      3397,
+      3451,
+      3488
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Argentina-19",
+    "kind": "nation-club",
+    "title": {
+      "es": "Argentina · Manchester City",
+      "en": "Argentina · Manchester City",
+      "fr": "Argentine · Manchester City"
+    },
+    "reason": {
+      "es": "País en común: Argentina. Los cuatro jugaron en Manchester City.",
+      "en": "Shared nationality: Argentina. All four played for Manchester City.",
+      "fr": "Nationalité commune : Argentine. Les quatre ont joué à Manchester City."
+    },
+    "playerIds": [
+      53,
+      374,
+      803,
+      1076
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Argentina-9",
+    "kind": "nation-club",
+    "title": {
+      "es": "Argentina · Juventus",
+      "en": "Argentina · Juventus",
+      "fr": "Argentine · Juventus"
+    },
+    "reason": {
+      "es": "País en común: Argentina. Los cuatro jugaron en Juventus.",
+      "en": "Shared nationality: Argentina. All four played for Juventus.",
+      "fr": "Nationalité commune : Argentine. Les quatre ont joué à Juventus."
+    },
+    "playerIds": [
+      53,
+      185,
+      1194,
+      1388,
+      3363
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Argentina-57",
+    "kind": "nation-club",
+    "title": {
+      "es": "Argentina · Chelsea",
+      "en": "Argentina · Chelsea",
+      "fr": "Argentine · Chelsea"
+    },
+    "reason": {
+      "es": "País en común: Argentina. Los cuatro jugaron en Chelsea.",
+      "en": "Shared nationality: Argentina. All four played for Chelsea.",
+      "fr": "Nationalité commune : Argentine. Les quatre ont joué à Chelsea."
+    },
+    "playerIds": [
+      803,
+      1030,
+      3281,
+      3488
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Argentina-56",
+    "kind": "nation-club",
+    "title": {
+      "es": "Argentina · AS Roma",
+      "en": "Argentina · AS Roma",
+      "fr": "Argentine · AS Roma"
+    },
+    "reason": {
+      "es": "País en común: Argentina. Los cuatro jugaron en AS Roma.",
+      "en": "Shared nationality: Argentina. All four played for AS Roma.",
+      "fr": "Nationalité commune : Argentine. Les quatre ont joué à AS Roma."
+    },
+    "playerIds": [
+      185,
+      1163,
+      1375,
+      1388,
+      3212
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Argentina-42",
+    "kind": "nation-club",
+    "title": {
+      "es": "Argentina · Atletico Madrid",
+      "en": "Argentina · Atletico Madrid",
+      "fr": "Argentine · Atletico Madrid"
+    },
+    "reason": {
+      "es": "País en común: Argentina. Los cuatro jugaron en Atletico Madrid.",
+      "en": "Shared nationality: Argentina. All four played for Atletico Madrid.",
+      "fr": "Nationalité commune : Argentine. Les quatre ont joué à Atletico Madrid."
+    },
+    "playerIds": [
+      71,
+      371,
+      374,
+      394,
+      1163,
+      1194
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Argentina-1780",
+    "kind": "nation-club",
+    "title": {
+      "es": "Argentina · River Plate",
+      "en": "Argentina · River Plate",
+      "fr": "Argentine · River Plate"
+    },
+    "reason": {
+      "es": "País en común: Argentina. Los cuatro jugaron en River Plate.",
+      "en": "Shared nationality: Argentina. All four played for River Plate.",
+      "fr": "Nationalité commune : Argentine. Les quatre ont joué à River Plate."
+    },
+    "playerIds": [
+      50,
+      374,
+      803,
+      1076
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Argentina-45",
+    "kind": "nation-club",
+    "title": {
+      "es": "Argentina · Ajax",
+      "en": "Argentina · Ajax",
+      "fr": "Argentine · Ajax"
+    },
+    "reason": {
+      "es": "País en común: Argentina. Los cuatro jugaron en Ajax.",
+      "en": "Shared nationality: Argentina. All four played for Ajax.",
+      "fr": "Nationalité commune : Argentine. Les quatre ont joué à Ajax."
+    },
+    "playerIds": [
+      788,
+      916,
+      1729,
+      2894
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Argentina-1789",
+    "kind": "nation-club",
+    "title": {
+      "es": "Argentina · Boca Juniors",
+      "en": "Argentina · Boca Juniors",
+      "fr": "Argentine · Boca Juniors"
+    },
+    "reason": {
+      "es": "País en común: Argentina. Los cuatro jugaron en Boca Juniors.",
+      "en": "Shared nationality: Argentina. All four played for Boca Juniors.",
+      "fr": "Nationalité commune : Argentine. Les quatre ont joué à Boca Juniors."
+    },
+    "playerIds": [
+      1030,
+      1163,
+      3397,
+      3488
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Brazil",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Brasil",
+      "en": "NATIONALITY: Brazil",
+      "fr": "NATIONALITÉ : Brésil"
+    },
+    "reason": {
+      "es": "País en común: Brasil.",
+      "en": "Shared nationality: Brazil.",
+      "fr": "Nationalité commune : Brésil."
+    },
+    "playerIds": [
+      3,
+      25,
+      30,
+      60,
+      88,
+      120,
+      205,
+      308,
+      748,
+      768,
+      787,
+      895,
+      1023,
+      1075,
+      1078,
+      1116,
+      1171,
+      1173,
+      1374,
+      1378,
+      1411,
+      1698,
+      1722,
+      1772,
+      1773,
+      1917,
+      3223,
+      3229,
+      3236,
+      3237,
+      3243,
+      3265,
+      3266,
+      3267,
+      3335,
+      3393,
+      3394,
+      3398,
+      3418,
+      3439,
+      3456,
+      3480,
+      3489,
+      3509
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Brazil-10",
+    "kind": "nation-club",
+    "title": {
+      "es": "Brasil · Real Madrid",
+      "en": "Brazil · Real Madrid",
+      "fr": "Brésil · Real Madrid"
+    },
+    "reason": {
+      "es": "País en común: Brasil. Los cuatro jugaron en Real Madrid.",
+      "en": "Shared nationality: Brazil. All four played for Real Madrid.",
+      "fr": "Nationalité commune : Brésil. Les quatre ont joué à Real Madrid."
+    },
+    "playerIds": [
+      25,
+      30,
+      88,
+      3229,
+      3456
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Brazil-19",
+    "kind": "nation-club",
+    "title": {
+      "es": "Brasil · Manchester City",
+      "en": "Brazil · Manchester City",
+      "fr": "Brésil · Manchester City"
+    },
+    "reason": {
+      "es": "País en común: Brasil. Los cuatro jugaron en Manchester City.",
+      "en": "Shared nationality: Brazil. All four played for Manchester City.",
+      "fr": "Nationalité commune : Brésil. Les quatre ont joué à Manchester City."
+    },
+    "playerIds": [
+      1075,
+      3236,
+      3237,
+      3393
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Brazil-100",
+    "kind": "nation-club",
+    "title": {
+      "es": "Brasil · Sao Paulo",
+      "en": "Brazil · Sao Paulo",
+      "fr": "Brésil · Sao Paulo"
+    },
+    "reason": {
+      "es": "País en común: Brasil. Los cuatro jugaron en Sao Paulo.",
+      "en": "Shared nationality: Brazil. All four played for Sao Paulo.",
+      "fr": "Nationalité commune : Brésil. Les quatre ont joué à Sao Paulo."
+    },
+    "playerIds": [
+      25,
+      1917,
+      3229,
+      3509
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Brazil-11",
+    "kind": "nation-club",
+    "title": {
+      "es": "Brasil · Sporting CP",
+      "en": "Brazil · Sporting CP",
+      "fr": "Brésil · Sporting CP"
+    },
+    "reason": {
+      "es": "País en común: Brasil. Los cuatro jugaron en Sporting CP.",
+      "en": "Shared nationality: Brazil. All four played for Sporting CP.",
+      "fr": "Nationalité commune : Brésil. Les quatre ont joué à Sporting CP."
+    },
+    "playerIds": [
+      60,
+      1374,
+      3398,
+      3480
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Brazil-45",
+    "kind": "nation-club",
+    "title": {
+      "es": "Brasil · Ajax",
+      "en": "Brazil · Ajax",
+      "fr": "Brésil · Ajax"
+    },
+    "reason": {
+      "es": "País en común: Brasil. Los cuatro jugaron en Ajax.",
+      "en": "Shared nationality: Brazil. All four played for Ajax.",
+      "fr": "Nationalité commune : Brésil. Les quatre ont joué à Ajax."
+    },
+    "playerIds": [
+      1116,
+      3266,
+      3335,
+      3394
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Brazil-1752",
+    "kind": "nation-club",
+    "title": {
+      "es": "Brasil · Palmeiras",
+      "en": "Brazil · Palmeiras",
+      "fr": "Brésil · Palmeiras"
+    },
+    "reason": {
+      "es": "País en común: Brasil. Los cuatro jugaron en Palmeiras.",
+      "en": "Shared nationality: Brazil. All four played for Palmeiras.",
+      "fr": "Nationalité commune : Brésil. Les quatre ont joué à Palmeiras."
+    },
+    "playerIds": [
+      1075,
+      1078,
+      3237,
+      3439,
+      3456,
+      3489
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-France",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Francia",
+      "en": "NATIONALITY: France",
+      "fr": "NATIONALITÉ : France"
+    },
+    "reason": {
+      "es": "País en común: Francia.",
+      "en": "Shared nationality: France.",
+      "fr": "Nationalité commune : France."
+    },
+    "playerIds": [
+      4,
+      6,
+      22,
+      57,
+      99,
+      147,
+      152,
+      188,
+      200,
+      219,
+      260,
+      294,
+      313,
+      353,
+      354,
+      366,
+      887,
+      964,
+      998,
+      1048,
+      1080,
+      1101,
+      1156,
+      1186,
+      1187,
+      1189,
+      1347,
+      1713,
+      1719,
+      1728,
+      1759,
+      1778,
+      1790,
+      1846,
+      1857,
+      1868,
+      1899,
+      1933,
+      1942,
+      1981,
+      1982,
+      1999,
+      2006,
+      2033,
+      3214,
+      3216,
+      3219,
+      3238,
+      3248,
+      3251,
+      3258,
+      3259,
+      3282,
+      3283,
+      3284,
+      3285,
+      3289,
+      3367,
+      3375,
+      3382,
+      3395,
+      3469,
+      3527,
+      3536,
+      3542
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-France-3",
+    "kind": "nation-club",
+    "title": {
+      "es": "Francia · Paris Saint Germain",
+      "en": "France · Paris Saint Germain",
+      "fr": "France · Paris Saint Germain"
+    },
+    "reason": {
+      "es": "País en común: Francia. Los cuatro jugaron en Paris Saint Germain.",
+      "en": "Shared nationality: France. All four played for Paris Saint Germain.",
+      "fr": "Nationalité commune : France. Les quatre ont joué à Paris Saint Germain."
+    },
+    "playerIds": [
+      6,
+      188,
+      1186,
+      1713,
+      1719,
+      1759,
+      1868,
+      1899,
+      1933,
+      1942,
+      1982,
+      3367,
+      3375,
+      3527,
+      3542
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-France-4",
+    "kind": "nation-club",
+    "title": {
+      "es": "Francia · Barcelona",
+      "en": "France · Barcelona",
+      "fr": "France · Barcelona"
+    },
+    "reason": {
+      "es": "País en común: Francia. Los cuatro jugaron en Barcelona.",
+      "en": "Shared nationality: France. All four played for Barcelona.",
+      "fr": "Nationalité commune : France. Les quatre ont joué à Barcelona."
+    },
+    "playerIds": [
+      22,
+      354,
+      1719,
+      1759,
+      3219
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-France-17",
+    "kind": "nation-club",
+    "title": {
+      "es": "Francia · AC Milan",
+      "en": "France · AC Milan",
+      "fr": "France · AC Milan"
+    },
+    "reason": {
+      "es": "País en común: Francia. Los cuatro jugaron en AC Milan.",
+      "en": "Shared nationality: France. All four played for AC Milan.",
+      "fr": "Nationalité commune : France. Les quatre ont joué à AC Milan."
+    },
+    "playerIds": [
+      188,
+      219,
+      313,
+      3285
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-France-10",
+    "kind": "nation-club",
+    "title": {
+      "es": "Francia · Real Madrid",
+      "en": "France · Real Madrid",
+      "fr": "France · Real Madrid"
+    },
+    "reason": {
+      "es": "País en común: Francia. Los cuatro jugaron en Real Madrid.",
+      "en": "Shared nationality: France. All four played for Real Madrid.",
+      "fr": "Nationalité commune : France. Les quatre ont joué à Real Madrid."
+    },
+    "playerIds": [
+      4,
+      6,
+      353,
+      366,
+      3238,
+      3248
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-France-50",
+    "kind": "nation-club",
+    "title": {
+      "es": "Francia · Bayern München",
+      "en": "France · Bayern München",
+      "fr": "France · Bayern München"
+    },
+    "reason": {
+      "es": "País en común: Francia. Los cuatro jugaron en Bayern München.",
+      "en": "Shared nationality: France. All four played for Bayern München.",
+      "fr": "Nationalité commune : France. Les quatre ont joué à Bayern München."
+    },
+    "playerIds": [
+      57,
+      147,
+      152,
+      998,
+      1156,
+      1713,
+      1728,
+      3258
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-France-9",
+    "kind": "nation-club",
+    "title": {
+      "es": "Francia · Juventus",
+      "en": "France · Juventus",
+      "fr": "France · Juventus"
+    },
+    "reason": {
+      "es": "País en común: Francia. Los cuatro jugaron en Juventus.",
+      "en": "Shared nationality: France. All four played for Juventus.",
+      "fr": "Nationalité commune : France. Les quatre ont joué à Juventus."
+    },
+    "playerIds": [
+      188,
+      219,
+      1101,
+      1186
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-France-92",
+    "kind": "nation-club",
+    "title": {
+      "es": "Francia · Inter",
+      "en": "France · Inter",
+      "fr": "France · Inter"
+    },
+    "reason": {
+      "es": "País en común: Francia. Los cuatro jugaron en Inter.",
+      "en": "Shared nationality: France. All four played for Inter.",
+      "fr": "Nationalité commune : France. Les quatre ont joué à Inter."
+    },
+    "playerIds": [
+      200,
+      1156,
+      1187,
+      1347
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-France-57",
+    "kind": "nation-club",
+    "title": {
+      "es": "Francia · Chelsea",
+      "en": "France · Chelsea",
+      "fr": "France · Chelsea"
+    },
+    "reason": {
+      "es": "País en común: Francia. Los cuatro jugaron en Chelsea.",
+      "en": "Shared nationality: France. All four played for Chelsea.",
+      "fr": "Nationalité commune : France. Les quatre ont joué à Chelsea."
+    },
+    "playerIds": [
+      887,
+      964,
+      3216,
+      3259,
+      3284
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-France-43",
+    "kind": "nation-club",
+    "title": {
+      "es": "Francia · Liverpool",
+      "en": "France · Liverpool",
+      "fr": "France · Liverpool"
+    },
+    "reason": {
+      "es": "País en común: Francia. Los cuatro jugaron en Liverpool.",
+      "en": "Shared nationality: France. All four played for Liverpool.",
+      "fr": "Nationalité commune : France. Les quatre ont joué à Liverpool."
+    },
+    "playerIds": [
+      260,
+      353,
+      3367,
+      3375
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-France-141",
+    "kind": "nation-club",
+    "title": {
+      "es": "Francia · Marseille",
+      "en": "France · Marseille",
+      "fr": "France · Marseille"
+    },
+    "reason": {
+      "es": "País en común: Francia. Los cuatro jugaron en Marseille.",
+      "en": "Shared nationality: France. All four played for Marseille.",
+      "fr": "Nationalité commune : France. Les quatre ont joué à Marseille."
+    },
+    "playerIds": [
+      57,
+      188,
+      1156,
+      1778,
+      1846,
+      2006,
+      3251
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-France-53",
+    "kind": "nation-club",
+    "title": {
+      "es": "Francia · Lyon",
+      "en": "France · Lyon",
+      "fr": "France · Lyon"
+    },
+    "reason": {
+      "es": "País en común: Francia. Los cuatro jugaron en Lyon.",
+      "en": "Shared nationality: France. All four played for Lyon.",
+      "fr": "Nationalité commune : France. Les quatre ont joué à Lyon."
+    },
+    "playerIds": [
+      99,
+      964,
+      1728,
+      1790,
+      1846,
+      1981,
+      1999,
+      2033,
+      3238,
+      3367,
+      3542
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Norway",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Noruega",
+      "en": "NATIONALITY: Norway",
+      "fr": "NATIONALITÉ : Norvège"
+    },
+    "reason": {
+      "es": "País en común: Noruega.",
+      "en": "Shared nationality: Norway.",
+      "fr": "Nationalité commune : Norvège."
+    },
+    "playerIds": [
+      5,
+      134,
+      3263,
+      3286,
+      3319,
+      3355,
+      3406
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-England",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Inglaterra",
+      "en": "NATIONALITY: England",
+      "fr": "NATIONALITÉ : Angleterre"
+    },
+    "reason": {
+      "es": "País en común: Inglaterra.",
+      "en": "Shared nationality: England.",
+      "fr": "Nationalité commune : Angleterre."
+    },
+    "playerIds": [
+      12,
+      26,
+      27,
+      38,
+      39,
+      40,
+      41,
+      67,
+      106,
+      108,
+      112,
+      132,
+      234,
+      250,
+      293,
+      331,
+      759,
+      761,
+      773,
+      800,
+      801,
+      823,
+      830,
+      831,
+      870,
+      874,
+      880,
+      926,
+      945,
+      956,
+      1009,
+      1010,
+      1017,
+      1018,
+      1024,
+      1026,
+      1027,
+      1034,
+      1035,
+      1061,
+      1069,
+      1070,
+      1083,
+      1085,
+      1089,
+      1118,
+      1152,
+      1182,
+      1734,
+      1871,
+      1887,
+      3225,
+      3226,
+      3227,
+      3240,
+      3244,
+      3261,
+      3274,
+      3275,
+      3276,
+      3277,
+      3278,
+      3279,
+      3280,
+      3357,
+      3360,
+      3364,
+      3376,
+      3377,
+      3401,
+      3410,
+      3440,
+      3449,
+      3450,
+      3459,
+      3461,
+      3476,
+      3477,
+      3478,
+      3482,
+      3485,
+      3487,
+      3521,
+      3523,
+      3526,
+      3546
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-England-19",
+    "kind": "nation-club",
+    "title": {
+      "es": "Inglaterra · Manchester City",
+      "en": "England · Manchester City",
+      "fr": "Angleterre · Manchester City"
+    },
+    "reason": {
+      "es": "País en común: Inglaterra. Los cuatro jugaron en Manchester City.",
+      "en": "Shared nationality: England. All four played for Manchester City.",
+      "fr": "Nationalité commune : Angleterre. Les quatre ont joué à Manchester City."
+    },
+    "playerIds": [
+      38,
+      106,
+      108,
+      112,
+      1009,
+      1024,
+      1083,
+      1118,
+      1887,
+      3275,
+      3276
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-England-21",
+    "kind": "nation-club",
+    "title": {
+      "es": "Inglaterra · Borussia Dortmund",
+      "en": "England · Borussia Dortmund",
+      "fr": "Angleterre · Borussia Dortmund"
+    },
+    "reason": {
+      "es": "País en común: Inglaterra. Los cuatro jugaron en Borussia Dortmund.",
+      "en": "Shared nationality: England. All four played for Borussia Dortmund.",
+      "fr": "Nationalité commune : Angleterre. Les quatre ont joué à Borussia Dortmund."
+    },
+    "playerIds": [
+      67,
+      293,
+      1017,
+      1026,
+      3357
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-England-64",
+    "kind": "nation-club",
+    "title": {
+      "es": "Inglaterra · Tottenham",
+      "en": "England · Tottenham",
+      "fr": "Angleterre · Tottenham"
+    },
+    "reason": {
+      "es": "País en común: Inglaterra. Los cuatro jugaron en Tottenham.",
+      "en": "Shared nationality: England. All four played for Tottenham.",
+      "fr": "Nationalité commune : Angleterre. Les quatre ont joué à Tottenham."
+    },
+    "playerIds": [
+      12,
+      823,
+      830,
+      926,
+      1034,
+      1089,
+      3279,
+      3360,
+      3450,
+      3459
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-England-89",
+    "kind": "nation-club",
+    "title": {
+      "es": "Inglaterra · Arsenal",
+      "en": "England · Arsenal",
+      "fr": "Angleterre · Arsenal"
+    },
+    "reason": {
+      "es": "País en común: Inglaterra. Los cuatro jugaron en Arsenal.",
+      "en": "Shared nationality: England. All four played for Arsenal.",
+      "fr": "Nationalité commune : Angleterre. Les quatre ont joué à Arsenal."
+    },
+    "playerIds": [
+      250,
+      773,
+      801,
+      874,
+      880,
+      945,
+      1026,
+      1027,
+      3240,
+      3280,
+      3487,
+      3521
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-England-8",
+    "kind": "nation-club",
+    "title": {
+      "es": "Inglaterra · Manchester United",
+      "en": "England · Manchester United",
+      "fr": "Angleterre · Manchester United"
+    },
+    "reason": {
+      "es": "País en común: Inglaterra. Los cuatro jugaron en Manchester United.",
+      "en": "Shared nationality: England. All four played for Manchester United.",
+      "fr": "Nationalité commune : Angleterre. Les quatre ont joué à Manchester United."
+    },
+    "playerIds": [
+      26,
+      27,
+      41,
+      759,
+      761,
+      773,
+      800,
+      1010,
+      1070,
+      1734,
+      3244,
+      3261,
+      3278,
+      3461
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-England-57",
+    "kind": "nation-club",
+    "title": {
+      "es": "Inglaterra · Chelsea",
+      "en": "England · Chelsea",
+      "fr": "Angleterre · Chelsea"
+    },
+    "reason": {
+      "es": "País en común: Inglaterra. Los cuatro jugaron en Chelsea.",
+      "en": "Shared nationality: England. All four played for Chelsea.",
+      "fr": "Nationalité commune : Angleterre. Les quatre ont joué à Chelsea."
+    },
+    "playerIds": [
+      38,
+      40,
+      106,
+      112,
+      132,
+      773,
+      830,
+      870,
+      926,
+      945,
+      956,
+      1017,
+      1061,
+      1152,
+      3275,
+      3276,
+      3277,
+      3278,
+      3357,
+      3377,
+      3485
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-England-43",
+    "kind": "nation-club",
+    "title": {
+      "es": "Inglaterra · Liverpool",
+      "en": "England · Liverpool",
+      "fr": "Angleterre · Liverpool"
+    },
+    "reason": {
+      "es": "País en común: Inglaterra. Los cuatro jugaron en Liverpool.",
+      "en": "Shared nationality: England. All four played for Liverpool.",
+      "fr": "Nationalité commune : Angleterre. Les quatre ont joué à Liverpool."
+    },
+    "playerIds": [
+      39,
+      331,
+      830,
+      1018,
+      1035,
+      1069,
+      1085,
+      3225,
+      3226,
+      3227,
+      3274
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-England-141",
+    "kind": "nation-club",
+    "title": {
+      "es": "Inglaterra · Marseille",
+      "en": "England · Marseille",
+      "fr": "Angleterre · Marseille"
+    },
+    "reason": {
+      "es": "País en común: Inglaterra. Los cuatro jugaron en Marseille.",
+      "en": "Shared nationality: England. All four played for Marseille.",
+      "fr": "Nationalité commune : Angleterre. Les quatre ont joué à Marseille."
+    },
+    "playerIds": [
+      1026,
+      1734,
+      1887,
+      3244
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Croatia",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Croacia",
+      "en": "NATIONALITY: Croatia",
+      "fr": "NATIONALITÉ : Croatie"
+    },
+    "reason": {
+      "es": "País en común: Croacia.",
+      "en": "Shared nationality: Croatia.",
+      "fr": "Nationalité commune : Croatie."
+    },
+    "playerIds": [
+      13,
+      103,
+      784,
+      1600,
+      3221,
+      3249,
+      3428
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Germany",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Alemania",
+      "en": "NATIONALITY: Germany",
+      "fr": "NATIONALITÉ : Allemagne"
+    },
+    "reason": {
+      "es": "País en común: Alemania.",
+      "en": "Shared nationality: Germany.",
+      "fr": "Nationalité commune : Allemagne."
+    },
+    "playerIds": [
+      14,
+      54,
+      55,
+      56,
+      129,
+      144,
+      148,
+      208,
+      251,
+      281,
+      286,
+      369,
+      376,
+      1527,
+      1533,
+      1590,
+      1611,
+      1631,
+      1642,
+      1653,
+      1695,
+      3217,
+      3230,
+      3231,
+      3246,
+      3291,
+      3292,
+      3343,
+      3348,
+      3378,
+      3385,
+      3399,
+      3494,
+      3554
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Germany-21",
+    "kind": "nation-club",
+    "title": {
+      "es": "Alemania · Borussia Dortmund",
+      "en": "Germany · Borussia Dortmund",
+      "fr": "Allemagne · Borussia Dortmund"
+    },
+    "reason": {
+      "es": "País en común: Alemania. Los cuatro jugaron en Borussia Dortmund.",
+      "en": "Shared nationality: Germany. All four played for Borussia Dortmund.",
+      "fr": "Nationalité commune : Allemagne. Les quatre ont joué à Borussia Dortmund."
+    },
+    "playerIds": [
+      286,
+      376,
+      1527,
+      1590,
+      1611,
+      3246,
+      3291,
+      3292,
+      3399
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Germany-50",
+    "kind": "nation-club",
+    "title": {
+      "es": "Alemania · Bayern München",
+      "en": "Germany · Bayern München",
+      "fr": "Allemagne · Bayern München"
+    },
+    "reason": {
+      "es": "País en común: Alemania. Los cuatro jugaron en Bayern München.",
+      "en": "Shared nationality: Germany. All four played for Bayern München.",
+      "fr": "Nationalité commune : Allemagne. Les quatre ont joué à Bayern München."
+    },
+    "playerIds": [
+      14,
+      54,
+      55,
+      56,
+      144,
+      148,
+      281,
+      1533,
+      1631,
+      1642,
+      1653,
+      1695,
+      3230,
+      3231,
+      3378,
+      3554
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Spain",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: España",
+      "en": "NATIONALITY: Spain",
+      "fr": "NATIONALITÉ : Espagne"
+    },
+    "reason": {
+      "es": "País en común: España.",
+      "en": "Shared nationality: Spain.",
+      "fr": "Nationalité commune : Espagne."
+    },
+    "playerIds": [
+      15,
+      16,
+      19,
+      29,
+      45,
+      46,
+      47,
+      48,
+      49,
+      58,
+      63,
+      97,
+      121,
+      239,
+      240,
+      304,
+      323,
+      324,
+      333,
+      336,
+      355,
+      431,
+      440,
+      488,
+      495,
+      516,
+      524,
+      563,
+      576,
+      597,
+      615,
+      640,
+      641,
+      643,
+      651,
+      663,
+      675,
+      676,
+      781,
+      866,
+      917,
+      918,
+      920,
+      976,
+      1038,
+      1155,
+      1274,
+      1340,
+      1724,
+      1736,
+      2023,
+      3241,
+      3351,
+      3373,
+      3379,
+      3380,
+      3381,
+      3403,
+      3409,
+      3430,
+      3431,
+      3441,
+      3447,
+      3470,
+      3497,
+      3502,
+      3504,
+      3505,
+      3514,
+      3540,
+      3550
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Spain-3",
+    "kind": "nation-club",
+    "title": {
+      "es": "España · Paris Saint Germain",
+      "en": "Spain · Paris Saint Germain",
+      "fr": "Espagne · Paris Saint Germain"
+    },
+    "reason": {
+      "es": "País en común: España. Los cuatro jugaron en Paris Saint Germain.",
+      "en": "Shared nationality: Spain. All four played for Paris Saint Germain.",
+      "fr": "Nationalité commune : Espagne. Les quatre ont joué à Paris Saint Germain."
+    },
+    "playerIds": [
+      1724,
+      1736,
+      2023,
+      3241
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Spain-4",
+    "kind": "nation-club",
+    "title": {
+      "es": "España · Barcelona",
+      "en": "Spain · Barcelona",
+      "fr": "Espagne · Barcelona"
+    },
+    "reason": {
+      "es": "País en común: España. Los cuatro jugaron en Barcelona.",
+      "en": "Shared nationality: Spain. All four played for Barcelona.",
+      "fr": "Nationalité commune : Espagne. Les quatre ont joué à Barcelona."
+    },
+    "playerIds": [
+      15,
+      16,
+      45,
+      46,
+      49,
+      63,
+      323,
+      336,
+      355,
+      440,
+      488,
+      495,
+      516,
+      524,
+      576,
+      640,
+      651,
+      663,
+      1736,
+      2023,
+      3373,
+      3540
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Spain-10",
+    "kind": "nation-club",
+    "title": {
+      "es": "España · Real Madrid",
+      "en": "Spain · Real Madrid",
+      "fr": "Espagne · Real Madrid"
+    },
+    "reason": {
+      "es": "País en común: España. Los cuatro jugaron en Real Madrid.",
+      "en": "Shared nationality: Spain. All four played for Real Madrid.",
+      "fr": "Nationalité commune : Espagne. Les quatre ont joué à Real Madrid."
+    },
+    "playerIds": [
+      19,
+      29,
+      48,
+      121,
+      239,
+      304,
+      440,
+      563,
+      675,
+      781,
+      3241,
+      3409,
+      3430,
+      3502,
+      3504,
+      3514,
+      3550
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Spain-89",
+    "kind": "nation-club",
+    "title": {
+      "es": "España · Arsenal",
+      "en": "Spain · Arsenal",
+      "fr": "Espagne · Arsenal"
+    },
+    "reason": {
+      "es": "País en común: España. Los cuatro jugaron en Arsenal.",
+      "en": "Shared nationality: Spain. All four played for Arsenal.",
+      "fr": "Nationalité commune : Espagne. Les quatre ont joué à Arsenal."
+    },
+    "playerIds": [
+      49,
+      781,
+      866,
+      917,
+      918,
+      1038
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Spain-57",
+    "kind": "nation-club",
+    "title": {
+      "es": "España · Chelsea",
+      "en": "Spain · Chelsea",
+      "fr": "Espagne · Chelsea"
+    },
+    "reason": {
+      "es": "País en común: España. Los cuatro jugaron en Chelsea.",
+      "en": "Shared nationality: Spain. All four played for Chelsea.",
+      "fr": "Nationalité commune : Espagne. Les quatre ont joué à Chelsea."
+    },
+    "playerIds": [
+      47,
+      49,
+      440,
+      781,
+      976
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Spain-42",
+    "kind": "nation-club",
+    "title": {
+      "es": "España · Atletico Madrid",
+      "en": "Spain · Atletico Madrid",
+      "fr": "Espagne · Atletico Madrid"
+    },
+    "reason": {
+      "es": "País en común: España. Los cuatro jugaron en Atletico Madrid.",
+      "en": "Shared nationality: Spain. All four played for Atletico Madrid.",
+      "fr": "Nationalité commune : Espagne. Les quatre ont joué à Atletico Madrid."
+    },
+    "playerIds": [
+      46,
+      47,
+      58,
+      97,
+      239,
+      240,
+      323,
+      324,
+      333,
+      431,
+      597,
+      615,
+      641,
+      1155,
+      3505
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Italy",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Italia",
+      "en": "NATIONALITY: Italy",
+      "fr": "NATIONALITÉ : Italie"
+    },
+    "reason": {
+      "es": "País en común: Italia.",
+      "en": "Shared nationality: Italy.",
+      "fr": "Nationalité commune : Italie."
+    },
+    "playerIds": [
+      20,
+      21,
+      31,
+      33,
+      34,
+      191,
+      193,
+      197,
+      215,
+      263,
+      298,
+      902,
+      959,
+      990,
+      1108,
+      1110,
+      1121,
+      1125,
+      1126,
+      1127,
+      1199,
+      1203,
+      1205,
+      1219,
+      1232,
+      1233,
+      1234,
+      1235,
+      1256,
+      1286,
+      1296,
+      1304,
+      1334,
+      1343,
+      1404,
+      1409,
+      1418,
+      1423,
+      1433,
+      1467,
+      1476,
+      1477,
+      1757,
+      3242,
+      3294,
+      3296,
+      3390,
+      3413,
+      3420,
+      3433,
+      3458,
+      3460,
+      3465,
+      3496,
+      3508,
+      3513,
+      3524,
+      3535
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Italy-17",
+    "kind": "nation-club",
+    "title": {
+      "es": "Italia · AC Milan",
+      "en": "Italy · AC Milan",
+      "fr": "Italie · AC Milan"
+    },
+    "reason": {
+      "es": "País en común: Italia. Los cuatro jugaron en AC Milan.",
+      "en": "Shared nationality: Italy. All four played for AC Milan.",
+      "fr": "Nationalité commune : Italie. Les quatre ont joué à AC Milan."
+    },
+    "playerIds": [
+      21,
+      31,
+      191,
+      263,
+      298,
+      902,
+      1121,
+      1199,
+      1286,
+      1423,
+      1433,
+      1467,
+      3390
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Italy-9",
+    "kind": "nation-club",
+    "title": {
+      "es": "Italia · Juventus",
+      "en": "Italy · Juventus",
+      "fr": "Italie · Juventus"
+    },
+    "reason": {
+      "es": "País en común: Italia. Los cuatro jugaron en Juventus.",
+      "en": "Shared nationality: Italy. All four played for Juventus.",
+      "fr": "Nationalité commune : Italie. Les quatre ont joué à Juventus."
+    },
+    "playerIds": [
+      20,
+      21,
+      34,
+      215,
+      298,
+      1125,
+      1126,
+      1127,
+      1304,
+      1343,
+      3294
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Italy-92",
+    "kind": "nation-club",
+    "title": {
+      "es": "Italia · Inter",
+      "en": "Italy · Inter",
+      "fr": "Italie · Inter"
+    },
+    "reason": {
+      "es": "País en común: Italia. Los cuatro jugaron en Inter.",
+      "en": "Shared nationality: Italy. All four played for Inter.",
+      "fr": "Nationalité commune : Italie. Les quatre ont joué à Inter."
+    },
+    "playerIds": [
+      193,
+      1108,
+      1219,
+      1232,
+      1233,
+      1296,
+      3496,
+      3524
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Italy-94",
+    "kind": "nation-club",
+    "title": {
+      "es": "Italia · Napoli",
+      "en": "Italy · Napoli",
+      "fr": "Italie · Napoli"
+    },
+    "reason": {
+      "es": "País en común: Italia. Los cuatro jugaron en Napoli.",
+      "en": "Shared nationality: Italy. All four played for Napoli.",
+      "fr": "Nationalité commune : Italie. Les quatre ont joué à Napoli."
+    },
+    "playerIds": [
+      197,
+      1108,
+      1110,
+      1127,
+      1203,
+      1235,
+      1256,
+      1334,
+      3296,
+      3465
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Italy-56",
+    "kind": "nation-club",
+    "title": {
+      "es": "Italia · AS Roma",
+      "en": "Italy · AS Roma",
+      "fr": "Italie · AS Roma"
+    },
+    "reason": {
+      "es": "País en común: Italia. Los cuatro jugaron en AS Roma.",
+      "en": "Shared nationality: Italy. All four played for AS Roma.",
+      "fr": "Nationalité commune : Italie. Les quatre ont joué à AS Roma."
+    },
+    "playerIds": [
+      33,
+      959,
+      1121,
+      1127,
+      1203,
+      1205,
+      1404,
+      1418,
+      1757,
+      3242
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Sweden",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Suecia",
+      "en": "NATIONALITY: Sweden",
+      "fr": "NATIONALITÉ : Suède"
+    },
+    "reason": {
+      "es": "País en común: Suecia.",
+      "en": "Shared nationality: Sweden.",
+      "fr": "Nationalité commune : Suède."
+    },
+    "playerIds": [
+      23,
+      116,
+      279,
+      841,
+      1051,
+      3353,
+      3427,
+      3466
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Belgium",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Bélgica",
+      "en": "NATIONALITY: Belgium",
+      "fr": "NATIONALITÉ : Belgique"
+    },
+    "reason": {
+      "es": "País en común: Bélgica.",
+      "en": "Shared nationality: Belgium.",
+      "fr": "Nationalité commune : Belgique."
+    },
+    "playerIds": [
+      24,
+      163,
+      220,
+      314,
+      339,
+      798,
+      969,
+      1007,
+      1045,
+      1715,
+      1939,
+      1960,
+      3245,
+      3250,
+      3264,
+      3288,
+      3408,
+      3423,
+      3472,
+      3491,
+      3506,
+      3528
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Belgium-57",
+    "kind": "nation-club",
+    "title": {
+      "es": "Bélgica · Chelsea",
+      "en": "Belgium · Chelsea",
+      "fr": "Belgique · Chelsea"
+    },
+    "reason": {
+      "es": "País en común: Bélgica. Los cuatro jugaron en Chelsea.",
+      "en": "Shared nationality: Belgium. All four played for Chelsea.",
+      "fr": "Nationalité commune : Belgique. Les quatre ont joué à Chelsea."
+    },
+    "playerIds": [
+      24,
+      339,
+      1007,
+      1045,
+      3245
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Cameroon",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Camerún",
+      "en": "NATIONALITY: Cameroon",
+      "fr": "NATIONALITÉ : Cameroun"
+    },
+    "reason": {
+      "es": "País en común: Camerún.",
+      "en": "Shared nationality: Cameroon.",
+      "fr": "Nationalité commune : Cameroun."
+    },
+    "playerIds": [
+      28,
+      885,
+      1160,
+      1851,
+      3444
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Netherlands",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Países Bajos",
+      "en": "NATIONALITY: Netherlands",
+      "fr": "NATIONALITÉ : Pays-Bas"
+    },
+    "reason": {
+      "es": "País en común: Países Bajos.",
+      "en": "Shared nationality: Netherlands.",
+      "fr": "Nationalité commune : Pays-Bas."
+    },
+    "playerIds": [
+      35,
+      36,
+      37,
+      102,
+      137,
+      181,
+      207,
+      254,
+      329,
+      630,
+      751,
+      927,
+      954,
+      955,
+      1046,
+      1115,
+      1206,
+      1261,
+      1821,
+      3222,
+      3224,
+      3232,
+      3233,
+      3273,
+      3287,
+      3301,
+      3302,
+      3303,
+      3304,
+      3305,
+      3306,
+      3307,
+      3308,
+      3309,
+      3310,
+      3311,
+      3312,
+      3313,
+      3314,
+      3315,
+      3317,
+      3318,
+      3366,
+      3371,
+      3372,
+      3383,
+      3386,
+      3396,
+      3405,
+      3421,
+      3434,
+      3446,
+      3453,
+      3454,
+      3455,
+      3457,
+      3468,
+      3471,
+      3484,
+      3490,
+      3495,
+      3515,
+      3516,
+      3531,
+      3539
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Netherlands-56",
+    "kind": "nation-club",
+    "title": {
+      "es": "Países Bajos · AS Roma",
+      "en": "Netherlands · AS Roma",
+      "fr": "Pays-Bas · AS Roma"
+    },
+    "reason": {
+      "es": "País en común: Países Bajos. Los cuatro jugaron en AS Roma.",
+      "en": "Shared nationality: Netherlands. All four played for AS Roma.",
+      "fr": "Nationalité commune : Pays-Bas. Les quatre ont joué à AS Roma."
+    },
+    "playerIds": [
+      181,
+      630,
+      1206,
+      3372
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Netherlands-119",
+    "kind": "nation-club",
+    "title": {
+      "es": "Países Bajos · Feyenoord",
+      "en": "Netherlands · Feyenoord",
+      "fr": "Pays-Bas · Feyenoord"
+    },
+    "reason": {
+      "es": "País en común: Países Bajos. Los cuatro jugaron en Feyenoord.",
+      "en": "Shared nationality: Netherlands. All four played for Feyenoord.",
+      "fr": "Nationalité commune : Pays-Bas. Les quatre ont joué à Feyenoord."
+    },
+    "playerIds": [
+      37,
+      3302,
+      3304,
+      3305,
+      3306,
+      3307,
+      3310,
+      3311,
+      3313,
+      3318,
+      3446,
+      3454,
+      3490,
+      3539
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Netherlands-43",
+    "kind": "nation-club",
+    "title": {
+      "es": "Países Bajos · Liverpool",
+      "en": "Netherlands · Liverpool",
+      "fr": "Pays-Bas · Liverpool"
+    },
+    "reason": {
+      "es": "País en común: Países Bajos. Los cuatro jugaron en Liverpool.",
+      "en": "Shared nationality: Netherlands. All four played for Liverpool.",
+      "fr": "Nationalité commune : Pays-Bas. Les quatre ont joué à Liverpool."
+    },
+    "playerIds": [
+      102,
+      137,
+      751,
+      954
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Netherlands-290",
+    "kind": "nation-club",
+    "title": {
+      "es": "Países Bajos · PSV Eindhoven",
+      "en": "Netherlands · PSV Eindhoven",
+      "fr": "Pays-Bas · PSV Eindhoven"
+    },
+    "reason": {
+      "es": "País en común: Países Bajos. Los cuatro jugaron en PSV Eindhoven.",
+      "en": "Shared nationality: Netherlands. All four played for PSV Eindhoven.",
+      "fr": "Nationalité commune : Pays-Bas. Les quatre ont joué à PSV Eindhoven."
+    },
+    "playerIds": [
+      102,
+      181,
+      329,
+      1115,
+      3222,
+      3224,
+      3302,
+      3303,
+      3304,
+      3309,
+      3312,
+      3314,
+      3315,
+      3371,
+      3434,
+      3453
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Netherlands-45",
+    "kind": "nation-club",
+    "title": {
+      "es": "Países Bajos · Ajax",
+      "en": "Netherlands · Ajax",
+      "fr": "Pays-Bas · Ajax"
+    },
+    "reason": {
+      "es": "País en común: Países Bajos. Los cuatro jugaron en Ajax.",
+      "en": "Shared nationality: Netherlands. All four played for Ajax.",
+      "fr": "Nationalité commune : Pays-Bas. Les quatre ont joué à Ajax."
+    },
+    "playerIds": [
+      137,
+      1046,
+      1115,
+      3232,
+      3233,
+      3287,
+      3301,
+      3307,
+      3308,
+      3317,
+      3366,
+      3372,
+      3405,
+      3484,
+      3516
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Uruguay",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Uruguay",
+      "en": "NATIONALITY: Uruguay",
+      "fr": "NATIONALITÉ : Uruguay"
+    },
+    "reason": {
+      "es": "País en común: Uruguay.",
+      "en": "Shared nationality: Uruguay.",
+      "fr": "Nationalité commune : Uruguay."
+    },
+    "playerIds": [
+      51,
+      322,
+      343,
+      756,
+      936,
+      1276,
+      3333,
+      3334,
+      3344
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Nigeria",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Nigeria",
+      "en": "NATIONALITY: Nigeria",
+      "fr": "NATIONALITÉ : Nigeria"
+    },
+    "reason": {
+      "es": "País en común: Nigeria.",
+      "en": "Shared nationality: Nigeria.",
+      "fr": "Nationalité commune : Nigeria."
+    },
+    "playerIds": [
+      77,
+      192,
+      1949,
+      3345,
+      3347
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Slovakia",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Eslovaquia",
+      "en": "NATIONALITY: Slovakia",
+      "fr": "NATIONALITÉ : Slovaquie"
+    },
+    "reason": {
+      "es": "País en común: Eslovaquia.",
+      "en": "Shared nationality: Slovakia.",
+      "fr": "Nationalité commune : Slovaquie."
+    },
+    "playerIds": [
+      86,
+      832,
+      1277,
+      1836,
+      3220
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Senegal",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Senegal",
+      "en": "NATIONALITY: Senegal",
+      "fr": "NATIONALITÉ : Sénégal"
+    },
+    "reason": {
+      "es": "País en común: Senegal.",
+      "en": "Shared nationality: Senegal.",
+      "fr": "Nationalité commune : Sénégal."
+    },
+    "playerIds": [
+      122,
+      1819,
+      3486,
+      3507
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Ghana",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Ghana",
+      "en": "NATIONALITY: Ghana",
+      "fr": "NATIONALITÉ : Ghana"
+    },
+    "reason": {
+      "es": "País en común: Ghana.",
+      "en": "Shared nationality: Ghana.",
+      "fr": "Nationalité commune : Ghana."
+    },
+    "playerIds": [
+      128,
+      815,
+      1946,
+      3479
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Morocco",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Marruecos",
+      "en": "NATIONALITY: Morocco",
+      "fr": "NATIONALITÉ : Maroc"
+    },
+    "reason": {
+      "es": "País en común: Marruecos.",
+      "en": "Shared nationality: Morocco.",
+      "fr": "Nationalité commune : Maroc."
+    },
+    "playerIds": [
+      146,
+      340,
+      752,
+      1711,
+      1726,
+      1805,
+      3215,
+      3349,
+      3362,
+      3400,
+      3552
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Colombia",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Colombia",
+      "en": "NATIONALITY: Colombia",
+      "fr": "NATIONALITÉ : Colombie"
+    },
+    "reason": {
+      "es": "País en común: Colombia.",
+      "en": "Shared nationality: Colombia.",
+      "fr": "Nationalité commune : Colombie."
+    },
+    "playerIds": [
+      155,
+      1150,
+      1299,
+      3268,
+      3329
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Portugal",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Portugal",
+      "en": "NATIONALITY: Portugal",
+      "fr": "NATIONALITÉ : Portugal"
+    },
+    "reason": {
+      "es": "País en común: Portugal.",
+      "en": "Shared nationality: Portugal.",
+      "fr": "Nationalité commune : Portugal."
+    },
+    "playerIds": [
+      190,
+      196,
+      249,
+      338,
+      345,
+      757,
+      774,
+      776,
+      913,
+      1040,
+      1395,
+      1442,
+      1608,
+      1856,
+      1931,
+      3218,
+      3228,
+      3235,
+      3247,
+      3255,
+      3271,
+      3322,
+      3323,
+      3324,
+      3325,
+      3326,
+      3328,
+      3342,
+      3350,
+      3368,
+      3374,
+      3388,
+      3389,
+      3392,
+      3404,
+      3419,
+      3422,
+      3436,
+      3443,
+      3448,
+      3462,
+      3463,
+      3464,
+      3474,
+      3510,
+      3511,
+      3519,
+      3555,
+      3556,
+      3558,
+      3559,
+      3561
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Portugal-3",
+    "kind": "nation-club",
+    "title": {
+      "es": "Portugal · Paris Saint Germain",
+      "en": "Portugal · Paris Saint Germain",
+      "fr": "Portugal · Paris Saint Germain"
+    },
+    "reason": {
+      "es": "País en común: Portugal. Los cuatro jugaron en Paris Saint Germain.",
+      "en": "Shared nationality: Portugal. All four played for Paris Saint Germain.",
+      "fr": "Nationalité commune : Portugal. Les quatre ont joué à Paris Saint Germain."
+    },
+    "playerIds": [
+      190,
+      1856,
+      1931,
+      3389
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Portugal-19",
+    "kind": "nation-club",
+    "title": {
+      "es": "Portugal · Manchester City",
+      "en": "Portugal · Manchester City",
+      "fr": "Portugal · Manchester City"
+    },
+    "reason": {
+      "es": "País en común: Portugal. Los cuatro jugaron en Manchester City.",
+      "en": "Shared nationality: Portugal. All four played for Manchester City.",
+      "fr": "Nationalité commune : Portugal. Les quatre ont joué à Manchester City."
+    },
+    "playerIds": [
+      249,
+      338,
+      345,
+      913
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Portugal-85",
+    "kind": "nation-club",
+    "title": {
+      "es": "Portugal · FC Porto",
+      "en": "Portugal · FC Porto",
+      "fr": "Portugal · FC Porto"
+    },
+    "reason": {
+      "es": "País en común: Portugal. Los cuatro jugaron en FC Porto.",
+      "en": "Shared nationality: Portugal. All four played for FC Porto.",
+      "fr": "Nationalité commune : Portugal. Les quatre ont joué à FC Porto."
+    },
+    "playerIds": [
+      196,
+      757,
+      1442,
+      1608,
+      1856,
+      3228,
+      3255,
+      3324,
+      3326,
+      3342,
+      3350,
+      3419,
+      3422
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Portugal-11",
+    "kind": "nation-club",
+    "title": {
+      "es": "Portugal · Sporting CP",
+      "en": "Portugal · Sporting CP",
+      "fr": "Portugal · Sporting CP"
+    },
+    "reason": {
+      "es": "País en común: Portugal. Los cuatro jugaron en Sporting CP.",
+      "en": "Shared nationality: Portugal. All four played for Sporting CP.",
+      "fr": "Nationalité commune : Portugal. Les quatre ont joué à Sporting CP."
+    },
+    "playerIds": [
+      774,
+      913,
+      1040,
+      3271,
+      3322,
+      3323,
+      3325,
+      3328,
+      3388,
+      3389,
+      3392,
+      3448,
+      3464,
+      3474,
+      3511
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Portugal-367",
+    "kind": "nation-club",
+    "title": {
+      "es": "Portugal · Benfica",
+      "en": "Portugal · Benfica",
+      "fr": "Portugal · Benfica"
+    },
+    "reason": {
+      "es": "País en común: Portugal. Los cuatro jugaron en Benfica.",
+      "en": "Shared nationality: Portugal. All four played for Benfica.",
+      "fr": "Nationalité commune : Portugal. Les quatre ont joué à Benfica."
+    },
+    "playerIds": [
+      190,
+      249,
+      338,
+      1395,
+      1931,
+      3218,
+      3235,
+      3247,
+      3322,
+      3368,
+      3374,
+      3404,
+      3463,
+      3555,
+      3556,
+      3558,
+      3559
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Poland",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Polonia",
+      "en": "NATIONALITY: Poland",
+      "fr": "NATIONALITÉ : Pologne"
+    },
+    "reason": {
+      "es": "País en común: Polonia.",
+      "en": "Shared nationality: Poland.",
+      "fr": "Nationalité commune : Pologne."
+    },
+    "playerIds": [
+      209,
+      344,
+      1112,
+      3262,
+      3269,
+      3320,
+      3321,
+      3336,
+      3503
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Türkiye",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Turquía",
+      "en": "NATIONALITY: Türkiye",
+      "fr": "NATIONALITÉ : Turquie"
+    },
+    "reason": {
+      "es": "País en común: Turquía.",
+      "en": "Shared nationality: Türkiye.",
+      "fr": "Nationalité commune : Turquie."
+    },
+    "playerIds": [
+      212,
+      573,
+      1190,
+      1400,
+      3253,
+      3272,
+      3330,
+      3331,
+      3337,
+      3352,
+      3358,
+      3370,
+      3387,
+      3452,
+      3547
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Türkiye-113",
+    "kind": "nation-club",
+    "title": {
+      "es": "Turquía · Fenerbahçe",
+      "en": "Türkiye · Fenerbahçe",
+      "fr": "Turquie · Fenerbahçe"
+    },
+    "reason": {
+      "es": "País en común: Turquía. Los cuatro jugaron en Fenerbahçe.",
+      "en": "Shared nationality: Türkiye. All four played for Fenerbahçe.",
+      "fr": "Nationalité commune : Turquie. Les quatre ont joué à Fenerbahçe."
+    },
+    "playerIds": [
+      573,
+      3253,
+      3272,
+      3330,
+      3331,
+      3337,
+      3352,
+      3358,
+      3370,
+      3387,
+      3452
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Switzerland",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Suiza",
+      "en": "NATIONALITY: Switzerland",
+      "fr": "NATIONALITÉ : Suisse"
+    },
+    "reason": {
+      "es": "País en común: Suiza.",
+      "en": "Shared nationality: Switzerland.",
+      "fr": "Nationalité commune : Suisse."
+    },
+    "playerIds": [
+      285,
+      1098,
+      1737,
+      3391,
+      3473
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Serbia",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Serbia",
+      "en": "NATIONALITY: Serbia",
+      "fr": "NATIONALITÉ : Serbie"
+    },
+    "reason": {
+      "es": "País en común: Serbia.",
+      "en": "Shared nationality: Serbia.",
+      "fr": "Nationalité commune : Serbie."
+    },
+    "playerIds": [
+      301,
+      1117,
+      1240,
+      3254,
+      3429,
+      3435,
+      3493,
+      3530
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Denmark",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Dinamarca",
+      "en": "NATIONALITY: Denmark",
+      "fr": "NATIONALITÉ : Danemark"
+    },
+    "reason": {
+      "es": "País en común: Dinamarca.",
+      "en": "Shared nationality: Denmark.",
+      "fr": "Nationalité commune : Danemark."
+    },
+    "playerIds": [
+      368,
+      377,
+      1063,
+      1362,
+      1760,
+      1867,
+      1954,
+      3234,
+      3270,
+      3412,
+      3432,
+      3467,
+      3549
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Ukraine",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Ucrania",
+      "en": "NATIONALITY: Ukraine",
+      "fr": "NATIONALITÉ : Ukraine"
+    },
+    "reason": {
+      "es": "País en común: Ucrania.",
+      "en": "Shared nationality: Ukraine.",
+      "fr": "Nationalité commune : Ukraine."
+    },
+    "playerIds": [
+      442,
+      3239,
+      3256,
+      3338,
+      3365,
+      3369
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-USA",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Estados Unidos",
+      "en": "NATIONALITY: United States",
+      "fr": "NATIONALITÉ : États-Unis"
+    },
+    "reason": {
+      "es": "País en común: Estados Unidos.",
+      "en": "Shared nationality: United States.",
+      "fr": "Nationalité commune : États-Unis."
+    },
+    "playerIds": [
+      487,
+      1099,
+      1114,
+      1317,
+      1487,
+      1740,
+      1841,
+      3316,
+      3339,
+      3340,
+      3411,
+      3416
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Côte d'Ivoire",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Côte d’Ivoire",
+      "en": "NATIONALITY: Côte d’Ivoire",
+      "fr": "NATIONALITÉ : Côte d’Ivoire"
+    },
+    "reason": {
+      "es": "País en común: Côte d’Ivoire.",
+      "en": "Shared nationality: Côte d’Ivoire.",
+      "fr": "Nationalité commune : Côte d’Ivoire."
+    },
+    "playerIds": [
+      692,
+      1148,
+      1215,
+      3295,
+      3361
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Scotland",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Escocia",
+      "en": "NATIONALITY: Scotland",
+      "fr": "NATIONALITÉ : Écosse"
+    },
+    "reason": {
+      "es": "País en común: Escocia.",
+      "en": "Shared nationality: Scotland.",
+      "fr": "Nationalité commune : Écosse."
+    },
+    "playerIds": [
+      750,
+      950,
+      1132,
+      1306
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Greece",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Grecia",
+      "en": "NATIONALITY: Greece",
+      "fr": "NATIONALITÉ : Grèce"
+    },
+    "reason": {
+      "es": "País en común: Grecia.",
+      "en": "Shared nationality: Greece.",
+      "fr": "Nationalité commune : Grèce."
+    },
+    "playerIds": [
+      775,
+      963,
+      1319,
+      1617,
+      3293,
+      3300,
+      3354
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Japan",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Japón",
+      "en": "NATIONALITY: Japan",
+      "fr": "NATIONALITÉ : Japon"
+    },
+    "reason": {
+      "es": "País en común: Japón.",
+      "en": "Shared nationality: Japan.",
+      "fr": "Nationalité commune : Japon."
+    },
+    "playerIds": [
+      809,
+      3297,
+      3298,
+      3299,
+      3442
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Algeria",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Argelia",
+      "en": "NATIONALITY: Algeria",
+      "fr": "NATIONALITÉ : Algérie"
+    },
+    "reason": {
+      "es": "País en común: Argelia.",
+      "en": "Shared nationality: Algeria.",
+      "fr": "Nationalité commune : Algérie."
+    },
+    "playerIds": [
+      888,
+      1785,
+      3257,
+      3414
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Ecuador",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Ecuador",
+      "en": "NATIONALITY: Ecuador",
+      "fr": "NATIONALITÉ : Équateur"
+    },
+    "reason": {
+      "es": "País en común: Ecuador.",
+      "en": "Shared nationality: Ecuador.",
+      "fr": "Nationalité commune : Équateur."
+    },
+    "playerIds": [
+      942,
+      1273,
+      1776,
+      3346,
+      3525
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-club-Ecuador-2363",
+    "kind": "nation-club",
+    "title": {
+      "es": "Ecuador · Independiente del Valle",
+      "en": "Ecuador · Independiente del Valle",
+      "fr": "Équateur · Independiente del Valle"
+    },
+    "reason": {
+      "es": "País en común: Ecuador. Los cuatro jugaron en Independiente del Valle.",
+      "en": "Shared nationality: Ecuador. All four played for Independiente del Valle.",
+      "fr": "Nationalité commune : Équateur. Les quatre ont joué à Independiente del Valle."
+    },
+    "playerIds": [
+      942,
+      1776,
+      3346,
+      3525
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Austria",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Austria",
+      "en": "NATIONALITY: Austria",
+      "fr": "NATIONALITÉ : Autriche"
+    },
+    "reason": {
+      "es": "País en común: Austria.",
+      "en": "Shared nationality: Austria.",
+      "fr": "Nationalité commune : Autriche."
+    },
+    "playerIds": [
+      1535,
+      1536,
+      1767,
+      3415
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "nation-Australia",
+    "kind": "nation",
+    "title": {
+      "es": "NACIONALIDAD: Australia",
+      "en": "NATIONALITY: Australia",
+      "fr": "NATIONALITÉ : Australie"
+    },
+    "reason": {
+      "es": "País en común: Australia.",
+      "en": "Shared nationality: Australia.",
+      "fr": "Nationalité commune : Australie."
+    },
+    "playerIds": [
+      3425,
+      3426,
+      3437,
+      3534
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-3-4",
+    "kind": "two-clubs",
+    "title": {
+      "es": "Paris Saint Germain + Barcelona",
+      "en": "Paris Saint Germain + Barcelona",
+      "fr": "Paris Saint Germain + Barcelona"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en Paris Saint Germain como en Barcelona.",
+      "en": "All four played for both Paris Saint Germain and Barcelona.",
+      "fr": "Tous les quatre ont joué à Paris Saint Germain et à Barcelona."
+    },
+    "playerIds": [
+      1,
+      23,
+      1719,
+      1736,
+      1759,
+      2023
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-3-17",
+    "kind": "two-clubs",
+    "title": {
+      "es": "Paris Saint Germain + AC Milan",
+      "en": "Paris Saint Germain + AC Milan",
+      "fr": "Paris Saint Germain + AC Milan"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en Paris Saint Germain como en AC Milan.",
+      "en": "All four played for both Paris Saint Germain and AC Milan.",
+      "fr": "Tous les quatre ont joué à Paris Saint Germain et à AC Milan."
+    },
+    "playerIds": [
+      23,
+      26,
+      188,
+      190,
+      263
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-3-10",
+    "kind": "two-clubs",
+    "title": {
+      "es": "Paris Saint Germain + Real Madrid",
+      "en": "Paris Saint Germain + Real Madrid",
+      "fr": "Paris Saint Germain + Real Madrid"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en Paris Saint Germain como en Real Madrid.",
+      "en": "All four played for both Paris Saint Germain and Real Madrid.",
+      "fr": "Tous les quatre ont joué à Paris Saint Germain et à Real Madrid."
+    },
+    "playerIds": [
+      6,
+      26,
+      1711,
+      3241
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-3-9",
+    "kind": "two-clubs",
+    "title": {
+      "es": "Paris Saint Germain + Juventus",
+      "en": "Paris Saint Germain + Juventus",
+      "fr": "Paris Saint Germain + Juventus"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en Paris Saint Germain como en Juventus.",
+      "en": "All four played for both Paris Saint Germain and Juventus.",
+      "fr": "Tous les quatre ont joué à Paris Saint Germain et à Juventus."
+    },
+    "playerIds": [
+      20,
+      23,
+      188,
+      1186,
+      1740
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-4-19",
+    "kind": "two-clubs",
+    "title": {
+      "es": "Barcelona + Manchester City",
+      "en": "Barcelona + Manchester City",
+      "fr": "Barcelona + Manchester City"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en Barcelona como en Manchester City.",
+      "en": "All four played for both Barcelona and Manchester City.",
+      "fr": "Tous les quatre ont joué à Barcelona et à Manchester City."
+    },
+    "playerIds": [
+      323,
+      336,
+      345,
+      1736,
+      3237
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-4-89",
+    "kind": "two-clubs",
+    "title": {
+      "es": "Barcelona + Arsenal",
+      "en": "Barcelona + Arsenal",
+      "fr": "Barcelona + Arsenal"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en Barcelona como en Arsenal.",
+      "en": "All four played for both Barcelona and Arsenal.",
+      "fr": "Tous les quatre ont joué à Barcelona et à Arsenal."
+    },
+    "playerIds": [
+      22,
+      49,
+      344,
+      3237
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-4-57",
+    "kind": "two-clubs",
+    "title": {
+      "es": "Barcelona + Chelsea",
+      "en": "Barcelona + Chelsea",
+      "fr": "Barcelona + Chelsea"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en Barcelona como en Chelsea.",
+      "en": "All four played for both Barcelona and Chelsea.",
+      "fr": "Tous les quatre ont joué à Barcelona et à Chelsea."
+    },
+    "playerIds": [
+      28,
+      49,
+      368,
+      440
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-4-45",
+    "kind": "two-clubs",
+    "title": {
+      "es": "Barcelona + Ajax",
+      "en": "Barcelona + Ajax",
+      "fr": "Barcelona + Ajax"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en Barcelona como en Ajax.",
+      "en": "All four played for both Barcelona and Ajax.",
+      "fr": "Tous les quatre ont joué à Barcelona et à Ajax."
+    },
+    "playerIds": [
+      3217,
+      3233,
+      3316,
+      3540
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-17-10",
+    "kind": "two-clubs",
+    "title": {
+      "es": "AC Milan + Real Madrid",
+      "en": "AC Milan + Real Madrid",
+      "fr": "AC Milan + Real Madrid"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en AC Milan como en Real Madrid.",
+      "en": "All four played for both AC Milan and Real Madrid.",
+      "fr": "Tous les quatre ont joué à AC Milan et à Real Madrid."
+    },
+    "playerIds": [
+      13,
+      25,
+      26,
+      304,
+      340
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-17-9",
+    "kind": "two-clubs",
+    "title": {
+      "es": "AC Milan + Juventus",
+      "en": "AC Milan + Juventus",
+      "fr": "AC Milan + Juventus"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en AC Milan como en Juventus.",
+      "en": "All four played for both AC Milan and Juventus.",
+      "fr": "Tous les quatre ont joué à AC Milan et à Juventus."
+    },
+    "playerIds": [
+      21,
+      23,
+      188,
+      219,
+      298,
+      314
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-17-57",
+    "kind": "two-clubs",
+    "title": {
+      "es": "AC Milan + Chelsea",
+      "en": "AC Milan + Chelsea",
+      "fr": "AC Milan + Chelsea"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en AC Milan como en Chelsea.",
+      "en": "All four played for both AC Milan and Chelsea.",
+      "fr": "Tous les quatre ont joué à AC Milan et à Chelsea."
+    },
+    "playerIds": [
+      47,
+      1099,
+      1152,
+      1395,
+      3277
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-10-57",
+    "kind": "two-clubs",
+    "title": {
+      "es": "Real Madrid + Chelsea",
+      "en": "Real Madrid + Chelsea",
+      "fr": "Real Madrid + Chelsea"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en Real Madrid como en Chelsea.",
+      "en": "All four played for both Real Madrid and Chelsea.",
+      "fr": "Tous les quatre ont joué à Real Madrid et à Chelsea."
+    },
+    "playerIds": [
+      36,
+      339,
+      369,
+      440,
+      781,
+      784
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-10-43",
+    "kind": "two-clubs",
+    "title": {
+      "es": "Real Madrid + Liverpool",
+      "en": "Real Madrid + Liverpool",
+      "fr": "Real Madrid + Liverpool"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en Real Madrid como en Liverpool.",
+      "en": "All four played for both Real Madrid and Liverpool.",
+      "fr": "Tous les quatre ont joué à Real Madrid et à Liverpool."
+    },
+    "playerIds": [
+      48,
+      121,
+      331,
+      353
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-19-92",
+    "kind": "two-clubs",
+    "title": {
+      "es": "Manchester City + Inter",
+      "en": "Manchester City + Inter",
+      "fr": "Manchester City + Inter"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en Manchester City como en Inter.",
+      "en": "All four played for both Manchester City and Inter.",
+      "fr": "Tous les quatre ont joué à Manchester City et à Inter."
+    },
+    "playerIds": [
+      345,
+      784,
+      1098,
+      1118
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-19-57",
+    "kind": "two-clubs",
+    "title": {
+      "es": "Manchester City + Chelsea",
+      "en": "Manchester City + Chelsea",
+      "fr": "Manchester City + Chelsea"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en Manchester City como en Chelsea.",
+      "en": "All four played for both Manchester City and Chelsea.",
+      "fr": "Tous les quatre ont joué à Manchester City et à Chelsea."
+    },
+    "playerIds": [
+      24,
+      38,
+      106,
+      112,
+      784,
+      803,
+      1007,
+      3273,
+      3275,
+      3276
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-21-92",
+    "kind": "two-clubs",
+    "title": {
+      "es": "Borussia Dortmund + Inter",
+      "en": "Borussia Dortmund + Inter",
+      "fr": "Borussia Dortmund + Inter"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en Borussia Dortmund como en Inter.",
+      "en": "All four played for both Borussia Dortmund and Inter.",
+      "fr": "Tous les quatre ont joué à Borussia Dortmund et à Inter."
+    },
+    "playerIds": [
+      1098,
+      1711,
+      3221,
+      3252
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-21-57",
+    "kind": "two-clubs",
+    "title": {
+      "es": "Borussia Dortmund + Chelsea",
+      "en": "Borussia Dortmund + Chelsea",
+      "fr": "Borussia Dortmund + Chelsea"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en Borussia Dortmund como en Chelsea.",
+      "en": "All four played for both Borussia Dortmund and Chelsea.",
+      "fr": "Tous les quatre ont joué à Borussia Dortmund et à Chelsea."
+    },
+    "playerIds": [
+      1017,
+      1099,
+      3357,
+      3488
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-50-64",
+    "kind": "two-clubs",
+    "title": {
+      "es": "Bayern München + Tottenham",
+      "en": "Bayern München + Tottenham",
+      "fr": "Bayern München + Tottenham"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en Bayern München como en Tottenham.",
+      "en": "All four played for both Bayern München and Tottenham.",
+      "fr": "Tous les quatre ont joué à Bayern München et à Tottenham."
+    },
+    "playerIds": [
+      12,
+      998,
+      1760,
+      3322
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-50-8",
+    "kind": "two-clubs",
+    "title": {
+      "es": "Bayern München + Manchester United",
+      "en": "Bayern München + Manchester United",
+      "fr": "Bayern München + Manchester United"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en Bayern München como en Manchester United.",
+      "en": "All four played for both Bayern München and Manchester United.",
+      "fr": "Tous les quatre ont joué à Bayern München et à Manchester United."
+    },
+    "playerIds": [
+      56,
+      752,
+      927,
+      1536
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-9-56",
+    "kind": "two-clubs",
+    "title": {
+      "es": "Juventus + AS Roma",
+      "en": "Juventus + AS Roma",
+      "fr": "Juventus + AS Roma"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en Juventus como en AS Roma.",
+      "en": "All four played for both Juventus and AS Roma.",
+      "fr": "Tous les quatre ont joué à Juventus et à AS Roma."
+    },
+    "playerIds": [
+      185,
+      344,
+      630,
+      1127,
+      1190,
+      1388
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-89-57",
+    "kind": "two-clubs",
+    "title": {
+      "es": "Arsenal + Chelsea",
+      "en": "Arsenal + Chelsea",
+      "fr": "Arsenal + Chelsea"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en Arsenal como en Chelsea.",
+      "en": "All four played for both Arsenal and Chelsea.",
+      "fr": "Tous les quatre ont joué à Arsenal et à Chelsea."
+    },
+    "playerIds": [
+      44,
+      49,
+      251,
+      773,
+      781,
+      945,
+      3281
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-8-92",
+    "kind": "two-clubs",
+    "title": {
+      "es": "Manchester United + Inter",
+      "en": "Manchester United + Inter",
+      "fr": "Manchester United + Inter"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en Manchester United como en Inter.",
+      "en": "All four played for both Manchester United and Inter.",
+      "fr": "Tous les quatre ont joué à Manchester United et à Inter."
+    },
+    "playerIds": [
+      23,
+      51,
+      3245,
+      3252
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-8-57",
+    "kind": "two-clubs",
+    "title": {
+      "es": "Manchester United + Chelsea",
+      "en": "Manchester United + Chelsea",
+      "fr": "Manchester United + Chelsea"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en Manchester United como en Chelsea.",
+      "en": "All four played for both Manchester United and Chelsea.",
+      "fr": "Tous les quatre ont joué à Manchester United et à Chelsea."
+    },
+    "playerIds": [
+      773,
+      1023,
+      3245,
+      3278
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-8-113",
+    "kind": "two-clubs",
+    "title": {
+      "es": "Manchester United + Fenerbahçe",
+      "en": "Manchester United + Fenerbahçe",
+      "fr": "Manchester United + Fenerbahçe"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en Manchester United como en Fenerbahçe.",
+      "en": "All four played for both Manchester United and Fenerbahçe.",
+      "fr": "Tous les quatre ont joué à Manchester United et à Fenerbahçe."
+    },
+    "playerIds": [
+      37,
+      3215,
+      3244,
+      3245
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-8-45",
+    "kind": "two-clubs",
+    "title": {
+      "es": "Manchester United + Ajax",
+      "en": "Manchester United + Ajax",
+      "fr": "Manchester United + Ajax"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en Manchester United como en Ajax.",
+      "en": "All four played for both Manchester United and Ajax.",
+      "fr": "Tous les quatre ont joué à Manchester United et à Ajax."
+    },
+    "playerIds": [
+      752,
+      788,
+      3215,
+      3232
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-57-94",
+    "kind": "two-clubs",
+    "title": {
+      "es": "Chelsea + Napoli",
+      "en": "Chelsea + Napoli",
+      "fr": "Chelsea + Napoli"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en Chelsea como en Napoli.",
+      "en": "All four played for both Chelsea and Napoli.",
+      "fr": "Tous les quatre ont joué à Chelsea et à Napoli."
+    },
+    "playerIds": [
+      24,
+      1306,
+      3216,
+      3245
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-94-45",
+    "kind": "two-clubs",
+    "title": {
+      "es": "Napoli + Ajax",
+      "en": "Napoli + Ajax",
+      "fr": "Napoli + Ajax"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en Napoli como en Ajax.",
+      "en": "All four played for both Napoli and Ajax.",
+      "fr": "Tous les quatre ont joué à Napoli et à Ajax."
+    },
+    "playerIds": [
+      1112,
+      1115,
+      1116,
+      1334
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  },
+  {
+    "id": "two-clubs-113-367",
+    "kind": "two-clubs",
+    "title": {
+      "es": "Fenerbahçe + Benfica",
+      "en": "Fenerbahçe + Benfica",
+      "fr": "Fenerbahçe + Benfica"
+    },
+    "reason": {
+      "es": "Los cuatro jugaron tanto en Fenerbahçe como en Benfica.",
+      "en": "All four played for both Fenerbahçe and Benfica.",
+      "fr": "Tous les quatre ont joué à Fenerbahçe et à Benfica."
+    },
+    "playerIds": [
+      3218,
+      3236,
+      3268,
+      3358
+    ],
+    "source": "https://www.api-football.com/documentation-v3#tag/Players",
+    "catalogVersion": "309abc085804a7fa"
+  }
+]

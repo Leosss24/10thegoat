@@ -1,4 +1,5 @@
 "use client";
+import { footballLabel } from "../../lib/football/player-identity";
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { useI18n } from "../I18nProvider";
@@ -180,7 +181,7 @@ export default function TriviaGame() {
       {!round.timedOut && <div className="trivia-recap">
         <p>{question.prompt[locale]}</p>
         <span>{t.rightAnswer}</span>
-        <strong>✓ {question.options.find(o => o.id === question.correctOptionId)!.text[locale]}</strong>
+        <strong>✓ {footballLabel(question.options.find(o => o.id === question.correctOptionId)!.text[locale])}</strong>
         <small>{question.explanation[locale]}</small>
         <a href={question.source} target="_blank" rel="noreferrer">{t.source} ↗</a>
       </div>}
@@ -199,7 +200,7 @@ export default function TriviaGame() {
           const option = question.options.find(o => o.id === id)!;
           const correct = round.selected !== null && id === question.correctOptionId;
           return <button type="button" key={`${question.id}:${id}`} disabled={round.selected !== null} className={`trivia-option${correct ? " is-correct" : ""}`} onClick={() => chooseAnswer(id)}>
-            <span className="trivia-option-letter" aria-hidden="true">{String.fromCharCode(65 + i)}</span><span>{option.text[locale]}</span>{correct && <span className="trivia-option-check" aria-label={t.correct}>✓</span>}
+            <span className="trivia-option-letter" aria-hidden="true">{String.fromCharCode(65 + i)}</span><span>{footballLabel(option.text[locale])}</span>{correct && <span className="trivia-option-check" aria-label={t.correct}>✓</span>}
           </button>;
         })}
       </div>

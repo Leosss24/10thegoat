@@ -1,0 +1,548 @@
+[
+  {
+    "id": "easy-001",
+    "difficulty": "easy",
+    "category": {
+      "es": "Tridentes",
+      "en": "Front threes",
+      "fr": "Trios offensifs"
+    },
+    "options": [
+      {
+        "id": "messi",
+        "label": "Lionel Messi"
+      },
+      {
+        "id": "neymar",
+        "label": "Neymar"
+      },
+      {
+        "id": "suarez",
+        "label": "Luis Suárez"
+      },
+      {
+        "id": "benzema",
+        "label": "Karim Benzema"
+      }
+    ],
+    "oddOptionId": "benzema",
+    "commonReason": {
+      "es": "Messi, Neymar y Suárez formaron el tridente MSN del FC Barcelona.",
+      "en": "Messi, Neymar and Suárez formed FC Barcelona's MSN front three.",
+      "fr": "Messi, Neymar et Suárez ont formé le trio MSN du FC Barcelone."
+    },
+    "oddReason": {
+      "es": "Benzema no formó parte de ese tridente; fue delantero del Real Madrid en aquella etapa.",
+      "en": "Benzema was not part of that trio; he played up front for Real Madrid during that period.",
+      "fr": "Benzema ne faisait pas partie de ce trio ; il jouait alors en attaque au Real Madrid."
+    },
+    "source": "https://www.fcbarcelona.com/en/football/first-team/news/1137457/the-trident-of-messi-neymar-and-suarez"
+  },
+  {
+    "id": "easy-002",
+    "difficulty": "easy",
+    "category": {
+      "es": "Mundial",
+      "en": "World Cup",
+      "fr": "Coupe du monde"
+    },
+    "options": [
+      {
+        "id": "xavi",
+        "label": "Xavi"
+      },
+      {
+        "id": "iniesta",
+        "label": "Andrés Iniesta"
+      },
+      {
+        "id": "busquets",
+        "label": "Sergio Busquets"
+      },
+      {
+        "id": "modric",
+        "label": "Luka Modrić"
+      }
+    ],
+    "oddOptionId": "modric",
+    "commonReason": {
+      "es": "Xavi, Iniesta y Busquets fueron campeones del Mundial de 2010 con España.",
+      "en": "Xavi, Iniesta and Busquets won the 2010 World Cup with Spain.",
+      "fr": "Xavi, Iniesta et Busquets ont remporté la Coupe du monde 2010 avec l'Espagne."
+    },
+    "oddReason": {
+      "es": "Modrić no ganó ese Mundial: Croacia no participó en la fase final de 2010.",
+      "en": "Modrić did not win that World Cup: Croatia did not reach the 2010 finals.",
+      "fr": "Modrić n'a pas gagné ce Mondial : la Croatie ne s'est pas qualifiée pour la phase finale 2010."
+    },
+    "source": "https://www.fifa.com/tournaments/mens/worldcup/2010south-africa/teams/43969"
+  },
+  {
+    "id": "easy-003",
+    "difficulty": "easy",
+    "category": {
+      "es": "Posiciones",
+      "en": "Positions",
+      "fr": "Postes"
+    },
+    "options": [
+      {
+        "id": "buffon",
+        "label": "Gianluigi Buffon"
+      },
+      {
+        "id": "casillas",
+        "label": "Iker Casillas"
+      },
+      {
+        "id": "neuer",
+        "label": "Manuel Neuer"
+      },
+      {
+        "id": "xavi",
+        "label": "Xavi"
+      }
+    ],
+    "oddOptionId": "xavi",
+    "commonReason": {
+      "es": "Buffon, Casillas y Neuer son porteros campeones del mundo.",
+      "en": "Buffon, Casillas and Neuer are World Cup-winning goalkeepers.",
+      "fr": "Buffon, Casillas et Neuer sont des gardiens champions du monde."
+    },
+    "oddReason": {
+      "es": "Xavi también fue campeón del mundo, pero jugaba como centrocampista.",
+      "en": "Xavi also won the World Cup, but he was a midfielder.",
+      "fr": "Xavi a également été champion du monde, mais il était milieu de terrain."
+    },
+    "source": "https://www.fifa.com/tournaments/mens/worldcup"
+  },
+  {
+    "id": "easy-004",
+    "difficulty": "easy",
+    "category": {
+      "es": "Arsenal",
+      "en": "Arsenal",
+      "fr": "Arsenal"
+    },
+    "options": [
+      {
+        "id": "henry",
+        "label": "Thierry Henry"
+      },
+      {
+        "id": "vieira",
+        "label": "Patrick Vieira"
+      },
+      {
+        "id": "bergkamp",
+        "label": "Dennis Bergkamp"
+      },
+      {
+        "id": "drogba",
+        "label": "Didier Drogba"
+      }
+    ],
+    "oddOptionId": "drogba",
+    "commonReason": {
+      "es": "Henry, Vieira y Bergkamp integraron el Arsenal invicto de la Premier 2003/04.",
+      "en": "Henry, Vieira and Bergkamp were part of Arsenal's unbeaten 2003/04 Premier League team.",
+      "fr": "Henry, Vieira et Bergkamp faisaient partie de l'Arsenal invaincu en Premier League 2003/04."
+    },
+    "oddReason": {
+      "es": "Drogba nunca jugó en el Arsenal; llegó al Chelsea la temporada siguiente.",
+      "en": "Drogba never played for Arsenal; he joined Chelsea the following season.",
+      "fr": "Drogba n'a jamais joué à Arsenal ; il a rejoint Chelsea la saison suivante."
+    },
+    "source": "https://www.arsenal.com/history/club-records/the-unbeaten-record"
+  },
+  {
+    "id": "easy-005",
+    "difficulty": "easy",
+    "category": {
+      "es": "Brasil 2002",
+      "en": "Brazil 2002",
+      "fr": "Brésil 2002"
+    },
+    "options": [
+      {
+        "id": "ronaldo",
+        "label": "Ronaldo Nazário"
+      },
+      {
+        "id": "rivaldo",
+        "label": "Rivaldo"
+      },
+      {
+        "id": "ronaldinho",
+        "label": "Ronaldinho"
+      },
+      {
+        "id": "romario",
+        "label": "Romário"
+      }
+    ],
+    "oddOptionId": "romario",
+    "commonReason": {
+      "es": "Ronaldo, Rivaldo y Ronaldinho encabezaron el ataque de Brasil campeón en 2002.",
+      "en": "Ronaldo, Rivaldo and Ronaldinho led Brazil's attack in the 2002 triumph.",
+      "fr": "Ronaldo, Rivaldo et Ronaldinho ont mené l'attaque du Brésil champion en 2002."
+    },
+    "oddReason": {
+      "es": "Romário no fue convocado para el Mundial de 2002.",
+      "en": "Romário was not selected for the 2002 World Cup.",
+      "fr": "Romário n'a pas été sélectionné pour la Coupe du monde 2002."
+    },
+    "source": "https://www.fifa.com/tournaments/mens/worldcup/2002korea-japan/teams/43924"
+  },
+  {
+    "id": "easy-006",
+    "difficulty": "easy",
+    "category": {
+      "es": "BBC",
+      "en": "BBC",
+      "fr": "BBC"
+    },
+    "options": [
+      {
+        "id": "bale",
+        "label": "Gareth Bale"
+      },
+      {
+        "id": "benzema",
+        "label": "Karim Benzema"
+      },
+      {
+        "id": "cristiano",
+        "label": "Cristiano Ronaldo"
+      },
+      {
+        "id": "neymar",
+        "label": "Neymar"
+      }
+    ],
+    "oddOptionId": "neymar",
+    "commonReason": {
+      "es": "Bale, Benzema y Cristiano formaron la BBC del Real Madrid.",
+      "en": "Bale, Benzema and Cristiano formed Real Madrid's BBC front three.",
+      "fr": "Bale, Benzema et Cristiano ont formé le trio BBC du Real Madrid."
+    },
+    "oddReason": {
+      "es": "Neymar nunca perteneció a la BBC ni jugó en el Real Madrid.",
+      "en": "Neymar was never part of the BBC trio and did not play for Real Madrid.",
+      "fr": "Neymar n'a jamais fait partie du trio BBC et n'a pas joué au Real Madrid."
+    },
+    "source": "https://www.realmadrid.com/en-US/news/football/first-team/latest-news/bale-benzema-and-cristiano-ronaldo-have-scored-97-goals"
+  },
+  {
+    "id": "easy-007",
+    "difficulty": "easy",
+    "category": {
+      "es": "Selecciones",
+      "en": "National teams",
+      "fr": "Sélections"
+    },
+    "options": [
+      {
+        "id": "italy",
+        "label": "Italia"
+      },
+      {
+        "id": "germany",
+        "label": "Alemania"
+      },
+      {
+        "id": "spain",
+        "label": "España"
+      },
+      {
+        "id": "netherlands",
+        "label": "Países Bajos"
+      }
+    ],
+    "oddOptionId": "netherlands",
+    "commonReason": {
+      "es": "Italia, Alemania y España han ganado la Copa del Mundo masculina.",
+      "en": "Italy, Germany and Spain have won the men's World Cup.",
+      "fr": "L'Italie, l'Allemagne et l'Espagne ont remporté la Coupe du monde masculine."
+    },
+    "oddReason": {
+      "es": "Países Bajos ha disputado varias finales, pero nunca ha sido campeón del mundo masculino.",
+      "en": "The Netherlands have reached several finals but have never won the men's World Cup.",
+      "fr": "Les Pays-Bas ont disputé plusieurs finales sans jamais remporter la Coupe du monde masculine."
+    },
+    "source": "https://www.fifa.com/tournaments/mens/worldcup"
+  },
+  {
+    "id": "easy-008",
+    "difficulty": "easy",
+    "category": {
+      "es": "Entrenadores",
+      "en": "Managers",
+      "fr": "Entraîneurs"
+    },
+    "options": [
+      {
+        "id": "guardiola",
+        "label": "Pep Guardiola"
+      },
+      {
+        "id": "mourinho",
+        "label": "José Mourinho"
+      },
+      {
+        "id": "ancelotti",
+        "label": "Carlo Ancelotti"
+      },
+      {
+        "id": "simeone",
+        "label": "Diego Simeone"
+      }
+    ],
+    "oddOptionId": "simeone",
+    "commonReason": {
+      "es": "Guardiola, Mourinho y Ancelotti han ganado la Premier League como entrenadores.",
+      "en": "Guardiola, Mourinho and Ancelotti have won the Premier League as managers.",
+      "fr": "Guardiola, Mourinho et Ancelotti ont remporté la Premier League comme entraîneurs."
+    },
+    "oddReason": {
+      "es": "Simeone nunca ha entrenado en la Premier League.",
+      "en": "Simeone has never managed in the Premier League.",
+      "fr": "Simeone n'a jamais entraîné en Premier League."
+    },
+    "source": "https://www.premierleague.com/managers"
+  },
+  {
+    "id": "hard-001",
+    "difficulty": "hard",
+    "category": {
+      "es": "Finales de Champions",
+      "en": "Champions League finals",
+      "fr": "Finales de Ligue des champions"
+    },
+    "options": [
+      {
+        "id": "zidane",
+        "label": "Zinedine Zidane"
+      },
+      {
+        "id": "bale",
+        "label": "Gareth Bale"
+      },
+      {
+        "id": "mandzukic",
+        "label": "Mario Mandžukić"
+      },
+      {
+        "id": "ibrahimovic",
+        "label": "Zlatan Ibrahimović"
+      }
+    ],
+    "oddOptionId": "ibrahimovic",
+    "commonReason": {
+      "es": "Zidane, Bale y Mandžukić marcaron de chilena o volea acrobática en una final de Champions.",
+      "en": "Zidane, Bale and Mandžukić scored a volley or overhead kick in a Champions League final.",
+      "fr": "Zidane, Bale et Mandžukić ont marqué d'une volée ou d'un retourné en finale de Ligue des champions."
+    },
+    "oddReason": {
+      "es": "Ibrahimović nunca disputó una final de Champions League.",
+      "en": "Ibrahimović never appeared in a Champions League final.",
+      "fr": "Ibrahimović n'a jamais disputé de finale de Ligue des champions."
+    },
+    "source": "https://www.uefa.com/uefachampionsleague/history/"
+  },
+  {
+    "id": "hard-002",
+    "difficulty": "hard",
+    "category": {
+      "es": "Balón de Oro",
+      "en": "Ballon d'Or",
+      "fr": "Ballon d'Or"
+    },
+    "options": [
+      {
+        "id": "cruyff",
+        "label": "Johan Cruyff"
+      },
+      {
+        "id": "vanbasten",
+        "label": "Marco van Basten"
+      },
+      {
+        "id": "platini",
+        "label": "Michel Platini"
+      },
+      {
+        "id": "ronaldinho",
+        "label": "Ronaldinho"
+      }
+    ],
+    "oddOptionId": "ronaldinho",
+    "commonReason": {
+      "es": "Cruyff, Van Basten y Platini ganaron el Balón de Oro tres veces.",
+      "en": "Cruyff, Van Basten and Platini won the Ballon d'Or three times.",
+      "fr": "Cruyff, Van Basten et Platini ont remporté trois Ballons d'Or."
+    },
+    "oddReason": {
+      "es": "Ronaldinho ganó el Balón de Oro una sola vez, en 2005.",
+      "en": "Ronaldinho won the Ballon d'Or once, in 2005.",
+      "fr": "Ronaldinho n'a remporté le Ballon d'Or qu'une fois, en 2005."
+    },
+    "source": "https://www.francefootball.fr/ballon-d-or/palmares/"
+  },
+  {
+    "id": "hard-003",
+    "difficulty": "hard",
+    "category": {
+      "es": "Champions con varios clubes",
+      "en": "Champions with multiple clubs",
+      "fr": "Ligue des champions avec plusieurs clubs"
+    },
+    "options": [
+      {
+        "id": "seedorf",
+        "label": "Clarence Seedorf"
+      },
+      {
+        "id": "eto'o",
+        "label": "Samuel Eto'o"
+      },
+      {
+        "id": "deco",
+        "label": "Deco"
+      },
+      {
+        "id": "maldini",
+        "label": "Paolo Maldini"
+      }
+    ],
+    "oddOptionId": "maldini",
+    "commonReason": {
+      "es": "Seedorf, Eto'o y Deco ganaron la Champions League con más de un club.",
+      "en": "Seedorf, Eto'o and Deco won the Champions League with more than one club.",
+      "fr": "Seedorf, Eto'o et Deco ont remporté la Ligue des champions avec plusieurs clubs."
+    },
+    "oddReason": {
+      "es": "Maldini ganó todas sus Copas de Europa con el AC Milan.",
+      "en": "Maldini won all of his European Cups with AC Milan.",
+      "fr": "Maldini a remporté toutes ses Coupes d'Europe avec l'AC Milan."
+    },
+    "source": "https://www.uefa.com/uefachampionsleague/history/winners/"
+  },
+  {
+    "id": "hard-004",
+    "difficulty": "hard",
+    "category": {
+      "es": "Eurocopa",
+      "en": "European Championship",
+      "fr": "Championnat d'Europe"
+    },
+    "options": [
+      {
+        "id": "torres",
+        "label": "Fernando Torres"
+      },
+      {
+        "id": "charisteas",
+        "label": "Angelos Charisteas"
+      },
+      {
+        "id": "eder",
+        "label": "Éder"
+      },
+      {
+        "id": "villa",
+        "label": "David Villa"
+      }
+    ],
+    "oddOptionId": "villa",
+    "commonReason": {
+      "es": "Torres, Charisteas y Éder marcaron el gol decisivo en una final de Eurocopa ganada por su selección.",
+      "en": "Torres, Charisteas and Éder scored the decisive goal in a European Championship final their team won.",
+      "fr": "Torres, Charisteas et Éder ont marqué le but décisif d'une finale de l'Euro remportée par leur sélection."
+    },
+    "oddReason": {
+      "es": "Villa fue campeón de Europa en 2008, pero no disputó la final por lesión.",
+      "en": "Villa won Euro 2008, but missed the final through injury.",
+      "fr": "Villa a remporté l'Euro 2008, mais a manqué la finale sur blessure."
+    },
+    "source": "https://www.uefa.com/uefaeuro/history/"
+  },
+  {
+    "id": "hard-005",
+    "difficulty": "hard",
+    "category": {
+      "es": "Tripletes",
+      "en": "Trebles",
+      "fr": "Triplés"
+    },
+    "options": [
+      {
+        "id": "barcelona",
+        "label": "FC Barcelona"
+      },
+      {
+        "id": "bayern",
+        "label": "Bayern München"
+      },
+      {
+        "id": "inter",
+        "label": "Inter"
+      },
+      {
+        "id": "juventus",
+        "label": "Juventus"
+      }
+    ],
+    "oddOptionId": "juventus",
+    "commonReason": {
+      "es": "Barcelona, Bayern e Inter han ganado liga, copa nacional y Champions en una misma temporada.",
+      "en": "Barcelona, Bayern and Inter have won the league, domestic cup and Champions League in one season.",
+      "fr": "Barcelone, le Bayern et l'Inter ont gagné championnat, coupe nationale et Ligue des champions la même saison."
+    },
+    "oddReason": {
+      "es": "Juventus nunca ha completado ese triplete continental.",
+      "en": "Juventus have never completed that continental treble.",
+      "fr": "La Juventus n'a jamais réalisé ce triplé continental."
+    },
+    "source": "https://www.uefa.com/uefachampionsleague/news/0257-0e99f7774275-c6b5a59a0ac7-1000--who-has-won-a-treble/"
+  },
+  {
+    "id": "hard-006",
+    "difficulty": "hard",
+    "category": {
+      "es": "Finales del Mundial",
+      "en": "World Cup finals",
+      "fr": "Finales de Coupe du monde"
+    },
+    "options": [
+      {
+        "id": "vava",
+        "label": "Vavá"
+      },
+      {
+        "id": "pele",
+        "label": "Pelé"
+      },
+      {
+        "id": "mbappe",
+        "label": "Kylian Mbappé"
+      },
+      {
+        "id": "ronaldo",
+        "label": "Ronaldo Nazário"
+      }
+    ],
+    "oddOptionId": "ronaldo",
+    "commonReason": {
+      "es": "Vavá, Pelé y Mbappé marcaron en dos finales distintas del Mundial masculino.",
+      "en": "Vavá, Pelé and Mbappé scored in two different men's World Cup finals.",
+      "fr": "Vavá, Pelé et Mbappé ont marqué lors de deux finales différentes de Coupe du monde masculine."
+    },
+    "oddReason": {
+      "es": "Ronaldo marcó en la final de 2002, pero no lo hizo en la de 1998.",
+      "en": "Ronaldo scored in the 2002 final, but not in the 1998 final.",
+      "fr": "Ronaldo a marqué en finale 2002, mais pas lors de celle de 1998."
+    },
+    "source": "https://www.fifa.com/tournaments/mens/worldcup"
+  }
+]

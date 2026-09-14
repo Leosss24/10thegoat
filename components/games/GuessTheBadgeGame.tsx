@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
-import { supabase } from "../../lib/supabase";
+import badgeCatalog from "../../data/badges/catalog.json";
 import { getGameScore, recordGameResult } from "../../lib/game-scores";
 import { readGameSession, writeGameSession } from "../../lib/game-session";
 import { useI18n } from "../I18nProvider";
@@ -63,15 +63,7 @@ export default function GuessTheBadgeGame() {
 
   useEffect(() => {
     async function load() {
-      if (!supabase) { setError(c.config); setLoading(false); return; }
-      const all:Club[]=[];
-      for(let from=0;;from+=1000){
-        const { data, error } = await supabase.from("clubs").select("id,name,badge_url,is_national_team,is_active,is_game_eligible").eq("is_national_team", false).eq("is_game_eligible", true).eq("is_active", true).not("badge_url", "is", null).order("name").range(from,from+999);
-        if (error) { setError(error.message); setLoading(false); return; }
-        all.push(...((data??[]) as Club[]));
-        if((data?.length??0)<1000)break;
-      }
-      const ready = uniqueSeniorBadges(all.filter(club=>club.name.length>1));
+      const ready = uniqueSeniorBadges(badgeCatalog.clubs as Club[]);
       if (ready.length < 10) { setError(c.few); setLoading(false); return; }
       setClubs(ready);
       const saved = readGameSession(GAME_KEY, isBadgeSession);

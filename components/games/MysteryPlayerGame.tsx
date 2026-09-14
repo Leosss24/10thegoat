@@ -1,4 +1,5 @@
 "use client";
+import { playerDisplayName } from "../../lib/football/player-identity";
 
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { supabase } from "../../lib/supabase";
@@ -161,7 +162,7 @@ export default function MysteryPlayerGame() {
 
         return [{
           id: player.id,
-          name: player.display_name,
+          name: playerDisplayName(player.id, player.display_name),
           photoUrl: player.photo_url,
           country: country.name,
           flag: country.flag_emoji ?? "🌍",

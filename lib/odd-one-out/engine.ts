@@ -19,6 +19,7 @@ export type OddRound = {
   index: number;
   optionOrder: string[];
   streak: number;
+  cycleStartStreak?: number;
   points: number;
   selected: string | null;
   finished: boolean;
@@ -41,7 +42,7 @@ export function newOddRound(bank: OddChallenge[], difficulty: Difficulty): OddRo
   if (!pool.length) throw new Error("Empty odd-one-out pool");
   const queue = shuffled(pool.map(item => item.id));
   const first = pool.find(item => item.id === queue[0])!;
-  return { difficulty, queue, index: 0, optionOrder: shuffled(first.options.map(option => option.id)), streak: 0, points: 0, selected: null, finished: false, lastAward: 0 };
+  return { difficulty, queue, index: 0, optionOrder: shuffled(first.options.map(option => option.id)), streak: 0, cycleStartStreak: 0, points: 0, selected: null, finished: false, lastAward: 0 };
 }
 
 export function answerOdd(round: OddRound, challenge: OddChallenge, optionId: string, bestStreak: number): OddRound {
@@ -56,13 +57,15 @@ export function nextOdd(round: OddRound, bank: OddChallenge[]): OddRound {
   if (round.finished || round.selected === null) return round;
   let queue = round.queue;
   let index = round.index + 1;
+  let cycleStartStreak = round.cycleStartStreak;
   if (index === queue.length) {
-    queue = shuffled(queue);
+    cycleStartStreak = round.streak;
+    queue = shuffled(bank.filter(item => item.difficulty === round.difficulty).map(item => item.id));
     if (queue.length > 1 && queue[0] === round.queue[round.index]) [queue[0], queue[1]] = [queue[1], queue[0]];
     index = 0;
   }
   const challenge = bank.find(item => item.id === queue[index])!;
-  return { ...round, queue, index, optionOrder: shuffled(challenge.options.map(option => option.id)), selected: null, lastAward: 0 };
+  return { ...round, queue, index, cycleStartStreak, optionOrder: shuffled(challenge.options.map(option => option.id)), selected: null, lastAward: 0 };
 }
 
 const integer = (value: unknown): value is number => Number.isSafeInteger(value) && Number(value) >= 0;
@@ -81,7 +84,10 @@ export function isOddSession(value: unknown, bank: OddChallenge[]): value is Odd
     if (!(round.selected === null || challenge.options.some(option => option.id === round.selected)) || typeof round.finished !== "boolean") return false;
     const wrong = round.selected !== null && round.selected !== challenge.oddOptionId;
     if (round.finished !== wrong || round.lastAward > round.points || (round.selected === null && round.lastAward !== 0)) return false;
-    const expectedIndex = (round.streak - (round.selected === challenge.oddOptionId ? 1 : 0)) % round.queue.length;
+    const completed = round.streak - (round.selected === challenge.oddOptionId ? 1 : 0);
+    const cycleStart = round.cycleStartStreak ?? (completed - completed % round.queue.length);
+    if (!integer(cycleStart) || cycleStart > completed) return false;
+    const expectedIndex = completed - cycleStart;
     if (round.index !== expectedIndex) return false;
   }
   return Boolean(session.rounds[session.difficulty]);

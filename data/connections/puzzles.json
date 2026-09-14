@@ -1,0 +1,3462 @@
+[
+  {
+    "id": "connections-001",
+    "groups": [
+      {
+        "id": "club-53",
+        "kind": "club",
+        "title": {
+          "es": "PASARON POR Lyon",
+          "en": "PLAYED FOR Lyon",
+          "fr": "ONT JOUÉ À Lyon"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron en Lyon durante su carrera; no necesariamente al mismo tiempo.",
+          "en": "All four played for Lyon during their careers, not necessarily at the same time.",
+          "fr": "Tous les quatre ont joué à Lyon au cours de leur carrière, pas nécessairement ensemble."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-1841",
+            "playerId": 1841,
+            "label": "T. TESSMANN",
+            "photo_url": "https://media.api-sports.io/football/players/80752.png"
+          },
+          {
+            "id": "player-1954",
+            "playerId": 1954,
+            "label": "N. NARTEY",
+            "photo_url": "https://media.api-sports.io/football/players/361352.png"
+          },
+          {
+            "id": "player-1846",
+            "playerId": 1846,
+            "label": "A. GOUIRI",
+            "photo_url": "https://media.api-sports.io/football/players/85041.png"
+          },
+          {
+            "id": "player-1867",
+            "playerId": 1867,
+            "label": "M. BIDSTRUP",
+            "photo_url": "https://media.api-sports.io/football/players/162189.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-club-England-57",
+        "kind": "nation-club",
+        "title": {
+          "es": "Inglaterra · Chelsea",
+          "en": "England · Chelsea",
+          "fr": "Angleterre · Chelsea"
+        },
+        "reason": {
+          "es": "País en común: Inglaterra. Los cuatro jugaron en Chelsea.",
+          "en": "Shared nationality: England. All four played for Chelsea.",
+          "fr": "Nationalité commune : Angleterre. Les quatre ont joué à Chelsea."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-112",
+            "playerId": 112,
+            "label": "C. PALMER",
+            "photo_url": "https://media.api-sports.io/football/players/152982.png"
+          },
+          {
+            "id": "player-945",
+            "playerId": 945,
+            "label": "N. MADUEKE",
+            "photo_url": "https://media.api-sports.io/football/players/136723.png"
+          },
+          {
+            "id": "player-3377",
+            "playerId": 3377,
+            "label": "T. SHARMAN-LOWE",
+            "photo_url": "https://media.api-sports.io/football/players/180940.png"
+          },
+          {
+            "id": "player-1152",
+            "playerId": 1152,
+            "label": "R. LOFTUS-CHEEK",
+            "photo_url": "https://media.api-sports.io/football/players/2292.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-Argentina",
+        "kind": "nation",
+        "title": {
+          "es": "NACIONALIDAD: Argentina",
+          "en": "NATIONALITY: Argentina",
+          "fr": "NATIONALITÉ : Argentine"
+        },
+        "reason": {
+          "es": "País en común: Argentina.",
+          "en": "Shared nationality: Argentina.",
+          "fr": "Nationalité commune : Argentine."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-374",
+            "playerId": 374,
+            "label": "J. ÁLVAREZ",
+            "photo_url": "https://media.api-sports.io/football/players/6009.png"
+          },
+          {
+            "id": "player-1163",
+            "playerId": 1163,
+            "label": "N. MOLINA",
+            "photo_url": "https://media.api-sports.io/football/players/6503.png"
+          },
+          {
+            "id": "player-371",
+            "playerId": 371,
+            "label": "J. MUSSO",
+            "photo_url": "https://media.api-sports.io/football/players/2465.png"
+          },
+          {
+            "id": "player-1388",
+            "playerId": 1388,
+            "label": "M. SOULÉ",
+            "photo_url": "https://media.api-sports.io/football/players/323936.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-Côte d'Ivoire",
+        "kind": "nation",
+        "title": {
+          "es": "NACIONALIDAD: Côte d’Ivoire",
+          "en": "NATIONALITY: Côte d’Ivoire",
+          "fr": "NATIONALITÉ : Côte d’Ivoire"
+        },
+        "reason": {
+          "es": "País en común: Côte d’Ivoire.",
+          "en": "Shared nationality: Côte d’Ivoire.",
+          "fr": "Nationalité commune : Côte d’Ivoire."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-3295",
+            "playerId": 3295,
+            "label": "S. FOFANA",
+            "photo_url": "https://media.api-sports.io/football/players/30807.png"
+          },
+          {
+            "id": "player-3361",
+            "playerId": 3361,
+            "label": "A. DIALLO",
+            "photo_url": "https://media.api-sports.io/football/players/157997.png"
+          },
+          {
+            "id": "player-1148",
+            "playerId": 1148,
+            "label": "E. NDICKA",
+            "photo_url": "https://media.api-sports.io/football/players/1807.png"
+          },
+          {
+            "id": "player-1215",
+            "playerId": 1215,
+            "label": "J. BOGA",
+            "photo_url": "https://media.api-sports.io/football/players/30531.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "connections-002",
+    "groups": [
+      {
+        "id": "two-clubs-17-9",
+        "kind": "two-clubs",
+        "title": {
+          "es": "AC Milan + Juventus",
+          "en": "AC Milan + Juventus",
+          "fr": "AC Milan + Juventus"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron tanto en AC Milan como en Juventus.",
+          "en": "All four played for both AC Milan and Juventus.",
+          "fr": "Tous les quatre ont joué à AC Milan et à Juventus."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-298",
+            "playerId": 298,
+            "label": "M. LOCATELLI",
+            "photo_url": "https://media.api-sports.io/football/players/30533.png"
+          },
+          {
+            "id": "player-21",
+            "playerId": 21,
+            "label": "ANDREA PIRLO",
+            "photo_url": "https://media.api-sports.io/football/players/105405.png"
+          },
+          {
+            "id": "player-23",
+            "playerId": 23,
+            "label": "ZLATAN IBRAHIMOVIĆ",
+            "photo_url": "https://media.api-sports.io/football/players/51070.png"
+          },
+          {
+            "id": "player-219",
+            "playerId": 219,
+            "label": "P. KALULU",
+            "photo_url": "https://media.api-sports.io/football/players/162188.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-Uruguay",
+        "kind": "nation",
+        "title": {
+          "es": "NACIONALIDAD: Uruguay",
+          "en": "NATIONALITY: Uruguay",
+          "fr": "NATIONALITÉ : Uruguay"
+        },
+        "reason": {
+          "es": "País en común: Uruguay.",
+          "en": "Shared nationality: Uruguay.",
+          "fr": "Nationalité commune : Uruguay."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-51",
+            "playerId": 51,
+            "label": "DIEGO FORLÁN",
+            "photo_url": "https://media.api-sports.io/football/players/110391.png"
+          },
+          {
+            "id": "player-1276",
+            "playerId": 1276,
+            "label": "M. OLIVERA",
+            "photo_url": "https://media.api-sports.io/football/players/47254.png"
+          },
+          {
+            "id": "player-322",
+            "playerId": 322,
+            "label": "J. GIMÉNEZ",
+            "photo_url": "https://media.api-sports.io/football/players/31.png"
+          },
+          {
+            "id": "player-343",
+            "playerId": 343,
+            "label": "F. VALVERDE",
+            "photo_url": "https://media.api-sports.io/football/players/756.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-club-Netherlands-43",
+        "kind": "nation-club",
+        "title": {
+          "es": "Países Bajos · Liverpool",
+          "en": "Netherlands · Liverpool",
+          "fr": "Pays-Bas · Liverpool"
+        },
+        "reason": {
+          "es": "País en común: Países Bajos. Los cuatro jugaron en Liverpool.",
+          "en": "Shared nationality: Netherlands. All four played for Liverpool.",
+          "fr": "Nationalité commune : Pays-Bas. Les quatre ont joué à Liverpool."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-751",
+            "playerId": 751,
+            "label": "V. VAN DIJK",
+            "photo_url": "https://media.api-sports.io/football/players/290.png"
+          },
+          {
+            "id": "player-102",
+            "playerId": 102,
+            "label": "C. GAKPO",
+            "photo_url": "https://media.api-sports.io/football/players/247.png"
+          },
+          {
+            "id": "player-137",
+            "playerId": 137,
+            "label": "R. GRAVENBERCH",
+            "photo_url": "https://media.api-sports.io/football/players/542.png"
+          },
+          {
+            "id": "player-954",
+            "playerId": 954,
+            "label": "J. FRIMPONG",
+            "photo_url": "https://media.api-sports.io/football/players/152654.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-club-Brazil-1752",
+        "kind": "nation-club",
+        "title": {
+          "es": "Brasil · Palmeiras",
+          "en": "Brazil · Palmeiras",
+          "fr": "Brésil · Palmeiras"
+        },
+        "reason": {
+          "es": "País en común: Brasil. Los cuatro jugaron en Palmeiras.",
+          "en": "Shared nationality: Brazil. All four played for Palmeiras.",
+          "fr": "Nationalité commune : Brésil. Les quatre ont joué à Palmeiras."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-3456",
+            "playerId": 3456,
+            "label": "ENDRICK",
+            "photo_url": "https://media.api-sports.io/football/players/377122.png"
+          },
+          {
+            "id": "player-3439",
+            "playerId": 3439,
+            "label": "KAIQUE",
+            "photo_url": "https://media.api-sports.io/football/players/348897.png"
+          },
+          {
+            "id": "player-3489",
+            "playerId": 3489,
+            "label": "ALLAN",
+            "photo_url": "https://media.api-sports.io/football/players/425714.png"
+          },
+          {
+            "id": "player-1075",
+            "playerId": 1075,
+            "label": "VITOR NUNES",
+            "photo_url": "https://media.api-sports.io/football/players/414359.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "connections-003",
+    "groups": [
+      {
+        "id": "club-2363",
+        "kind": "club",
+        "title": {
+          "es": "PASARON POR Independiente del Valle",
+          "en": "PLAYED FOR Independiente del Valle",
+          "fr": "ONT JOUÉ À Independiente del Valle"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron en Independiente del Valle durante su carrera; no necesariamente al mismo tiempo.",
+          "en": "All four played for Independiente del Valle during their careers, not necessarily at the same time.",
+          "fr": "Tous les quatre ont joué à Independiente del Valle au cours de leur carrière, pas nécessairement ensemble."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-942",
+            "playerId": 942,
+            "label": "P. HINCAPIÉ",
+            "photo_url": "https://media.api-sports.io/football/players/127817.png"
+          },
+          {
+            "id": "player-3525",
+            "playerId": 3525,
+            "label": "JUSTIN LERMA",
+            "photo_url": "https://media.api-sports.io/football/players/465666.png"
+          },
+          {
+            "id": "player-3346",
+            "playerId": 3346,
+            "label": "M. CAICEDO",
+            "photo_url": "https://media.api-sports.io/football/players/116117.png"
+          },
+          {
+            "id": "player-1776",
+            "playerId": 1776,
+            "label": "W. PACHO",
+            "photo_url": "https://media.api-sports.io/football/players/16367.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-club-France-50",
+        "kind": "nation-club",
+        "title": {
+          "es": "Francia · Bayern München",
+          "en": "France · Bayern München",
+          "fr": "France · Bayern München"
+        },
+        "reason": {
+          "es": "País en común: Francia. Los cuatro jugaron en Bayern München.",
+          "en": "Shared nationality: France. All four played for Bayern München.",
+          "fr": "Nationalité commune : France. Les quatre ont joué à Bayern München."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-1728",
+            "playerId": 1728,
+            "label": "C. TOLISSO",
+            "photo_url": "https://media.api-sports.io/football/players/519.png"
+          },
+          {
+            "id": "player-1713",
+            "playerId": 1713,
+            "label": "L. HERNÁNDEZ",
+            "photo_url": "https://media.api-sports.io/football/players/33.png"
+          },
+          {
+            "id": "player-3258",
+            "playerId": 3258,
+            "label": "S. BOEY",
+            "photo_url": "https://media.api-sports.io/football/players/2195.png"
+          },
+          {
+            "id": "player-1156",
+            "playerId": 1156,
+            "label": "B. PAVARD",
+            "photo_url": "https://media.api-sports.io/football/players/2725.png"
+          }
+        ]
+      },
+      {
+        "id": "club-132",
+        "kind": "club",
+        "title": {
+          "es": "PASARON POR Corinthians",
+          "en": "PLAYED FOR Corinthians",
+          "fr": "ONT JOUÉ À Corinthians"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron en Corinthians durante su carrera; no necesariamente al mismo tiempo.",
+          "en": "All four played for Corinthians during their careers, not necessarily at the same time.",
+          "fr": "Tous les quatre ont joué à Corinthians au cours de leur carrière, pas nécessairement ensemble."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-1722",
+            "playerId": 1722,
+            "label": "MARQUINHOS",
+            "photo_url": "https://media.api-sports.io/football/players/257.png"
+          },
+          {
+            "id": "player-1378",
+            "playerId": 1378,
+            "label": "GIOVANE",
+            "photo_url": "https://media.api-sports.io/football/players/312615.png"
+          },
+          {
+            "id": "player-1173",
+            "playerId": 1173,
+            "label": "CARLOS AUGUSTO",
+            "photo_url": "https://media.api-sports.io/football/players/10238.png"
+          },
+          {
+            "id": "player-50",
+            "playerId": 50,
+            "label": "JAVIER MASCHERANO",
+            "photo_url": "https://media.api-sports.io/football/players/13073.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-club-Italy-9",
+        "kind": "nation-club",
+        "title": {
+          "es": "Italia · Juventus",
+          "en": "Italy · Juventus",
+          "fr": "Italie · Juventus"
+        },
+        "reason": {
+          "es": "País en común: Italia. Los cuatro jugaron en Juventus.",
+          "en": "Shared nationality: Italy. All four played for Juventus.",
+          "fr": "Nationalité commune : Italie. Les quatre ont joué à Juventus."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-1343",
+            "playerId": 1343,
+            "label": "F. GATTI",
+            "photo_url": "https://media.api-sports.io/football/players/268341.png"
+          },
+          {
+            "id": "player-215",
+            "playerId": 215,
+            "label": "G. VICARIO",
+            "photo_url": "https://media.api-sports.io/football/players/31354.png"
+          },
+          {
+            "id": "player-1127",
+            "playerId": 1127,
+            "label": "L. SPINAZZOLA",
+            "photo_url": "https://media.api-sports.io/football/players/862.png"
+          },
+          {
+            "id": "player-1126",
+            "playerId": 1126,
+            "label": "D. RUGANI",
+            "photo_url": "https://media.api-sports.io/football/players/861.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "connections-004",
+    "groups": [
+      {
+        "id": "nation-club-Spain-3",
+        "kind": "nation-club",
+        "title": {
+          "es": "España · Paris Saint Germain",
+          "en": "Spain · Paris Saint Germain",
+          "fr": "Espagne · Paris Saint Germain"
+        },
+        "reason": {
+          "es": "País en común: España. Los cuatro jugaron en Paris Saint Germain.",
+          "en": "Shared nationality: Spain. All four played for Paris Saint Germain.",
+          "fr": "Nationalité commune : Espagne. Les quatre ont joué à Paris Saint Germain."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-1736",
+            "playerId": 1736,
+            "label": "FERRAN TORRES",
+            "photo_url": "https://media.api-sports.io/football/players/931.png"
+          },
+          {
+            "id": "player-3241",
+            "playerId": 3241,
+            "label": "MARCO ASENSIO",
+            "photo_url": "https://media.api-sports.io/football/players/746.png"
+          },
+          {
+            "id": "player-1724",
+            "playerId": 1724,
+            "label": "FABIÁN RUIZ",
+            "photo_url": "https://media.api-sports.io/football/players/328.png"
+          },
+          {
+            "id": "player-2023",
+            "playerId": 2023,
+            "label": "PEDRO FERNÁNDEZ",
+            "photo_url": "https://media.api-sports.io/football/players/491087.png"
+          }
+        ]
+      },
+      {
+        "id": "club-141",
+        "kind": "club",
+        "title": {
+          "es": "PASARON POR Marseille",
+          "en": "PLAYED FOR Marseille",
+          "fr": "ONT JOUÉ À Marseille"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron en Marseille durante su carrera; no necesariamente al mismo tiempo.",
+          "en": "All four played for Marseille during their careers, not necessarily at the same time.",
+          "fr": "Tous les quatre ont joué à Marseille au cours de leur carrière, pas nécessairement ensemble."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-1805",
+            "playerId": 1805,
+            "label": "N. AGUERD",
+            "photo_url": "https://media.api-sports.io/football/players/21694.png"
+          },
+          {
+            "id": "player-1726",
+            "playerId": 1726,
+            "label": "A. HARIT",
+            "photo_url": "https://media.api-sports.io/football/players/412.png"
+          },
+          {
+            "id": "player-1171",
+            "playerId": 1171,
+            "label": "LUIS HENRIQUE",
+            "photo_url": "https://media.api-sports.io/football/players/10077.png"
+          },
+          {
+            "id": "player-1734",
+            "playerId": 1734,
+            "label": "A. GOMES",
+            "photo_url": "https://media.api-sports.io/football/players/896.png"
+          }
+        ]
+      },
+      {
+        "id": "club-100",
+        "kind": "club",
+        "title": {
+          "es": "PASARON POR Sao Paulo",
+          "en": "PLAYED FOR Sao Paulo",
+          "fr": "ONT JOUÉ À Sao Paulo"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron en Sao Paulo durante su carrera; no necesariamente al mismo tiempo.",
+          "en": "All four played for Sao Paulo during their careers, not necessarily at the same time.",
+          "fr": "Tous les quatre ont joué à Sao Paulo au cours de leur carrière, pas nécessairement ensemble."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-3229",
+            "playerId": 3229,
+            "label": "ÉDER MILITÃO",
+            "photo_url": "https://media.api-sports.io/football/players/372.png"
+          },
+          {
+            "id": "player-25",
+            "playerId": 25,
+            "label": "KAKÁ",
+            "photo_url": "https://media.api-sports.io/football/players/105404.png"
+          },
+          {
+            "id": "player-3509",
+            "playerId": 3509,
+            "label": "WILLIAM",
+            "photo_url": "https://media.api-sports.io/football/players/449243.png"
+          },
+          {
+            "id": "player-1917",
+            "playerId": 1917,
+            "label": "BERALDO",
+            "photo_url": "https://media.api-sports.io/football/players/307835.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-club-Portugal-3",
+        "kind": "nation-club",
+        "title": {
+          "es": "Portugal · Paris Saint Germain",
+          "en": "Portugal · Paris Saint Germain",
+          "fr": "Portugal · Paris Saint Germain"
+        },
+        "reason": {
+          "es": "País en común: Portugal. Los cuatro jugaron en Paris Saint Germain.",
+          "en": "Shared nationality: Portugal. All four played for Paris Saint Germain.",
+          "fr": "Nationalité commune : Portugal. Les quatre ont joué à Paris Saint Germain."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-1856",
+            "playerId": 1856,
+            "label": "VITINHA",
+            "photo_url": "https://media.api-sports.io/football/players/128384.png"
+          },
+          {
+            "id": "player-190",
+            "playerId": 190,
+            "label": "GONÇALO RAMOS",
+            "photo_url": "https://media.api-sports.io/football/players/41585.png"
+          },
+          {
+            "id": "player-1931",
+            "playerId": 1931,
+            "label": "JOÃO NEVES",
+            "photo_url": "https://media.api-sports.io/football/players/335051.png"
+          },
+          {
+            "id": "player-3389",
+            "playerId": 3389,
+            "label": "NUNO MENDES",
+            "photo_url": "https://media.api-sports.io/football/players/263482.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "connections-005",
+    "groups": [
+      {
+        "id": "two-clubs-8-113",
+        "kind": "two-clubs",
+        "title": {
+          "es": "Manchester United + Fenerbahçe",
+          "en": "Manchester United + Fenerbahçe",
+          "fr": "Manchester United + Fenerbahçe"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron tanto en Manchester United como en Fenerbahçe.",
+          "en": "All four played for both Manchester United and Fenerbahçe.",
+          "fr": "Tous les quatre ont joué à Manchester United et à Fenerbahçe."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-3244",
+            "playerId": 3244,
+            "label": "M. GREENWOOD",
+            "photo_url": "https://media.api-sports.io/football/players/897.png"
+          },
+          {
+            "id": "player-3215",
+            "playerId": 3215,
+            "label": "S. AMRABAT",
+            "photo_url": "https://media.api-sports.io/football/players/74.png"
+          },
+          {
+            "id": "player-37",
+            "playerId": 37,
+            "label": "ROBIN VAN PERSIE",
+            "photo_url": "https://media.api-sports.io/football/players/37162.png"
+          },
+          {
+            "id": "player-3245",
+            "playerId": 3245,
+            "label": "R. LUKAKU",
+            "photo_url": "https://media.api-sports.io/football/players/907.png"
+          }
+        ]
+      },
+      {
+        "id": "two-clubs-3-10",
+        "kind": "two-clubs",
+        "title": {
+          "es": "Paris Saint Germain + Real Madrid",
+          "en": "Paris Saint Germain + Real Madrid",
+          "fr": "Paris Saint Germain + Real Madrid"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron tanto en Paris Saint Germain como en Real Madrid.",
+          "en": "All four played for both Paris Saint Germain and Real Madrid.",
+          "fr": "Tous les quatre ont joué à Paris Saint Germain et à Real Madrid."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-26",
+            "playerId": 26,
+            "label": "DAVID BECKHAM",
+            "photo_url": "https://media.api-sports.io/football/players/113755.png"
+          },
+          {
+            "id": "player-3241",
+            "playerId": 3241,
+            "label": "MARCO ASENSIO",
+            "photo_url": "https://media.api-sports.io/football/players/746.png"
+          },
+          {
+            "id": "player-1711",
+            "playerId": 1711,
+            "label": "A. HAKIMI",
+            "photo_url": "https://media.api-sports.io/football/players/9.png"
+          },
+          {
+            "id": "player-6",
+            "playerId": 6,
+            "label": "KYLIAN MBAPPÉ",
+            "photo_url": "https://media.api-sports.io/football/players/278.png"
+          }
+        ]
+      },
+      {
+        "id": "club-4",
+        "kind": "club",
+        "title": {
+          "es": "PASARON POR Barcelona",
+          "en": "PLAYED FOR Barcelona",
+          "fr": "ONT JOUÉ À Barcelona"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron en Barcelona durante su carrera; no necesariamente al mismo tiempo.",
+          "en": "All four played for Barcelona during their careers, not necessarily at the same time.",
+          "fr": "Tous les quatre ont joué à Barcelona au cours de leur carrière, pas nécessairement ensemble."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-355",
+            "playerId": 355,
+            "label": "DANI OLMO",
+            "photo_url": "https://media.api-sports.io/football/players/1323.png"
+          },
+          {
+            "id": "player-344",
+            "playerId": 344,
+            "label": "W. SZCZĘSNY",
+            "photo_url": "https://media.api-sports.io/football/players/851.png"
+          },
+          {
+            "id": "player-234",
+            "playerId": 234,
+            "label": "A. GORDON",
+            "photo_url": "https://media.api-sports.io/football/players/138787.png"
+          },
+          {
+            "id": "player-323",
+            "playerId": 323,
+            "label": "RODRI",
+            "photo_url": "https://media.api-sports.io/football/players/44.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-club-Argentina-9",
+        "kind": "nation-club",
+        "title": {
+          "es": "Argentina · Juventus",
+          "en": "Argentina · Juventus",
+          "fr": "Argentine · Juventus"
+        },
+        "reason": {
+          "es": "País en común: Argentina. Los cuatro jugaron en Juventus.",
+          "en": "Shared nationality: Argentina. All four played for Juventus.",
+          "fr": "Nationalité commune : Argentine. Les quatre ont joué à Juventus."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-1388",
+            "playerId": 1388,
+            "label": "M. SOULÉ",
+            "photo_url": "https://media.api-sports.io/football/players/323936.png"
+          },
+          {
+            "id": "player-185",
+            "playerId": 185,
+            "label": "P. DYBALA",
+            "photo_url": "https://media.api-sports.io/football/players/875.png"
+          },
+          {
+            "id": "player-53",
+            "playerId": 53,
+            "label": "CARLOS TÉVEZ",
+            "photo_url": "https://media.api-sports.io/football/players/5982.png"
+          },
+          {
+            "id": "player-3363",
+            "playerId": 3363,
+            "label": "E. BARRENECHEA",
+            "photo_url": "https://media.api-sports.io/football/players/158378.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "connections-006",
+    "groups": [
+      {
+        "id": "nation-Denmark",
+        "kind": "nation",
+        "title": {
+          "es": "NACIONALIDAD: Dinamarca",
+          "en": "NATIONALITY: Denmark",
+          "fr": "NATIONALITÉ : Danemark"
+        },
+        "reason": {
+          "es": "País en común: Dinamarca.",
+          "en": "Shared nationality: Denmark.",
+          "fr": "Nationalité commune : Danemark."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-368",
+            "playerId": 368,
+            "label": "A. CHRISTENSEN",
+            "photo_url": "https://media.api-sports.io/football/players/2282.png"
+          },
+          {
+            "id": "player-1954",
+            "playerId": 1954,
+            "label": "N. NARTEY",
+            "photo_url": "https://media.api-sports.io/football/players/361352.png"
+          },
+          {
+            "id": "player-1760",
+            "playerId": 1760,
+            "label": "P. HØJBJERG",
+            "photo_url": "https://media.api-sports.io/football/players/2735.png"
+          },
+          {
+            "id": "player-3432",
+            "playerId": 3432,
+            "label": "S. ANDERSEN",
+            "photo_url": "https://media.api-sports.io/football/players/341822.png"
+          }
+        ]
+      },
+      {
+        "id": "two-clubs-21-92",
+        "kind": "two-clubs",
+        "title": {
+          "es": "Borussia Dortmund + Inter",
+          "en": "Borussia Dortmund + Inter",
+          "fr": "Borussia Dortmund + Inter"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron tanto en Borussia Dortmund como en Inter.",
+          "en": "All four played for both Borussia Dortmund and Inter.",
+          "fr": "Tous les quatre ont joué à Borussia Dortmund et à Inter."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-3252",
+            "playerId": 3252,
+            "label": "H. MKHITARYAN",
+            "photo_url": "https://media.api-sports.io/football/players/1457.png"
+          },
+          {
+            "id": "player-1711",
+            "playerId": 1711,
+            "label": "A. HAKIMI",
+            "photo_url": "https://media.api-sports.io/football/players/9.png"
+          },
+          {
+            "id": "player-3221",
+            "playerId": 3221,
+            "label": "I. PERIŠIĆ",
+            "photo_url": "https://media.api-sports.io/football/players/207.png"
+          },
+          {
+            "id": "player-1098",
+            "playerId": 1098,
+            "label": "M. AKANJI",
+            "photo_url": "https://media.api-sports.io/football/players/5.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-club-England-21",
+        "kind": "nation-club",
+        "title": {
+          "es": "Inglaterra · Borussia Dortmund",
+          "en": "England · Borussia Dortmund",
+          "fr": "Angleterre · Borussia Dortmund"
+        },
+        "reason": {
+          "es": "País en común: Inglaterra. Los cuatro jugaron en Borussia Dortmund.",
+          "en": "Shared nationality: England. All four played for Borussia Dortmund.",
+          "fr": "Nationalité commune : Angleterre. Les quatre ont joué à Borussia Dortmund."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-67",
+            "playerId": 67,
+            "label": "J. BELLINGHAM",
+            "photo_url": "https://media.api-sports.io/football/players/129718.png"
+          },
+          {
+            "id": "player-293",
+            "playerId": 293,
+            "label": "J. BELLINGHAM",
+            "photo_url": "https://media.api-sports.io/football/players/326757.png"
+          },
+          {
+            "id": "player-1026",
+            "playerId": 1026,
+            "label": "E. NWANERI",
+            "photo_url": "https://media.api-sports.io/football/players/313236.png"
+          },
+          {
+            "id": "player-3357",
+            "playerId": 3357,
+            "label": "C. CHUKWUEMEKA",
+            "photo_url": "https://media.api-sports.io/football/players/138935.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-club-Brazil-19",
+        "kind": "nation-club",
+        "title": {
+          "es": "Brasil · Manchester City",
+          "en": "Brazil · Manchester City",
+          "fr": "Brésil · Manchester City"
+        },
+        "reason": {
+          "es": "País en común: Brasil. Los cuatro jugaron en Manchester City.",
+          "en": "Shared nationality: Brazil. All four played for Manchester City.",
+          "fr": "Nationalité commune : Brésil. Les quatre ont joué à Manchester City."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-3237",
+            "playerId": 3237,
+            "label": "GABRIEL JESUS",
+            "photo_url": "https://media.api-sports.io/football/players/643.png"
+          },
+          {
+            "id": "player-3393",
+            "playerId": 3393,
+            "label": "SÁVIO",
+            "photo_url": "https://media.api-sports.io/football/players/266657.png"
+          },
+          {
+            "id": "player-3236",
+            "playerId": 3236,
+            "label": "EDERSON",
+            "photo_url": "https://media.api-sports.io/football/players/617.png"
+          },
+          {
+            "id": "player-1075",
+            "playerId": 1075,
+            "label": "VITOR NUNES",
+            "photo_url": "https://media.api-sports.io/football/players/414359.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "connections-007",
+    "groups": [
+      {
+        "id": "two-clubs-17-10",
+        "kind": "two-clubs",
+        "title": {
+          "es": "AC Milan + Real Madrid",
+          "en": "AC Milan + Real Madrid",
+          "fr": "AC Milan + Real Madrid"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron tanto en AC Milan como en Real Madrid.",
+          "en": "All four played for both AC Milan and Real Madrid.",
+          "fr": "Tous les quatre ont joué à AC Milan et à Real Madrid."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-13",
+            "playerId": 13,
+            "label": "L. MODRIĆ",
+            "photo_url": "https://media.api-sports.io/football/players/754.png"
+          },
+          {
+            "id": "player-340",
+            "playerId": 340,
+            "label": "BRAHIM DÍAZ",
+            "photo_url": "https://media.api-sports.io/football/players/744.png"
+          },
+          {
+            "id": "player-25",
+            "playerId": 25,
+            "label": "KAKÁ",
+            "photo_url": "https://media.api-sports.io/football/players/105404.png"
+          },
+          {
+            "id": "player-26",
+            "playerId": 26,
+            "label": "DAVID BECKHAM",
+            "photo_url": "https://media.api-sports.io/football/players/113755.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-club-Germany-21",
+        "kind": "nation-club",
+        "title": {
+          "es": "Alemania · Borussia Dortmund",
+          "en": "Germany · Borussia Dortmund",
+          "fr": "Allemagne · Borussia Dortmund"
+        },
+        "reason": {
+          "es": "País en común: Alemania. Los cuatro jugaron en Borussia Dortmund.",
+          "en": "Shared nationality: Germany. All four played for Borussia Dortmund.",
+          "fr": "Nationalité commune : Allemagne. Les quatre ont joué à Borussia Dortmund."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-1590",
+            "playerId": 1590,
+            "label": "A. MEYER",
+            "photo_url": "https://media.api-sports.io/football/players/26292.png"
+          },
+          {
+            "id": "player-3246",
+            "playerId": 3246,
+            "label": "J. BRANDT",
+            "photo_url": "https://media.api-sports.io/football/players/984.png"
+          },
+          {
+            "id": "player-3292",
+            "playerId": 3292,
+            "label": "P. DREWES",
+            "photo_url": "https://media.api-sports.io/football/players/26395.png"
+          },
+          {
+            "id": "player-3399",
+            "playerId": 3399,
+            "label": "S. OSTRZINSKI",
+            "photo_url": "https://media.api-sports.io/football/players/280463.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-club-Portugal-85",
+        "kind": "nation-club",
+        "title": {
+          "es": "Portugal · FC Porto",
+          "en": "Portugal · FC Porto",
+          "fr": "Portugal · FC Porto"
+        },
+        "reason": {
+          "es": "País en común: Portugal. Los cuatro jugaron en FC Porto.",
+          "en": "Shared nationality: Portugal. All four played for FC Porto.",
+          "fr": "Nationalité commune : Portugal. Les quatre ont joué à FC Porto."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-757",
+            "playerId": 757,
+            "label": "DIOGO DALOT",
+            "photo_url": "https://media.api-sports.io/football/players/886.png"
+          },
+          {
+            "id": "player-3228",
+            "playerId": 3228,
+            "label": "DIOGO COSTA",
+            "photo_url": "https://media.api-sports.io/football/players/369.png"
+          },
+          {
+            "id": "player-3342",
+            "playerId": 3342,
+            "label": "ANDORINHA",
+            "photo_url": "https://media.api-sports.io/football/players/96476.png"
+          },
+          {
+            "id": "player-1608",
+            "playerId": 1608,
+            "label": "FÁBIO SILVA",
+            "photo_url": "https://media.api-sports.io/football/players/129791.png"
+          }
+        ]
+      },
+      {
+        "id": "two-clubs-4-57",
+        "kind": "two-clubs",
+        "title": {
+          "es": "Barcelona + Chelsea",
+          "en": "Barcelona + Chelsea",
+          "fr": "Barcelona + Chelsea"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron tanto en Barcelona como en Chelsea.",
+          "en": "All four played for both Barcelona and Chelsea.",
+          "fr": "Tous les quatre ont joué à Barcelona et à Chelsea."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-368",
+            "playerId": 368,
+            "label": "A. CHRISTENSEN",
+            "photo_url": "https://media.api-sports.io/football/players/2282.png"
+          },
+          {
+            "id": "player-28",
+            "playerId": 28,
+            "label": "SAMUEL ETO'O",
+            "photo_url": "https://media.api-sports.io/football/players/42432.png"
+          },
+          {
+            "id": "player-440",
+            "playerId": 440,
+            "label": "MARC CUCURELLA",
+            "photo_url": "https://media.api-sports.io/football/players/47380.png"
+          },
+          {
+            "id": "player-49",
+            "playerId": 49,
+            "label": "CESC FÀBREGAS",
+            "photo_url": "https://media.api-sports.io/football/players/108.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "connections-008",
+    "groups": [
+      {
+        "id": "nation-Norway",
+        "kind": "nation",
+        "title": {
+          "es": "NACIONALIDAD: Noruega",
+          "en": "NATIONALITY: Norway",
+          "fr": "NATIONALITÉ : Norvège"
+        },
+        "reason": {
+          "es": "País en común: Noruega.",
+          "en": "Shared nationality: Norway.",
+          "fr": "Nationalité commune : Norvège."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-3286",
+            "playerId": 3286,
+            "label": "J. RYERSON",
+            "photo_url": "https://media.api-sports.io/football/players/24845.png"
+          },
+          {
+            "id": "player-3355",
+            "playerId": 3355,
+            "label": "O. EDVARDSEN",
+            "photo_url": "https://media.api-sports.io/football/players/138753.png"
+          },
+          {
+            "id": "player-134",
+            "playerId": 134,
+            "label": "M. ØDEGAARD",
+            "photo_url": "https://media.api-sports.io/football/players/37127.png"
+          },
+          {
+            "id": "player-5",
+            "playerId": 5,
+            "label": "E. HAALAND",
+            "photo_url": "https://media.api-sports.io/football/players/1100.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-club-Argentina-1789",
+        "kind": "nation-club",
+        "title": {
+          "es": "Argentina · Boca Juniors",
+          "en": "Argentina · Boca Juniors",
+          "fr": "Argentine · Boca Juniors"
+        },
+        "reason": {
+          "es": "País en común: Argentina. Los cuatro jugaron en Boca Juniors.",
+          "en": "Shared nationality: Argentina. All four played for Boca Juniors.",
+          "fr": "Nationalité commune : Argentine. Les quatre ont joué à Boca Juniors."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-3488",
+            "playerId": 3488,
+            "label": "A. ANSELMINO",
+            "photo_url": "https://media.api-sports.io/football/players/422780.png"
+          },
+          {
+            "id": "player-1030",
+            "playerId": 1030,
+            "label": "V. BARCO",
+            "photo_url": "https://media.api-sports.io/football/players/319572.png"
+          },
+          {
+            "id": "player-1163",
+            "playerId": 1163,
+            "label": "N. MOLINA",
+            "photo_url": "https://media.api-sports.io/football/players/6503.png"
+          },
+          {
+            "id": "player-3397",
+            "playerId": 3397,
+            "label": "A. VARELA",
+            "photo_url": "https://media.api-sports.io/football/players/278375.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-club-Portugal-11",
+        "kind": "nation-club",
+        "title": {
+          "es": "Portugal · Sporting CP",
+          "en": "Portugal · Sporting CP",
+          "fr": "Portugal · Sporting CP"
+        },
+        "reason": {
+          "es": "País en común: Portugal. Los cuatro jugaron en Sporting CP.",
+          "en": "Shared nationality: Portugal. All four played for Sporting CP.",
+          "fr": "Nationalité commune : Portugal. Les quatre ont joué à Sporting CP."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-3474",
+            "playerId": 3474,
+            "label": "JOÃO SIMÕES",
+            "photo_url": "https://media.api-sports.io/football/players/400509.png"
+          },
+          {
+            "id": "player-3392",
+            "playerId": 3392,
+            "label": "GONÇALO INÁCIO",
+            "photo_url": "https://media.api-sports.io/football/players/265595.png"
+          },
+          {
+            "id": "player-3271",
+            "playerId": 3271,
+            "label": "POTE",
+            "photo_url": "https://media.api-sports.io/football/players/18748.png"
+          },
+          {
+            "id": "player-774",
+            "playerId": 774,
+            "label": "BRUNO FERNANDES",
+            "photo_url": "https://media.api-sports.io/football/players/1485.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-Ecuador",
+        "kind": "nation",
+        "title": {
+          "es": "NACIONALIDAD: Ecuador",
+          "en": "NATIONALITY: Ecuador",
+          "fr": "NATIONALITÉ : Équateur"
+        },
+        "reason": {
+          "es": "País en común: Ecuador.",
+          "en": "Shared nationality: Ecuador.",
+          "fr": "Nationalité commune : Équateur."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-3525",
+            "playerId": 3525,
+            "label": "JUSTIN LERMA",
+            "photo_url": "https://media.api-sports.io/football/players/465666.png"
+          },
+          {
+            "id": "player-1273",
+            "playerId": 1273,
+            "label": "P. ESTUPIÑÁN",
+            "photo_url": "https://media.api-sports.io/football/players/46731.png"
+          },
+          {
+            "id": "player-1776",
+            "playerId": 1776,
+            "label": "W. PACHO",
+            "photo_url": "https://media.api-sports.io/football/players/16367.png"
+          },
+          {
+            "id": "player-3346",
+            "playerId": 3346,
+            "label": "M. CAICEDO",
+            "photo_url": "https://media.api-sports.io/football/players/116117.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "connections-009",
+    "groups": [
+      {
+        "id": "nation-club-Spain-57",
+        "kind": "nation-club",
+        "title": {
+          "es": "España · Chelsea",
+          "en": "Spain · Chelsea",
+          "fr": "Espagne · Chelsea"
+        },
+        "reason": {
+          "es": "País en común: España. Los cuatro jugaron en Chelsea.",
+          "en": "Shared nationality: Spain. All four played for Chelsea.",
+          "fr": "Nationalité commune : Espagne. Les quatre ont joué à Chelsea."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-47",
+            "playerId": 47,
+            "label": "FERNANDO TORRES",
+            "photo_url": "https://media.api-sports.io/football/players/33413.png"
+          },
+          {
+            "id": "player-49",
+            "playerId": 49,
+            "label": "CESC FÀBREGAS",
+            "photo_url": "https://media.api-sports.io/football/players/108.png"
+          },
+          {
+            "id": "player-440",
+            "playerId": 440,
+            "label": "MARC CUCURELLA",
+            "photo_url": "https://media.api-sports.io/football/players/47380.png"
+          },
+          {
+            "id": "player-781",
+            "playerId": 781,
+            "label": "KEPA",
+            "photo_url": "https://media.api-sports.io/football/players/2273.png"
+          }
+        ]
+      },
+      {
+        "id": "two-clubs-8-45",
+        "kind": "two-clubs",
+        "title": {
+          "es": "Manchester United + Ajax",
+          "en": "Manchester United + Ajax",
+          "fr": "Manchester United + Ajax"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron tanto en Manchester United como en Ajax.",
+          "en": "All four played for both Manchester United and Ajax.",
+          "fr": "Tous les quatre ont joué à Manchester United et à Ajax."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-752",
+            "playerId": 752,
+            "label": "N. MAZRAOUI",
+            "photo_url": "https://media.api-sports.io/football/players/545.png"
+          },
+          {
+            "id": "player-3215",
+            "playerId": 3215,
+            "label": "S. AMRABAT",
+            "photo_url": "https://media.api-sports.io/football/players/74.png"
+          },
+          {
+            "id": "player-3232",
+            "playerId": 3232,
+            "label": "D. BLIND",
+            "photo_url": "https://media.api-sports.io/football/players/531.png"
+          },
+          {
+            "id": "player-788",
+            "playerId": 788,
+            "label": "LISANDRO MARTÍNEZ",
+            "photo_url": "https://media.api-sports.io/football/players/2467.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-Scotland",
+        "kind": "nation",
+        "title": {
+          "es": "NACIONALIDAD: Escocia",
+          "en": "NATIONALITY: Scotland",
+          "fr": "NATIONALITÉ : Écosse"
+        },
+        "reason": {
+          "es": "País en común: Escocia.",
+          "en": "Shared nationality: Scotland.",
+          "fr": "Nationalité commune : Écosse."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-950",
+            "playerId": 950,
+            "label": "E. ANDERSON",
+            "photo_url": "https://media.api-sports.io/football/players/138908.png"
+          },
+          {
+            "id": "player-1132",
+            "playerId": 1132,
+            "label": "S. MCTOMINAY",
+            "photo_url": "https://media.api-sports.io/football/players/903.png"
+          },
+          {
+            "id": "player-750",
+            "playerId": 750,
+            "label": "A. ROBERTSON",
+            "photo_url": "https://media.api-sports.io/football/players/289.png"
+          },
+          {
+            "id": "player-1306",
+            "playerId": 1306,
+            "label": "B. GILMOUR",
+            "photo_url": "https://media.api-sports.io/football/players/130423.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-club-France-141",
+        "kind": "nation-club",
+        "title": {
+          "es": "Francia · Marseille",
+          "en": "France · Marseille",
+          "fr": "France · Marseille"
+        },
+        "reason": {
+          "es": "País en común: Francia. Los cuatro jugaron en Marseille.",
+          "en": "Shared nationality: France. All four played for Marseille.",
+          "fr": "Nationalité commune : France. Les quatre ont joué à Marseille."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-2006",
+            "playerId": 2006,
+            "label": "K. ABDALLAH",
+            "photo_url": "https://media.api-sports.io/football/players/449158.png"
+          },
+          {
+            "id": "player-1156",
+            "playerId": 1156,
+            "label": "B. PAVARD",
+            "photo_url": "https://media.api-sports.io/football/players/2725.png"
+          },
+          {
+            "id": "player-3251",
+            "playerId": 3251,
+            "label": "M. GUENDOUZI",
+            "photo_url": "https://media.api-sports.io/football/players/1454.png"
+          },
+          {
+            "id": "player-1846",
+            "playerId": 1846,
+            "label": "A. GOUIRI",
+            "photo_url": "https://media.api-sports.io/football/players/85041.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "connections-010",
+    "groups": [
+      {
+        "id": "two-clubs-21-57",
+        "kind": "two-clubs",
+        "title": {
+          "es": "Borussia Dortmund + Chelsea",
+          "en": "Borussia Dortmund + Chelsea",
+          "fr": "Borussia Dortmund + Chelsea"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron tanto en Borussia Dortmund como en Chelsea.",
+          "en": "All four played for both Borussia Dortmund and Chelsea.",
+          "fr": "Tous les quatre ont joué à Borussia Dortmund et à Chelsea."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-3488",
+            "playerId": 3488,
+            "label": "A. ANSELMINO",
+            "photo_url": "https://media.api-sports.io/football/players/422780.png"
+          },
+          {
+            "id": "player-3357",
+            "playerId": 3357,
+            "label": "C. CHUKWUEMEKA",
+            "photo_url": "https://media.api-sports.io/football/players/138935.png"
+          },
+          {
+            "id": "player-1017",
+            "playerId": 1017,
+            "label": "J. BYNOE-GITTENS",
+            "photo_url": "https://media.api-sports.io/football/players/286894.png"
+          },
+          {
+            "id": "player-1099",
+            "playerId": 1099,
+            "label": "C. PULIŠIĆ",
+            "photo_url": "https://media.api-sports.io/football/players/17.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-club-Italy-17",
+        "kind": "nation-club",
+        "title": {
+          "es": "Italia · AC Milan",
+          "en": "Italy · AC Milan",
+          "fr": "Italie · AC Milan"
+        },
+        "reason": {
+          "es": "País en común: Italia. Los cuatro jugaron en AC Milan.",
+          "en": "Shared nationality: Italy. All four played for AC Milan.",
+          "fr": "Nationalité commune : Italie. Les quatre ont joué à AC Milan."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-1286",
+            "playerId": 1286,
+            "label": "M. GABBIA",
+            "photo_url": "https://media.api-sports.io/football/players/56473.png"
+          },
+          {
+            "id": "player-902",
+            "playerId": 902,
+            "label": "S. TONALI",
+            "photo_url": "https://media.api-sports.io/football/players/31146.png"
+          },
+          {
+            "id": "player-1467",
+            "playerId": 1467,
+            "label": "F. CAMARDA",
+            "photo_url": "https://media.api-sports.io/football/players/436260.png"
+          },
+          {
+            "id": "player-1199",
+            "playerId": 1199,
+            "label": "P. TERRACCIANO",
+            "photo_url": "https://media.api-sports.io/football/players/30394.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-Cameroon",
+        "kind": "nation",
+        "title": {
+          "es": "NACIONALIDAD: Camerún",
+          "en": "NATIONALITY: Cameroon",
+          "fr": "NATIONALITÉ : Cameroun"
+        },
+        "reason": {
+          "es": "País en común: Camerún.",
+          "en": "Shared nationality: Cameroon.",
+          "fr": "Nationalité commune : Cameroun."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-885",
+            "playerId": 885,
+            "label": "B. MBEUMO",
+            "photo_url": "https://media.api-sports.io/football/players/20589.png"
+          },
+          {
+            "id": "player-1851",
+            "playerId": 1851,
+            "label": "F. MOUMBAGNA",
+            "photo_url": "https://media.api-sports.io/football/players/102447.png"
+          },
+          {
+            "id": "player-3444",
+            "playerId": 3444,
+            "label": "C. BALEBA",
+            "photo_url": "https://media.api-sports.io/football/players/356041.png"
+          },
+          {
+            "id": "player-28",
+            "playerId": 28,
+            "label": "SAMUEL ETO'O",
+            "photo_url": "https://media.api-sports.io/football/players/42432.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-club-France-4",
+        "kind": "nation-club",
+        "title": {
+          "es": "Francia · Barcelona",
+          "en": "France · Barcelona",
+          "fr": "France · Barcelona"
+        },
+        "reason": {
+          "es": "País en común: Francia. Los cuatro jugaron en Barcelona.",
+          "en": "Shared nationality: France. All four played for Barcelona.",
+          "fr": "Nationalité commune : France. Les quatre ont joué à Barcelona."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-1719",
+            "playerId": 1719,
+            "label": "O. DEMBÉLÉ",
+            "photo_url": "https://media.api-sports.io/football/players/153.png"
+          },
+          {
+            "id": "player-3219",
+            "playerId": 3219,
+            "label": "C. LENGLET",
+            "photo_url": "https://media.api-sports.io/football/players/133.png"
+          },
+          {
+            "id": "player-354",
+            "playerId": 354,
+            "label": "J. KOUNDÉ",
+            "photo_url": "https://media.api-sports.io/football/players/1257.png"
+          },
+          {
+            "id": "player-1759",
+            "playerId": 1759,
+            "label": "L. DIGNE",
+            "photo_url": "https://media.api-sports.io/football/players/2724.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "connections-011",
+    "groups": [
+      {
+        "id": "nation-club-Spain-89",
+        "kind": "nation-club",
+        "title": {
+          "es": "España · Arsenal",
+          "en": "Spain · Arsenal",
+          "fr": "Espagne · Arsenal"
+        },
+        "reason": {
+          "es": "País en común: España. Los cuatro jugaron en Arsenal.",
+          "en": "Shared nationality: Spain. All four played for Arsenal.",
+          "fr": "Nationalité commune : Espagne. Les quatre ont joué à Arsenal."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-918",
+            "playerId": 918,
+            "label": "MARTÍN ZUBIMENDI",
+            "photo_url": "https://media.api-sports.io/football/players/47315.png"
+          },
+          {
+            "id": "player-866",
+            "playerId": 866,
+            "label": "DAVID RAYA",
+            "photo_url": "https://media.api-sports.io/football/players/19465.png"
+          },
+          {
+            "id": "player-917",
+            "playerId": 917,
+            "label": "MIKEL MERINO",
+            "photo_url": "https://media.api-sports.io/football/players/47311.png"
+          },
+          {
+            "id": "player-49",
+            "playerId": 49,
+            "label": "CESC FÀBREGAS",
+            "photo_url": "https://media.api-sports.io/football/players/108.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-Germany",
+        "kind": "nation",
+        "title": {
+          "es": "NACIONALIDAD: Alemania",
+          "en": "NATIONALITY: Germany",
+          "fr": "NATIONALITÉ : Allemagne"
+        },
+        "reason": {
+          "es": "País en común: Alemania.",
+          "en": "Shared nationality: Germany.",
+          "fr": "Nationalité commune : Allemagne."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-56",
+            "playerId": 56,
+            "label": "BASTIAN SCHWEINSTEIGER",
+            "photo_url": "https://media.api-sports.io/football/players/50914.png"
+          },
+          {
+            "id": "player-1631",
+            "playerId": 1631,
+            "label": "J. URBIG",
+            "photo_url": "https://media.api-sports.io/football/players/203376.png"
+          },
+          {
+            "id": "player-251",
+            "playerId": 251,
+            "label": "K. HAVERTZ",
+            "photo_url": "https://media.api-sports.io/football/players/978.png"
+          },
+          {
+            "id": "player-1653",
+            "playerId": 1653,
+            "label": "T. BISCHOF",
+            "photo_url": "https://media.api-sports.io/football/players/325975.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-Serbia",
+        "kind": "nation",
+        "title": {
+          "es": "NACIONALIDAD: Serbia",
+          "en": "NATIONALITY: Serbia",
+          "fr": "NATIONALITÉ : Serbie"
+        },
+        "reason": {
+          "es": "País en común: Serbia.",
+          "en": "Shared nationality: Serbia.",
+          "fr": "Nationalité commune : Serbie."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-1117",
+            "playerId": 1117,
+            "label": "M. SVILAR",
+            "photo_url": "https://media.api-sports.io/football/players/556.png"
+          },
+          {
+            "id": "player-3254",
+            "playerId": 3254,
+            "label": "F. KOSTIĆ",
+            "photo_url": "https://media.api-sports.io/football/players/1821.png"
+          },
+          {
+            "id": "player-301",
+            "playerId": 301,
+            "label": "S. PAVLOVIĆ",
+            "photo_url": "https://media.api-sports.io/football/players/45826.png"
+          },
+          {
+            "id": "player-3530",
+            "playerId": 3530,
+            "label": "M. CATOVIC",
+            "photo_url": "https://media.api-sports.io/football/players/478610.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-Netherlands",
+        "kind": "nation",
+        "title": {
+          "es": "NACIONALIDAD: Países Bajos",
+          "en": "NATIONALITY: Netherlands",
+          "fr": "NATIONALITÉ : Pays-Bas"
+        },
+        "reason": {
+          "es": "País en común: Países Bajos.",
+          "en": "Shared nationality: Netherlands.",
+          "fr": "Nationalité commune : Pays-Bas."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-254",
+            "playerId": 254,
+            "label": "J. VAN HECKE",
+            "photo_url": "https://media.api-sports.io/football/players/38695.png"
+          },
+          {
+            "id": "player-954",
+            "playerId": 954,
+            "label": "J. FRIMPONG",
+            "photo_url": "https://media.api-sports.io/football/players/152654.png"
+          },
+          {
+            "id": "player-955",
+            "playerId": 955,
+            "label": "M. VAN DE VEN",
+            "photo_url": "https://media.api-sports.io/football/players/152849.png"
+          },
+          {
+            "id": "player-137",
+            "playerId": 137,
+            "label": "R. GRAVENBERCH",
+            "photo_url": "https://media.api-sports.io/football/players/542.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "connections-012",
+    "groups": [
+      {
+        "id": "club-94",
+        "kind": "club",
+        "title": {
+          "es": "PASARON POR Napoli",
+          "en": "PLAYED FOR Napoli",
+          "fr": "ONT JOUÉ À Napoli"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron en Napoli durante su carrera; no necesariamente al mismo tiempo.",
+          "en": "All four played for Napoli during their careers, not necessarily at the same time.",
+          "fr": "Tous les quatre ont joué à Napoli au cours de leur carrière, pas nécessairement ensemble."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-1138",
+            "playerId": 1138,
+            "label": "AMIR RRAHMANI",
+            "photo_url": "https://media.api-sports.io/football/players/1314.png"
+          },
+          {
+            "id": "player-1240",
+            "playerId": 1240,
+            "label": "V. MILINKOVIĆ-SAVIĆ",
+            "photo_url": "https://media.api-sports.io/football/players/31156.png"
+          },
+          {
+            "id": "player-1276",
+            "playerId": 1276,
+            "label": "M. OLIVERA",
+            "photo_url": "https://media.api-sports.io/football/players/47254.png"
+          },
+          {
+            "id": "player-1203",
+            "playerId": 1203,
+            "label": "P. GOLLINI",
+            "photo_url": "https://media.api-sports.io/football/players/30418.png"
+          }
+        ]
+      },
+      {
+        "id": "two-clubs-50-64",
+        "kind": "two-clubs",
+        "title": {
+          "es": "Bayern München + Tottenham",
+          "en": "Bayern München + Tottenham",
+          "fr": "Bayern München + Tottenham"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron tanto en Bayern München como en Tottenham.",
+          "en": "All four played for both Bayern München and Tottenham.",
+          "fr": "Tous les quatre ont joué à Bayern München et à Tottenham."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-12",
+            "playerId": 12,
+            "label": "H. KANE",
+            "photo_url": "https://media.api-sports.io/football/players/184.png"
+          },
+          {
+            "id": "player-3322",
+            "playerId": 3322,
+            "label": "JOÃO PALHINHA",
+            "photo_url": "https://media.api-sports.io/football/players/41104.png"
+          },
+          {
+            "id": "player-998",
+            "playerId": 998,
+            "label": "M. TEL",
+            "photo_url": "https://media.api-sports.io/football/players/270510.png"
+          },
+          {
+            "id": "player-1760",
+            "playerId": 1760,
+            "label": "P. HØJBJERG",
+            "photo_url": "https://media.api-sports.io/football/players/2735.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-Switzerland",
+        "kind": "nation",
+        "title": {
+          "es": "NACIONALIDAD: Suiza",
+          "en": "NATIONALITY: Switzerland",
+          "fr": "NATIONALITÉ : Suisse"
+        },
+        "reason": {
+          "es": "País en común: Suiza.",
+          "en": "Shared nationality: Switzerland.",
+          "fr": "Nationalité commune : Suisse."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-1098",
+            "playerId": 1098,
+            "label": "M. AKANJI",
+            "photo_url": "https://media.api-sports.io/football/players/5.png"
+          },
+          {
+            "id": "player-3391",
+            "playerId": 3391,
+            "label": "A. JASHARI",
+            "photo_url": "https://media.api-sports.io/football/players/264705.png"
+          },
+          {
+            "id": "player-1737",
+            "playerId": 1737,
+            "label": "U. GARCIA",
+            "photo_url": "https://media.api-sports.io/football/players/943.png"
+          },
+          {
+            "id": "player-3473",
+            "playerId": 3473,
+            "label": "Z. ATHEKAME",
+            "photo_url": "https://media.api-sports.io/football/players/396380.png"
+          }
+        ]
+      },
+      {
+        "id": "club-113",
+        "kind": "club",
+        "title": {
+          "es": "PASARON POR Fenerbahçe",
+          "en": "PLAYED FOR Fenerbahçe",
+          "fr": "ONT JOUÉ À Fenerbahçe"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron en Fenerbahçe durante su carrera; no necesariamente al mismo tiempo.",
+          "en": "All four played for Fenerbahçe during their careers, not necessarily at the same time.",
+          "fr": "Tous les quatre ont joué à Fenerbahçe au cours de leur carrière, pas nécessairement ensemble."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-37",
+            "playerId": 37,
+            "label": "ROBIN VAN PERSIE",
+            "photo_url": "https://media.api-sports.io/football/players/37162.png"
+          },
+          {
+            "id": "player-3244",
+            "playerId": 3244,
+            "label": "M. GREENWOOD",
+            "photo_url": "https://media.api-sports.io/football/players/897.png"
+          },
+          {
+            "id": "player-3273",
+            "playerId": 3273,
+            "label": "N. AKÉ",
+            "photo_url": "https://media.api-sports.io/football/players/18861.png"
+          },
+          {
+            "id": "player-3215",
+            "playerId": 3215,
+            "label": "S. AMRABAT",
+            "photo_url": "https://media.api-sports.io/football/players/74.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "connections-013",
+    "groups": [
+      {
+        "id": "nation-club-France-53",
+        "kind": "nation-club",
+        "title": {
+          "es": "Francia · Lyon",
+          "en": "France · Lyon",
+          "fr": "France · Lyon"
+        },
+        "reason": {
+          "es": "País en común: Francia. Los cuatro jugaron en Lyon.",
+          "en": "Shared nationality: France. All four played for Lyon.",
+          "fr": "Nationalité commune : France. Les quatre ont joué à Lyon."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-3367",
+            "playerId": 3367,
+            "label": "B. BARCOLA",
+            "photo_url": "https://media.api-sports.io/football/players/161904.png"
+          },
+          {
+            "id": "player-1981",
+            "playerId": 1981,
+            "label": "K. BOUDACHE",
+            "photo_url": "https://media.api-sports.io/football/players/405237.png"
+          },
+          {
+            "id": "player-1790",
+            "playerId": 1790,
+            "label": "R. DESCAMPS",
+            "photo_url": "https://media.api-sports.io/football/players/20762.png"
+          },
+          {
+            "id": "player-3542",
+            "playerId": 3542,
+            "label": "N. KAMARA",
+            "photo_url": "https://media.api-sports.io/football/players/493026.png"
+          }
+        ]
+      },
+      {
+        "id": "club-92",
+        "kind": "club",
+        "title": {
+          "es": "PASARON POR Inter",
+          "en": "PLAYED FOR Inter",
+          "fr": "ONT JOUÉ À Inter"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron en Inter durante su carrera; no necesariamente al mismo tiempo.",
+          "en": "All four played for Inter during their careers, not necessarily at the same time.",
+          "fr": "Tous les quatre ont joué à Inter au cours de leur carrière, pas nécessairement ensemble."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-784",
+            "playerId": 784,
+            "label": "M. KOVAČIĆ",
+            "photo_url": "https://media.api-sports.io/football/players/2291.png"
+          },
+          {
+            "id": "player-1232",
+            "playerId": 1232,
+            "label": "A. BASTONI",
+            "photo_url": "https://media.api-sports.io/football/players/31009.png"
+          },
+          {
+            "id": "player-329",
+            "playerId": 329,
+            "label": "D. DUMFRIES",
+            "photo_url": "https://media.api-sports.io/football/players/226.png"
+          },
+          {
+            "id": "player-1107",
+            "playerId": 1107,
+            "label": "LAUTARO MARTÍNEZ",
+            "photo_url": "https://media.api-sports.io/football/players/217.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-Poland",
+        "kind": "nation",
+        "title": {
+          "es": "NACIONALIDAD: Polonia",
+          "en": "NATIONALITY: Poland",
+          "fr": "NATIONALITÉ : Pologne"
+        },
+        "reason": {
+          "es": "País en común: Polonia.",
+          "en": "Shared nationality: Poland.",
+          "fr": "Nationalité commune : Pologne."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-3262",
+            "playerId": 3262,
+            "label": "J. BEDNAREK",
+            "photo_url": "https://media.api-sports.io/football/players/2999.png"
+          },
+          {
+            "id": "player-3503",
+            "playerId": 3503,
+            "label": "O. PIETUSZEWSKI",
+            "photo_url": "https://media.api-sports.io/football/players/442540.png"
+          },
+          {
+            "id": "player-3336",
+            "playerId": 3336,
+            "label": "J. KIWIOR",
+            "photo_url": "https://media.api-sports.io/football/players/61431.png"
+          },
+          {
+            "id": "player-3269",
+            "playerId": 3269,
+            "label": "K. GRABARA",
+            "photo_url": "https://media.api-sports.io/football/players/15573.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-club-England-8",
+        "kind": "nation-club",
+        "title": {
+          "es": "Inglaterra · Manchester United",
+          "en": "England · Manchester United",
+          "fr": "Angleterre · Manchester United"
+        },
+        "reason": {
+          "es": "País en común: Inglaterra. Los cuatro jugaron en Manchester United.",
+          "en": "Shared nationality: England. All four played for Manchester United.",
+          "fr": "Nationalité commune : Angleterre. Les quatre ont joué à Manchester United."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-3261",
+            "playerId": 3261,
+            "label": "T. HEATON",
+            "photo_url": "https://media.api-sports.io/football/players/2931.png"
+          },
+          {
+            "id": "player-1734",
+            "playerId": 1734,
+            "label": "A. GOMES",
+            "photo_url": "https://media.api-sports.io/football/players/896.png"
+          },
+          {
+            "id": "player-3278",
+            "playerId": 3278,
+            "label": "M. MOUNT",
+            "photo_url": "https://media.api-sports.io/football/players/19220.png"
+          },
+          {
+            "id": "player-1010",
+            "playerId": 1010,
+            "label": "K. MAINOO",
+            "photo_url": "https://media.api-sports.io/football/players/284322.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "connections-014",
+    "groups": [
+      {
+        "id": "club-1780",
+        "kind": "club",
+        "title": {
+          "es": "PASARON POR River Plate",
+          "en": "PLAYED FOR River Plate",
+          "fr": "ONT JOUÉ À River Plate"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron en River Plate durante su carrera; no necesariamente al mismo tiempo.",
+          "en": "All four played for River Plate during their careers, not necessarily at the same time.",
+          "fr": "Tous les quatre ont joué à River Plate au cours de leur carrière, pas nécessairement ensemble."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-50",
+            "playerId": 50,
+            "label": "JAVIER MASCHERANO",
+            "photo_url": "https://media.api-sports.io/football/players/13073.png"
+          },
+          {
+            "id": "player-803",
+            "playerId": 803,
+            "label": "E. FERNÁNDEZ",
+            "photo_url": "https://media.api-sports.io/football/players/5996.png"
+          },
+          {
+            "id": "player-374",
+            "playerId": 374,
+            "label": "J. ÁLVAREZ",
+            "photo_url": "https://media.api-sports.io/football/players/6009.png"
+          },
+          {
+            "id": "player-1076",
+            "playerId": 1076,
+            "label": "C. ECHEVERRI",
+            "photo_url": "https://media.api-sports.io/football/players/414385.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-Croatia",
+        "kind": "nation",
+        "title": {
+          "es": "NACIONALIDAD: Croacia",
+          "en": "NATIONALITY: Croatia",
+          "fr": "NATIONALITÉ : Croatie"
+        },
+        "reason": {
+          "es": "País en común: Croacia.",
+          "en": "Shared nationality: Croatia.",
+          "fr": "Nationalité commune : Croatie."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-103",
+            "playerId": 103,
+            "label": "J. GVARDIOL",
+            "photo_url": "https://media.api-sports.io/football/players/129033.png"
+          },
+          {
+            "id": "player-3428",
+            "playerId": 3428,
+            "label": "D. PRPIĆ",
+            "photo_url": "https://media.api-sports.io/football/players/340572.png"
+          },
+          {
+            "id": "player-3221",
+            "playerId": 3221,
+            "label": "I. PERIŠIĆ",
+            "photo_url": "https://media.api-sports.io/football/players/207.png"
+          },
+          {
+            "id": "player-13",
+            "playerId": 13,
+            "label": "L. MODRIĆ",
+            "photo_url": "https://media.api-sports.io/football/players/754.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-club-Argentina-56",
+        "kind": "nation-club",
+        "title": {
+          "es": "Argentina · AS Roma",
+          "en": "Argentina · AS Roma",
+          "fr": "Argentine · AS Roma"
+        },
+        "reason": {
+          "es": "País en común: Argentina. Los cuatro jugaron en AS Roma.",
+          "en": "Shared nationality: Argentina. All four played for AS Roma.",
+          "fr": "Nationalité commune : Argentine. Les quatre ont joué à AS Roma."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-1375",
+            "playerId": 1375,
+            "label": "S. CASTRO",
+            "photo_url": "https://media.api-sports.io/football/players/311067.png"
+          },
+          {
+            "id": "player-3212",
+            "playerId": 3212,
+            "label": "L. BALERDI",
+            "photo_url": "https://media.api-sports.io/football/players/6.png"
+          },
+          {
+            "id": "player-185",
+            "playerId": 185,
+            "label": "P. DYBALA",
+            "photo_url": "https://media.api-sports.io/football/players/875.png"
+          },
+          {
+            "id": "player-1163",
+            "playerId": 1163,
+            "label": "N. MOLINA",
+            "photo_url": "https://media.api-sports.io/football/players/6503.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-Belgium",
+        "kind": "nation",
+        "title": {
+          "es": "NACIONALIDAD: Bélgica",
+          "en": "NATIONALITY: Belgium",
+          "fr": "NATIONALITÉ : Belgique"
+        },
+        "reason": {
+          "es": "País en común: Bélgica.",
+          "en": "Shared nationality: Belgium.",
+          "fr": "Nationalité commune : Belgique."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-1715",
+            "playerId": 1715,
+            "label": "L. OPENDA",
+            "photo_url": "https://media.api-sports.io/football/players/86.png"
+          },
+          {
+            "id": "player-3288",
+            "playerId": 3288,
+            "label": "D. LUKEBAKIO",
+            "photo_url": "https://media.api-sports.io/football/players/25458.png"
+          },
+          {
+            "id": "player-220",
+            "playerId": 220,
+            "label": "A. SAELEMAEKERS",
+            "photo_url": "https://media.api-sports.io/football/players/1417.png"
+          },
+          {
+            "id": "player-314",
+            "playerId": 314,
+            "label": "K. DE WINTER",
+            "photo_url": "https://media.api-sports.io/football/players/162141.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "connections-015",
+    "groups": [
+      {
+        "id": "two-clubs-57-94",
+        "kind": "two-clubs",
+        "title": {
+          "es": "Chelsea + Napoli",
+          "en": "Chelsea + Napoli",
+          "fr": "Chelsea + Napoli"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron tanto en Chelsea como en Napoli.",
+          "en": "All four played for both Chelsea and Napoli.",
+          "fr": "Tous les quatre ont joué à Chelsea et à Napoli."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-3245",
+            "playerId": 3245,
+            "label": "R. LUKAKU",
+            "photo_url": "https://media.api-sports.io/football/players/907.png"
+          },
+          {
+            "id": "player-24",
+            "playerId": 24,
+            "label": "K. DE BRUYNE",
+            "photo_url": "https://media.api-sports.io/football/players/629.png"
+          },
+          {
+            "id": "player-1306",
+            "playerId": 1306,
+            "label": "B. GILMOUR",
+            "photo_url": "https://media.api-sports.io/football/players/130423.png"
+          },
+          {
+            "id": "player-3216",
+            "playerId": 3216,
+            "label": "B. BADIASHILE",
+            "photo_url": "https://media.api-sports.io/football/players/95.png"
+          }
+        ]
+      },
+      {
+        "id": "two-clubs-113-367",
+        "kind": "two-clubs",
+        "title": {
+          "es": "Fenerbahçe + Benfica",
+          "en": "Fenerbahçe + Benfica",
+          "fr": "Fenerbahçe + Benfica"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron tanto en Fenerbahçe como en Benfica.",
+          "en": "All four played for both Fenerbahçe and Benfica.",
+          "fr": "Tous les quatre ont joué à Fenerbahçe et à Benfica."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-3218",
+            "playerId": 3218,
+            "label": "NÉLSON SEMEDO",
+            "photo_url": "https://media.api-sports.io/football/players/130.png"
+          },
+          {
+            "id": "player-3268",
+            "playerId": 3268,
+            "label": "J. DURÁN",
+            "photo_url": "https://media.api-sports.io/football/players/13489.png"
+          },
+          {
+            "id": "player-3358",
+            "playerId": 3358,
+            "label": "K. AKTÜRKOĞLU",
+            "photo_url": "https://media.api-sports.io/football/players/142959.png"
+          },
+          {
+            "id": "player-3236",
+            "playerId": 3236,
+            "label": "EDERSON",
+            "photo_url": "https://media.api-sports.io/football/players/617.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-Ghana",
+        "kind": "nation",
+        "title": {
+          "es": "NACIONALIDAD: Ghana",
+          "en": "NATIONALITY: Ghana",
+          "fr": "NATIONALITÉ : Ghana"
+        },
+        "reason": {
+          "es": "País en común: Ghana.",
+          "en": "Shared nationality: Ghana.",
+          "fr": "Nationalité commune : Ghana."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-128",
+            "playerId": 128,
+            "label": "A. SEMENYO",
+            "photo_url": "https://media.api-sports.io/football/players/19281.png"
+          },
+          {
+            "id": "player-1946",
+            "playerId": 1946,
+            "label": "E. NUAMAH",
+            "photo_url": "https://media.api-sports.io/football/players/350856.png"
+          },
+          {
+            "id": "player-3479",
+            "playerId": 3479,
+            "label": "K. PEPRAH OPPONG",
+            "photo_url": "https://media.api-sports.io/football/players/404172.png"
+          },
+          {
+            "id": "player-815",
+            "playerId": 815,
+            "label": "M. KUDUS",
+            "photo_url": "https://media.api-sports.io/football/players/15911.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-club-Brazil-10",
+        "kind": "nation-club",
+        "title": {
+          "es": "Brasil · Real Madrid",
+          "en": "Brazil · Real Madrid",
+          "fr": "Brésil · Real Madrid"
+        },
+        "reason": {
+          "es": "País en común: Brasil. Los cuatro jugaron en Real Madrid.",
+          "en": "Shared nationality: Brazil. All four played for Real Madrid.",
+          "fr": "Nationalité commune : Brésil. Les quatre ont joué à Real Madrid."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-3229",
+            "playerId": 3229,
+            "label": "ÉDER MILITÃO",
+            "photo_url": "https://media.api-sports.io/football/players/372.png"
+          },
+          {
+            "id": "player-88",
+            "playerId": 88,
+            "label": "VINÍCIUS JÚNIOR",
+            "photo_url": "https://media.api-sports.io/football/players/762.png"
+          },
+          {
+            "id": "player-25",
+            "playerId": 25,
+            "label": "KAKÁ",
+            "photo_url": "https://media.api-sports.io/football/players/105404.png"
+          },
+          {
+            "id": "player-3456",
+            "playerId": 3456,
+            "label": "ENDRICK",
+            "photo_url": "https://media.api-sports.io/football/players/377122.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "connections-016",
+    "groups": [
+      {
+        "id": "nation-Greece",
+        "kind": "nation",
+        "title": {
+          "es": "NACIONALIDAD: Grecia",
+          "en": "NATIONALITY: Greece",
+          "fr": "NATIONALITÉ : Grèce"
+        },
+        "reason": {
+          "es": "País en común: Grecia.",
+          "en": "Shared nationality: Greece.",
+          "fr": "Nationalité commune : Grèce."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-3300",
+            "playerId": 3300,
+            "label": "V. PAVLIDIS",
+            "photo_url": "https://media.api-sports.io/football/players/36798.png"
+          },
+          {
+            "id": "player-3293",
+            "playerId": 3293,
+            "label": "F. IOANNIDIS",
+            "photo_url": "https://media.api-sports.io/football/players/26965.png"
+          },
+          {
+            "id": "player-1319",
+            "playerId": 1319,
+            "label": "K. KOULIERAKIS",
+            "photo_url": "https://media.api-sports.io/football/players/162409.png"
+          },
+          {
+            "id": "player-1617",
+            "playerId": 1617,
+            "label": "G. KONSTANTELIAS",
+            "photo_url": "https://media.api-sports.io/football/players/162410.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-France",
+        "kind": "nation",
+        "title": {
+          "es": "NACIONALIDAD: Francia",
+          "en": "NATIONALITY: France",
+          "fr": "NATIONALITÉ : France"
+        },
+        "reason": {
+          "es": "País en común: Francia.",
+          "en": "Shared nationality: France.",
+          "fr": "Nationalité commune : France."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-366",
+            "playerId": 366,
+            "label": "E. CAMAVINGA",
+            "photo_url": "https://media.api-sports.io/football/players/2207.png"
+          },
+          {
+            "id": "player-294",
+            "playerId": 294,
+            "label": "KOUAKOU JOANE GADOU",
+            "photo_url": "https://media.api-sports.io/football/players/409215.png"
+          },
+          {
+            "id": "player-313",
+            "playerId": 313,
+            "label": "M. MAIGNAN",
+            "photo_url": "https://media.api-sports.io/football/players/22221.png"
+          },
+          {
+            "id": "player-200",
+            "playerId": 200,
+            "label": "A. DIOUF",
+            "photo_url": "https://media.api-sports.io/football/players/270509.png"
+          }
+        ]
+      },
+      {
+        "id": "two-clubs-4-19",
+        "kind": "two-clubs",
+        "title": {
+          "es": "Barcelona + Manchester City",
+          "en": "Barcelona + Manchester City",
+          "fr": "Barcelona + Manchester City"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron tanto en Barcelona como en Manchester City.",
+          "en": "All four played for both Barcelona and Manchester City.",
+          "fr": "Tous les quatre ont joué à Barcelona et à Manchester City."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-323",
+            "playerId": 323,
+            "label": "RODRI",
+            "photo_url": "https://media.api-sports.io/football/players/44.png"
+          },
+          {
+            "id": "player-1736",
+            "playerId": 1736,
+            "label": "FERRAN TORRES",
+            "photo_url": "https://media.api-sports.io/football/players/931.png"
+          },
+          {
+            "id": "player-345",
+            "playerId": 345,
+            "label": "JOÃO CANCELO",
+            "photo_url": "https://media.api-sports.io/football/players/855.png"
+          },
+          {
+            "id": "player-336",
+            "playerId": 336,
+            "label": "ERIC GARCÍA",
+            "photo_url": "https://media.api-sports.io/football/players/619.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-Brazil",
+        "kind": "nation",
+        "title": {
+          "es": "NACIONALIDAD: Brasil",
+          "en": "NATIONALITY: Brazil",
+          "fr": "NATIONALITÉ : Brésil"
+        },
+        "reason": {
+          "es": "País en común: Brasil.",
+          "en": "Shared nationality: Brazil.",
+          "fr": "Nationalité commune : Brésil."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-768",
+            "playerId": 768,
+            "label": "MATHEUS CUNHA",
+            "photo_url": "https://media.api-sports.io/football/players/1165.png"
+          },
+          {
+            "id": "player-120",
+            "playerId": 120,
+            "label": "JOÃO PEDRO",
+            "photo_url": "https://media.api-sports.io/football/players/10329.png"
+          },
+          {
+            "id": "player-895",
+            "playerId": 895,
+            "label": "GABRIEL MAGALHÃES",
+            "photo_url": "https://media.api-sports.io/football/players/22224.png"
+          },
+          {
+            "id": "player-1078",
+            "playerId": 1078,
+            "label": "ESTÊVÃO",
+            "photo_url": "https://media.api-sports.io/football/players/425733.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "connections-017",
+    "groups": [
+      {
+        "id": "nation-USA",
+        "kind": "nation",
+        "title": {
+          "es": "NACIONALIDAD: Estados Unidos",
+          "en": "NATIONALITY: United States",
+          "fr": "NATIONALITÉ : États-Unis"
+        },
+        "reason": {
+          "es": "País en común: Estados Unidos.",
+          "en": "Shared nationality: United States.",
+          "fr": "Nationalité commune : États-Unis."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-3416",
+            "playerId": 3416,
+            "label": "E. BAJRAKTAREVIC",
+            "photo_url": "https://media.api-sports.io/football/players/329409.png"
+          },
+          {
+            "id": "player-3339",
+            "playerId": 3339,
+            "label": "G. SŁONINA",
+            "photo_url": "https://media.api-sports.io/football/players/64167.png"
+          },
+          {
+            "id": "player-3316",
+            "playerId": 3316,
+            "label": "S. DEST",
+            "photo_url": "https://media.api-sports.io/football/players/38735.png"
+          },
+          {
+            "id": "player-1099",
+            "playerId": 1099,
+            "label": "C. PULIŠIĆ",
+            "photo_url": "https://media.api-sports.io/football/players/17.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-club-Portugal-19",
+        "kind": "nation-club",
+        "title": {
+          "es": "Portugal · Manchester City",
+          "en": "Portugal · Manchester City",
+          "fr": "Portugal · Manchester City"
+        },
+        "reason": {
+          "es": "País en común: Portugal. Los cuatro jugaron en Manchester City.",
+          "en": "Shared nationality: Portugal. All four played for Manchester City.",
+          "fr": "Nationalité commune : Portugal. Les quatre ont joué à Manchester City."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-345",
+            "playerId": 345,
+            "label": "JOÃO CANCELO",
+            "photo_url": "https://media.api-sports.io/football/players/855.png"
+          },
+          {
+            "id": "player-249",
+            "playerId": 249,
+            "label": "RÚBEN DIAS",
+            "photo_url": "https://media.api-sports.io/football/players/567.png"
+          },
+          {
+            "id": "player-913",
+            "playerId": 913,
+            "label": "MATHEUS NUNES",
+            "photo_url": "https://media.api-sports.io/football/players/41621.png"
+          },
+          {
+            "id": "player-338",
+            "playerId": 338,
+            "label": "BERNARDO SILVA",
+            "photo_url": "https://media.api-sports.io/football/players/636.png"
+          }
+        ]
+      },
+      {
+        "id": "club-56",
+        "kind": "club",
+        "title": {
+          "es": "PASARON POR AS Roma",
+          "en": "PLAYED FOR AS Roma",
+          "fr": "ONT JOUÉ À AS Roma"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron en AS Roma durante su carrera; no necesariamente al mismo tiempo.",
+          "en": "All four played for AS Roma during their careers, not necessarily at the same time.",
+          "fr": "Tous les quatre ont joué à AS Roma au cours de leur carrière, pas nécessairement ensemble."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-1203",
+            "playerId": 1203,
+            "label": "P. GOLLINI",
+            "photo_url": "https://media.api-sports.io/football/players/30418.png"
+          },
+          {
+            "id": "player-1189",
+            "playerId": 1189,
+            "label": "M. KONÉ",
+            "photo_url": "https://media.api-sports.io/football/players/22147.png"
+          },
+          {
+            "id": "player-775",
+            "playerId": 775,
+            "label": "K. TSIMIKAS",
+            "photo_url": "https://media.api-sports.io/football/players/1600.png"
+          },
+          {
+            "id": "player-369",
+            "playerId": 369,
+            "label": "A. RÜDIGER",
+            "photo_url": "https://media.api-sports.io/football/players/2285.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-club-France-57",
+        "kind": "nation-club",
+        "title": {
+          "es": "Francia · Chelsea",
+          "en": "France · Chelsea",
+          "fr": "France · Chelsea"
+        },
+        "reason": {
+          "es": "País en común: Francia. Los cuatro jugaron en Chelsea.",
+          "en": "Shared nationality: France. All four played for Chelsea.",
+          "fr": "Nationalité commune : France. Les quatre ont joué à Chelsea."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-3284",
+            "playerId": 3284,
+            "label": "W. FOFANA",
+            "photo_url": "https://media.api-sports.io/football/players/22094.png"
+          },
+          {
+            "id": "player-887",
+            "playerId": 887,
+            "label": "M. LACROIX",
+            "photo_url": "https://media.api-sports.io/football/players/20995.png"
+          },
+          {
+            "id": "player-964",
+            "playerId": 964,
+            "label": "M. GUSTO",
+            "photo_url": "https://media.api-sports.io/football/players/161907.png"
+          },
+          {
+            "id": "player-3216",
+            "playerId": 3216,
+            "label": "B. BADIASHILE",
+            "photo_url": "https://media.api-sports.io/football/players/95.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "connections-018",
+    "groups": [
+      {
+        "id": "club-11",
+        "kind": "club",
+        "title": {
+          "es": "PASARON POR Sporting CP",
+          "en": "PLAYED FOR Sporting CP",
+          "fr": "ONT JOUÉ À Sporting CP"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron en Sporting CP durante su carrera; no necesariamente al mismo tiempo.",
+          "en": "All four played for Sporting CP during their careers, not necessarily at the same time.",
+          "fr": "Tous les quatre ont joué à Sporting CP au cours de leur carrière, pas nécessairement ensemble."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-3328",
+            "playerId": 3328,
+            "label": "RUI SILVA",
+            "photo_url": "https://media.api-sports.io/football/players/46672.png"
+          },
+          {
+            "id": "player-3306",
+            "playerId": 3306,
+            "label": "J. ST. JUSTE",
+            "photo_url": "https://media.api-sports.io/football/players/37148.png"
+          },
+          {
+            "id": "player-3329",
+            "playerId": 3329,
+            "label": "L. SUÁREZ",
+            "photo_url": "https://media.api-sports.io/football/players/47237.png"
+          },
+          {
+            "id": "player-3354",
+            "playerId": 3354,
+            "label": "G. VAGIANNIDIS",
+            "photo_url": "https://media.api-sports.io/football/players/135839.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-Morocco",
+        "kind": "nation",
+        "title": {
+          "es": "NACIONALIDAD: Marruecos",
+          "en": "NATIONALITY: Morocco",
+          "fr": "NATIONALITÉ : Maroc"
+        },
+        "reason": {
+          "es": "País en común: Marruecos.",
+          "en": "Shared nationality: Morocco.",
+          "fr": "Nationalité commune : Maroc."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-3349",
+            "playerId": 3349,
+            "label": "S. EL KAROUANI",
+            "photo_url": "https://media.api-sports.io/football/players/127803.png"
+          },
+          {
+            "id": "player-752",
+            "playerId": 752,
+            "label": "N. MAZRAOUI",
+            "photo_url": "https://media.api-sports.io/football/players/545.png"
+          },
+          {
+            "id": "player-3215",
+            "playerId": 3215,
+            "label": "S. AMRABAT",
+            "photo_url": "https://media.api-sports.io/football/players/74.png"
+          },
+          {
+            "id": "player-1711",
+            "playerId": 1711,
+            "label": "A. HAKIMI",
+            "photo_url": "https://media.api-sports.io/football/players/9.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-club-Brazil-100",
+        "kind": "nation-club",
+        "title": {
+          "es": "Brasil · Sao Paulo",
+          "en": "Brazil · Sao Paulo",
+          "fr": "Brésil · Sao Paulo"
+        },
+        "reason": {
+          "es": "País en común: Brasil. Los cuatro jugaron en Sao Paulo.",
+          "en": "Shared nationality: Brazil. All four played for Sao Paulo.",
+          "fr": "Nationalité commune : Brésil. Les quatre ont joué à Sao Paulo."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-1917",
+            "playerId": 1917,
+            "label": "BERALDO",
+            "photo_url": "https://media.api-sports.io/football/players/307835.png"
+          },
+          {
+            "id": "player-3509",
+            "playerId": 3509,
+            "label": "WILLIAM",
+            "photo_url": "https://media.api-sports.io/football/players/449243.png"
+          },
+          {
+            "id": "player-3229",
+            "playerId": 3229,
+            "label": "ÉDER MILITÃO",
+            "photo_url": "https://media.api-sports.io/football/players/372.png"
+          },
+          {
+            "id": "player-25",
+            "playerId": 25,
+            "label": "KAKÁ",
+            "photo_url": "https://media.api-sports.io/football/players/105404.png"
+          }
+        ]
+      },
+      {
+        "id": "club-89",
+        "kind": "club",
+        "title": {
+          "es": "PASARON POR Arsenal",
+          "en": "PLAYED FOR Arsenal",
+          "fr": "ONT JOUÉ À Arsenal"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron en Arsenal durante su carrera; no necesariamente al mismo tiempo.",
+          "en": "All four played for Arsenal during their careers, not necessarily at the same time.",
+          "fr": "Tous les quatre ont joué à Arsenal au cours de leur carrière, pas nécessairement ensemble."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-44",
+            "playerId": 44,
+            "label": "PETR ČECH",
+            "photo_url": "https://media.api-sports.io/football/players/1436.png"
+          },
+          {
+            "id": "player-801",
+            "playerId": 801,
+            "label": "D. RICE",
+            "photo_url": "https://media.api-sports.io/football/players/2937.png"
+          },
+          {
+            "id": "player-945",
+            "playerId": 945,
+            "label": "N. MADUEKE",
+            "photo_url": "https://media.api-sports.io/football/players/136723.png"
+          },
+          {
+            "id": "player-917",
+            "playerId": 917,
+            "label": "MIKEL MERINO",
+            "photo_url": "https://media.api-sports.io/football/players/47311.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "connections-019",
+    "groups": [
+      {
+        "id": "nation-club-Spain-42",
+        "kind": "nation-club",
+        "title": {
+          "es": "España · Atletico Madrid",
+          "en": "Spain · Atletico Madrid",
+          "fr": "Espagne · Atletico Madrid"
+        },
+        "reason": {
+          "es": "País en común: España. Los cuatro jugaron en Atletico Madrid.",
+          "en": "Shared nationality: Spain. All four played for Atletico Madrid.",
+          "fr": "Nationalité commune : Espagne. Les quatre ont joué à Atletico Madrid."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-3505",
+            "playerId": 3505,
+            "label": "RAYANE BELID",
+            "photo_url": "https://media.api-sports.io/football/players/443668.png"
+          },
+          {
+            "id": "player-239",
+            "playerId": 239,
+            "label": "MARCOS LLORENTE",
+            "photo_url": "https://media.api-sports.io/football/players/753.png"
+          },
+          {
+            "id": "player-641",
+            "playerId": 641,
+            "label": "DANI MARTÃ­NEZ",
+            "photo_url": "https://media.api-sports.io/football/players/386869.png"
+          },
+          {
+            "id": "player-47",
+            "playerId": 47,
+            "label": "FERNANDO TORRES",
+            "photo_url": "https://media.api-sports.io/football/players/33413.png"
+          }
+        ]
+      },
+      {
+        "id": "club-19",
+        "kind": "club",
+        "title": {
+          "es": "PASARON POR Manchester City",
+          "en": "PLAYED FOR Manchester City",
+          "fr": "ONT JOUÉ À Manchester City"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron en Manchester City durante su carrera; no necesariamente al mismo tiempo.",
+          "en": "All four played for Manchester City during their careers, not necessarily at the same time.",
+          "fr": "Tous les quatre ont joué à Manchester City au cours de leur carrière, pas nécessairement ensemble."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-108",
+            "playerId": 108,
+            "label": "P. FODEN",
+            "photo_url": "https://media.api-sports.io/football/players/631.png"
+          },
+          {
+            "id": "player-340",
+            "playerId": 340,
+            "label": "BRAHIM DÍAZ",
+            "photo_url": "https://media.api-sports.io/football/players/744.png"
+          },
+          {
+            "id": "player-338",
+            "playerId": 338,
+            "label": "BERNARDO SILVA",
+            "photo_url": "https://media.api-sports.io/football/players/636.png"
+          },
+          {
+            "id": "player-103",
+            "playerId": 103,
+            "label": "J. GVARDIOL",
+            "photo_url": "https://media.api-sports.io/football/players/129033.png"
+          }
+        ]
+      },
+      {
+        "id": "club-1752",
+        "kind": "club",
+        "title": {
+          "es": "PASARON POR Palmeiras",
+          "en": "PLAYED FOR Palmeiras",
+          "fr": "ONT JOUÉ À Palmeiras"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron en Palmeiras durante su carrera; no necesariamente al mismo tiempo.",
+          "en": "All four played for Palmeiras during their careers, not necessarily at the same time.",
+          "fr": "Tous les quatre ont joué à Palmeiras au cours de leur carrière, pas nécessairement ensemble."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-3456",
+            "playerId": 3456,
+            "label": "ENDRICK",
+            "photo_url": "https://media.api-sports.io/football/players/377122.png"
+          },
+          {
+            "id": "player-3439",
+            "playerId": 3439,
+            "label": "KAIQUE",
+            "photo_url": "https://media.api-sports.io/football/players/348897.png"
+          },
+          {
+            "id": "player-1078",
+            "playerId": 1078,
+            "label": "ESTÊVÃO",
+            "photo_url": "https://media.api-sports.io/football/players/425733.png"
+          },
+          {
+            "id": "player-3489",
+            "playerId": 3489,
+            "label": "ALLAN",
+            "photo_url": "https://media.api-sports.io/football/players/425714.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-club-Netherlands-45",
+        "kind": "nation-club",
+        "title": {
+          "es": "Países Bajos · Ajax",
+          "en": "Netherlands · Ajax",
+          "fr": "Pays-Bas · Ajax"
+        },
+        "reason": {
+          "es": "País en común: Países Bajos. Los cuatro jugaron en Ajax.",
+          "en": "Shared nationality: Netherlands. All four played for Ajax.",
+          "fr": "Nationalité commune : Pays-Bas. Les quatre ont joué à Ajax."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-3516",
+            "playerId": 3516,
+            "label": "A. BOUWMAN",
+            "photo_url": "https://media.api-sports.io/football/players/453706.png"
+          },
+          {
+            "id": "player-1115",
+            "playerId": 1115,
+            "label": "N. LANG",
+            "photo_url": "https://media.api-sports.io/football/players/544.png"
+          },
+          {
+            "id": "player-3307",
+            "playerId": 3307,
+            "label": "S. BERGHUIS",
+            "photo_url": "https://media.api-sports.io/football/players/37160.png"
+          },
+          {
+            "id": "player-3317",
+            "playerId": 3317,
+            "label": "J. TIMBER",
+            "photo_url": "https://media.api-sports.io/football/players/38746.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "connections-020",
+    "groups": [
+      {
+        "id": "two-clubs-19-92",
+        "kind": "two-clubs",
+        "title": {
+          "es": "Manchester City + Inter",
+          "en": "Manchester City + Inter",
+          "fr": "Manchester City + Inter"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron tanto en Manchester City como en Inter.",
+          "en": "All four played for both Manchester City and Inter.",
+          "fr": "Tous les quatre ont joué à Manchester City et à Inter."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-1098",
+            "playerId": 1098,
+            "label": "M. AKANJI",
+            "photo_url": "https://media.api-sports.io/football/players/5.png"
+          },
+          {
+            "id": "player-1118",
+            "playerId": 1118,
+            "label": "J. STONES",
+            "photo_url": "https://media.api-sports.io/football/players/626.png"
+          },
+          {
+            "id": "player-345",
+            "playerId": 345,
+            "label": "JOÃO CANCELO",
+            "photo_url": "https://media.api-sports.io/football/players/855.png"
+          },
+          {
+            "id": "player-784",
+            "playerId": 784,
+            "label": "M. KOVAČIĆ",
+            "photo_url": "https://media.api-sports.io/football/players/2291.png"
+          }
+        ]
+      },
+      {
+        "id": "club-8",
+        "kind": "club",
+        "title": {
+          "es": "PASARON POR Manchester United",
+          "en": "PLAYED FOR Manchester United",
+          "fr": "ONT JOUÉ À Manchester United"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron en Manchester United durante su carrera; no necesariamente al mismo tiempo.",
+          "en": "All four played for Manchester United during their careers, not necessarily at the same time.",
+          "fr": "Tous les quatre ont joué à Manchester United au cours de leur carrière, pas nécessairement ensemble."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-885",
+            "playerId": 885,
+            "label": "B. MBEUMO",
+            "photo_url": "https://media.api-sports.io/football/players/20589.png"
+          },
+          {
+            "id": "player-43",
+            "playerId": 43,
+            "label": "RYAN GIGGS",
+            "photo_url": "https://media.api-sports.io/football/players/114774.png"
+          },
+          {
+            "id": "player-761",
+            "playerId": 761,
+            "label": "M. RASHFORD",
+            "photo_url": "https://media.api-sports.io/football/players/909.png"
+          },
+          {
+            "id": "player-768",
+            "playerId": 768,
+            "label": "MATHEUS CUNHA",
+            "photo_url": "https://media.api-sports.io/football/players/1165.png"
+          }
+        ]
+      },
+      {
+        "id": "club-3",
+        "kind": "club",
+        "title": {
+          "es": "PASARON POR Paris Saint Germain",
+          "en": "PLAYED FOR Paris Saint Germain",
+          "fr": "ONT JOUÉ À Paris Saint Germain"
+        },
+        "reason": {
+          "es": "Los cuatro jugaron en Paris Saint Germain durante su carrera; no necesariamente al mismo tiempo.",
+          "en": "All four played for Paris Saint Germain during their careers, not necessarily at the same time.",
+          "fr": "Tous les quatre ont joué à Paris Saint Germain au cours de leur carrière, pas nécessairement ensemble."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-1868",
+            "playerId": 1868,
+            "label": "L. CHEVALIER",
+            "photo_url": "https://media.api-sports.io/football/players/162453.png"
+          },
+          {
+            "id": "player-6",
+            "playerId": 6,
+            "label": "KYLIAN MBAPPÉ",
+            "photo_url": "https://media.api-sports.io/football/players/278.png"
+          },
+          {
+            "id": "player-69",
+            "playerId": 69,
+            "label": "LEE KANG-IN",
+            "photo_url": "https://media.api-sports.io/football/players/927.png"
+          },
+          {
+            "id": "player-1856",
+            "playerId": 1856,
+            "label": "VITINHA",
+            "photo_url": "https://media.api-sports.io/football/players/128384.png"
+          }
+        ]
+      },
+      {
+        "id": "nation-club-Spain-4",
+        "kind": "nation-club",
+        "title": {
+          "es": "España · Barcelona",
+          "en": "Spain · Barcelona",
+          "fr": "Espagne · Barcelona"
+        },
+        "reason": {
+          "es": "País en común: España. Los cuatro jugaron en Barcelona.",
+          "en": "Shared nationality: Spain. All four played for Barcelona.",
+          "fr": "Nationalité commune : Espagne. Les quatre ont joué à Barcelona."
+        },
+        "source": "https://www.api-football.com/documentation-v3#tag/Players",
+        "catalogVersion": "309abc085804a7fa",
+        "members": [
+          {
+            "id": "player-63",
+            "playerId": 63,
+            "label": "FERMÍN",
+            "photo_url": "https://media.api-sports.io/football/players/340626.png"
+          },
+          {
+            "id": "player-49",
+            "playerId": 49,
+            "label": "CESC FÀBREGAS",
+            "photo_url": "https://media.api-sports.io/football/players/108.png"
+          },
+          {
+            "id": "player-663",
+            "playerId": 663,
+            "label": "MARC BERNAL",
+            "photo_url": "https://media.api-sports.io/football/players/433396.png"
+          },
+          {
+            "id": "player-16",
+            "playerId": 16,
+            "label": "XAVI",
+            "photo_url": "https://media.api-sports.io/football/players/42041.png"
+          }
+        ]
+      }
+    ]
+  }
+]

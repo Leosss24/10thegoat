@@ -1,4 +1,5 @@
 "use client";
+import { playerDisplayName } from "../../lib/football/player-identity";
 
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { supabase } from "../../lib/supabase";
@@ -291,7 +292,7 @@ export default function PlayerWordleGame() {
         if (!unique.has(word)) {
           unique.set(word, {
             id: player.id,
-            fullName: player.full_name?.trim() || player.display_name,
+            fullName: playerDisplayName(player.id, player.display_name),
             word,
             photoUrl: player.photo_url,
             teamName: retired ? c.retired : (club?.name ?? c.unavailable),

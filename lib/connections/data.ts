@@ -1,17 +1,13 @@
-export type Locale="es"|"en"|"fr";
-export type Translation=Record<Locale,string>;
-export type ConnectionGroup={id:string;title:Translation;reason:Translation;members:{id:string;label:string}[]};
-export type ConnectionPuzzle={id:string;groups:ConnectionGroup[]};
-
-export const connectionPuzzles:ConnectionPuzzle[]=[{
-  id:"legends-001",
-  groups:[
-    {id:"barca-luis-enrique",title:{es:"BARÇA DE LUIS ENRIQUE",en:"LUIS ENRIQUE'S BARÇA",fr:"BARÇA DE LUIS ENRIQUE"},reason:{es:"Los cuatro jugaron juntos en el FC Barcelona dirigido por Luis Enrique.",en:"All four played together for Luis Enrique's FC Barcelona.",fr:"Tous les quatre ont joué ensemble au FC Barcelone de Luis Enrique."},members:[{id:"messi",label:"Lionel Messi"},{id:"neymar",label:"Neymar"},{id:"suarez",label:"Luis Suárez"},{id:"iniesta",label:"Andrés Iniesta"}]},
-    {id:"real-2017",title:{es:"REAL MADRID 2017",en:"REAL MADRID 2017",fr:"REAL MADRID 2017"},reason:{es:"Los cuatro ganaron juntos la Champions League de 2017 con el Real Madrid.",en:"All four won the 2017 Champions League together with Real Madrid.",fr:"Tous les quatre ont remporté ensemble la Ligue des champions 2017 avec le Real Madrid."},members:[{id:"cristiano",label:"Cristiano Ronaldo"},{id:"bale",label:"Gareth Bale"},{id:"benzema",label:"Karim Benzema"},{id:"modric",label:"Luka Modrić"}]},
-    {id:"invincibles",title:{es:"THE INVINCIBLES",en:"THE INVINCIBLES",fr:"THE INVINCIBLES"},reason:{es:"Formaron parte del Arsenal invicto de la Premier League 2003/04.",en:"They were part of Arsenal's unbeaten 2003/04 Premier League side.",fr:"Ils faisaient partie de l'Arsenal invaincu en Premier League 2003/04."},members:[{id:"henry",label:"Thierry Henry"},{id:"vieira",label:"Patrick Vieira"},{id:"bergkamp",label:"Dennis Bergkamp"},{id:"pires",label:"Robert Pirès"}]},
-    {id:"brazil-2002",title:{es:"BRASIL 2002",en:"BRAZIL 2002",fr:"BRÉSIL 2002"},reason:{es:"Los cuatro fueron titulares de Brasil en la final del Mundial de 2002.",en:"All four started for Brazil in the 2002 World Cup final.",fr:"Tous les quatre étaient titulaires avec le Brésil en finale de la Coupe du monde 2002."},members:[{id:"ronaldo",label:"Ronaldo Nazário"},{id:"rivaldo",label:"Rivaldo"},{id:"ronaldinho",label:"Ronaldinho"},{id:"cafu",label:"Cafu"}]}
-  ]
-}];
+import bank from "../../data/connections/puzzles.json";
+import legacy from "../../data/connections/legacy.json";
+export type Locale = "es" | "en" | "fr";
+export type Translation = Record<Locale, string>;
+export type ConnectionMember = { id: string; label: string; playerId?: number; photo_url?: string | null };
+export type ConnectionGroup = { id: string; title: Translation; reason: Translation; members: ConnectionMember[] };
+export type ConnectionPuzzle = { id: string; groups: ConnectionGroup[] };
+export const connectionPuzzles: ConnectionPuzzle[] = bank;
+// Only used to resume a board saved before the catalog expansion.
+export const legacyConnectionPuzzles: ConnectionPuzzle[] = legacy;
 
 export const connectionsCopy={
  es:{title:"CONEXIONES",description:"Agrupa 16 nombres en cuatro conexiones futbolísticas ocultas.",intro:"Selecciona cuatro nombres que compartan una conexión. Tienes cuatro errores.",selected:"seleccionados",submit:"Comprobar grupo",clear:"Limpiar",mistakes:"Errores disponibles",solved:"Grupos resueltos",correct:"Conexión encontrada",wrong:"Esos cuatro no forman un grupo",won:"Tablero completado",lost:"Sin errores disponibles",play:"Jugar",again:"Nuevo tablero",points:"Puntos",rules:"Cómo se juega",rulesText:"Forma cuatro grupos de cuatro. Un nombre pertenece a un único grupo del tablero, aunque pueda sugerir otras conexiones. Cada fallo consume un error.",storage:"No se pudo guardar la partida; puedes seguir jugando."},

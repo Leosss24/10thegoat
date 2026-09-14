@@ -1,4 +1,5 @@
 "use client";
+import { playerDisplayName } from "../../lib/football/player-identity";
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { supabase } from "../../lib/supabase";
@@ -236,7 +237,7 @@ export default function HigherLowerGame() {
           const current = grouped.get(key) ?? {
             key,
             playerId: player.id,
-            playerName: player.display_name,
+            playerName: playerDisplayName(player.id, player.display_name),
             photoUrl: player.photo_url,
             season: stat.season_start_year,
             appearances: 0,

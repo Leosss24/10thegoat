@@ -8,7 +8,7 @@ const session = (round: ReturnType<typeof newOddRound>): OddSession => ({ bankVe
 const current = (round: ReturnType<typeof newOddRound>) => bank.find(item => item.id === round.queue[round.index])!;
 
 test("bank has localized, unambiguous explanations for every challenge", () => {
-  assert.ok(bank.length >= 12);
+  assert.ok(bank.length >= 100);
   assert.equal(new Set(bank.map(item => item.id)).size, bank.length);
   for (const item of bank) {
     assert.equal(item.options.length, 4);
@@ -63,4 +63,19 @@ test("serialized sessions preserve the challenge and option order across languag
     const invalid: unknown = { ...restored, rounds: { easy: { ...restored.rounds.easy, ...patch } } };
     assert.equal(isOddSession(invalid, bank), false);
   }
+});
+
+test("bank expansion is picked up at the cycle boundary without discarding the current round", () => {
+  const oldBank=bank.filter(c=>c.difficulty==='easy').slice(0,7);
+  let round=newOddRound(oldBank,'easy');
+  for(let i=0;i<oldBank.length;i++){
+    const item=bank.find(c=>c.id===round.queue[round.index])!;
+    round=answerOdd(round,item,item.oddOptionId,0);
+    assert.ok(isOddSession(session(round),bank));
+    round=nextOdd(round,bank);
+  }
+  assert.equal(round.queue.length,bank.filter(c=>c.difficulty==='easy').length);
+  assert.equal(round.streak,7);
+  assert.equal(round.index,0);
+  assert.ok(isOddSession(session(round),bank));
 });
