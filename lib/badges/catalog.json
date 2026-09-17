@@ -1,0 +1,519 @@
+[
+  {
+    "id": "player.first",
+    "game": "adivina-jugador",
+    "metric": "players",
+    "target": 1,
+    "name": {
+      "es": "Ojeador",
+      "en": "Scout",
+      "fr": "Recruteur"
+    },
+    "description": {
+      "es": "Adivina un jugador.",
+      "en": "Guess a player.",
+      "fr": "Devinez un joueur."
+    }
+  },
+  {
+    "id": "player.collection",
+    "game": "adivina-jugador",
+    "metric": "players",
+    "target": 25,
+    "name": {
+      "es": "Buen ojo",
+      "en": "Sharp eye",
+      "fr": "Bon œil"
+    },
+    "description": {
+      "es": "Adivina 25 jugadores distintos.",
+      "en": "Guess 25 different players.",
+      "fr": "Devinez 25 joueurs différents."
+    }
+  },
+  {
+    "id": "player.perfect",
+    "game": "adivina-jugador",
+    "metric": "player-perfect",
+    "target": 1,
+    "name": {
+      "es": "A primera vista",
+      "en": "At first sight",
+      "fr": "Au premier regard"
+    },
+    "description": {
+      "es": "Acierta al primer intento sin pistas.",
+      "en": "Guess on the first attempt without hints.",
+      "fr": "Réussissez au premier essai sans indice."
+    }
+  },
+  {
+    "id": "career.first",
+    "game": "carrera",
+    "metric": "careers",
+    "target": 1,
+    "name": {
+      "es": "Debutante",
+      "en": "Debutant",
+      "fr": "Débutant"
+    },
+    "description": {
+      "es": "Termina una carrera.",
+      "en": "Finish a career.",
+      "fr": "Terminez une carrière."
+    }
+  },
+  {
+    "id": "career.collection",
+    "game": "carrera",
+    "metric": "careers",
+    "target": 5,
+    "name": {
+      "es": "Veterano",
+      "en": "Veteran",
+      "fr": "Vétéran"
+    },
+    "description": {
+      "es": "Termina 5 carreras distintas.",
+      "en": "Finish 5 different careers.",
+      "fr": "Terminez 5 carrières différentes."
+    }
+  },
+  {
+    "id": "career.title",
+    "game": "carrera",
+    "metric": "career-title",
+    "target": 1,
+    "name": {
+      "es": "Campeón",
+      "en": "Champion",
+      "fr": "Champion"
+    },
+    "description": {
+      "es": "Gana un título.",
+      "en": "Win a title.",
+      "fr": "Remportez un titre."
+    }
+  },
+  {
+    "id": "higher.first",
+    "game": "mayor-o-menor",
+    "metric": "higher-streak",
+    "target": 5,
+    "name": {
+      "es": "En racha",
+      "en": "On a roll",
+      "fr": "En série"
+    },
+    "description": {
+      "es": "Consigue 5 aciertos consecutivos.",
+      "en": "Get 5 consecutive correct answers.",
+      "fr": "Réussissez 5 réponses consécutives."
+    }
+  },
+  {
+    "id": "higher.collection",
+    "game": "mayor-o-menor",
+    "metric": "higher-correct",
+    "target": 100,
+    "name": {
+      "es": "Comparador",
+      "en": "Comparer",
+      "fr": "Comparateur"
+    },
+    "description": {
+      "es": "Acumula 100 aciertos.",
+      "en": "Accumulate 100 correct answers.",
+      "fr": "Cumulez 100 bonnes réponses."
+    }
+  },
+  {
+    "id": "higher.perfect",
+    "game": "mayor-o-menor",
+    "metric": "higher-streak",
+    "target": 20,
+    "name": {
+      "es": "Imparable",
+      "en": "Unstoppable",
+      "fr": "Inarrêtable"
+    },
+    "description": {
+      "es": "Consigue 20 aciertos consecutivos.",
+      "en": "Get 20 consecutive correct answers.",
+      "fr": "Réussissez 20 réponses consécutives."
+    }
+  },
+  {
+    "id": "grid.first",
+    "game": "football-grid",
+    "metric": "grids",
+    "target": 1,
+    "name": {
+      "es": "Cuadrícula completa",
+      "en": "Full grid",
+      "fr": "Grille complète"
+    },
+    "description": {
+      "es": "Completa un tablero: 16/16.",
+      "en": "Complete a board: 16/16.",
+      "fr": "Complétez une grille : 16/16."
+    }
+  },
+  {
+    "id": "grid.collection",
+    "game": "football-grid",
+    "metric": "grids",
+    "target": 10,
+    "name": {
+      "es": "Especialista",
+      "en": "Specialist",
+      "fr": "Spécialiste"
+    },
+    "description": {
+      "es": "Completa 10 tableros distintos.",
+      "en": "Complete 10 different boards.",
+      "fr": "Complétez 10 grilles différentes."
+    }
+  },
+  {
+    "id": "grid.perfect",
+    "game": "football-grid",
+    "metric": "grid-perfect",
+    "target": 1,
+    "name": {
+      "es": "Cuadrícula perfecta",
+      "en": "Perfect grid",
+      "fr": "Grille parfaite"
+    },
+    "description": {
+      "es": "Completa un tablero sin respuestas incorrectas.",
+      "en": "Complete a board without incorrect answers.",
+      "fr": "Complétez une grille sans réponse incorrecte."
+    }
+  },
+  {
+    "id": "crest.first",
+    "game": "adivina-escudo",
+    "metric": "clubs",
+    "target": 1,
+    "name": {
+      "es": "Reconocido",
+      "en": "Recognised",
+      "fr": "Reconnu"
+    },
+    "description": {
+      "es": "Acierta tu primer escudo.",
+      "en": "Guess your first club badge.",
+      "fr": "Devinez votre premier écusson."
+    }
+  },
+  {
+    "id": "crest.collection",
+    "game": "adivina-escudo",
+    "metric": "clubs",
+    "target": 50,
+    "name": {
+      "es": "Coleccionista",
+      "en": "Collector",
+      "fr": "Collectionneur"
+    },
+    "description": {
+      "es": "Reconoce 50 clubes distintos.",
+      "en": "Recognise 50 different clubs.",
+      "fr": "Reconnaissez 50 clubs différents."
+    }
+  },
+  {
+    "id": "crest.perfect",
+    "game": "adivina-escudo",
+    "metric": "crest-streak",
+    "target": 10,
+    "name": {
+      "es": "Sin dudas",
+      "en": "No doubt",
+      "fr": "Sans hésitation"
+    },
+    "description": {
+      "es": "Acierta 10 escudos seguidos sin intentos fallidos.",
+      "en": "Guess 10 badges in a row without failed attempts.",
+      "fr": "Devinez 10 écussons de suite sans essai raté."
+    }
+  },
+  {
+    "id": "trivia.easy",
+    "game": "trivia",
+    "metric": "trivia-easy",
+    "target": 5,
+    "name": {
+      "es": "Calentamiento",
+      "en": "Warm-up",
+      "fr": "Échauffement"
+    },
+    "description": {
+      "es": "Consigue 5 aciertos seguidos en fácil.",
+      "en": "Get 5 correct answers in a row on easy.",
+      "fr": "Réussissez 5 réponses de suite en facile."
+    }
+  },
+  {
+    "id": "trivia.hard",
+    "game": "trivia",
+    "metric": "trivia-hard",
+    "target": 7,
+    "name": {
+      "es": "Experto",
+      "en": "Expert",
+      "fr": "Expert"
+    },
+    "description": {
+      "es": "Consigue 7 aciertos seguidos en difícil.",
+      "en": "Get 7 correct answers in a row on hard.",
+      "fr": "Réussissez 7 réponses de suite en difficile."
+    }
+  },
+  {
+    "id": "trivia.timed",
+    "game": "trivia",
+    "metric": "trivia-timed",
+    "target": 10,
+    "name": {
+      "es": "Contra el reloj",
+      "en": "Against the clock",
+      "fr": "Contre la montre"
+    },
+    "description": {
+      "es": "Consigue 10 aciertos en una partida contrarreloj.",
+      "en": "Get 10 correct answers in one timed game.",
+      "fr": "Réussissez 10 réponses dans une partie chronométrée."
+    }
+  },
+  {
+    "id": "odd.first",
+    "game": "el-intruso",
+    "metric": "odd-rounds",
+    "target": 1,
+    "name": {
+      "es": "Detective",
+      "en": "Detective",
+      "fr": "Détective"
+    },
+    "description": {
+      "es": "Resuelve una ronda.",
+      "en": "Solve a round.",
+      "fr": "Résolvez une manche."
+    }
+  },
+  {
+    "id": "odd.collection",
+    "game": "el-intruso",
+    "metric": "odd-rounds",
+    "target": 50,
+    "name": {
+      "es": "Investigador",
+      "en": "Investigator",
+      "fr": "Enquêteur"
+    },
+    "description": {
+      "es": "Resuelve 50 rondas distintas.",
+      "en": "Solve 50 different rounds.",
+      "fr": "Résolvez 50 manches différentes."
+    }
+  },
+  {
+    "id": "odd.perfect",
+    "game": "el-intruso",
+    "metric": "odd-streak",
+    "target": 10,
+    "name": {
+      "es": "Infalible",
+      "en": "Infallible",
+      "fr": "Infaillible"
+    },
+    "description": {
+      "es": "Resuelve 10 rondas consecutivas sin fallar.",
+      "en": "Solve 10 consecutive rounds without errors.",
+      "fr": "Résolvez 10 manches consécutives sans erreur."
+    }
+  },
+  {
+    "id": "connections.first",
+    "game": "conexiones",
+    "metric": "connections",
+    "target": 1,
+    "name": {
+      "es": "Conectado",
+      "en": "Connected",
+      "fr": "Connecté"
+    },
+    "description": {
+      "es": "Encuentra los cuatro grupos de un tablero.",
+      "en": "Find all four groups on a board.",
+      "fr": "Trouvez les quatre groupes d’une grille."
+    }
+  },
+  {
+    "id": "connections.collection",
+    "game": "conexiones",
+    "metric": "connections",
+    "target": 10,
+    "name": {
+      "es": "Mente conectada",
+      "en": "Connected mind",
+      "fr": "Esprit connecté"
+    },
+    "description": {
+      "es": "Completa 10 tableros distintos.",
+      "en": "Complete 10 different boards.",
+      "fr": "Complétez 10 grilles différentes."
+    }
+  },
+  {
+    "id": "connections.perfect",
+    "game": "conexiones",
+    "metric": "connections-perfect",
+    "target": 1,
+    "name": {
+      "es": "Conexión perfecta",
+      "en": "Perfect connection",
+      "fr": "Connexion parfaite"
+    },
+    "description": {
+      "es": "Completa un tablero sin errores.",
+      "en": "Complete a board without errors.",
+      "fr": "Complétez une grille sans erreur."
+    }
+  },
+  {
+    "id": "timeline.first",
+    "game": "ordena-historia",
+    "metric": "timelines",
+    "target": 1,
+    "name": {
+      "es": "Cronista",
+      "en": "Chronicler",
+      "fr": "Chroniqueur"
+    },
+    "description": {
+      "es": "Ordena correctamente una ronda.",
+      "en": "Put one round in the correct order.",
+      "fr": "Ordonnez correctement une manche."
+    }
+  },
+  {
+    "id": "timeline.collection",
+    "game": "ordena-historia",
+    "metric": "timelines",
+    "target": 25,
+    "name": {
+      "es": "Historiador",
+      "en": "Historian",
+      "fr": "Historien"
+    },
+    "description": {
+      "es": "Resuelve 25 rondas distintas.",
+      "en": "Solve 25 different rounds.",
+      "fr": "Résolvez 25 manches différentes."
+    }
+  },
+  {
+    "id": "timeline.perfect",
+    "game": "ordena-historia",
+    "metric": "timeline-streak",
+    "target": 5,
+    "name": {
+      "es": "Memoria perfecta",
+      "en": "Perfect memory",
+      "fr": "Mémoire parfaite"
+    },
+    "description": {
+      "es": "Resuelve 5 rondas seguidas en la primera comprobación.",
+      "en": "Solve 5 consecutive rounds on the first check.",
+      "fr": "Résolvez 5 manches de suite à la première vérification."
+    }
+  },
+  {
+    "id": "challenge.mundiales-01",
+    "game": "trivia",
+    "metric": "challenge-mundiales-01",
+    "target": 20,
+    "challengeId": "mundiales-01",
+    "name": {
+      "es": "Mundiales",
+      "en": "World Cups",
+      "fr": "Coupes du monde"
+    },
+    "description": {
+      "es": "Consigue 20/25. Pleno: 25/25 sin errores.",
+      "en": "Score 20/25. Perfect: 25/25 without errors.",
+      "fr": "Obtenez 20/25. Sans-faute : 25/25 sans erreur."
+    }
+  },
+  {
+    "id": "challenge.champions-01",
+    "game": "trivia",
+    "metric": "challenge-champions-01",
+    "target": 20,
+    "challengeId": "champions-01",
+    "name": {
+      "es": "Champions League",
+      "en": "Champions League",
+      "fr": "Champions League"
+    },
+    "description": {
+      "es": "Consigue 20/25. Pleno: 25/25 sin errores.",
+      "en": "Score 20/25. Perfect: 25/25 without errors.",
+      "fr": "Obtenez 20/25. Sans-faute : 25/25 sans erreur."
+    }
+  },
+  {
+    "id": "challenge.premier-league-01",
+    "game": "trivia",
+    "metric": "challenge-premier-league-01",
+    "target": 20,
+    "challengeId": "premier-league-01",
+    "name": {
+      "es": "Premier League",
+      "en": "Premier League",
+      "fr": "Premier League"
+    },
+    "description": {
+      "es": "Consigue 20/25. Pleno: 25/25 sin errores.",
+      "en": "Score 20/25. Perfect: 25/25 without errors.",
+      "fr": "Obtenez 20/25. Sans-faute : 25/25 sans erreur."
+    }
+  },
+  {
+    "id": "challenge.la-liga-01",
+    "game": "trivia",
+    "metric": "challenge-la-liga-01",
+    "target": 20,
+    "challengeId": "la-liga-01",
+    "name": {
+      "es": "La Liga",
+      "en": "La Liga",
+      "fr": "La Liga"
+    },
+    "description": {
+      "es": "Consigue 20/25. Pleno: 25/25 sin errores.",
+      "en": "Score 20/25. Perfect: 25/25 without errors.",
+      "fr": "Obtenez 20/25. Sans-faute : 25/25 sans erreur."
+    }
+  },
+  {
+    "id": "challenge.eurocopa-01",
+    "game": "trivia",
+    "metric": "challenge-eurocopa-01",
+    "target": 20,
+    "challengeId": "eurocopa-01",
+    "name": {
+      "es": "Eurocopa",
+      "en": "European Championship",
+      "fr": "Championnat d’Europe"
+    },
+    "description": {
+      "es": "Consigue 20/25. Pleno: 25/25 sin errores.",
+      "en": "Score 20/25. Perfect: 25/25 without errors.",
+      "fr": "Obtenez 20/25. Sans-faute : 25/25 sans erreur."
+    }
+  }
+]

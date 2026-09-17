@@ -1,4 +1,8 @@
 "use client";
+import { recordBadgeFacts, badgeFact } from "../../lib/badges/client";
+import Link from "next/link";
+import { challengeCatalogPath } from "../../lib/trivia/challenge";
+import { challengeCopy } from "../../lib/trivia/challenge-copy";
 import { footballLabel } from "../../lib/football/player-identity";
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
@@ -136,6 +140,7 @@ export default function TriviaGame() {
     const next = answer(round, question, id, best, at);
     // Persist the answered state before updating totals: reloads never replay an answer.
     saveRound(next);
+    if(id===question.correctOptionId)recordBadgeFacts([badgeFact("trivia-"+round.difficulty,next.streak)]);
     try {
       if (next.lastAward) addGamePoints(scoreKey(round.difficulty), next.lastAward);
       if (next.finished) recordGameResult(scoreKey(round.difficulty), { score: 0, won: false });
@@ -153,7 +158,8 @@ export default function TriviaGame() {
   }
 
   if (!ready) return <div className="trivia-panel" role="status">{t.loading}</div>;
-  return <div className="trivia" data-difficulty={session.difficulty}>
+  return <div className="trivia" data-difficulty={session.difficulty} data-badges-busy={session.rounds.timed&&!session.rounds.timed.finished?"true":"false"}>
+      <Link className="btn trivia-secondary" href={`/${locale}${challengeCatalogPath}`}>{challengeCopy[locale].catalogTitle} · {challengeCopy[locale].start} ↗</Link>
     {storageFailed && <p className="trivia-storage" role="status">{t.storage}</p>}
     {choosing || !round || !question ? <section className="trivia-panel trivia-intro">
       <span className="trivia-kicker">10theGOAT · KNOWLEDGE ARENA</span>

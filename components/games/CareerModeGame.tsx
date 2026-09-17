@@ -1,4 +1,5 @@
 "use client";
+import { recordBadgeFacts, badgeFact } from "../../lib/badges/client";
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { useI18n } from "../I18nProvider";
 import {
@@ -111,7 +112,8 @@ const copy = {
     achievements: "LOGROS",
     locked: "Bloqueado",
     retire: "Retirarme",
-    newGame: "Nueva carrera",    noSeasons: "Tu historia empieza en la academia.",
+    newGame: "Nueva carrera",
+    noSeasons: "Tu historia empieza en la academia.",
     saved: "Partida guardada",
     saveError: "No se pudo guardar.",
     event: "Evento",
@@ -220,7 +222,8 @@ const copy = {
     achievements: "ACHIEVEMENTS",
     locked: "Locked",
     retire: "Retire",
-    newGame: "New career",    noSeasons: "Your story starts in the academy.",
+    newGame: "New career",
+    noSeasons: "Your story starts in the academy.",
     saved: "Game saved",
     saveError: "Could not save.",
     event: "Event",
@@ -329,7 +332,8 @@ const copy = {
     achievements: "SUCCÈS",
     locked: "Verrouillé",
     retire: "Retraite",
-    newGame: "Nouvelle carrière",    noSeasons: "Votre histoire commence à l’académie.",
+    newGame: "Nouvelle carrière",
+    noSeasons: "Votre histoire commence à l’académie.",
     saved: "Partie enregistrée",
     saveError: "Enregistrement impossible.",
     event: "Événement",
@@ -439,6 +443,7 @@ export default function CareerModeGame() {
       setForm((x) => ({ ...x, clubId: starters[0].id }));
   }, [starters, form.clubId]);
   useEffect(()=>setDecisionChoice(""),[career?.year]);
+  useEffect(()=>{if(!career||celebrations.length)return;recordBadgeFacts([...(career.status==="retired"?[badgeFact("careers",1,career.id)]:[]),...(career.totals.titles>0?[badgeFact("career-title")]:[])]);},[career,celebrations]);
   function commit(next: CareerState) {
     const final = {
       ...next,

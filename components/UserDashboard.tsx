@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import type { User } from "@supabase/supabase-js";
 import { supabase } from "../lib/supabase";
 import GoogleSignInButton from "./GoogleSignInButton";
+import BadgeCollection, {type ChallengeAvailability} from "./badges/BadgeCollection";
 import { deleteCareerSnapshot, listCareerSnapshots, type CareerSnapshot } from "../lib/career/cloud-storage";
 import { loadCareer, saveCareer } from "../lib/career/storage";
 import type { CareerState } from "../lib/career/types";
@@ -13,6 +14,9 @@ import { gridCopy } from "../lib/football-grid/copy";
 import { getAllGameScores, type GameScoreStats } from "../lib/game-scores";
 import { uniqueSeniorBadges } from "../lib/football/club-filter";
 import { translatedCountry } from "../lib/football/country-i18n";
+
+// Retain the legacy panel and calculations for a future return; no data is deleted.
+const SHOW_LEGACY_ACHIEVEMENTS = false;
 
 type Profile = { username:string|null; display_name:string|null; avatar_url:string|null; avatar_club_id:number|null; username_changed_at:string|null; created_at:string; last_seen_at:string|null };
 type BadgeOption = { id:number; name:string; badge_url:string; is_national_team:boolean; domestic_division:1|2|null; countries:{name:string}|null };
@@ -32,7 +36,7 @@ const GAME_NAMES:Record<string,[string,string,string]> = {
   "adivina-escudo":["ADIVINA EL ESCUDO","GUESS THE BADGE","DEVINEZ L'ÉCUSSON"],
 };
 
-export default function UserDashboard({locale}:{locale:"es"|"en"|"fr"}) {
+export default function UserDashboard({locale,challenges=[]}:{locale:"es"|"en"|"fr";challenges?:ChallengeAvailability[]}) {
   const router=useRouter();
   const [user,setUser]=useState<User|null>(null);
   const [profile,setProfile]=useState<Profile|null>(null);
@@ -147,7 +151,7 @@ export default function UserDashboard({locale}:{locale:"es"|"en"|"fr"}) {
   ];
   const date=(value?:string|null)=>value?new Intl.DateTimeFormat(locale,{dateStyle:"long",timeStyle:"short"}).format(new Date(value)):"—";
 
-  if(!user)return <main className="user-page container"><section className="user-hero user-login"><span>10THEGOAT ID</span><h1>{t("TU ZONA DE USUARIO","YOUR ACCOUNT","VOTRE ESPACE")}</h1><p>{t("ENTRA PARA GUARDAR CARRERAS, CONSERVAR ESTADÍSTICAS Y DESBLOQUEAR LOGROS.","SIGN IN TO SAVE CAREERS, KEEP STATS AND UNLOCK ACHIEVEMENTS.","CONNECTEZ-VOUS POUR SAUVEGARDER VOS CARRIÈRES ET VOS STATS.")}</p><GoogleSignInButton locale={locale} /></section></main>;
+  if(!user)return <main className="user-page container"><section className="user-hero user-login"><span>10THEGOAT ID</span><h1>{t("TU ZONA DE USUARIO","YOUR ACCOUNT","VOTRE ESPACE")}</h1><p>{t("ENTRA PARA GUARDAR CARRERAS, CONSERVAR ESTADÍSTICAS Y COLECCIONAR BADGES.","SIGN IN TO SAVE CAREERS, KEEP STATS AND COLLECT BADGES.","CONNECTEZ-VOUS POUR SAUVEGARDER VOS CARRIÈRES ET VOS STATS.")}</p><GoogleSignInButton locale={locale} /></section><BadgeCollection locale={locale} challenges={challenges}/></main>;
 
   return <main className="user-page container">
     <section className="user-hero">
@@ -163,7 +167,8 @@ export default function UserDashboard({locale}:{locale:"es"|"en"|"fr"}) {
     </section>
     <div className="user-dashboard-grid">
       <section className="user-card user-game-stats"><header><span>01</span><h2>{t("ESTADÍSTICAS","STATISTICS","STATISTIQUES")}</h2></header>{!stats.length?<p>{t("JUEGA TU PRIMERA PARTIDA PARA ESTRENAR EL MARCADOR.","PLAY YOUR FIRST GAME TO START THE SCOREBOARD.","JOUEZ VOTRE PREMIÈRE PARTIE.")}</p>:stats.map(s=>{const higher=s.game_key==="mayor-o-menor",accuracy=higher?s.wins/Math.max(1,s.wins+s.played):s.wins/Math.max(1,s.played);return <article key={s.game_key}><div><strong>{t(...(GAME_NAMES[s.game_key]??[s.game_key,s.game_key,s.game_key]))}</strong><small>{s.played} {t("PARTIDAS","GAMES","PARTIES")} · {s.wins} {higher?t("ACIERTOS","CORRECT","SUCCÈS"):t("VICTORIAS","WINS","VICTOIRES")} · {Math.round(accuracy*100)}%</small>{s.game_key.startsWith("football-grid-")&&<small>{gridCopy[locale].currentStreak}: {s.gridCurrentStreak??0} · {gridCopy[locale].bestStreak}: {s.gridBestStreak??0} · {gridCopy[locale].bestTime}: {formatResolution(s.gridBestTime)}</small>}</div><b>{s.points}</b><span>{higher?t("MEJOR RACHA","BEST STREAK","MEILLEURE SÉRIE"):t("RÉCORD","BEST","RECORD")} {higher?Math.floor(s.bestScore/10):s.bestScore}</span></article>})}</section>
-      <section className="user-card user-achievements"><header><span>02</span><h2>{t("LOGROS","ACHIEVEMENTS","SUCCÈS")}</h2></header><div>{achievements.map(([ok,label,progress])=><article className={ok?"is-earned":""} key={label}><i>{ok?"✓":"◇"}</i><span><b>{label}</b><small>{progress}</small></span></article>)}</div></section>
+      <BadgeCollection locale={locale} challenges={challenges}/>
+      {SHOW_LEGACY_ACHIEVEMENTS&&<section className="user-card user-achievements"><header><span>02</span><h2>{t("LOGROS","ACHIEVEMENTS","SUCCÈS")}</h2></header><div>{achievements.map(([ok,label,progress])=><article className={ok?"is-earned":""} key={label}><i>{ok?"✓":"◇"}</i><span><b>{label}</b><small>{progress}</small></span></article>)}</div></section>}
     </div>
     <section className="pending-games user-card"><header><span>03</span><h2>{t("JUEGOS PENDIENTES DE ACABAR","UNFINISHED GAMES","JEUX À TERMINER")}</h2></header>{!saves.length?<p>{t("No hay minijuegos por finalizar.","There are no unfinished minigames.","Aucun mini-jeu à terminer.")}</p>:<div>{saves.map(x=><article key={x.id}><div><small>MODO CARRERA</small><h3>{x.summary.playerName} <b>#{x.summary.shirtNumber}</b></h3><span>{x.summary.club} · {x.summary.year}/{String(x.summary.year+1).slice(-2)} · {t("MEDIA","OVR","NOTE")} {x.summary.overall}</span></div><button onClick={()=>{saveCareer(x.game_state);router.push(`/${locale}/juegos/carrera`)}}>{t("CONTINUAR DESDE AQUÍ","CONTINUE FROM HERE","REPRENDRE ICI")}</button><button className="is-delete" onClick={async()=>{if(!confirm(t("¿ELIMINAR ESTA CARRERA?","DELETE THIS CAREER?","SUPPRIMER CETTE CARRIÈRE ?")))return;await deleteCareerSnapshot(x.id);await load(user)}}>{t("ELIMINAR","DELETE","SUPPRIMER")}</button></article>)}</div>}</section>
     {badgeOpen&&<div className="user-badge-backdrop" onClick={()=>setBadgeOpen(false)}><section className="user-badge-picker" onClick={e=>e.stopPropagation()}><header><div><span>{t("IDENTIDAD DE PERFIL","PROFILE IDENTITY","IDENTITÉ DU PROFIL")}</span><h2>{t("ELIGE TU ESCUDO","CHOOSE YOUR BADGE","CHOISISSEZ VOTRE ÉCUSSON")}</h2></div><button onClick={()=>setBadgeOpen(false)}>×</button></header><div className="user-badge-tabs"><button className={badgeTab==="teams"?"is-active":""} onClick={()=>setBadgeTab("teams")}>{t("SELECCIONES","NATIONAL TEAMS","SÉLECTIONS")}</button><button className={badgeTab==="clubs"?"is-active":""} onClick={()=>setBadgeTab("clubs")}>{t("CLUBES","CLUBS","CLUBS")}</button></div><input className="user-badge-search" value={badgeQuery} onChange={e=>setBadgeQuery(e.target.value)} placeholder={t("BUSCAR ESCUDO…","SEARCH BADGES…","CHERCHER…")}/>{badgesLoading?<p className="user-badge-empty">{t("CARGANDO ESCUDOS…","LOADING BADGES…","CHARGEMENT DES ÉCUSSONS…")}</p>:filteredBadges.length?<div className="user-badge-grid">{filteredBadges.map(b=>{const country=translatedCountry(b.countries?.name??(b.is_national_team?b.name:""),locale);return <button key={b.id} className={profile?.avatar_club_id===b.id?"is-active":""} onClick={()=>chooseBadge(b)}><img src={b.badge_url} alt=""/><strong>{b.is_national_team?country:b.name}</strong>{!b.is_national_team&&<small>{country} · {t(`${b.domestic_division}.ª DIVISIÓN`,`${b.domestic_division===1?"1ST":"2ND"} DIVISION`,`${b.domestic_division===1?"1RE":"2E"} DIVISION`)}</small>}</button>})}</div>:<p className="user-badge-empty">{t("NO HAY ESCUDOS QUE COINCIDAN.","NO MATCHING BADGES.","AUCUN ÉCUSSON CORRESPONDANT.")}</p>}</section></div>}

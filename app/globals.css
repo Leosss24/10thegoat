@@ -580,7 +580,7 @@ button:not(:disabled),a{cursor:pointer}
   .arena-menu-scroll{display:none}.arena-game-display{display:none}
   .arena-mobile-menu{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px var(--content-gutter) 14px;background:linear-gradient(180deg,#070b10,#080b10)}
   .arena-mobile-menu a{--mobile-accent:#32a7ff;position:relative;min-width:0;min-height:92px;display:grid;align-content:end;gap:3px;padding:13px 34px 12px 13px;border:1px solid color-mix(in srgb,var(--mobile-accent) 38%,#263445);background:linear-gradient(145deg,color-mix(in srgb,var(--mobile-accent) 14%,#121820),#0b1017);overflow:hidden}
-  .arena-mobile-menu a[data-game="adivina-jugador"]{--mobile-accent:#8dff57}.arena-mobile-menu a[data-game="adivina-escudo"]{--mobile-accent:#b76cff}.arena-mobile-menu a[data-game="mayor-o-menor"]{--mobile-accent:#ff675f}.arena-mobile-menu a[data-game="trivia"]{--mobile-accent:#ffab5c}.arena-mobile-menu a[data-game="football-grid"]{--mobile-accent:#32a7ff}.arena-mobile-menu a[data-game="el-intruso"]{--mobile-accent:#f5f8fc}.arena-mobile-menu a[data-game="conexiones"]{--mobile-accent:#b76cff}.arena-mobile-menu a[data-game="ordena-historia"]{--mobile-accent:#32a7ff}.arena-mobile-menu a[data-game="carrera"]{--mobile-accent:#e8c568}
+  .arena-mobile-menu a[data-game="adivina-jugador"]{--mobile-accent:#8dff57}.arena-mobile-menu a[data-game="adivina-escudo"]{--mobile-accent:#b76cff}.arena-mobile-menu a[data-game="mayor-o-menor"]{--mobile-accent:#ff675f}.arena-mobile-menu a[data-game="trivia"]{--mobile-accent:#ffab5c}.arena-mobile-menu a[data-game="football-grid"]{--mobile-accent:#32a7ff}.arena-mobile-menu a[data-game="el-intruso"]{--mobile-accent:#f5f8fc}.arena-mobile-menu a[data-game="conexiones"]{--mobile-accent:#2dd4bf}.arena-mobile-menu a[data-game="ordena-historia"]{--mobile-accent:#f472b6}.arena-mobile-menu a[data-game="carrera"]{--mobile-accent:#e8c568}
   .arena-mobile-menu span{color:#f5f8fc;font:900 clamp(.78rem,3.6vw,1rem)/1.1 Bahnschrift,Inter,sans-serif;text-transform:uppercase;overflow-wrap:anywhere}
   .arena-mobile-menu small{color:var(--mobile-accent);font-size:.63rem;font-weight:850;text-transform:uppercase}.arena-mobile-menu b{position:absolute;right:12px;bottom:11px;color:var(--mobile-accent)}
   .arena-menu-hint{padding:12px 18px 18px!important;font-size:.72rem!important;line-height:1.5!important;letter-spacing:.1em}
@@ -692,8 +692,8 @@ button:not(:disabled),a{cursor:pointer}
 .game-card--carrera{--game-accent:#e8c568;--game-soft:rgba(232,197,104,.20)}
 .game-card--football-grid{--game-accent:#32a7ff;--game-soft:rgba(50,167,255,.18)}
 .game-card--el-intruso{--game-accent:#f5f8fc;--game-soft:rgba(245,248,252,.14)}
-.game-card--conexiones{--game-accent:#b76cff;--game-soft:rgba(183,108,255,.17)}
-.game-card--ordena-historia{--game-accent:#32a7ff;--game-soft:rgba(50,167,255,.18)}
+.game-card--conexiones{--game-accent:#2dd4bf;--game-soft:rgba(45,212,191,.17)}
+.game-card--ordena-historia{--game-accent:#f472b6;--game-soft:rgba(244,114,182,.18)}
 .fg-page{--room-accent:#32a7ff}
 
 /* Decorative game backgrounds must not cover the consent controls in the footer. */

@@ -1,4 +1,5 @@
 "use client";
+import { recordBadgeFacts, badgeFact, badgeStreak } from "../../lib/badges/client";
 
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import badgeCatalog from "../../data/badges/catalog.json";
@@ -107,6 +108,8 @@ export default function GuessTheBadgeGame() {
     if (!club || attempts.some((a) => a.id === club.id)) return;
     actionLockRef.current = true;
     const correct = club.id === target.id;
+    const badgeRun=badgeStreak("crest",correct&&attempts.length===0);
+    if(correct)recordBadgeFacts([badgeFact("clubs",1,String(target.id)),badgeFact("crest-streak",badgeRun)]);
     const next = [...attempts, { id: club.id, name: club.name, correct }];
     setAttempts(next);
     setQuery("");

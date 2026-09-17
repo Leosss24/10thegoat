@@ -49,11 +49,11 @@ button, input, select, textarea { font-family: inherit; }
 }
 .game-card--conexiones, .game-room.connections-page {
   --game-art: url('/brand/games/conexiones.webp');
-  --room-accent: #b76cff;
+  --room-accent: #2dd4bf;
 }
 .game-card--ordena-historia, .game-room.timeline-page {
   --game-art: url('/brand/games/ordena-historia.webp');
-  --room-accent: #32a7ff;
+  --room-accent: #f472b6;
 }
 
 .game-catalog-grid { gap: 18px; }
@@ -234,8 +234,8 @@ button, input, select, textarea { font-family: inherit; }
 .game-room.career-page .game-room-heading::before { background-position: right 20%; }
 /* Connections: blend the illustration at its own edge, not across the page. */
 .game-room.connections-page .game-room-heading {
-  background: radial-gradient(ellipse at 72% 40%, #281b3d80, transparent 72%), #080e18;
-  border-color: #b76cff40;
+  background: radial-gradient(ellipse at 72% 40%, #0b302b80, transparent 72%), #080e18;
+  border-color: #2dd4bf40;
 }
 .game-room.connections-page .game-room-heading::before {
   left: auto;

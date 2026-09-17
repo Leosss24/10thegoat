@@ -12,6 +12,7 @@ import PlayerWordleGame from "@/components/games/PlayerWordleGame";
 import GuessTheBadgeGame from "@/components/games/GuessTheBadgeGame";
 import CareerModeGame from "@/components/games/CareerModeGame";
 import UserDashboard from "@/components/UserDashboard";
+import { challengeCatalog } from "@/lib/trivia/challenge-catalog.server";
 import GoogleSignInButton from "@/components/GoogleSignInButton";
 import FootballGridGame from "@/components/games/FootballGridGame";
 import { gridCopy } from "@/lib/football-grid/copy";
@@ -76,7 +77,7 @@ export default async function LocalizedPage({ params }: Props) {
   if (path === "/juegos/ordena-historia") return <main className="game-shell game-room container timeline-page"><div className="game-room-heading"><Link href={`/${locale}`} className="game-room-back">← ARENA</Link><div><span className="eyebrow">10theGOAT</span><h1>{timelineCopy[locale].title}</h1><p>{timelineCopy[locale].description}</p></div></div><AdSlot placement="game-top" /><TimelineGame /><AdSlot placement="game-bottom" /></main>;
   if (path === "/juegos/jugador-misterioso") redirect(localizedPath(locale, "/juegos/adivina-jugador"));
   if (path === "") return <main className="home-page"><AdSlot placement="home-top" /><section className="hero hero--locker"><div className="hero-content"><div className="hero-brand-lockup"><img className="hero-shield" src="/brand/10thegoat-shield-raster.png" alt=""/><img className="hero-wordmark" src="/brand/10thegoat-wordmark.svg" alt={d.home.alt}/><img className="hero-shield hero-shield--mirror" src="/brand/10thegoat-shield-raster.png" alt=""/></div><h1>{d.home.title}</h1><p>{d.home.intro}</p><Link className="btn btn-primary home-cta" href="#juegos">{d.home.play} <span aria-hidden="true">↓</span></Link></div></section><HomeGameGrid games={games} locale={locale} title={d.home.games} allGames={d.home.all}/><AdSlot placement="home-bottom" /></main>;
-  if (path === "/usuario") return <UserDashboard locale={locale}/>;
+  if (path === "/usuario") return <UserDashboard locale={locale} challenges={challengeCatalog().map(({id,available,opensOn})=>({id,available,opensOn}))}/>;
   if (path === "/juegos") return <main className="section container"><h1>{d.catalog.title}</h1><AdSlot placement="catalog-top" /><div className="game-catalog-grid">{games.map((game) => <GameCard key={game.slug} game={game} locale={locale}/>)}</div><AdSlot placement="catalog-bottom" /></main>;
   if (path === "/juegos/mayor-o-menor") return <main className="game-shell game-room container hl-page"><div className="game-room-heading hl-heading"><Link href={`/${locale}`} className="game-room-back">← ARENA</Link><div><span className="eyebrow">{d.games.higherLower.eyebrow}</span><h1>{d.games.higherLower.title}</h1><p>{d.games.higherLower.intro}</p></div></div><AdSlot placement="game-top" /><HigherLowerGame /><AdSlot placement="game-bottom" /></main>;
   if (path === "/juegos/adivina-jugador") return <main className="game-shell game-room container wordle-page"><div className="game-room-heading wordle-heading"><Link href={`/${locale}`} className="game-room-back">← ARENA</Link><div><span className="eyebrow">{d.games.wordle.eyebrow}</span><h1>{d.games.wordle.title}</h1><p>{d.games.wordle.intro}</p></div></div><AdSlot placement="game-top" /><PlayerWordleGame /><AdSlot placement="game-bottom" /></main>;

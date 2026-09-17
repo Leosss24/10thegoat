@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import {syncBadges} from "../../lib/badges/client";
 import { playerDisplayName } from '../../lib/football/player-identity';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { supabase } from '../../lib/supabase';
@@ -138,6 +139,7 @@ export default function FootballGridGame() {
       setRemainingMs(reply.remaining);setError(false);setChoosing(false);
       try{sessionStorage.setItem(`10tg-grid-mode:${user}`,mode);}catch{}
       setFeedback(reply.value.feedback??'');
+      if(reply.value.round?.status==='won')void syncBadges(true);
       if(action==='clear'){setQuery('');input.current?.focus();}
       else if(reply.value.feedback==='correct' || action==='surrender'){closeDialog();}
     }catch{if(turn===generation.current)setError(true);}

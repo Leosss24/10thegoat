@@ -1,4 +1,5 @@
 "use client";
+import { recordBadgeFacts, badgeFact } from "../../lib/badges/client";
 import { useEffect, useRef, useState } from "react";
 import { useI18n } from "../I18nProvider";
 import { connectionPuzzles, legacyConnectionPuzzles, connectionsCopy } from "../../lib/connections/data";
@@ -46,7 +47,9 @@ export default function ConnectionsGame() {
     if (result.state === current.current) return;
     save(result.state);
     setMessage(result.correct ? "correct" : "wrong");
-    if (result.award) recordGameResult("conexiones", result.award);
+    if (result.award) { recordGameResult("conexiones", result.award);
+      if(result.award.won)recordBadgeFacts([badgeFact("connections",1,puzzle.id),...(result.state.mistakes===4?[badgeFact("connections-perfect")]:[])]);
+    }
   }
   return <div className="connections-game">
     {storageFailed && <p className="connections-storage" role="status">{t.storage}</p>}

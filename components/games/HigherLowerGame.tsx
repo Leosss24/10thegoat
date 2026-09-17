@@ -1,4 +1,5 @@
 "use client";
+import { recordBadgeFacts, badgeFact } from "../../lib/badges/client";
 import { playerDisplayName } from "../../lib/football/player-identity";
 
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -323,6 +324,7 @@ export default function HigherLowerGame() {
 
     if (correct) {
       const nextStreak = streak + 1;
+      recordBadgeFacts([badgeFact("higher-streak",nextStreak),badgeFact("higher-correct",1,crypto.randomUUID())]);
       setStreak(nextStreak);
       setLastAward(0);
       if (nextStreak > best) {

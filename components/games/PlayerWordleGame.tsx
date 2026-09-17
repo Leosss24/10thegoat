@@ -1,4 +1,5 @@
 "use client";
+import { recordBadgeFacts, badgeFact } from "../../lib/badges/client";
 import { playerDisplayName } from "../../lib/football/player-identity";
 
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
@@ -467,6 +468,7 @@ export default function PlayerWordleGame() {
     setGuesses(next);
 
     if (displayGuess === target.word) {
+      recordBadgeFacts([badgeFact("players",1,String(target.id)), ...(next.length===1&&!usedHint?[badgeFact("player-perfect")]:[])]);
       const baseScore = ATTEMPT_SCORES[next.length - 1] ?? 0;
       const score = Math.max(0, baseScore - (usedHint ? 10 : 0));
       const updated = recordGameResult(GAME_KEY, { score, won: true, usedHint });

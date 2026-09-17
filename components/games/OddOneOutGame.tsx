@@ -1,4 +1,5 @@
 "use client";
+import { recordBadgeFacts, badgeFact } from "../../lib/badges/client";
 
 import { useEffect, useRef, useState } from "react";
 import { useI18n } from "../I18nProvider";
@@ -70,6 +71,7 @@ export default function OddOneOutGame() {
     try { best = Math.max(best, Math.floor(getGameScore(scoreKey(round.difficulty)).bestScore / 10)); }
     catch { setStorageFailed(true); }
     const next = answerOdd(round, challenge, optionId, best);
+    if(optionId===challenge.oddOptionId)recordBadgeFacts([badgeFact("odd-rounds",1,challenge.id),badgeFact("odd-streak",next.streak)]);
     saveRound(next);
     try {
       if (next.lastAward) addGamePoints(scoreKey(round.difficulty), next.lastAward);

@@ -13,3 +13,15 @@ Font source: https://github.com/google/fonts/tree/main/ofl/barlow and https://gi
 Validation: production build and 64 existing unit tests pass. Responsive browser sweep covers catalog, nine game pages, homepage and unauthenticated account in ES/EN/FR at 320, 390, 768 and 1440 px (144 combinations), with no horizontal overflow or missing artwork. Additional checks cover live-data game surfaces, keyboard catalog navigation, Wordle input and Connections selection. Football Grid is checked in its unauthenticated sign-in state; authenticated rounds/account were not exercised. QA captures and scripts are local under ignored `tmp/design-qa/`.
 
 Repository lint currently reports one existing `react-hooks/set-state-in-effect` error in unchanged `components/CookieNotice.tsx`, plus existing warnings. This design change does not modify that component.
+
+
+## Paletas de Conexiones y Ordena la historia
+
+Paletas aprobadas para tarjetas, navegación, cabeceras, controles y futuros badges:
+
+| Juego | Principal | Fondo oscuro / símbolo del badge | Tono claro |
+| --- | --- | --- | --- |
+| Conexiones | `#2DD4BF` | `#0B302B` | `#99F6E4` |
+| Ordena la historia | `#F472B6` | `#3B1630` | `#FBCFE8` |
+
+Los badges usarán la misma base de escudo sencillo, con toda la superficie en la paleta del juego. Adivina el escudo conserva el violeta `#B76CFF` y Football Grid el azul `#32A7FF`. Los colores que distinguen los grupos de Conexiones y los avisos de éxito o advertencia mantienen su función.
