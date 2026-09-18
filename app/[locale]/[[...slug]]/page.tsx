@@ -26,9 +26,16 @@ import TimelineGame from "@/components/games/TimelineGame";
 import { timelineCopy } from "@/lib/timeline/data";
 import { dictionaries, isLocale, localizedPath, locales, type Dictionary, type Locale } from "@/lib/i18n";
 import GameGuide from "@/components/GameGuide";
+import DidYouKnow from "@/components/DidYouKnow";
+import FirstWorldCupArticle from "@/components/articles/FirstWorldCupArticle";
+import ArticlesIndex from "@/components/articles/ArticlesIndex";
+import ArticleTags from "@/components/articles/ArticleTags";
+import FootballArticle from "@/components/articles/FootballArticle";
+import { articles, getArticle } from "@/data/articles";
+import { getArticleContent } from "@/data/article-content";
 
 type Props = { params: Promise<{ locale: string; slug?: string[] }> };
-const routePaths = ["", "/usuario", "/juegos", "/juegos/mayor-o-menor", "/juegos/adivina-jugador", "/juegos/adivina-escudo", "/juegos/football-grid", "/juegos/carrera", "/juegos/mi-once", "/juegos/trivia", "/juegos/el-intruso", "/juegos/conexiones", "/juegos/ordena-historia", "/proyecto", "/privacidad", "/cookies", "/aviso-legal"];
+const routePaths = ["", "/usuario", "/juegos", "/juegos/mayor-o-menor", "/juegos/adivina-jugador", "/juegos/adivina-escudo", "/juegos/football-grid", "/juegos/carrera", "/juegos/mi-once", "/juegos/trivia", "/juegos/el-intruso", "/juegos/conexiones", "/juegos/ordena-historia", "/proyecto", "/articulos", ...articles.map((article) => `/articulos/${article.slug}`), "/privacidad", "/cookies", "/aviso-legal"];
 export function generateStaticParams() { return locales.flatMap((locale) => routePaths.map((path) => ({ locale, slug: path ? path.slice(1).split("/") : [] }))); }
 
 function pathFor(slug?: string[]) { return slug?.length ? `/${slug.join("/")}` : ""; }
@@ -40,6 +47,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale: raw, slug } = await params;
   if (!isLocale(raw)) return {};
   const d = dictionaries[raw]; const path = pathFor(slug);
+  if (raw === "es" && path.startsWith("/articulos/")) {
+    const article = getArticle(path.slice("/articulos/".length));
+    if (article) return { title: article.title, description: article.excerpt, alternates: { canonical: localizedPath("es", path) }, openGraph: { url: localizedPath("es", path), title: article.title, description: article.excerpt, images: [{ url: article.image.src, alt: article.image.alt }] } };
+  }
   const pages: Record<string, { title?: string; description?: string; noindex?: boolean }> = {
     "/juegos/trivia": { title: "TRIVIA", description: triviaCopy[raw].description },
     "/juegos/el-intruso": { title: oddOneOutCopy[raw].title, description: oddOneOutCopy[raw].description },
@@ -51,6 +62,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     "/juegos/adivina-escudo": { title: d.games.badge.title, description: d.games.badge.meta },
     "/juegos/football-grid": { title: d.games.grid.title, description: gridCopy[raw].description }, "/juegos/carrera": { title: d.games.career.title, description: d.games.career.description }, "/juegos/mi-once": { title: d.games.eleven.title, noindex: true },
     "/proyecto": { title: d.beta.title, description: d.beta.intro }, "/privacidad": { title: d.legal.privacy.title }, "/cookies": { title: d.legal.cookies.title }, "/aviso-legal": { title: d.legal.notice.title },
+    "/articulos/primer-mundial-1930": { title: "Uruguay 1930: así nació la Copa Mundial", description: "La historia, los viajes y las curiosidades del primer Mundial de fútbol." },
+    "/articulos": { title: "Artículos de fútbol", description: "Historia, táctica, reglas y curiosidades del fútbol explicadas con fuentes." },
   };
   const page = pages[path]; if (!page) return {};
   return { ...page, alternates: alternates(raw, path), openGraph: { url: localizedPath(raw, path), title: page.title, description: page.description }, robots: page.noindex ? { index: false, follow: true } : undefined };
@@ -77,8 +90,18 @@ export default async function LocalizedPage({ params }: Props) {
   if (path === "/juegos/conexiones") return <main className="game-shell game-room container connections-page"><div className="game-room-heading"><Link href={`/${locale}`} className="game-room-back">← ARENA</Link><div><span className="eyebrow">10theGOAT</span><h1>{connectionsCopy[locale].title}</h1><p>{connectionsCopy[locale].description}</p></div></div><AdSlot placement="game-top" /><ConnectionsGame /><AdSlot placement="game-bottom" /></main>;
   if (path === "/juegos/ordena-historia") return <main className="game-shell game-room container timeline-page"><div className="game-room-heading"><Link href={`/${locale}`} className="game-room-back">← ARENA</Link><div><span className="eyebrow">10theGOAT</span><h1>{timelineCopy[locale].title}</h1><p>{timelineCopy[locale].description}</p></div></div><AdSlot placement="game-top" /><TimelineGame /><AdSlot placement="game-bottom" /></main>;
   if (path === "/juegos/jugador-misterioso") redirect(localizedPath(locale, "/juegos/adivina-jugador"));
-  if (path === "") return <main className="home-page"><AdSlot placement="home-top" /><section className="hero hero--locker"><div className="hero-content"><div className="hero-brand-lockup"><img className="hero-shield" src="/brand/10thegoat-shield-raster.png" alt=""/><img className="hero-wordmark" src="/brand/10thegoat-wordmark.svg" alt={d.home.alt}/><img className="hero-shield hero-shield--mirror" src="/brand/10thegoat-shield-raster.png" alt=""/></div><h1>{d.home.title}</h1><p>{d.home.intro}</p><Link className="btn btn-primary home-cta" href="#juegos">{d.home.play} <span aria-hidden="true">↓</span></Link></div></section><HomeGameGrid games={games} locale={locale} title={d.home.games} allGames={d.home.all}/><AdSlot placement="home-bottom" /></main>;
+  if (path === "") return <main className="home-page"><AdSlot placement="home-top" /><section className="hero hero--locker"><div className="hero-content"><div className="hero-brand-lockup"><img className="hero-shield" src="/brand/10thegoat-shield-raster.png" alt=""/><img className="hero-wordmark" src="/brand/10thegoat-wordmark.svg" alt={d.home.alt}/><img className="hero-shield hero-shield--mirror" src="/brand/10thegoat-shield-raster.png" alt=""/></div><h1>{d.home.title}</h1><p>{d.home.intro}</p><Link className="btn btn-primary home-cta" href="#juegos">{d.home.play} <span aria-hidden="true">↓</span></Link></div></section><HomeGameGrid games={games} locale={locale} title={d.home.games} allGames={d.home.all}/>{locale === "es" && <div className="container home-editorial"><DidYouKnow/><Link className="article-teaser" href="/es/articulos/primer-mundial-1930"><span className="eyebrow">Artículo destacado</span><h2>Uruguay 1930: así nació la Copa Mundial</h2><p>Trece selecciones, viajes en barco y un estadio todavía en obras. Descubre cómo empezó todo.</p><strong>Leer la historia →</strong></Link></div>}<AdSlot placement="home-bottom" /></main>;
   if (path === "/usuario") return <UserDashboard locale={locale} challenges={challengeCatalog().map(({id,available,opensOn})=>({id,available,opensOn}))}/>;
+  if (path === "/articulos/primer-mundial-1930") { if(locale !== "es") notFound(); return <><div className="article-route-tags container"><ArticleTags tags={["historia","mundiales","estadios","curiosidades"]}/></div><FirstWorldCupArticle/></>; }
+  if (path.startsWith("/articulos/")) {
+    if (locale !== "es") notFound();
+    const articleSlug = path.slice("/articulos/".length);
+    const summary = getArticle(articleSlug);
+    const content = getArticleContent(articleSlug);
+    if (!summary || !content) notFound();
+    return <FootballArticle summary={summary} content={content}/>;
+  }
+  if (path === "/articulos") { if(locale !== "es") notFound(); return <ArticlesIndex/>; }
   if (path === "/juegos") return <main className="section container"><h1>{d.catalog.title}</h1><AdSlot placement="catalog-top" /><div className="game-catalog-grid">{games.map((game) => <GameCard key={game.slug} game={game} locale={locale}/>)}</div><AdSlot placement="catalog-bottom" /></main>;
   if (path === "/juegos/mayor-o-menor") return <main className="game-shell game-room container hl-page"><div className="game-room-heading hl-heading"><Link href={`/${locale}`} className="game-room-back">← ARENA</Link><div><span className="eyebrow">{d.games.higherLower.eyebrow}</span><h1>{d.games.higherLower.title}</h1><p>{d.games.higherLower.intro}</p></div></div><AdSlot placement="game-top" /><HigherLowerGame /><AdSlot placement="game-bottom" /><GameGuide locale={locale} game="higherLower" /></main>;
   if (path === "/juegos/adivina-jugador") return <main className="game-shell game-room container wordle-page"><div className="game-room-heading wordle-heading"><Link href={`/${locale}`} className="game-room-back">← ARENA</Link><div><span className="eyebrow">{d.games.wordle.eyebrow}</span><h1>{d.games.wordle.title}</h1><p>{d.games.wordle.intro}</p></div></div><AdSlot placement="game-top" /><PlayerWordleGame /><AdSlot placement="game-bottom" /><GameGuide locale={locale} game="wordle" /></main>;
